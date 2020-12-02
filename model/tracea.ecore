@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="tracea" nsURI="http://tracea.ecore" nsPrefix="tracea">
+  <eClassifiers xsi:type="ecore:EClass" name="Tracea">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="traces" upperBound="-1"
+        eType="#//core/Trace" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="artefacts" upperBound="-1"
+        eType="#//core/Artefact" containment="true"/>
+  </eClassifiers>
+  <eSubpackages name="core" nsURI="core" nsPrefix="core">
+    <eClassifiers xsi:type="ecore:EClass" name="Trace" eSuperTypes="#//relationtyping/TypedRelationship #//core/TrustableElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="sourceArtefacts" upperBound="-1"
+          eType="#//core/Artefact"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="targets" upperBound="-1"
+          eType="#//core/ArtefactFragment"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="sources" upperBound="-1"
+          eType="#//core/ArtefactFragment"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="tracelinks" upperBound="-1"
+          eType="#//core/TraceLink" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="evidences" upperBound="-1"
+          eType="#//core/Evidence" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="targetArtefacts" upperBound="-1"
+          eType="#//core/Artefact"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="TraceLink" abstract="true" eSuperTypes="#//core/TrustableElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//core/ArtefactFragment"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//core/ArtefactFragment"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="successors" eType="#//core/NodeTraceLink"
+          containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="LeafTraceLink" eSuperTypes="#//core/TraceLink"/>
+    <eClassifiers xsi:type="ecore:EClass" name="NodeTraceLink" eSuperTypes="#//core/TraceLink"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Artefact" abstract="true" eSuperTypes="#//core/TrustableElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="fragments" upperBound="-1"
+          eType="#//core/ArtefactFragment" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ArtefactFragment" abstract="true"
+        eSuperTypes="#//core/TrustableElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="subFragment" upperBound="-1"
+          eType="#//core/ArtefactFragment" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Evidence" eSuperTypes="#//core/TrustableElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="facts" upperBound="-1"
+          eType="#//core/Fact" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Fact" eSuperTypes="#//core/TrustableElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Referee"/>
+    <eClassifiers xsi:type="ecore:EClass" name="TrustableElement" abstract="true"
+        interface="true">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeStamp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="referee" upperBound="-1"
+          eType="#//core/Referee"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          iD="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="RuleEvidence" eSuperTypes="#//core/Evidence"/>
+    <eClassifiers xsi:type="ecore:EClass" name="AnnotationEvidence" eSuperTypes="#//core/Evidence"/>
+    <eClassifiers xsi:type="ecore:EClass" name="AIEvidence" eSuperTypes="#//core/Evidence"/>
+  </eSubpackages>
+  <eSubpackages name="granularity" nsURI="http://tracea.ecore.granularity" nsPrefix="granularity">
+    <eClassifiers xsi:type="ecore:EClass" name="TextArtefact" eSuperTypes="#//core/Artefact">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="textfragments" upperBound="-1"
+          eType="#//granularity/TextFragment" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ModelArtefact" eSuperTypes="#//core/Artefact">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="modelfragments" upperBound="-1"
+          eType="#//granularity/ModelFragment" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CodeArtefact" eSuperTypes="#//core/Artefact">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="codefragment" upperBound="-1"
+          eType="#//granularity/CodeFragment" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="TextFragment" eSuperTypes="#//core/ArtefactFragment"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CodeFragment" eSuperTypes="#//core/ArtefactFragment"/>
+    <eClassifiers xsi:type="ecore:EClass" name="TestFragment" eSuperTypes="#//core/ArtefactFragment"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ModelFragment" eSuperTypes="#//core/ArtefactFragment">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="namedelementsDefined"
+          upperBound="-1" eType="#//granularity/NamedElement" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="namedelementsUsed" upperBound="-1"
+          eType="#//granularity/NamedElement" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="TestArtefact" eSuperTypes="#//core/Artefact">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="specfragment" upperBound="-1"
+          eType="#//granularity/TestFragment" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Document" eSuperTypes="#//granularity/TextArtefact">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="sections" upperBound="-1"
+          eType="#//granularity/Section" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Section" eSuperTypes="#//granularity/TextFragment">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="partofspeechsDefined"
+          upperBound="-1" eType="#//granularity/PartOfSpeech" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="partofspeechsUsed" upperBound="-1"
+          eType="#//granularity/PartOfSpeech" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="PartOfSpeech" eSuperTypes="#//granularity/TextFragment"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//granularity/ModelArtefact">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="packages" upperBound="-1"
+          eType="#//granularity/Package" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Package" eSuperTypes="#//granularity/ModelFragment">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="classes" upperBound="-1"
+          eType="#//granularity/Classe" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Classe" eSuperTypes="#//granularity/ModelFragment">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="structuralfeatures" upperBound="-1"
+          eType="#//granularity/StructuralFeature" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="StructuralFeature" eSuperTypes="#//granularity/ModelFragment"/>
+    <eClassifiers xsi:type="ecore:EClass" name="NamedElement" eSuperTypes="#//granularity/ModelFragment"/>
+  </eSubpackages>
+  <eSubpackages name="relationtyping" nsURI="http://tracea.ecore.relationtyping" nsPrefix="rt">
+    <eClassifiers xsi:type="ecore:EClass" name="DomainType" eSuperTypes="#//relationtyping/RelationshipType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="EngineeringType" eSuperTypes="#//relationtyping/RelationshipType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="RelationshipType" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="TypedRelationship" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="relationshiptype" eType="#//relationtyping/RelationshipType"/>
+    </eClassifiers>
+  </eSubpackages>
+</ecore:EPackage>
