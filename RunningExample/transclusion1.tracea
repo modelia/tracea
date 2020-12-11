@@ -1,0 +1,115 @@
+Tracea  T01 {
+	
+	// Structure of traces
+    traces {
+        Trace Transclusion1 {
+            tracelinks {  
+            	LeafTraceLink link01 { source sec_A_I 	target PoS_D 	relationshiptype Sec2PoS  evidences {Evidence_link01} },
+            	LeafTraceLink link02 { source sec_A_II 	target PoS_C 	relationshiptype Sec2PoS  evidences {Evidence_link02} },
+            	LeafTraceLink link03 { source sec_A_I 	target PoS_B 	relationshiptype Sec2PoS  evidences {Evidence_link03} },
+            	LeafTraceLink link04 { source sec_F_I 	target PoS_B 	relationshiptype Sec2PoS  evidences {Evidence_link04} },
+            	LeafTraceLink link05 { source PoS_B 	target PoS_C 	relationshiptype Synonymy evidences {Evidence_link05} },
+            	LeafTraceLink link06 { source PoS_C 	target ne_E  	relationshiptype Closure  evidences {Evidence_link06} },
+            	LeafTraceLink link07 { source PoS_C 	target ne_G  	relationshiptype Closure  evidences {Evidence_link07} },
+            	LeafTraceLink link08 { source PoS_C 	target ne_H  	relationshiptype Closure  evidences {Evidence_link08} },
+            	LeafTraceLink link09 { source ne_E 		target Cl_i  	relationshiptype NE2Class },
+            	LeafTraceLink link10 { source ne_G 		target Cl_j_01 	relationshiptype NE2Class },
+            	LeafTraceLink link11 { source ne_H 		target Cl_j_02 	relationshiptype NE2Class }
+            }
+        }
+    }
+    
+    // Available types
+    relationshiptypes {
+    	EngineeringType Sec2PoS,
+    	EngineeringType NE2Class,
+    	DomainType Synonymy,
+    	DomainType Closure
+    }
+    
+    // Structure of artefacts
+    artefacts {
+        Document doc_A { sections { sec_A_I, sec_A_II } },
+        Document doc_F { sections { sec_F_I } },
+        Model modelI {fragments { Cl_i  }},
+        Model modelJ {fragments { Cl_j_01 , Cl_j_02 }}
+    } 
+    
+    // Structure of fragments
+    fragments {
+    	Section sec_A_I { partofspeechsDefined {PoS_D }},
+        Section sec_A_II { partofspeechsDefined {PoS_D, PoS_B, PoS_C}},
+        Section sec_F_I { partofspeechsDefined {PoS_D, PoS_B, PoS_C}},
+        PartOfSpeech PoS_B { },  
+    	PartOfSpeech PoS_C { },
+    	PartOfSpeech PoS_D { },
+    	
+    	
+    	Classe Cl_i { namedelementsDefined {ne_E} },
+    	Classe Cl_j_01 { namedelementsDefined {ne_G} },
+    	Classe Cl_j_02 { namedelementsDefined {ne_H}},
+    	NamedElement ne_E { },
+        NamedElement ne_G { }, 
+        NamedElement ne_H { }
+    }
+    
+    // List 
+    evidences {
+    	AIEvidence Evidence_link01 {
+    		algorithmUsed "AI4All"
+    		parameters {"platform:/resource/training/posidentifier_202012"}
+    		executionDate "20201207-123536"	
+    		results .8 .7    		
+    		impactedElements ("Transclusion1.link01", sec_A_I, PoS_D) 
+    	},
+    	AIEvidence Evidence_link02 {
+    		algorithmUsed "AI4All"
+    		parameters {"platform:/resource/training/posidentifier_202012"}
+    		executionDate "20201207-123536"	
+    		results .8 .7 
+    		impactedElements ("Transclusion1.link02", sec_A_II, PoS_C) 
+    	},
+    	AIEvidence Evidence_link03 {
+   			algorithmUsed "AI4All"
+    		parameters {"platform:/resource/training/posidentifier_202012"}
+    		executionDate "20201207-123536"	
+    		results .8 .7 
+    		impactedElements ("Transclusion1.link03", sec_A_I, PoS_B) 
+    	},
+    	AIEvidence Evidence_link04 {
+    		algorithmUsed "AI4All"
+    		parameters {"platform:/resource/training/posidentifier_202012"}
+    		executionDate "20201207-123536"	
+    		results .8 .7 
+    		impactedElements ("Transclusion1.link04", sec_F_I, PoS_B) 
+    	},
+    	AIEvidence Evidence_link05 {
+   			algorithmUsed "Synonymizer"
+    		parameters {"platform:/resource/training/synonymset_202012"}
+    		executionDate "20201207-123536"	
+    		results .6 .8 
+     		impactedElements ("Transclusion1.link05", PoS_B, PoS_C) 
+    	},
+    	AIEvidence Evidence_link06 {
+     		algorithmUsed "SemanticDistanceEvalutor"
+    		parameters {"platform:/resource/training/synonymset_202012"}
+    		executionDate "20201207-123536"	
+    		results .6 .8 
+    		impactedElements ("Transclusion1.link06", PoS_C, ne_E) 
+    	},
+    	AIEvidence Evidence_link07 {
+   			algorithmUsed "SemanticDistanceEvalutor"
+     		parameters {"platform:/resource/training/synonymset_202012"}
+    		executionDate "20201207-123536"	
+    		results .6 .8 
+     		impactedElements ("Transclusion1.link07", PoS_C, ne_G) 
+    	},
+    	AIEvidence Evidence_link08 {
+   			algorithmUsed "SemanticDistanceEvalutor"
+    		parameters {"platform:/resource/training/synonymset_202012"}
+    		executionDate "20201207-123536"	
+    		results .8 .7 
+    		impactedElements ("Transclusion1.link08", PoS_C, ne_H) 
+    	}
+    }
+ }

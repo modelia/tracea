@@ -1,0 +1,423 @@
+grammar uoc.som.tracea.Tracea with org.eclipse.xtext.common.Terminals
+
+
+/* * * * * * * * * * * * * * * * * * * *
+ *                                     *
+ *        Tracea textual syntax        *
+ *           ebatot@uoc.edu            *
+ *                                     *
+ * * * * * * * * * * * * * * * * * * * */
+
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+// Importing Tracea metamodel and its packages
+import "platform:/resource/Tracea/model/tracea.ecore"    
+import "platform:/resource/Tracea/model/tracea.ecore#//core" as core
+import "platform:/resource/Tracea/model/tracea.ecore#//granularity" as granularity
+import "platform:/resource/Tracea/model/tracea.ecore#//relationtyping" as relationtyping
+
+// -------------------------------------------------------------------------
+// Eclipse configuration may rather like importing packages with their nsURI
+//  import "http://tracea.ecore"  
+//  import "http://tracea.ecore.core" as core
+//  import "http://tracea.ecore.granularity" as granularity
+//  import "http://tracea.ecore.relationtyping" as relationtyping
+// -------------------------------------------------------------------------
+
+
+
+Tracea returns Tracea:
+	{Tracea}
+	'Tracea'
+	name=EString
+	'{'
+		('traces' '{' traces+=Trace ( "," traces+=Trace)* '}' )?
+		('relationshiptypes' '{' relationshiptypes+=RelationshipType ( "," relationshiptypes+=RelationshipType)* '}' )?
+		('artefacts' '{' artefacts+=Artefact ( "," artefacts+=Artefact)* '}' )?
+		('fragments' '{' fragments+=ArtefactFragment ( "," fragments+=ArtefactFragment)* '}' )?
+		('evidences' '{' evidences+=Evidence ( "," evidences+=Evidence)* '}' )?
+		('referees' '{' referees+=Referee ( "," referees+=Referee)* '}' )?
+	'}';
+	
+TrustableElement returns core::TrustableElement:
+	Trace | LeafTraceLink | NodeTraceLink | Evidence_Impl | RuleEvidence | AnnotationEvidence | AIEvidence;
+	
+/* * * * * * * * * */
+/* Trace structure */
+/* * * * * * * * * */
+
+Trace returns core::Trace:
+	{core::Trace}
+	'Trace'
+	name=EString
+	'{'
+		('relationshiptype' relationshiptype=[relationtyping::RelationshipType|EString])?
+		('evidences' '{' evidences+=[core::Evidence|EString] ( "," evidences+=[core::Evidence|EString])* '}' )?
+		('starts' '{' starts+=[core::TraceLink|EString]| ( "," starts+=[core::TraceLink|EString])* '}' )?
+		('tracelinks' '{' tracelinks+=TraceLink ( "," tracelinks+=TraceLink)* '}' )?
+		('referees' '(' referees+=[core::Referee|EString] ( "," referees+=[core::Referee|EString])* ')' )?
+		('timestamp' timestamp=EString)?
+	'}';
+	
+TraceLink returns core::TraceLink:
+	LeafTraceLink | NodeTraceLink;
+	
+LeafTraceLink returns core::LeafTraceLink:
+	{core::LeafTraceLink}
+	'LeafTraceLink'
+	name=EString
+	'{'
+		('source' source=[core::ArtefactFragment|EString])?
+		('target' target=[core::ArtefactFragment|EString])?
+		('relationshiptype' relationshiptype=[relationtyping::RelationshipType|EString])?
+		('evidences' '{' evidences+=[core::Evidence|EString] ( "," evidences+=[core::Evidence|EString])* '}' )?
+		('referees' '(' referees+=[core::Referee|EString] ( "," referees+=[core::Referee|EString])* ')' )?
+		('timestamp' timestamp=EString)?
+	'}';
+
+NodeTraceLink returns core::NodeTraceLink:
+	{core::NodeTraceLink}
+	'NodeTraceLink'
+	name=EString 
+	'{'
+		('source' source=[core::ArtefactFragment|EString])?
+		('target' target=[core::ArtefactFragment|EString])?
+		('successors' '{' successors+=[core::TraceLink|EString] ( "," successors+=[core::TraceLink|EString])* '}' )?
+		('relationshiptype' relationshiptype=[relationtyping::RelationshipType|EString])?
+		('evidences' '{' evidences+=[core::Evidence|EString] ( "," evidences+=[core::Evidence|EString])* '}' )?
+		('referees' '(' referees+=[core::Referee|EString] ( "," referees+=[core::Referee|EString])* ')' )?
+		('timestamp' timestamp=EString)?
+	'}';
+/* * *  -END-  * * */
+/* Trace structure */
+/* * * * * * * * * */
+
+
+
+/* * * * * * * * * * * * * */	
+/* Artefacts and Fragments */
+/* * * * * * * * * * * * * */	
+	
+Artefact returns core::Artefact:
+	ModelArtefact | 
+	TextArtefact ;
+
+ModelArtefact returns granularity::ModelArtefact:
+	ModelArtefact_Impl | 
+	  Model
+;
+TextArtefact returns granularity::TextArtefact:
+	TextArtefact_Impl | 
+	  Document
+;
+
+
+ModelArtefact_Impl returns granularity::ModelArtefact:
+	{granularity::ModelArtefact}
+	'ModelArtefact'
+	name=EString 
+	'{'
+		('fragments' '{' fragments+=[core::ArtefactFragment|EString] ( "," fragments+=[core::ArtefactFragment|EString])* '}' )?
+		('referees' '(' referees+=[core::Referee|EString] ( "," referees+=[core::Referee|EString])* ')' )?
+		('timestamp' timestamp=EString)?
+	'}';
+
+TextArtefact_Impl returns granularity::TextArtefact:
+	{granularity::TextArtefact}
+	'TextArtefact'
+	name=EString
+	'{'
+		('fragments' '{' fragments+=[core::ArtefactFragment|EString] ( "," fragments+=[core::ArtefactFragment|EString])* '}' )?
+		('timestamp' timestamp=EString)?
+		('referees' '(' referees+=[core::Referee|EString] ( "," referees+=[core::Referee|EString])* ')' )?
+	'}';
+
+
+
+
+ArtefactFragment returns core::ArtefactFragment:
+	ModelFragment | TextFragment ;
+	
+
+
+
+TextFragment returns granularity::TextFragment:
+	TextFragment_Impl | Section | PartOfSpeech;
+
+
+
+
+TextFragment_Impl returns granularity::TextFragment:
+	{granularity::TextFragment}
+	'TextFragment'
+	name=EString
+	'{'
+		('subFragments' '{' subFragments+=[core::ArtefactFragment|EString] ( "," subFragments+=[core::ArtefactFragment|EString])* '}' )?
+		('referees' '(' referees+=[core::Referee|EString] ( "," referees+=[core::Referee|EString])* ')' )?
+		('timestamp' timestamp=EString)?
+	'}';
+
+Document returns granularity::Document:
+	{granularity::Document}
+	'Document'
+	name=EString
+	'{'
+		('title' title=EString)?
+		('fragments' '{' fragments+=[core::ArtefactFragment|EString] ( "," fragments+=[core::ArtefactFragment|EString])* '}' )?
+		('sections' '{' sections+=[granularity::Section|EString] ( "," sections+=[granularity::Section|EString])* '}' )?
+		('referees' '(' referees+=[core::Referee|EString] ( "," referees+=[core::Referee|EString])* ')' )?
+		('timestamp' timestamp=EString)?
+	'}';
+
+Section returns granularity::Section:
+	{granularity::Section}
+	'Section'
+	name=EString
+	'{'
+		('number' number=EInt)?
+		('subFragments' '{' subFragments+=[core::ArtefactFragment|EString] ( "," subFragments+=[core::ArtefactFragment|EString])* '}' )?
+		('partofspeechsDefined' '{' partofspeechsDefined+=[granularity::PartOfSpeech|EString] ( "," partofspeechsDefined+=[granularity::PartOfSpeech|EString])* '}' )?
+		('partofspeechsUsed' '{' partofspeechsUsed+=[granularity::PartOfSpeech|EString] ( "," partofspeechsUsed+=[granularity::PartOfSpeech|EString])* '}' )?
+		('referees' '(' referees+=[core::Referee|EString] ( "," referees+=[core::Referee|EString])* ')' )?
+		('timestamp' timestamp=EString)?
+	'}';
+
+PartOfSpeech returns granularity::PartOfSpeech:
+	{granularity::PartOfSpeech}
+	'PartOfSpeech'
+	name=EString
+	'{'
+		('position' position=EString)?
+		('referees' '(' referees+=[core::Referee|EString] ( "," referees+=[core::Referee|EString])* ')' )?
+		('timestamp' timestamp=EString)?
+	'}';
+
+
+ModelFragment returns granularity::ModelFragment:
+	ModelFragment_Impl | Package | Classe | StructuralFeature | NamedElement;
+
+
+
+ModelFragment_Impl returns granularity::ModelFragment:
+	{granularity::ModelFragment}
+	'ModelFragment'
+	name=EString
+	'{'
+		('subFragments' '{' subFragments+=[core::ArtefactFragment|EString] ( "," subFragments+=[core::ArtefactFragment|EString])* '}' )?
+		('namedelementsDefined' '{' namedelementsDefined+=[granularity::NamedElement|EString] ( "," namedelementsDefined+=[granularity::NamedElement|EString])* '}' )?
+		('namedelementsUsed' '{' namedelementsUsed+=[granularity::NamedElement|EString] ( "," namedelementsUsed+=[granularity::NamedElement|EString])* '}' )?
+		('referees' '(' referees+=[core::Referee|EString] ( "," referees+=[core::Referee|EString])* ')' )?
+		('timestamp' timestamp=EString)?
+	'}';
+
+Model returns granularity::Model:
+	{granularity::Model}
+	'Model'
+	name=EString
+	'{'
+		('fragments' '{' fragments+=[core::ArtefactFragment|EString] ( "," fragments+=[core::ArtefactFragment|EString])* '}' )?
+		('packages' '{' packages+=[granularity::Package|EString] ( "," packages+=[granularity::Package|EString])* '}' )?
+		('referees' '(' referees+=[core::Referee|EString] ( "," referees+=[core::Referee|EString])* ')' )?
+		('timestamp' timestamp=EString)?
+	'}';
+
+NamedElement returns granularity::NamedElement:
+	{granularity::NamedElement}
+	'NamedElement'
+	name=EString
+	'{'
+		('referees' '(' referees+=[core::Referee|EString] ( "," referees+=[core::Referee|EString])* ')' )?
+		('timestamp' timestamp=EString)?
+	'}';
+
+Package returns granularity::Package:
+	{granularity::Package}
+	'Package'
+	name=EString
+	'{'
+		('subFragment' '{' subFragments+=[core::ArtefactFragment|EString] ( "," subFragments+=[core::ArtefactFragment|EString])* '}' )?
+		('namedelementsDefined' '{' namedelementsDefined+=[granularity::NamedElement|EString] ( "," namedelementsDefined+=[granularity::NamedElement|EString])* '}' )?
+		('namedelementsUsed' '{' namedelementsUsed+=[granularity::NamedElement|EString] ( "," namedelementsUsed+=[granularity::NamedElement|EString])* '}' )?
+		('classes' '{' classes+=[granularity::Classe|EString] ( "," classes+=[granularity::Classe|EString])* '}' )?
+		('referees' '(' referees+=[core::Referee|EString] ( "," referees+=[core::Referee|EString])* ')' )?
+		('timestamp' timestamp=EString)?
+	'}';
+
+Classe returns granularity::Classe:
+	{granularity::Classe}
+	'Classe'
+	name=EString
+	'{'
+		('subFragments' '{' subFragments+=[core::ArtefactFragment|EString] ( "," subFragments+=[core::ArtefactFragment|EString])* '}' )?
+		('namedelementsDefined' '{' namedelementsDefined+=[granularity::NamedElement|EString] ( "," namedelementsDefined+=[granularity::NamedElement|EString])* '}' )?
+		('namedelementsUsed' '{' namedelementsUsed+=[granularity::NamedElement|EString] ( "," namedelementsUsed+=[granularity::NamedElement|EString])* '}' )?
+		('structuralfeatures' '{' structuralfeatures+=[granularity::StructuralFeature|EString] ( "," structuralfeatures+=[granularity::StructuralFeature|EString])* '}' )?
+		('referees' '(' referees+=[core::Referee|EString] ( "," referees+=[core::Referee|EString])* ')' )?
+		('timestamp' timestamp=EString)?
+	'}';
+
+StructuralFeature returns granularity::StructuralFeature:
+	{granularity::StructuralFeature}
+	'StructuralFeature'
+	name=EString
+	'{'
+		('subFragments' '{' subFragments+=[core::ArtefactFragment|EString] ( "," subFragments+=[core::ArtefactFragment|EString])* '}' )?
+		('namedelementsDefined' '{' namedelementsDefined+=[granularity::NamedElement|EString] ( "," namedelementsDefined+=[granularity::NamedElement|EString])* '}' )?
+		('namedelementsUsed' '{' namedelementsUsed+=[granularity::NamedElement|EString] ( "," namedelementsUsed+=[granularity::NamedElement|EString])* '}' )?
+		('referees' '(' referees+=[core::Referee|EString] ( "," referees+=[core::Referee|EString])* ')' )?
+		('timestamp' timestamp=EString)?
+	'}';
+
+/* * * * * -END- * * * * * */	
+/* Artefacts and Fragments */
+/* * * * * * * * * * * * * */	
+
+
+/* * * * * * * * * * */	
+/* RelationshipTypes */
+/* * * * * * * * * * */	
+
+RelationshipType returns relationtyping::RelationshipType:
+	DomainType_Impl | EngineeringType_Impl | Transclusion | Doc2Section | Section2PoS | PoSSynonym | PoS2NamedEntity | NamedEntitySynonym | NamedEntity2Class | NameEntity2Package | Package2Model;
+
+DomainType_Impl returns relationtyping::DomainType:
+	{relationtyping::DomainType}
+	'DomainType'
+	name=EString 
+	;
+
+EngineeringType_Impl returns relationtyping::EngineeringType:
+	{relationtyping::EngineeringType}
+	'EngineeringType'
+	name=EString
+	;
+
+Transclusion returns relationtyping::Transclusion:
+	{relationtyping::Transclusion}
+	'Transclusion'
+	;
+
+Doc2Section returns relationtyping::Doc2Section:
+	{relationtyping::Doc2Section}
+	'Doc2Section'
+	;
+
+Section2PoS returns relationtyping::Section2PoS:
+	{relationtyping::Section2PoS}
+	'Section2PoS'
+	;
+
+PoSSynonym returns relationtyping::PoSSynonym:
+	{relationtyping::PoSSynonym}
+	'PoSSynonym'
+	;
+
+PoS2NamedEntity returns relationtyping::PoS2NamedEntity:
+	{relationtyping::PoS2NamedEntity}
+	'PoS2NamedEntity'
+	;
+
+NamedEntitySynonym returns relationtyping::NamedEntitySynonym:
+	{relationtyping::NamedEntitySynonym}
+	'NamedEntitySynonym'
+	;
+
+NamedEntity2Class returns relationtyping::NamedEntity2Class:
+	{relationtyping::NamedEntity2Class}
+	'NamedEntity2Class'
+	;
+
+NameEntity2Package returns relationtyping::NameEntity2Package:
+	{relationtyping::NameEntity2Package}
+	'NameEntity2Package'
+	;
+
+Package2Model returns relationtyping::Package2Model:
+	{relationtyping::Package2Model}
+	'Package2Model'
+	;
+
+
+/* * *  -END-  * * * */	
+/* RelationshipTypes */
+/* * * * * * * * * * */	
+
+
+/* * * * * * */	
+/* Integrity */
+/* * * * * * */	
+
+Referee returns core::Referee:
+	{core::Referee}
+	'Referee'
+	name=EString
+	;
+
+Evidence returns core::Evidence:
+	Evidence_Impl | RuleEvidence | AnnotationEvidence | AIEvidence;
+
+
+
+Evidence_Impl returns core::Evidence:
+	{core::Evidence}
+	'Evidence'
+	name=EString
+	'{'
+		('impactedElements' '(' impactedElements+=[core::TrustableElement|EString] ( "," impactedElements+=[core::TrustableElement|EString])* ')' )?
+		('referees' '(' referees+=[core::Referee|EString] ( "," referees+=[core::Referee|EString])* ')' )?
+		('timestamp' timestamp=EString)?
+	'}';
+
+
+RuleEvidence returns core::RuleEvidence:
+	{core::RuleEvidence}
+	'RuleEvidence'
+	name=EString
+	'{'
+		('rule' rule=EString)?
+		('executionDate' executionDate=EString)?
+		('impactedElements' '(' impactedElements+=[core::TrustableElement|EString] ( "," impactedElements+=[core::TrustableElement|EString])* ')' )?
+		('referees' '(' referees+=[core::Referee|EString] ( "," referees+=[core::Referee|EString])* ')' )?
+		('timestamp' timestamp=EString)?
+	'}';
+
+AnnotationEvidence returns core::AnnotationEvidence:
+	{core::AnnotationEvidence}
+	'AnnotationEvidence'
+	name=EString
+	'{'
+		('content' content=EString)?
+		('impactedElements' '(' impactedElements+=[core::TrustableElement|EString] ( "," impactedElements+=[core::TrustableElement|EString])* ')' )?
+		('referees' '(' referees+=[core::Referee|EString] ( "," referees+=[core::Referee|EString])* ')' )?
+		('timestamp' timestamp=EString)?
+	'}';
+
+AIEvidence returns core::AIEvidence:
+	{core::AIEvidence}
+	'AIEvidence'
+	name=EString
+	'{'
+		('algorithmUsed' algorithmUsed=EString)?
+		('parameters' '{' parameters+=EString ( "," parameters+=EString)* '}' )?
+		('executionDate' executionDate=EString)? 
+		('results' precision=EDouble  recall=EDouble)?
+		('impactedElements' '(' impactedElements+=[core::TrustableElement|EString] ( "," impactedElements+=[core::TrustableElement|EString])* ')' )?
+		('referees' '(' referees+=[core::Referee|EString] ( "," referees+=[core::Referee|EString])* ')' )?
+		('timestamp' timestamp=EString)?
+	'}';
+
+/* * * * * * */
+/* Datatypes */
+/* * * * * * */
+EInt returns ecore::EInt:
+	'-'? INT;
+EString returns ecore::EString:
+	STRING | ID;
+EDouble returns ecore::EDouble:
+	'-'? INT? '.' INT (('E'|'e') '-'? INT)?;
+EDate returns ecore::EDate:
+	'EString' /* TODO: implement this rule and an appropriate IValueConverter */;
+
+
+

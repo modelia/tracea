@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated tracea -->
+      <package
+            uri="http://tracea.ecore"
+            class="tracea.TraceaPackage"
+            genModel="model/tracea.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated tracea -->
+      <package
+            uri="http://tracea.ecore.core"
+            class="tracea.core.CorePackage"
+            genModel="model/tracea.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated tracea -->
+      <package
+            uri="http://tracea.ecore.granularity"
+            class="tracea.granularity.GranularityPackage"
+            genModel="model/tracea.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated tracea -->
+      <package
+            uri="http://tracea.ecore.relationtyping"
+            class="tracea.relationtyping.RelationtypingPackage"
+            genModel="model/tracea.genmodel"/>
+   </extension>
+
+</plugin>

@@ -1,0 +1,36 @@
+import 'platform:/resource/Tracea/model/tracea.ecore'
+
+package tracea::core
+context Trace 
+inv starters: self.tracelinks->includesAll(starts)
+inv derivedSources: tracelinks->collect(source)->includesAll(sources)
+inv derivedTargets: tracelinks->collect(target)->includesAll(targets)
+inv derivedSourceArtefacts: tracelinks->collect(source)->includesAll(sourceArtefacts.fragments)
+inv derivedTargetArtefacts: tracelinks->collect(target)->includesAll(targetArtefacts.fragments)
+
+endpackage
+
+package tracea::granularity
+context TextArtefact
+	inv textFragmentsTyping: fragments->forAll(self->oclIsKindOf(TextFragment))
+context CodeArtefact 
+	inv codeFragmentsTyping: fragments->forAll(self->oclIsKindOf(CodeFragment))
+context ModelArtefact 
+	inv modelFragmentsTyping: fragments->forAll(self->oclIsKindOf(ModelFragment))
+context TestArtefact 
+	inv testFragmentsTyping: fragments->forAll(self->oclIsKindOf(TestFragment))
+context TextFragment
+	inv textFragmentsTyping: self.subFragments->forAll(self->oclIsKindOf(TextFragment))
+context CodeFragment 
+	inv codeFragmentsTyping: self.subFragments->forAll(self->oclIsKindOf(CodeFragment))
+context ModelFragment 
+	inv modelFragmentsTyping: self.subFragments->forAll(self->oclIsKindOf(ModelFragment))
+context TestFragment 
+	inv testFragmentsTyping: self.subFragments->forAll(self->oclIsKindOf(TestFragment))
+	
+context NamedElement 
+	inv noNestedNamedElements: namedelementsDefined->isEmpty() 
+		and namedelementsUsed->isEmpty()
+		and subFragments->isEmpty()
+
+endpackage

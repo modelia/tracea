@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/Tracea/src" modelPluginID="Tracea" modelName="Tracea"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    copyrightFields="false" operationReflection="false" importOrganizing="true">
+  <foreignModel>tracea.ecore</foreignModel>
+  <genPackages prefix="Tracea" disposableProviderFactory="true" ecorePackage="tracea.ecore#/">
+    <genClasses ecoreClass="tracea.ecore#//Tracea">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference tracea.ecore#//Tracea/traces"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference tracea.ecore#//Tracea/artefacts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference tracea.ecore#//Tracea/referees"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference tracea.ecore#//Tracea/fragments"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference tracea.ecore#//Tracea/relationshiptypes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference tracea.ecore#//Tracea/evidences"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tracea.ecore#//Tracea/name"/>
+    </genClasses>
+    <nestedGenPackages prefix="Core" disposableProviderFactory="true" ecorePackage="tracea.ecore#//core">
+      <genClasses ecoreClass="tracea.ecore#//core/Trace">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference tracea.ecore#//core/Trace/sourceArtefacts"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference tracea.ecore#//core/Trace/targets"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference tracea.ecore#//core/Trace/sources"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference tracea.ecore#//core/Trace/evidences"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference tracea.ecore#//core/Trace/targetArtefacts"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference tracea.ecore#//core/Trace/starts"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference tracea.ecore#//core/Trace/tracelinks"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="tracea.ecore#//core/TraceLink">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference tracea.ecore#//core/TraceLink/source"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference tracea.ecore#//core/TraceLink/target"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference tracea.ecore#//core/TraceLink/evidences"/>
+      </genClasses>
+      <genClasses ecoreClass="tracea.ecore#//core/LeafTraceLink"/>
+      <genClasses ecoreClass="tracea.ecore#//core/NodeTraceLink">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference tracea.ecore#//core/NodeTraceLink/successors"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="tracea.ecore#//core/Artefact">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference tracea.ecore#//core/Artefact/fragments"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="tracea.ecore#//core/ArtefactFragment">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference tracea.ecore#//core/ArtefactFragment/subFragments"/>
+      </genClasses>
+      <genClasses ecoreClass="tracea.ecore#//core/Evidence">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference tracea.ecore#//core/Evidence/impactedElements"/>
+      </genClasses>
+      <genClasses ecoreClass="tracea.ecore#//core/Referee">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tracea.ecore#//core/Referee/name"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference tracea.ecore#//core/Referee/trustableElements"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="tracea.ecore#//core/TrustableElement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tracea.ecore#//core/TrustableElement/timestamp"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference tracea.ecore#//core/TrustableElement/referees"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tracea.ecore#//core/TrustableElement/name"/>
+      </genClasses>
+      <genClasses ecoreClass="tracea.ecore#//core/RuleEvidence">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tracea.ecore#//core/RuleEvidence/rule"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tracea.ecore#//core/RuleEvidence/executionDate"/>
+      </genClasses>
+      <genClasses ecoreClass="tracea.ecore#//core/AnnotationEvidence">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tracea.ecore#//core/AnnotationEvidence/content"/>
+      </genClasses>
+      <genClasses ecoreClass="tracea.ecore#//core/AIEvidence">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tracea.ecore#//core/AIEvidence/algorithmUsed"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tracea.ecore#//core/AIEvidence/parameters"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tracea.ecore#//core/AIEvidence/executionDate"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tracea.ecore#//core/AIEvidence/precision"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tracea.ecore#//core/AIEvidence/recall"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Granularity" disposableProviderFactory="true" ecorePackage="tracea.ecore#//granularity">
+      <genClasses ecoreClass="tracea.ecore#//granularity/TextArtefact"/>
+      <genClasses ecoreClass="tracea.ecore#//granularity/ModelArtefact"/>
+      <genClasses ecoreClass="tracea.ecore#//granularity/CodeArtefact"/>
+      <genClasses ecoreClass="tracea.ecore#//granularity/TextFragment"/>
+      <genClasses ecoreClass="tracea.ecore#//granularity/CodeFragment"/>
+      <genClasses ecoreClass="tracea.ecore#//granularity/TestFragment"/>
+      <genClasses ecoreClass="tracea.ecore#//granularity/ModelFragment">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference tracea.ecore#//granularity/ModelFragment/namedelementsDefined"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference tracea.ecore#//granularity/ModelFragment/namedelementsUsed"/>
+      </genClasses>
+      <genClasses ecoreClass="tracea.ecore#//granularity/TestArtefact"/>
+      <genClasses ecoreClass="tracea.ecore#//granularity/Document">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference tracea.ecore#//granularity/Document/sections"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tracea.ecore#//granularity/Document/title"/>
+      </genClasses>
+      <genClasses ecoreClass="tracea.ecore#//granularity/Section">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference tracea.ecore#//granularity/Section/partofspeechsDefined"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference tracea.ecore#//granularity/Section/partofspeechsUsed"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tracea.ecore#//granularity/Section/number"/>
+      </genClasses>
+      <genClasses ecoreClass="tracea.ecore#//granularity/PartOfSpeech">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tracea.ecore#//granularity/PartOfSpeech/position"/>
+      </genClasses>
+      <genClasses ecoreClass="tracea.ecore#//granularity/Model">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference tracea.ecore#//granularity/Model/packages"/>
+      </genClasses>
+      <genClasses ecoreClass="tracea.ecore#//granularity/Package">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference tracea.ecore#//granularity/Package/classes"/>
+      </genClasses>
+      <genClasses ecoreClass="tracea.ecore#//granularity/Classe">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference tracea.ecore#//granularity/Classe/structuralfeatures"/>
+      </genClasses>
+      <genClasses ecoreClass="tracea.ecore#//granularity/StructuralFeature"/>
+      <genClasses ecoreClass="tracea.ecore#//granularity/NamedElement"/>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Relationtyping" disposableProviderFactory="true" ecorePackage="tracea.ecore#//relationtyping">
+      <genClasses ecoreClass="tracea.ecore#//relationtyping/DomainType"/>
+      <genClasses ecoreClass="tracea.ecore#//relationtyping/EngineeringType"/>
+      <genClasses image="false" ecoreClass="tracea.ecore#//relationtyping/RelationshipType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tracea.ecore#//relationtyping/RelationshipType/name"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="tracea.ecore#//relationtyping/TypedRelationship">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference tracea.ecore#//relationtyping/TypedRelationship/relationshiptype"/>
+      </genClasses>
+      <genClasses ecoreClass="tracea.ecore#//relationtyping/Transclusion"/>
+      <genClasses ecoreClass="tracea.ecore#//relationtyping/Doc2Section"/>
+      <genClasses ecoreClass="tracea.ecore#//relationtyping/Section2PoS"/>
+      <genClasses ecoreClass="tracea.ecore#//relationtyping/PoSSynonym"/>
+      <genClasses ecoreClass="tracea.ecore#//relationtyping/PoS2NamedEntity"/>
+      <genClasses ecoreClass="tracea.ecore#//relationtyping/NamedEntitySynonym"/>
+      <genClasses ecoreClass="tracea.ecore#//relationtyping/NamedEntity2Class"/>
+      <genClasses ecoreClass="tracea.ecore#//relationtyping/NameEntity2Package"/>
+      <genClasses ecoreClass="tracea.ecore#//relationtyping/Package2Model"/>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>

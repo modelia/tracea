@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tracea:Tracea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://tracea.ecore.core" xmlns:granularity="http://tracea.ecore.granularity" xmlns:tracea="http://tracea.ecore" name="T01">
+  <traces name="transclusion1">
+    <tracelinks xsi:type="core:LeafTraceLink" name="linkN0" source="textArt01"/>
+  </traces>
+  <artefacts xsi:type="granularity:TextArtefact" name="textArt00">
+    <fragments xsi:type="granularity:TextFragment" name="textArt01"/>
+  </artefacts>
+</tracea:Tracea>
