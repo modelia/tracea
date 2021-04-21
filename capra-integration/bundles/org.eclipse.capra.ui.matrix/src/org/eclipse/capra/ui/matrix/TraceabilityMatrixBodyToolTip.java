@@ -27,7 +27,6 @@ import org.eclipse.nebula.widgets.nattable.NatTable;
 import org.eclipse.nebula.widgets.nattable.grid.GridRegion;
 import org.eclipse.nebula.widgets.nattable.tooltip.NatTableContentTooltip;
 import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 
 /**
@@ -40,7 +39,7 @@ import org.eclipse.swt.widgets.Event;
  * @author Jan-Philipp Steghöfer
  */
 public class TraceabilityMatrixBodyToolTip extends NatTableContentTooltip {
-	private NatTable natTable;
+
 	private TraceabilityMatrixDataProvider dataProvider;
 	private ArtifactHelper artifactHelper;
 
@@ -71,21 +70,22 @@ public class TraceabilityMatrixBodyToolTip extends NatTableContentTooltip {
 	 */
 	@Override
 	protected Object getToolTipArea(Event event) {
-		int col = this.natTable.getColumnPositionByX(event.x);
-		int row = this.natTable.getRowPositionByY(event.y);
+		int col = this.natTable.getColumnIndexByPosition(this.natTable.getColumnPositionByX(event.x) - 1);
+		int row = this.natTable.getRowIndexByPosition(this.natTable.getRowPositionByY(event.y) - 1);
 		return new Point(col, row);
 	}
 
 	@Override
 	protected String getText(Event event) {
-		int col = this.natTable.getColumnPositionByX(event.x) - 1;
-		int row = this.natTable.getRowPositionByY(event.y) - 1;
+		int col = this.natTable.getColumnIndexByPosition(this.natTable.getColumnPositionByX(event.x));
+		int row = this.natTable.getRowIndexByPosition(this.natTable.getRowPositionByY(event.y));
 		Connection connection = dataProvider.getCellConnection(col, row);
 		if (connection != null) {
 			EObject eClass = connection.getTlink().eClass();
 			String traceType = (eClass == null ? "" : ((EClass) eClass).getName());
 			Set<String> artifactNames = new LinkedHashSet<>();
-			artifactNames.add(artifactHelper.getArtifactLabel(connection.getOrigin()));
+			artifactNames.addAll(connection.getOrigins().stream().map(a -> artifactHelper.getArtifactLabel(a))
+					.collect(Collectors.toCollection(ArrayList::new)));
 			artifactNames.addAll(connection.getTargets().stream().map(a -> artifactHelper.getArtifactLabel(a))
 					.collect(Collectors.toCollection(ArrayList::new)));
 			StringBuilder tooltipBuilder = new StringBuilder();
@@ -96,9 +96,4 @@ public class TraceabilityMatrixBodyToolTip extends NatTableContentTooltip {
 		return null;
 	}
 
-	@Override
-	protected Composite createToolTipContentArea(Event event, Composite parent) {
-		// This is where you could get really creative with your tooltips...
-		return super.createToolTipContentArea(event, parent);
-	}
 }

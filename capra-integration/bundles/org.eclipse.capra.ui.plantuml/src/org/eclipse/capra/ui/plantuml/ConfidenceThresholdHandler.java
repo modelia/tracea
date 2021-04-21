@@ -13,6 +13,7 @@
  *******************************************************************************/
 package org.eclipse.capra.ui.plantuml;
 
+import org.eclipse.capra.ui.plantuml.views.CapraPlantUmlView;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -23,27 +24,33 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.osgi.service.prefs.BackingStoreException;
 import org.osgi.service.prefs.Preferences;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Toggles between showing transitive and direct links
  * 
- * @author Anthony Anjorin, Salome Maro
+ * @author Edouard batot
  */
-public class TransitivityDepthHandler extends AbstractHandler {
+public class ConfidenceThresholdHandler extends AbstractHandler {
 
-	private static final Logger LOG = LoggerFactory.getLogger(TransitivityDepthHandler.class);
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
-		String initialValue = getTransitivityDepth();
-		InputDialog depthInput = new InputDialog(window.getShell(), "Transitivity depth",
-				"Input the desired depth limit for transitivity. Enter 0 if no limit is desired.", initialValue, null);
-		if (depthInput.open() == Window.OK) {
-			String depth = depthInput.getValue();
-			setTransitivityDepth(depth);
+		String initialValue = getConfidenceThreshold();
+		InputDialog confidenceInput = new InputDialog(window.getShell(), "Confidence threshold",
+				"Input the desired threshold for confidence.", initialValue, null);
+		if (confidenceInput.open() == Window.OK) {
+			String confidence = confidenceInput.getValue();
+			try {
+				double d = Double.parseDouble(confidence);
+				setConfidenceThreshold(confidence);
+				System.out.println(window.getActivePage());
+//				((TraceabilityMatrixView)window.getActivePage().getActivePart()).updateTraceabilityMatrix();
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				System.err.println("Confidence threshold value '"+confidence+"' malformed. Action canceled.\n"+e.getLocalizedMessage());
+//				e.printStackTrace();
+			}
 		}
 
 		return null;
@@ -55,31 +62,30 @@ public class TransitivityDepthHandler extends AbstractHandler {
 	 * 
 	 * @return
 	 */
-	public static String getTransitivityDepth() {
-		Preferences transitivity = getPreference();
-		return transitivity.get("option", "0");
+	public static String getConfidenceThreshold() {
+		Preferences confidence = getPreference();
+		return confidence.get("option", ""+ CapraPlantUmlView.getConfidenceThreshold());
 	}
 
 	private static Preferences getPreference() {
-		Preferences preferences = InstanceScope.INSTANCE.getNode("org.eclipse.capra.ui.plantuml.transitivityDepth");
-		return preferences.node("transitivityDepth");
+		Preferences preferences = InstanceScope.INSTANCE.getNode("org.eclipse.capra.ui.matrix.confidenceThreshold");
+		return preferences.node("confidenceThreshold");
 	}
 
 	/**
-	 * Sets whether the trace view is set to show transitive traces.
+	 * Sets the confience threshold to colorize cells.
 	 * 
-	 * @param value indicates whether transitive traces should be shown
+	 * @param value indicates confidence threshold
 	 */
-	public static void setTransitivityDepth(String depth) {
-		Preferences transitivity = getPreference();
-
-		transitivity.put("option", depth);
-
+	public static void setConfidenceThreshold(String threshold) {
+		Preferences confidence = getPreference();
+		confidence.put("option", threshold);
+		CapraPlantUmlView.setConfidenceThreshold(Double.parseDouble(threshold));
 		try {
 			// forces the application to save the preferences
-			transitivity.flush();
+			confidence.flush();
 		} catch (BackingStoreException e) {
-			LOG.warn("Could not save transitivity depth preferences!", e);
+			e.printStackTrace();
 		}
 	}
 }

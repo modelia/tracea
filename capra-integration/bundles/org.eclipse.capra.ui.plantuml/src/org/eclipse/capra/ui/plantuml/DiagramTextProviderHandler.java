@@ -25,12 +25,12 @@ import org.eclipse.capra.core.handlers.IArtifactHandler;
 import org.eclipse.capra.core.handlers.IArtifactUnpacker;
 import org.eclipse.capra.core.helpers.ArtifactHelper;
 import org.eclipse.capra.core.helpers.EMFHelper;
+import org.eclipse.capra.core.helpers.EditingDomainHelper;
 import org.eclipse.capra.core.helpers.ExtensionPointHelper;
 import org.eclipse.capra.ui.helpers.SelectionSupportHelper;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IViewPart;
@@ -56,15 +56,15 @@ public class DiagramTextProviderHandler implements DiagramTextProvider {
 
 	@Override
 	public String getDiagramText(IEditorPart editor, ISelection input) {
-		return (getDiagramText((IWorkbenchPart) editor, input));
+		return (getDiagramText(editor));
 	}
 
 	@Override
 	public String getDiagramText(IViewPart view, ISelection input) {
-		return (getDiagramText((IWorkbenchPart) view, input));
+		return (getDiagramText(view));
 	}
 
-	public String getDiagramText(IWorkbenchPart part, ISelection input) {
+	public String getDiagramText(IWorkbenchPart part) {
 		List<Object> selectedModels = new ArrayList<>();
 		if (part.getSite().getSelectionProvider() != null) {
 			selectedModels.addAll(SelectionSupportHelper
@@ -75,7 +75,7 @@ public class DiagramTextProviderHandler implements DiagramTextProvider {
 
 	@SuppressWarnings("unchecked")
 	public String getDiagramText(List<Object> selectedModels, Optional<IWorkbenchPart> part) {
-		if (selectedModels == null || selectedModels.size() < 1) {
+		if (selectedModels == null || selectedModels.isEmpty()) {
 			return VisualizationHelper.createMatrix(null, artifactModel, null, null, true);
 		}
 
@@ -83,15 +83,14 @@ public class DiagramTextProviderHandler implements DiagramTextProvider {
 		List<EObject> selectedEObjects = new ArrayList<>();
 		EObject traceModel = null;
 
-		TracePersistenceAdapter persistenceAdapter = ExtensionPointHelper.getTracePersistenceAdapter().get();
-		TraceMetaModelAdapter metamodelAdapter = ExtensionPointHelper.getTraceMetamodelAdapter().get();
+		TracePersistenceAdapter persistenceAdapter = ExtensionPointHelper.getTracePersistenceAdapter().orElseThrow();
+		TraceMetaModelAdapter metamodelAdapter = ExtensionPointHelper.getTraceMetamodelAdapter().orElseThrow();
 
-		ResourceSet artifactResourceSet = part.isPresent() ? SelectionSupportHelper.getResourceSet(part.get()) : null;
+		ResourceSet resourceSet = EditingDomainHelper.getResourceSet();
 
-		artifactModel = persistenceAdapter
-				.getArtifactWrappers(artifactResourceSet != null ? artifactResourceSet : new ResourceSetImpl());
+		artifactModel = persistenceAdapter.getArtifactWrappers(resourceSet);
+		if (!selectedModels.isEmpty()) {
 
-		if (selectedModels.size() > 0) {
 			ArtifactHelper artifactHelper = new ArtifactHelper(artifactModel);
 			// Get the artifact wrappers for all selected elements
 			selectedModels.stream().forEach(obj -> {
@@ -115,21 +114,18 @@ public class DiagramTextProviderHandler implements DiagramTextProvider {
 				}
 			});
 
-			final EObject selectedObject = selectedEObjects.size() > 0 ? selectedEObjects.get(0) : null;
+			final EObject selectedObject = !selectedEObjects.isEmpty() ? selectedEObjects.get(0) : null;
 			if (selectedObject != null && selectedObject.eResource() != null) {
-				ResourceSet resourceSet = selectedObject.eResource().getResourceSet();
 				traceModel = persistenceAdapter.getTraceModel(resourceSet);
 
 				List<String> selectedRelationshipTypes = SelectRelationshipsHandler.getSelectedRelationshipTypes();
 				for (EObject obj : selectedEObjects) {
 					traces.addAll(getViewableTraceLinks(obj, traceModel, metamodelAdapter, selectedRelationshipTypes));
 				}
-				;
 
 				if (selectedModels.size() == 1) {
 					return VisualizationHelper.createNeighboursView(traces, EMFHelper.linearize(selectedObject),
 							artifactModel);
-
 				} else {
 					// User selected to display a graph with only the selected elements
 					if (ToggleDisplayGraphHandler.isDisplayGraph()) {
@@ -161,17 +157,19 @@ public class DiagramTextProviderHandler implements DiagramTextProvider {
 		List<Connection> relevantTraces = new ArrayList<>();
 		List<EObject> wrappers = new ArrayList<>();
 		for (Connection connection : traces) {
-			if (selectedEObjects.contains(connection.getOrigin())
+			if (selectedEObjects.containsAll(connection.getOrigins())
 					&& selectedEObjects.stream().anyMatch(connection.getTargets()::contains)) {
-				Connection newConnection = new Connection(connection.getOrigin(), connection.getTargets().stream()
+				Connection newConnection = new Connection(connection.getOrigins(), connection.getTargets().stream()
 						.filter(selectedEObjects::contains).collect(Collectors.toList()), connection.getTlink());
 				relevantTraces.add(newConnection);
-				IArtifactHandler<Object> originHandler = (IArtifactHandler<Object>) artifactHelper
-						.getHandler(connection.getOrigin()).orElse(null);
-				wrappers.add(originHandler.createWrapper(connection.getOrigin(), artifactModel));
+				connection.getOrigins().stream().filter(selectedEObjects::contains).forEach(o -> {
+					IArtifactHandler<Object> originHandler = (IArtifactHandler<Object>) artifactHelper.getHandler(o)
+							.orElseThrow();
+					wrappers.add(originHandler.createWrapper(o, artifactModel));
+				});
 				connection.getTargets().stream().filter(selectedEObjects::contains).forEach(t -> {
-					IArtifactHandler<Object> targetHandler = (IArtifactHandler<Object>) artifactHelper
-							.getHandler(connection.getOrigin()).orElse(null);
+					IArtifactHandler<Object> targetHandler = (IArtifactHandler<Object>) artifactHelper.getHandler(t)
+							.orElseThrow();
 					wrappers.add(targetHandler.createWrapper(t, artifactModel));
 				});
 			}
@@ -199,6 +197,7 @@ public class DiagramTextProviderHandler implements DiagramTextProvider {
 		} else {
 			traces = metamodelAdapter.getConnectedElements(selectedObject, traceModel, selectedRelationshipTypes);
 		}
+		
 		if (DisplayInternalLinksHandler.areInternalLinksShown() && ToggleTransitivityHandler.isTraceViewTransitive()) {
 			EObject previousElement = SelectRelationshipsHandler.getPreviousElement();
 			int transitivityDepth = Integer.parseInt(TransitivityDepthHandler.getTransitivityDepth());
@@ -214,7 +213,7 @@ public class DiagramTextProviderHandler implements DiagramTextProvider {
 				SelectRelationshipsHandler.setPreviousElement(selectedObject);
 			}
 			traces.addAll(metamodelAdapter.getInternalElementsTransitive(selectedObject, traceModel,
-					selectedRelationshipTypes, transitivityDepth, traces));
+					selectedRelationshipTypes, transitivityDepth));
 		} else if (DisplayInternalLinksHandler.areInternalLinksShown()) {
 			EObject previousElement = SelectRelationshipsHandler.getPreviousElement();
 			if (previousElement != null) {
@@ -228,8 +227,7 @@ public class DiagramTextProviderHandler implements DiagramTextProvider {
 			} else {
 				SelectRelationshipsHandler.setPreviousElement(selectedObject);
 			}
-			traces.addAll(metamodelAdapter.getInternalElements(selectedObject, traceModel, selectedRelationshipTypes,
-					false, 0, traces));
+			traces.addAll(metamodelAdapter.getInternalElements(selectedObject, traceModel, selectedRelationshipTypes));
 		}
 		List<EObject> links = extractLinksFromTraces(traces);
 		SelectRelationshipsHandler.addToPossibleRelationsForSelection(links);
@@ -239,10 +237,7 @@ public class DiagramTextProviderHandler implements DiagramTextProvider {
 	@Override
 	public boolean supportsEditor(IEditorPart editor) {
 		// This is a work around to disable update of the diagram if the view is locked.
-		if (isLockDiagram()) {
-			return false;
-		}
-		return true;
+		return !isLockDiagram();
 	}
 
 	@Override
@@ -251,19 +246,13 @@ public class DiagramTextProviderHandler implements DiagramTextProvider {
 		if (isLockDiagram()) {
 			return false;
 		}
-		if (part instanceof PlantUmlView) {
-			return false;
-		}
-		return true;
+		return !(part instanceof PlantUmlView);
 	}
 
 	@Override
 	public boolean supportsSelection(ISelection selection) {
 		// This is a work around to disable update of the diagram if the view is locked.
-		if (isLockDiagram()) {
-			return false;
-		}
-		return true;
+		return !isLockDiagram();
 	}
 
 	private static List<EObject> extractLinksFromTraces(List<Connection> traces) {

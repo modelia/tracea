@@ -19,6 +19,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
 
 import org.eclipse.capra.core.adapters.Connection;
 import org.eclipse.capra.core.adapters.TraceMetaModelAdapter;
@@ -27,6 +28,7 @@ import org.eclipse.capra.core.handlers.IArtifactHandler;
 import org.eclipse.capra.core.handlers.IArtifactUnpacker;
 import org.eclipse.capra.core.helpers.ArtifactHelper;
 import org.eclipse.capra.core.helpers.EMFHelper;
+import org.eclipse.capra.core.helpers.EditingDomainHelper;
 import org.eclipse.capra.core.helpers.ExtensionPointHelper;
 import org.eclipse.capra.core.helpers.TraceHelper;
 import org.eclipse.capra.ui.helpers.SelectionSupportHelper;
@@ -42,7 +44,6 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
@@ -120,21 +121,39 @@ public class TraceabilityMatrixView extends ViewPart {
 	public static final String ID = "org.eclipse.capra.ui.matrix.views.TraceabilityMatrixView";
 
 	private static final String SAME_LABEL = "SAME"; // When column header and row header are the same
-	private static final String LINK_LABEL = "LINKED"; // When there is a link between
+	public static final String LINK_LABEL = "LINKED"; // When there is a link between
+	public static final String LINK_UNCERTAIN_LABEL = "LINK_UNCERTAIN"; // When there is a link between
+	
+//	public static final String LINK_LABEL_03 = "LINKED_03"; // When there is a link between (0 < confidence < 0.39)
+//	public static final String LINK_LABEL_36 = "LINKED_36"; // When there is a link between (0.3 < confidence < 0.69)
+//	public static final String LINK_LABEL_69 = "LINKED_69"; // When there is a link between (0.6 < confidence < 0.99)
+//	public static final String LINK_LABEL_100 = "LINKED_100"; // When there is a link between (confidence = 1.0)
+
+	private static double CONFIDENCE_THRESHOLD = 0.5;
+
+//	public static String getConfidenceLinkLabel(double confidenceValue) {
+//		if(confidenceValue < 0.3)
+//			return TraceabilityMatrixView.LINK_LABEL_03;
+//		if(confidenceValue < 0.7)
+//			return TraceabilityMatrixView.LINK_LABEL_36;
+//		if(confidenceValue < 1.0)
+//			return TraceabilityMatrixView.LINK_LABEL_69;
+//		if(confidenceValue >= 1.0)
+//			return TraceabilityMatrixView.LINK_LABEL_100;
+//		return LINK_LABEL;
+//	}
 
 	private NatTable traceMatrixTable;
-	private Action refreshAction, showAllAction, exportExcelAction;
+	private Action refreshAction;
+	private Action showAllAction;
+	private Action exportExcelAction;
 	private Composite parent;
 
-	private ResourceSet resourceSet = new ResourceSetImpl();
+	private ResourceSet resourceSet = EditingDomainHelper.getResourceSet();
 
 	private final TraceMetaModelAdapter traceAdapter = ExtensionPointHelper.getTraceMetamodelAdapter().get();
 	private TraceMetaModelAdapter metamodelAdapter = ExtensionPointHelper.getTraceMetamodelAdapter().get();
 	private TracePersistenceAdapter persistenceAdapter = ExtensionPointHelper.getTracePersistenceAdapter().get();
-	private EObject traceModel = null;
-	private EObject artifactModel = null;
-	private ArtifactHelper artifactHelper;
-	private TraceHelper traceHelper;
 
 	private TraceabilityMatrixDataProvider bodyDataProvider;
 	private TraceabilityMatrixSelectionProvider selectionProvider;
@@ -155,6 +174,24 @@ public class TraceabilityMatrixView extends ViewPart {
 				updateTraceabilityMatrix();
 			}
 		}
+
+		/**
+		 * Populates the {@link #selectedModels} property with the objects included in
+		 * the provided selection.
+		 * 
+		 * @param part      the workbench part whose selection provider is used
+		 * @param selection the selection from which the elements are extracted
+		 */
+		private void populateSelectedModels(IWorkbenchPart part, ISelection selection) {
+			List<Object> newSelectedObjects = SelectionSupportHelper.extractSelectedElements(selection, part);
+			if (!listEqualsIgnoreOrder(selectedModels, newSelectedObjects)) {
+				selectionModified = true;
+				selectedModels.clear();
+				selectedModels.addAll(newSelectedObjects);
+			} else {
+				selectionModified = false;
+			}
+		}
 	};
 
 	/**
@@ -167,15 +204,36 @@ public class TraceabilityMatrixView extends ViewPart {
 			// Black background for cells where there should not be any links
 			Style cellStyle = new Style();
 			cellStyle.setAttributeValue(CellStyleAttributes.BACKGROUND_COLOR, GUIHelper.COLOR_BLACK);
-			configRegistry.registerConfigAttribute(CellConfigAttributes.CELL_STYLE, cellStyle, DisplayMode.NORMAL,
-					SAME_LABEL);
+			configRegistry.registerConfigAttribute(CellConfigAttributes.CELL_STYLE, cellStyle, DisplayMode.NORMAL,	SAME_LABEL);
 
 			// Green background for cells where there is a link.
 			cellStyle = new Style();
 			cellStyle.setAttributeValue(CellStyleAttributes.BACKGROUND_COLOR, GUIHelper.COLOR_GREEN);
-			configRegistry.registerConfigAttribute(CellConfigAttributes.CELL_STYLE, cellStyle, DisplayMode.NORMAL,
-					LINK_LABEL);
+			configRegistry.registerConfigAttribute(CellConfigAttributes.CELL_STYLE, cellStyle, DisplayMode.NORMAL,	LINK_LABEL);
+			
+			// Green background for cells where there is a link.
+			cellStyle = new Style();
+			cellStyle.setAttributeValue(CellStyleAttributes.BACKGROUND_COLOR, GUIHelper.COLOR_RED);
+			configRegistry.registerConfigAttribute(CellConfigAttributes.CELL_STYLE, cellStyle, DisplayMode.NORMAL,	LINK_UNCERTAIN_LABEL);
 
+			
+//			
+//			cellStyle = new Style();
+//			cellStyle.setAttributeValue(CellStyleAttributes.BACKGROUND_COLOR, GUIHelper.COLOR_BLUE);
+//			configRegistry.registerConfigAttribute(CellConfigAttributes.CELL_STYLE, cellStyle, DisplayMode.NORMAL,	LINK_LABEL_03);
+//			cellStyle = new Style();
+//			cellStyle.setAttributeValue(CellStyleAttributes.BACKGROUND_COLOR, GUIHelper.COLOR_RED);
+//			configRegistry.registerConfigAttribute(CellConfigAttributes.CELL_STYLE, cellStyle, DisplayMode.NORMAL,	LINK_LABEL_36);
+//			cellStyle = new Style();
+//			cellStyle.setAttributeValue(CellStyleAttributes.BACKGROUND_COLOR, GUIHelper.COLOR_YELLOW);
+//			configRegistry.registerConfigAttribute(CellConfigAttributes.CELL_STYLE, cellStyle, DisplayMode.NORMAL,	LINK_LABEL_69);
+//			cellStyle = new Style();
+//			cellStyle.setAttributeValue(CellStyleAttributes.BACKGROUND_COLOR, GUIHelper.COLOR_DARK_GRAY);
+//			configRegistry.registerConfigAttribute(CellConfigAttributes.CELL_STYLE, cellStyle, DisplayMode.NORMAL,	LINK_LABEL_100);
+//
+//			
+//			
+			
 			// Style that is applied when cells are hovered
 			Style style = new Style();
 			style.setAttributeValue(CellStyleAttributes.BACKGROUND_COLOR, GUIHelper.COLOR_YELLOW);
@@ -223,16 +281,26 @@ public class TraceabilityMatrixView extends ViewPart {
 		public void accumulateConfigLabels(LabelStack configLabels, int columnPosition, int rowPosition) {
 			int columnIndex = bodyLayer.getColumnIndexByPosition(columnPosition);
 			int rowIndex = bodyLayer.getRowIndexByPosition(rowPosition);
-			if (sameElement(bodyDataProvider.getRow(rowIndex), bodyDataProvider.getColumn(columnIndex))) {
+			if (EMFHelper.hasSameIdentifier(bodyDataProvider.getRow(rowIndex),
+					bodyDataProvider.getColumn(columnIndex))) {
 				configLabels.addLabel(SAME_LABEL);
 			} else {
-				String cell_text = (String) bodyDataProvider.getDataValue(columnIndex, rowIndex);
-				if (!cell_text.equals("")) {
-					configLabels.addLabel(LINK_LABEL);
+				String cellText = (String) bodyDataProvider.getDataValue(columnIndex, rowIndex);
+				if (!cellText.equals("")) {
+					Connection eoCell = bodyDataProvider.getCellConnection(columnIndex, rowIndex);
+					configLabels.addLabel(isDataValueUncertain(eoCell));
 				}
 			}
 		}
 	};
+	
+	public static String isDataValueUncertain(Connection dataValueConnection) {
+		double confidence = dataValueConnection.getConfidenceValue();
+		if(confidence > CONFIDENCE_THRESHOLD)
+			return LINK_LABEL;
+		else
+			return LINK_UNCERTAIN_LABEL;
+	}
 
 	@Override
 	public void createPartControl(Composite parent) {
@@ -269,19 +337,19 @@ public class TraceabilityMatrixView extends ViewPart {
 	 * Also layouts the parent to make sure the table is displayed correctly.
 	 */
 	@SuppressWarnings("unchecked")
-	protected void updateTraceabilityMatrix() {
+	public void updateTraceabilityMatrix() {
 		EObject selectedObject;
 		List<Connection> traces = new ArrayList<>();
 
-		this.artifactModel = persistenceAdapter.getArtifactWrappers(resourceSet);
-		this.artifactHelper = new ArtifactHelper(this.artifactModel);
-		this.traceModel = persistenceAdapter.getTraceModel(resourceSet);
-		this.traceHelper = new TraceHelper(traceModel);
+		EObject artifactModel = persistenceAdapter.getArtifactWrappers(resourceSet);
+		ArtifactHelper artifactHelper = new ArtifactHelper(artifactModel);
+		EObject traceModel = persistenceAdapter.getTraceModel(resourceSet);
+		TraceHelper traceHelper = new TraceHelper(traceModel);
 
 		if (!selectedModels.isEmpty()) {
 			// Show the matrix for the selected objects
 			for (Object model : selectedModels) {
-				IArtifactHandler<Object> handler = (IArtifactHandler<Object>) this.artifactHelper.getHandler(model)
+				IArtifactHandler<Object> handler = (IArtifactHandler<Object>) artifactHelper.getHandler(model)
 						.orElse(null);
 				if (handler != null) {
 					Object unpackedElement = null;
@@ -290,10 +358,10 @@ public class TraceabilityMatrixView extends ViewPart {
 					} else {
 						unpackedElement = model;
 					}
-					EObject wrappedElement = handler.createWrapper(unpackedElement, this.artifactModel);
+					EObject wrappedElement = handler.createWrapper(unpackedElement, artifactModel);
 					if (traceHelper.isArtifactInTraceModel(wrappedElement)) {
 						selectedObject = wrappedElement;
-						traces.addAll(this.traceAdapter.getConnectedElements(selectedObject, this.traceModel));
+						traces.addAll(this.traceAdapter.getConnectedElements(selectedObject, traceModel));
 					}
 				}
 			}
@@ -314,7 +382,7 @@ public class TraceabilityMatrixView extends ViewPart {
 			// Creating data providers for body, column and row. The data provider for the
 			// body provides the data which will be shown in the cells. For columns and
 			// rows, the labels are created.
-			this.bodyDataProvider = new TraceabilityMatrixDataProvider(traces, this.traceModel, this.traceAdapter);
+			this.bodyDataProvider = new TraceabilityMatrixDataProvider(traces, traceModel, traceAdapter);
 			IDataProvider colHeaderDataProvider = new TraceabilityMatrixColumnHeaderDataProvider(
 					this.bodyDataProvider.getColumns(), artifactHelper);
 			IDataProvider rowHeaderDataProvider = new TraceabilityMatrixRowHeaderDataProvider(
@@ -341,7 +409,7 @@ public class TraceabilityMatrixView extends ViewPart {
 
 			// Adding Configuration to the table
 			traceMatrixTable.addConfiguration(new DefaultNatTableStyleConfiguration());
-			traceMatrixTable.addConfiguration(this.capraNatTableStyleConfiguration);
+			traceMatrixTable.addConfiguration(this.capraNatTableStyleConfiguration); //Colorize cells
 			traceMatrixTable.configure();
 
 			// Attach the selection provider
@@ -364,24 +432,6 @@ public class TraceabilityMatrixView extends ViewPart {
 	// ********************************************************************
 
 	/**
-	 * Populates the {@link #selectedModels} property with the objects included in
-	 * the provided selection.
-	 * 
-	 * @param part      the workbench part whose selection provider is used
-	 * @param selection the selection from which the elements are extracted
-	 */
-	private void populateSelectedModels(IWorkbenchPart part, ISelection selection) {
-		List<Object> newSelectedObjects = SelectionSupportHelper.extractSelectedElements(selection, part);
-		if (!listEqualsIgnoreOrder(selectedModels, newSelectedObjects)) {
-			selectionModified = true;
-			selectedModels.clear();
-			selectedModels.addAll(newSelectedObjects);
-		} else {
-			selectionModified = false;
-		}
-	}
-
-	/**
 	 * Compares to lists ignoring order and duplicates.
 	 * 
 	 * @param <T>   the type of the two lists
@@ -398,8 +448,10 @@ public class TraceabilityMatrixView extends ViewPart {
 	 * Create the tool tip instances.
 	 */
 	private void attachToolTip() {
-		new TraceabilityMatrixBodyToolTip(this.traceMatrixTable, this.bodyDataProvider, this.artifactHelper);
-		new TraceabilityMatrixHeaderToolTip(this.traceMatrixTable, this.bodyDataProvider, this.artifactHelper);
+		EObject artifactModel = persistenceAdapter.getArtifactWrappers(resourceSet);
+		ArtifactHelper artifactHelper = new ArtifactHelper(artifactModel);
+		new TraceabilityMatrixBodyToolTip(this.traceMatrixTable, this.bodyDataProvider, artifactHelper);
+		new TraceabilityMatrixHeaderToolTip(this.traceMatrixTable, this.bodyDataProvider, artifactHelper);
 	}
 
 	/**
@@ -410,6 +462,8 @@ public class TraceabilityMatrixView extends ViewPart {
 	 * @throws PartInitException if the editor could not be initialised
 	 */
 	private void openEditor(EObject element) throws PartInitException {
+		EObject artifactModel = persistenceAdapter.getArtifactWrappers(resourceSet);
+		ArtifactHelper artifactHelper = new ArtifactHelper(artifactModel);
 		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 		try {
 			URI uri = new URI(artifactHelper.getArtifactLocation(element));
@@ -437,6 +491,7 @@ public class TraceabilityMatrixView extends ViewPart {
 	private void fillLocalToolBar(IToolBarManager manager) {
 		manager.add(refreshAction);
 		manager.add(showAllAction);
+//		manager.add(confidenceThresholdAction);
 	}
 
 	private void makeActions() {
@@ -470,10 +525,8 @@ public class TraceabilityMatrixView extends ViewPart {
 		exportExcelAction.setText("Export to Excel...");
 		exportExcelAction.setToolTipText("Exports the currently shown traceability matrix as an Excel file.");
 
-	}
+		
 
-	private boolean sameElement(EObject first, EObject second) {
-		return EMFHelper.getIdentifier(first).equals(EMFHelper.getIdentifier(second));
 	}
 
 	/**
@@ -568,4 +621,13 @@ public class TraceabilityMatrixView extends ViewPart {
 			return this.selectionLayer;
 		}
 	}
+	
+	public static void setConfidenceThreshold(double value) {
+		CONFIDENCE_THRESHOLD = value;
+	}
+	public static double getConfidenceThreshold() {
+		return CONFIDENCE_THRESHOLD;
+	}
+
+
 }

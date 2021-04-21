@@ -121,15 +121,19 @@ public class Connections {
 		Set<String> arrows = new HashSet<>();
 
 		connections.forEach(c -> {
-			c.getTargets().forEach(trg -> {
-				if (!trg.equals(c.getOrigin())) {
-					arrows.add(object2Id.get(c.getOrigin()) + "--" + object2Id.get(trg) + ":"
-							+ EMFHelper.getIdentifier(c.getTlink()));
-				}
+			c.getOrigins().forEach(org -> {
+				c.getTargets().forEach(trg -> {
+					arrows.add(nameArrow(c, org, trg));
+				});
 			});
 		});
 
 		return arrows.stream().collect(Collectors.toList());
+	}
+
+	private String nameArrow(Connection c, EObject org, EObject trg) {
+		return object2Id.get(org) + "--" + object2Id.get(trg) + ": "+"("+c.getConfidenceValue()+")"
+				+ EMFHelper.getIdentifier(c.getTlink());
 	}
 
 }
