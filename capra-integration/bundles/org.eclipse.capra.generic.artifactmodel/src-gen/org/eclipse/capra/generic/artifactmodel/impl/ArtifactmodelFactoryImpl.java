@@ -68,6 +68,7 @@ public class ArtifactmodelFactoryImpl extends EFactoryImpl implements Artifactmo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ArtifactWrapperContainer createArtifactWrapperContainer() {
 		ArtifactWrapperContainerImpl artifactWrapperContainer = new ArtifactWrapperContainerImpl();
 		return artifactWrapperContainer;
@@ -78,6 +79,7 @@ public class ArtifactmodelFactoryImpl extends EFactoryImpl implements Artifactmo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ArtifactWrapper createArtifactWrapper() {
 		ArtifactWrapperImpl artifactWrapper = new ArtifactWrapperImpl();
 		return artifactWrapper;
@@ -88,6 +90,7 @@ public class ArtifactmodelFactoryImpl extends EFactoryImpl implements Artifactmo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ArtifactmodelPackage getArtifactmodelPackage() {
 		return (ArtifactmodelPackage)getEPackage();
 	}

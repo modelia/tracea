@@ -19,6 +19,7 @@ import static org.eclipse.capra.testsuite.TestHelper.createSimpleProject;
 import static org.eclipse.capra.testsuite.TestHelper.createTraceForCurrentSelectionOfType;
 import static org.eclipse.capra.testsuite.TestHelper.resetSelectionView;
 import static org.eclipse.capra.testsuite.TestHelper.thereIsATraceBetween;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -29,6 +30,7 @@ import java.util.List;
 import org.eclipse.capra.core.adapters.Connection;
 import org.eclipse.capra.core.adapters.TracePersistenceAdapter;
 import org.eclipse.capra.core.helpers.ArtifactHelper;
+import org.eclipse.capra.core.helpers.EditingDomainHelper;
 import org.eclipse.capra.core.helpers.ExtensionPointHelper;
 import org.eclipse.capra.core.helpers.TraceHelper;
 import org.eclipse.capra.generic.tracemodel.TracemodelPackage;
@@ -38,7 +40,6 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -101,7 +102,7 @@ public class TestTraceHelper {
 		SelectionView.getOpenedView().clearSelection();
 
 		// create a list with wrappers of File A and B
-		ResourceSet resourceSet = new ResourceSetImpl();
+		ResourceSet resourceSet = EditingDomainHelper.getResourceSet();
 		TracePersistenceAdapter persistenceAdapter = ExtensionPointHelper.getTracePersistenceAdapter().get();
 		EObject artifactModel = persistenceAdapter.getArtifactWrappers(resourceSet);
 		ArtifactHelper artifactHelper = new ArtifactHelper(artifactModel);
@@ -117,8 +118,8 @@ public class TestTraceHelper {
 		// check that only one link is returned
 		assertTrue(traceLinks.size() == 1);
 		// check that the trace link returned is between file A and file B
-		assertTrue(traceLinks.get(0).getOrigin().equals(A_B_wrappers.get(0)));
-		assertTrue(traceLinks.get(0).getTargets().get(0).equals(A_B_wrappers.get(1)));
+		assertEquals(A_B_wrappers.get(0), traceLinks.get(0).getOrigins().get(0));
+		assertEquals(A_B_wrappers.get(1), traceLinks.get(0).getTargets().get(0));
 
 		// create a list with wrappers of file A, B and C
 		List<Object> artifactsA_B_C = new ArrayList<Object>(Arrays.asList(fileA, fileB, fileC));
@@ -131,11 +132,11 @@ public class TestTraceHelper {
 		// check that only two links are returned
 		assertTrue(traceLinksA_B_C.size() == 2);
 		// check that the first link is between file A and B
-		assertTrue(traceLinksA_B_C.get(0).getOrigin().equals(A_B_wrappers.get(0)));
-		assertTrue(traceLinksA_B_C.get(0).getTargets().get(0).equals(A_B_wrappers.get(1)));
+		assertEquals(A_B_wrappers.get(0), traceLinksA_B_C.get(0).getOrigins().get(0));
+		assertEquals(A_B_wrappers.get(1), traceLinksA_B_C.get(0).getTargets().get(0));
 		// check that the second link is between file B and C
-		assertTrue(traceLinksA_B_C.get(1).getOrigin().equals(A_B_Cwrappers.get(1)));
-		assertTrue(traceLinksA_B_C.get(1).getTargets().get(0).equals(A_B_Cwrappers.get(2)));
+		assertEquals(A_B_Cwrappers.get(1), traceLinksA_B_C.get(1).getOrigins().get(0));
+		assertEquals(A_B_Cwrappers.get(2), traceLinksA_B_C.get(1).getTargets().get(0));
 
 		// Testing edge cases
 

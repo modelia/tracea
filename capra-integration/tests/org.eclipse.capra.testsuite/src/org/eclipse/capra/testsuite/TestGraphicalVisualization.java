@@ -23,6 +23,7 @@ import static org.eclipse.capra.testsuite.TestHelper.createTraceForCurrentSelect
 import static org.eclipse.capra.testsuite.TestHelper.getProject;
 import static org.eclipse.capra.testsuite.TestHelper.load;
 import static org.eclipse.capra.testsuite.TestHelper.projectExists;
+import static org.eclipse.capra.testsuite.TestHelper.purgeModels;
 import static org.eclipse.capra.testsuite.TestHelper.resetSelectionView;
 import static org.eclipse.capra.testsuite.TestHelper.save;
 import static org.eclipse.capra.testsuite.TestHelper.thereIsATraceBetween;
@@ -94,6 +95,7 @@ public class TestGraphicalVisualization {
 	public void init() throws CoreException {
 		clearWorkspace();
 		resetSelectionView();
+		purgeModels();
 	}
 
 	@Test
@@ -159,18 +161,18 @@ public class TestGraphicalVisualization {
 		// Test directly connected Elements
 		ToggleTransitivityHandler.setTraceViewTransitive(false);
 		DiagramTextProviderHandler provider = new DiagramTextProviderHandler();
-		String DirectlyConnectedElements = provider.getDiagramText(selection, Optional.<IWorkbenchPart>empty());
-		assertTrue(DirectlyConnectedElements.equals(EXPECTED_TEXT_FOR_DIRECT_CONNECTIONS));
+		String directlyConnectedElements = provider.getDiagramText(selection, Optional.<IWorkbenchPart>empty());
+		assertEquals(EXPECTED_TEXT_FOR_DIRECT_CONNECTIONS, directlyConnectedElements);
 
 		// Test transitively connected Elements
 		ToggleTransitivityHandler.setTraceViewTransitive(true);
 		String transitivelysConnectedElements = provider.getDiagramText(selection, Optional.<IWorkbenchPart>empty());
-		assertTrue(transitivelysConnectedElements.equals(EXPECTED_TEXT_FOR_TRANSITIVE_CONNECTIONS));
+		assertEquals(EXPECTED_TEXT_FOR_TRANSITIVE_CONNECTIONS, transitivelysConnectedElements);
 
 	}
 
 	@Test
-	public void testGoToLink() throws CoreException, BuildException {
+	public void testGoToLink() throws CoreException, BuildException, InterruptedException {
 		// Create a java project
 		IType javaClass = createJavaProjectWithASingleJavaClass(TEST_PROJECT_NAME_JAVA);
 		assertTrue(projectExists(TEST_PROJECT_NAME_JAVA));
@@ -202,7 +204,7 @@ public class TestGraphicalVisualization {
 		ToggleTransitivityHandler.setTraceViewTransitive(false);
 		DiagramTextProviderHandler provider = new DiagramTextProviderHandler();
 		String directlyConnectedElements = provider.getDiagramText(selection, Optional.<IWorkbenchPart>empty());
-		assertTrue(directlyConnectedElements.equals(EXPECTED_TEXT_FOR_GOTO_LINKS));
+		assertEquals(EXPECTED_TEXT_FOR_GOTO_LINKS, directlyConnectedElements);
 
 	}
 

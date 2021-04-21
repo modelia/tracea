@@ -68,6 +68,7 @@ public class ArtifactWrapperContainerImpl extends MinimalEObjectImpl.Container i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ArtifactWrapper> getArtifacts() {
 		if (artifacts == null) {
 			artifacts = new EObjectContainmentEList<ArtifactWrapper>(ArtifactWrapper.class, this, ArtifactmodelPackage.ARTIFACT_WRAPPER_CONTAINER__ARTIFACTS);

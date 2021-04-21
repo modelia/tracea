@@ -154,6 +154,7 @@ public class ArtifactWrapperImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getPath() {
 		return path;
 	}
@@ -163,6 +164,7 @@ public class ArtifactWrapperImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPath(String newPath) {
 		String oldPath = path;
 		path = newPath;
@@ -175,6 +177,7 @@ public class ArtifactWrapperImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getUri() {
 		return uri;
 	}
@@ -184,6 +187,7 @@ public class ArtifactWrapperImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUri(String newUri) {
 		String oldUri = uri;
 		uri = newUri;
@@ -196,6 +200,7 @@ public class ArtifactWrapperImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -205,6 +210,7 @@ public class ArtifactWrapperImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -217,6 +223,7 @@ public class ArtifactWrapperImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getIdentifier() {
 		return identifier;
 	}
@@ -226,6 +233,7 @@ public class ArtifactWrapperImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setIdentifier(String newIdentifier) {
 		String oldIdentifier = identifier;
 		identifier = newIdentifier;
@@ -238,6 +246,7 @@ public class ArtifactWrapperImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getArtifactHandler() {
 		return artifactHandler;
 	}
@@ -247,6 +256,7 @@ public class ArtifactWrapperImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setArtifactHandler(String newArtifactHandler) {
 		String oldArtifactHandler = artifactHandler;
 		artifactHandler = newArtifactHandler;
@@ -361,7 +371,7 @@ public class ArtifactWrapperImpl extends MinimalEObjectImpl.Container implements
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (path: ");
 		result.append(path);
 		result.append(", uri: ");

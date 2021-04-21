@@ -3,11 +3,10 @@ Bundle-ManifestVersion: 2
 Bundle-Localization: plugin
 Bundle-Name: %Bundle-Name
 Bundle-Vendor: %Bundle-Vendor
-Bundle-SymbolicName: org.eclipse.capra.testsuite;singleton:=true
+Bundle-SymbolicName: org.eclipse.capra.testsupport;singleton:=true
 Bundle-Version: 0.8.2.qualifier
-Export-Package: org.eclipse.capra.testsuite,
- org.eclipse.capra.testsuite.extension;x-internal:=true,
- org.eclipse.capra.testsuite.notification;x-internal:=true
+Export-Package: org.eclipse.capra.testsupport,
+ org.eclipse.capra.testsupport.extension;x-internal:=true
 Require-Bundle: org.junit,
  org.eclipse.equinox.registry,
  org.eclipse.core.resources,
@@ -28,10 +27,8 @@ Require-Bundle: org.junit,
  org.eclipse.osgi,
  org.eclipse.swt,
  org.eclipse.mylyn.builds.core,
- org.eclipse.capra.generic.artifactmodel,
- org.eclipse.capra.generic.tracemodel,
- org.eclipse.capra.generic.priority,
  org.eclipse.capra.core,
+ org.eclipse.capra.generic.artifactmodel,
  org.eclipse.capra.ui.plantuml,
  org.eclipse.capra.handler.jdt,
  org.eclipse.capra.handler.cdt,
@@ -42,9 +39,8 @@ Require-Bundle: org.junit,
  org.eclipse.capra.ui,
  org.eclipse.capra.ui.notification,
  ch.qos.logback.slf4j;resolution:=optional,
- net.sourceforge.plantuml.eclipse;bundle-version="1.1.24",
  org.eclipse.emf.transaction
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Import-Package: org.eclipse.swt.dnd,
  org.slf4j
-Automatic-Module-Name: org.eclipse.capra.testsuite
+Automatic-Module-Name: org.eclipse.capra.testsupport
