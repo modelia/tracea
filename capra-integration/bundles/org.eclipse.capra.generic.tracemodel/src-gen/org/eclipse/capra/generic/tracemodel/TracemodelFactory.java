@@ -40,6 +40,78 @@ public interface TracemodelFactory extends EFactory {
 	RelatedTo createRelatedTo();
 
 	/**
+	 * Returns a new object of class '<em>Domain Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Domain Link</em>'.
+	 * @generated
+	 */
+	DomainLink createDomainLink();
+
+	/**
+	 * Returns a new object of class '<em>Engineering Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Engineering Link</em>'.
+	 * @generated
+	 */
+	EngineeringLink createEngineeringLink();
+
+	/**
+	 * Returns a new object of class '<em>Human Agent</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Human Agent</em>'.
+	 * @generated
+	 */
+	HumanAgent createHumanAgent();
+
+	/**
+	 * Returns a new object of class '<em>Machine Agent</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Machine Agent</em>'.
+	 * @generated
+	 */
+	MachineAgent createMachineAgent();
+
+	/**
+	 * Returns a new object of class '<em>Confidence</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Confidence</em>'.
+	 * @generated
+	 */
+	Confidence createConfidence();
+
+	/**
+	 * Returns a new object of class '<em>AI Evidence</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>AI Evidence</em>'.
+	 * @generated
+	 */
+	AIEvidence createAIEvidence();
+
+	/**
+	 * Returns a new object of class '<em>Rule Evidence</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Rule Evidence</em>'.
+	 * @generated
+	 */
+	RuleEvidence createRuleEvidence();
+
+	/**
+	 * Returns a new object of class '<em>Annotation Evidence</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Annotation Evidence</em>'.
+	 * @generated
+	 */
+	AnnotationEvidence createAnnotationEvidence();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

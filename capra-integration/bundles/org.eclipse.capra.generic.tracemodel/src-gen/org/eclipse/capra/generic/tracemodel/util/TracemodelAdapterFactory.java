@@ -72,8 +72,52 @@ public class TracemodelAdapterFactory extends AdapterFactoryImpl {
 				return createGenericTraceModelAdapter();
 			}
 			@Override
+			public Adapter caseTracingElement(TracingElement object) {
+				return createTracingElementAdapter();
+			}
+			@Override
 			public Adapter caseRelatedTo(RelatedTo object) {
 				return createRelatedToAdapter();
+			}
+			@Override
+			public Adapter caseDomainLink(DomainLink object) {
+				return createDomainLinkAdapter();
+			}
+			@Override
+			public Adapter caseEngineeringLink(EngineeringLink object) {
+				return createEngineeringLinkAdapter();
+			}
+			@Override
+			public Adapter caseAgent(Agent object) {
+				return createAgentAdapter();
+			}
+			@Override
+			public Adapter caseHumanAgent(HumanAgent object) {
+				return createHumanAgentAdapter();
+			}
+			@Override
+			public Adapter caseMachineAgent(MachineAgent object) {
+				return createMachineAgentAdapter();
+			}
+			@Override
+			public Adapter caseConfidence(Confidence object) {
+				return createConfidenceAdapter();
+			}
+			@Override
+			public Adapter caseEvidence(Evidence object) {
+				return createEvidenceAdapter();
+			}
+			@Override
+			public Adapter caseAIEvidence(AIEvidence object) {
+				return createAIEvidenceAdapter();
+			}
+			@Override
+			public Adapter caseRuleEvidence(RuleEvidence object) {
+				return createRuleEvidenceAdapter();
+			}
+			@Override
+			public Adapter caseAnnotationEvidence(AnnotationEvidence object) {
+				return createAnnotationEvidenceAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -110,6 +154,20 @@ public class TracemodelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.capra.generic.tracemodel.TracingElement <em>Tracing Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.capra.generic.tracemodel.TracingElement
+	 * @generated
+	 */
+	public Adapter createTracingElementAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.capra.generic.tracemodel.RelatedTo <em>Related To</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -120,6 +178,146 @@ public class TracemodelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createRelatedToAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.capra.generic.tracemodel.DomainLink <em>Domain Link</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.capra.generic.tracemodel.DomainLink
+	 * @generated
+	 */
+	public Adapter createDomainLinkAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.capra.generic.tracemodel.EngineeringLink <em>Engineering Link</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.capra.generic.tracemodel.EngineeringLink
+	 * @generated
+	 */
+	public Adapter createEngineeringLinkAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.capra.generic.tracemodel.Agent <em>Agent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.capra.generic.tracemodel.Agent
+	 * @generated
+	 */
+	public Adapter createAgentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.capra.generic.tracemodel.HumanAgent <em>Human Agent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.capra.generic.tracemodel.HumanAgent
+	 * @generated
+	 */
+	public Adapter createHumanAgentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.capra.generic.tracemodel.MachineAgent <em>Machine Agent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.capra.generic.tracemodel.MachineAgent
+	 * @generated
+	 */
+	public Adapter createMachineAgentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.capra.generic.tracemodel.Confidence <em>Confidence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.capra.generic.tracemodel.Confidence
+	 * @generated
+	 */
+	public Adapter createConfidenceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.capra.generic.tracemodel.Evidence <em>Evidence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.capra.generic.tracemodel.Evidence
+	 * @generated
+	 */
+	public Adapter createEvidenceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.capra.generic.tracemodel.AIEvidence <em>AI Evidence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.capra.generic.tracemodel.AIEvidence
+	 * @generated
+	 */
+	public Adapter createAIEvidenceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.capra.generic.tracemodel.RuleEvidence <em>Rule Evidence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.capra.generic.tracemodel.RuleEvidence
+	 * @generated
+	 */
+	public Adapter createRuleEvidenceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.capra.generic.tracemodel.AnnotationEvidence <em>Annotation Evidence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.capra.generic.tracemodel.AnnotationEvidence
+	 * @generated
+	 */
+	public Adapter createAnnotationEvidenceAdapter() {
 		return null;
 	}
 

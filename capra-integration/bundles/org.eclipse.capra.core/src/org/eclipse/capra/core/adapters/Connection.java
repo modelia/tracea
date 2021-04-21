@@ -28,26 +28,70 @@ import org.eclipse.emf.ecore.EObject;
  * @author Anthony Anjorin, Salome Maro
  */
 public class Connection {
-	private EObject origin;
+	/** Default confidence. in the absence of specification confidence is 100%, or 1.0.	 */
+	public static final double DEFAULT_CONFIDENCE = 1.0;
+	
+	/** Name of the reference leading to Confidence class from RelatedTo trace link.	 */
+	public static final String TLINK_REFERENCE_CONFIDENCE = "confidence";
+	
+	/** Name of the attribute leading to Confidence.value from RelatedTo trace link.	 */
+	public static final String CONFIDENCE_ATTRIBUTE_VALUE = "value";
+	
+	
+	private List<EObject> origins;
 	private List<EObject> targets;
 	private EObject tlink;
 
-	public Connection(EObject origin, List<EObject> targets, EObject tlink) {
-		this.origin = origin;
+	/**
+	 * Constructs a new {@code Connection} instance based on the provided origins,
+	 * targets, and underlying trace link.
+	 * 
+	 * @param origins the origins, i.e., the artifacts from which the link
+	 *                originates
+	 * @param targets the targets, i.e., the artifacts to which the link points
+	 * @param tlink   the underlying trace link from the trace model
+	 */
+	public Connection(List<EObject> origins, List<EObject> targets, EObject tlink) {
+		this.origins = origins;
 		this.targets = targets;
 		this.tlink = tlink;
 	}
 
-	public EObject getOrigin() {
-		return origin;
+	/**
+	 * Get all origins, i.e., artifacts from which the trace link originates.
+	 * 
+	 * @return the origins
+	 */
+	public List<EObject> getOrigins() {
+		return origins;
 	}
 
+	/**
+	 * Get all targets, i.e., artifacts to which the trace link points.
+	 * 
+	 * @return the targets
+	 */
 	public List<EObject> getTargets() {
 		return targets;
 	}
 
+	/**
+	 * Gets the underlying trace link from the trace model.
+	 * 
+	 * @return the trace link which this {@code Connection} instance represents
+	 */
 	public EObject getTlink() {
 		return tlink;
+	}
+	
+	/**
+	 * Gets the underlying trace link from the trace model.
+	 * @return the confidence value of the trace link which this {@code Connection} instance represents
+	 */
+	public double getConfidenceValue() {
+		if(tlink == null)
+			return DEFAULT_CONFIDENCE;
+		return EMFHelper.getConfidenceValue(tlink);
 	}
 
 	@Override
@@ -64,10 +108,10 @@ public class Connection {
 		Connection connection = (Connection) object;
 
 		List<EObject> allFirstElements = new ArrayList<>(this.getTargets());
-		allFirstElements.add(this.getOrigin());
+		allFirstElements.addAll(this.getOrigins());
 
 		List<EObject> allSecondElements = new ArrayList<>(connection.getTargets());
-		allSecondElements.add(connection.getOrigin());
+		allSecondElements.addAll(connection.getOrigins());
 
 		String firstTraceType = EMFHelper.getIdentifier(this.getTlink().eClass());
 		String secondTracetype = EMFHelper.getIdentifier(connection.getTlink().eClass());
@@ -75,11 +119,23 @@ public class Connection {
 			return false;
 		}
 
-		List<String> firstElementsIds = allFirstElements.stream().map(e -> EMFHelper.getIdentifier(e))
+		List<String> firstElementsIds = allFirstElements.stream().map(EMFHelper::getIdentifier)
 				.collect(Collectors.toList());
-		List<String> secondElementsIds = allSecondElements.stream().map(e -> EMFHelper.getIdentifier(e))
+		List<String> secondElementsIds = allSecondElements.stream().map(EMFHelper::getIdentifier)
 				.collect(Collectors.toList());
-		return firstElementsIds.containsAll(secondElementsIds);
+		return (firstElementsIds.containsAll(secondElementsIds) && secondElementsIds.containsAll(firstElementsIds));
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((origins == null) ? 0 : origins.stream().mapToInt(e -> EMFHelper.getIdentifier(e).hashCode()).sum());
+		result = prime * result
+				+ ((targets == null) ? 0 : targets.stream().mapToInt(e -> EMFHelper.getIdentifier(e).hashCode()).sum());
+		result = prime * result + ((tlink == null) ? 0 : tlink.hashCode());
+		return result;
 	}
 
 }
