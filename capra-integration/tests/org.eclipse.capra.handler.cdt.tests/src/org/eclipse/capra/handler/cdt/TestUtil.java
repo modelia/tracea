@@ -18,7 +18,6 @@ import java.io.InputStream;
 
 import org.eclipse.capra.core.adapters.ArtifactMetaModelAdapter;
 import org.eclipse.capra.core.adapters.TracePersistenceAdapter;
-import org.eclipse.capra.core.helpers.EditingDomainHelper;
 import org.eclipse.capra.core.helpers.ExtensionPointHelper;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.CProjectNature;
@@ -40,6 +39,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
 public class TestUtil {
 
@@ -50,7 +50,8 @@ public class TestUtil {
 		IProject project = root.getProject(name);
 
 		IProjectDescription prjDescription = workspace.newProjectDescription(project.getName());
-		project = CCorePlugin.getDefault().createCDTProject(prjDescription, project, new NullProgressMonitor());
+		project = CCorePlugin.getDefault().createCDTProject(prjDescription, project,
+				new NullProgressMonitor());
 
 		// Create build info and managed project
 		ICProjectDescription cProjectDescription = CoreModel.getDefault().createProjectDescription(project, false);
@@ -73,7 +74,7 @@ public class TestUtil {
 
 	public static EObject setupModel() {
 		TracePersistenceAdapter persistenceAdapter = ExtensionPointHelper.getTracePersistenceAdapter().get();
-		ResourceSet resourceSet = EditingDomainHelper.getResourceSet();
+		ResourceSet resourceSet = new ResourceSetImpl();
 		EObject artifactModel = persistenceAdapter.getArtifactWrappers(resourceSet);
 		return artifactModel;
 	}
@@ -84,7 +85,7 @@ public class TestUtil {
 		}
 
 		System.out.println("Creating file: " + file.getName());
-
+		
 		InputStream inputStream = new ByteArrayInputStream(contents.getBytes());
 		file.create(inputStream, true, null);
 

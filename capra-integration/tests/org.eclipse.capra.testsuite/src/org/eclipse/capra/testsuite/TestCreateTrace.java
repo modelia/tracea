@@ -23,7 +23,6 @@ import static org.eclipse.capra.testsuite.TestHelper.createTraceForCurrentSelect
 import static org.eclipse.capra.testsuite.TestHelper.getProject;
 import static org.eclipse.capra.testsuite.TestHelper.load;
 import static org.eclipse.capra.testsuite.TestHelper.projectExists;
-import static org.eclipse.capra.testsuite.TestHelper.purgeModels;
 import static org.eclipse.capra.testsuite.TestHelper.resetSelectionView;
 import static org.eclipse.capra.testsuite.TestHelper.save;
 import static org.eclipse.capra.testsuite.TestHelper.thereIsATraceBetween;
@@ -67,7 +66,6 @@ public class TestCreateTrace {
 	public void init() throws CoreException {
 		clearWorkspace();
 		resetSelectionView();
-		purgeModels();
 	}
 
 	@Test
@@ -147,8 +145,7 @@ public class TestCreateTrace {
 	}
 
 	@Test
-	public void testLinkCreationCElementToEClass()
-			throws OperationCanceledException, CoreException, IOException, BuildException {
+	public void testLinkCreationCElementToEClass() throws OperationCanceledException, CoreException, IOException, BuildException {
 		// Create a project
 		ICProject cFile = createCDTProject(TEST_PROJECT_NAME);
 		assertTrue(projectExists(TEST_PROJECT_NAME));
@@ -182,7 +179,8 @@ public class TestCreateTrace {
 	}
 
 	@Test
-	public void testLinkCreationJavaClassToJavaClass() throws CoreException, BuildException {
+	public void testLinkCreationJavaClassToJavaClass() throws CoreException, BuildException
+	{
 		// Create a java project
 		IType javaClass = createJavaProjectWithASingleJavaClass(TEST_PROJECT_NAME_JAVA);
 		assertTrue(projectExists(TEST_PROJECT_NAME_JAVA));
@@ -204,5 +202,6 @@ public class TestCreateTrace {
 		assertTrue(thereIsATraceBetween(javaClass, cFile));
 
 	}
+
 
 }

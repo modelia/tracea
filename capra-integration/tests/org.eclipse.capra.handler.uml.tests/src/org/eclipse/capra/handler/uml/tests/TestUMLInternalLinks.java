@@ -23,7 +23,6 @@ import java.util.Optional;
 
 import org.eclipse.capra.core.adapters.TraceMetaModelAdapter;
 import org.eclipse.capra.core.adapters.TracePersistenceAdapter;
-import org.eclipse.capra.core.helpers.EditingDomainHelper;
 import org.eclipse.capra.core.helpers.ExtensionPointHelper;
 import org.eclipse.capra.generic.tracemodel.TracemodelPackage;
 import org.eclipse.capra.testsuite.TestHelper;
@@ -56,7 +55,7 @@ public class TestUMLInternalLinks {
 
 	private static final String EXPECTED_TEXT_FOR_INTERNAL_LINKS = "@startuml\n" + "object \"A : Class\" as o0 #pink\n"
 			+ "object \"B : Class\" as o1\n" + "object \"C : Class\" as o2\n"
-			+ "o0--o1: A : Class B : Class : RelatedTo\n" + "o1--o2: true : Generalization\n" + "@enduml\n";
+			+ "o0--o1: A : Class B : Class : RelatedTo\n" + "o1--o2:true : Generalization\n" + "@enduml\n";
 
 	@Before
 	public void init() throws CoreException {
@@ -104,11 +103,11 @@ public class TestUMLInternalLinks {
 		// Create a trace via the selection view
 		TracePersistenceAdapter persistenceAdapter = ExtensionPointHelper.getTracePersistenceAdapter().get();
 		TraceMetaModelAdapter traceAdapter = ExtensionPointHelper.getTraceMetamodelAdapter().get();
-		EObject traceModel = persistenceAdapter.getTraceModel(EditingDomainHelper.getResourceSet());
+		EObject traceModel = persistenceAdapter.getTraceModel(_A.eResource().getResourceSet());
 		assertFalse(traceAdapter.isThereATraceBetween(_A, _B, traceModel));
 
 		TestHelper.createTraceForCurrentSelectionOfType(TracemodelPackage.eINSTANCE.getRelatedTo());
-		EObject upDatedTraceModel = persistenceAdapter.getTraceModel(EditingDomainHelper.getResourceSet());
+		EObject upDatedTraceModel = persistenceAdapter.getTraceModel(_A.eResource().getResourceSet());
 		assertTrue(traceAdapter.isThereATraceBetween(_A, _B, upDatedTraceModel));
 
 		// Clear selection view
@@ -123,7 +122,7 @@ public class TestUMLInternalLinks {
 		DisplayInternalLinksHandler.showInternalLinks(true);
 		DiagramTextProviderHandler provider = new DiagramTextProviderHandler();
 		String directlyConnectedElements = provider.getDiagramText(selection, Optional.<IWorkbenchPart>empty());
-		assertEquals(EXPECTED_TEXT_FOR_INTERNAL_LINKS, directlyConnectedElements);
+		assertTrue(directlyConnectedElements.equals(EXPECTED_TEXT_FOR_INTERNAL_LINKS));
 
 	}
 }

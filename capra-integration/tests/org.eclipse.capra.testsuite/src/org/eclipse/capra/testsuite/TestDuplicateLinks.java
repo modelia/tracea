@@ -21,22 +21,19 @@ import static org.eclipse.capra.testsuite.TestHelper.createTraceForCurrentSelect
 import static org.eclipse.capra.testsuite.TestHelper.getProject;
 import static org.eclipse.capra.testsuite.TestHelper.load;
 import static org.eclipse.capra.testsuite.TestHelper.projectExists;
-import static org.eclipse.capra.testsuite.TestHelper.purgeModels;
 import static org.eclipse.capra.testsuite.TestHelper.resetSelectionView;
 import static org.eclipse.capra.testsuite.TestHelper.save;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.capra.core.adapters.Connection;
 import org.eclipse.capra.core.adapters.TracePersistenceAdapter;
 import org.eclipse.capra.core.helpers.ArtifactHelper;
-import org.eclipse.capra.core.helpers.EditingDomainHelper;
 import org.eclipse.capra.core.helpers.ExtensionPointHelper;
 import org.eclipse.capra.core.helpers.TraceHelper;
 import org.eclipse.capra.generic.tracemodel.RelatedTo;
@@ -72,7 +69,6 @@ public class TestDuplicateLinks {
 	public void init() throws CoreException {
 		clearWorkspace();
 		resetSelectionView();
-		purgeModels();
 	}
 
 	@Test
@@ -114,45 +110,43 @@ public class TestDuplicateLinks {
 
 		EClass tlinkA = (EClass) _tm.getEClassifier(T_LINK_NAME_A);
 
-		List<EObject> origins = Arrays.asList(classA);
-		List<EObject> targets = Arrays.asList(classB);
+		List<EObject> targets = new ArrayList<EObject>();
+		targets.add(classB);
 
 		// create a connection
-		Connection con1 = new Connection(origins, targets, tlinkA);
+		Connection con1 = new Connection(classA, targets, tlinkA);
 
 		// create a second connection with the same content
-		Connection con2 = new Connection(origins, targets, tlinkA);
+		Connection con2 = new Connection(classA, targets, tlinkA);
 
 		// check if the connections are equal
-		assertEquals(con1, con2);
-		assertEquals(con1.hashCode(), con2.hashCode());
+		assertTrue(con1.equals(con2));
 
 		// change the order of artifacts
-		Connection con3 = new Connection(targets, origins, tlinkA);
+		List<EObject> newTarget = new ArrayList<>();
+		newTarget.add(classA);
+
+		// create the connections again
+		Connection con3 = new Connection(classB, newTarget, tlinkA);
 
 		// check if the connections are equal
-		assertEquals(con1, con3);
-		assertEquals(con2, con3);
+		assertTrue(con1.equals(con2) && con1.equals(con3) && con2.equals(con3));
 
 		// create a new connection with the second trace type
-		Connection con4 = new Connection(targets, origins, tlinkB);
+		Connection con4 = new Connection(classB, newTarget, tlinkB);
 
 		// check that the connections are not equal
-		assertNotEquals(con3, con4);
-		assertNotEquals(con3.hashCode(), con4.hashCode());
+		assertFalse(con3.equals(con4));
 
 		// create a connection with differesnt artifact
-		Connection con5 = new Connection(Arrays.asList(classC), targets, tlinkA);
+		Connection con5 = new Connection(classC, targets, tlinkA);
 
 		// check that the conenctions are not equal
-		assertNotEquals(con5, con1);
-		assertNotEquals(con5.hashCode(), con1.hashCode());
-		assertNotEquals(con5, con2);
-		assertNotEquals(con5.hashCode(), con2.hashCode());
-		assertNotEquals(con5, con3);
-		assertNotEquals(con5.hashCode(), con3.hashCode());
-		assertNotEquals(con5, con4);
-		assertNotEquals(con5.hashCode(), con4.hashCode());
+		assertFalse(con5.equals(con1));
+		assertFalse(con5.equals(con2));
+		assertFalse(con5.equals(con3));
+		assertFalse(con5.equals(con4));
+
 	}
 
 	@Test
@@ -192,9 +186,8 @@ public class TestDuplicateLinks {
 
 		// Test the trace exists method
 		TracePersistenceAdapter persistenceAdapter = ExtensionPointHelper.getTracePersistenceAdapter().get();
-		TraceHelper traceHelper = new TraceHelper(
-				persistenceAdapter.getTraceModel(EditingDomainHelper.getResourceSet()));
-		EObject artifactModel = persistenceAdapter.getArtifactWrappers(EditingDomainHelper.getResourceSet());
+		TraceHelper traceHelper = new TraceHelper(persistenceAdapter.getTraceModel(_A.eResource().getResourceSet()));
+		EObject artifactModel = persistenceAdapter.getArtifactWrappers(_A.eResource().getResourceSet());
 		ArtifactHelper artifactHelper = new ArtifactHelper(artifactModel);
 		EClass traceType = TracemodelPackage.eINSTANCE.getRelatedTo();
 		List<EObject> selection = artifactHelper.createWrappers(SelectionView.getOpenedView().getSelection());
@@ -203,7 +196,7 @@ public class TestDuplicateLinks {
 
 		createTraceForCurrentSelectionOfType(TracemodelPackage.eINSTANCE.getRelatedTo());
 
-		traceHelper = new TraceHelper(persistenceAdapter.getTraceModel(EditingDomainHelper.getResourceSet()));
+		traceHelper = new TraceHelper(persistenceAdapter.getTraceModel(_A.eResource().getResourceSet()));
 		assertTrue(traceHelper.traceExists(selection, traceType));
 
 		// Change the order of the selection in the selection view
@@ -215,7 +208,7 @@ public class TestDuplicateLinks {
 
 		// Check that the trace exists
 		selection = artifactHelper.createWrappers(SelectionView.getOpenedView().getSelection());
-		traceHelper = new TraceHelper(persistenceAdapter.getTraceModel(EditingDomainHelper.getResourceSet()));
+		traceHelper = new TraceHelper(persistenceAdapter.getTraceModel(_A.eResource().getResourceSet()));
 		assertTrue(traceHelper.traceExists(selection, traceType));
 
 		// Add another class to the selection view
@@ -223,7 +216,7 @@ public class TestDuplicateLinks {
 
 		// Check that the trace does not exist
 		selection = artifactHelper.createWrappers(SelectionView.getOpenedView().getSelection());
-		traceHelper = new TraceHelper(persistenceAdapter.getTraceModel(EditingDomainHelper.getResourceSet()));
+		traceHelper = new TraceHelper(persistenceAdapter.getTraceModel(_A.eResource().getResourceSet()));
 		assertFalse(traceHelper.traceExists(selection, traceType));
 	}
 
