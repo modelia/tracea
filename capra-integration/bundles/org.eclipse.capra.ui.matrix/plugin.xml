@@ -25,34 +25,6 @@
             name="Capra Matrix Viewer">
       </view>
    </extension>
-   
-      <extension
-         point="org.eclipse.ui.commands">
-      <command
-            id="org.eclipse.capra.ui.matrix.confidenceThreshold"
-            name="%command.name.confidence">
-      </command>
-   </extension>
-      <extension
-         point="org.eclipse.ui.handlers">
-      <handler
-            class="org.eclipse.capra.ui.matrix.ConfidenceThresholdHandler"
-            commandId="org.eclipse.capra.ui.matrix.confidenceThreshold">
-      </handler>
-   </extension>
-   	<extension
-         point="org.eclipse.ui.menus">
-      <menuContribution
-            locationURI="menu:org.eclipse.capra.ui.matrix.views.TraceabilityMatrixView?after=additions">
-         <command
-               commandId="org.eclipse.capra.ui.matrix.confidenceThreshold"
-               label="%command.label.confidence"
-               style="push">
-         </command>
-      </menuContribution>
-   </extension>
-   
-   
    <extension
          point="org.eclipse.ui.perspectiveExtensions">
       <perspectiveExtension

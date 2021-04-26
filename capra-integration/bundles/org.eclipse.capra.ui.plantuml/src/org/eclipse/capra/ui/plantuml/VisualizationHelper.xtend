@@ -7,7 +7,6 @@ import org.eclipse.capra.core.helpers.ExtensionPointHelper
 
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.capra.core.helpers.ArtifactHelper
-//	«FOR first : rows»«artifactHelper.getArtifactLabel(first)»«FOR second : columns» |«IF internalLinks»«IF traceAdapter.isThereATraceBetween(first, second, traceModel) || traceAdapter.isThereAnInternalTraceBetween(first, second)»X«ELSE ».«ENDIF»«ELSE»«IF traceAdapter.isThereATraceBetween(first, second, traceModel)»X«ELSE ».«ENDIF»«ENDIF»«ENDFOR»
 
 class VisualizationHelper {
 	def static String createMatrix(EObject traceModel, EObject artifactModel, Collection<EObject> rows, Collection<EObject> columns, Boolean internalLinks){	

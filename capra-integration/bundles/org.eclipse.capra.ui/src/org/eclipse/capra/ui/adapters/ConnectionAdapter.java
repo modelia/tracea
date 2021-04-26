@@ -20,10 +20,11 @@ import java.util.stream.Collectors;
 import org.eclipse.capra.core.adapters.Connection;
 import org.eclipse.capra.core.adapters.TracePersistenceAdapter;
 import org.eclipse.capra.core.helpers.ArtifactHelper;
-import org.eclipse.capra.core.helpers.EditingDomainHelper;
 import org.eclipse.capra.core.helpers.ExtensionPointHelper;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.IPropertySource;
 import org.eclipse.ui.views.properties.PropertyDescriptor;
@@ -39,7 +40,7 @@ import org.eclipse.ui.views.properties.TextPropertyDescriptor;
  */
 public class ConnectionAdapter implements IPropertySource {
 
-	private enum DescriptorIDs {
+	private static enum DescriptorIDs {
 		ORIGIN, TARGETS, TYPE
 	}
 
@@ -56,8 +57,10 @@ public class ConnectionAdapter implements IPropertySource {
 	 */
 	public ConnectionAdapter(Connection theItem) {
 		this.connection = theItem;
-		TracePersistenceAdapter persistenceAdapter = ExtensionPointHelper.getTracePersistenceAdapter().orElseThrow();
-		EObject artifactModel = persistenceAdapter.getArtifactWrappers(EditingDomainHelper.getResourceSet());
+
+		TracePersistenceAdapter persistenceAdapter = ExtensionPointHelper.getTracePersistenceAdapter().get();
+		ResourceSet resourceSet = new ResourceSetImpl();
+		EObject artifactModel = persistenceAdapter.getArtifactWrappers(resourceSet);
 		artifactHelper = new ArtifactHelper(artifactModel);
 	}
 
@@ -92,10 +95,10 @@ public class ConnectionAdapter implements IPropertySource {
 	@Override
 	public Object getPropertyValue(Object id) {
 		if (id.equals(DescriptorIDs.ORIGIN)) {
-			return connection.getOrigins().stream().map(o -> artifactHelper.getArtifactLabel(o))
-					.collect(Collectors.toList());
+			return artifactHelper.getArtifactLabel(connection.getOrigin());
 		} else if (id.equals(DescriptorIDs.TARGETS)) {
-			return connection.getTargets().stream().map(artifactHelper::getArtifactLabel).collect(Collectors.toList());
+			return connection.getTargets().stream().map(t -> artifactHelper.getArtifactLabel(t))
+					.collect(Collectors.toList());
 		} else if (id.equals(DescriptorIDs.TYPE)) {
 			return connection.getTlink().eClass().getName();
 		} else {

@@ -44,7 +44,6 @@ public class TraceabilityMatrixDataProvider implements IDataProvider {
 			this.artifact = artifact;
 		}
 	}
-	
 
 	private List<EntryData> rows = new ArrayList<>();
 	private List<EntryData> columns = new ArrayList<>();
@@ -73,10 +72,22 @@ public class TraceabilityMatrixDataProvider implements IDataProvider {
 		return columns.size();
 	}
 
+	@Override
+	public Object getDataValue(int colIndex, int rowIndex) {
+		EntryData colEntry = columns.get(colIndex);
+		EntryData rowEntry = columns.get(rowIndex);
+		for (Connection connection : colEntry.connections) {
+			for (EObject target : connection.getTargets()) {
+				if (!EMFHelper.hasSameIdentifier(colEntry.artifact, target)
+						&& EMFHelper.hasSameIdentifier(rowEntry.artifact, target)) {
+					EObject eClass = connection.getTlink().eClass();
+					return (eClass == null ? "" : ((EClass) eClass).getName());
+				}
+			}
+		}
+		return "";
+	}
 
-	
-	
-	
 	@Override
 	public int getRowCount() {
 		return rows.size();
@@ -135,7 +146,7 @@ public class TraceabilityMatrixDataProvider implements IDataProvider {
 	 */
 	public Connection getCellConnection(int column, int row) {
 		EntryData colEntry = columns.get(column);
-		EntryData rowEntry = rows.get(row);
+		EntryData rowEntry = columns.get(row);
 		for (Connection connection : colEntry.connections) {
 			for (EObject target : connection.getTargets()) {
 				if (!EMFHelper.hasSameIdentifier(colEntry.artifact, target)
@@ -145,22 +156,6 @@ public class TraceabilityMatrixDataProvider implements IDataProvider {
 			}
 		}
 		return null;
-	}
-	
-	@Override
-	public Object getDataValue(int colIndex, int rowIndex) {
-		EntryData colEntry = columns.get(colIndex);
-		EntryData rowEntry = rows.get(rowIndex);
-		for (Connection connection : colEntry.connections) {
-			for (EObject target : connection.getTargets()) {
-				if (!EMFHelper.hasSameIdentifier(colEntry.artifact, target)
-						&& EMFHelper.hasSameIdentifier(rowEntry.artifact, target)) {
-					EObject eClass = connection.getTlink().eClass();
-					return (eClass == null ? "" : ((EClass) eClass).getName()) ;
-				}
-			}
-		}
-		return "";
 	}
 
 }

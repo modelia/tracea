@@ -45,6 +45,7 @@ import org.eclipse.swt.widgets.Event;
  */
 public class TraceabilityMatrixHeaderToolTip extends NatTableContentTooltip {
 
+	private NatTable natTable;
 	private TraceabilityMatrixDataProvider dataProvider;
 	private ArtifactHelper artifactHelper;
 
@@ -58,7 +59,7 @@ public class TraceabilityMatrixHeaderToolTip extends NatTableContentTooltip {
 
 	@Override
 	protected String getText(Event event) {
-		int col = this.natTable.getColumnIndexByPosition(this.natTable.getColumnPositionByX(event.x));
+		int col = this.natTable.getColumnPositionByX(event.x) - 1;
 		EObject artifact = dataProvider.getColumn(col);
 		StringBuilder tooltipBuilder = new StringBuilder();
 		tooltipBuilder.append(artifactHelper.getArtifactLabel(artifact));
