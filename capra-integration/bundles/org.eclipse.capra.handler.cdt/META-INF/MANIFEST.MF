@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Localization: plugin
+Bundle-Name: %Bundle-Name
+Bundle-Vendor: %Bundle-Vendor
+Bundle-SymbolicName: org.eclipse.capra.handler.cdt;singleton:=true
+Bundle-Version: 0.8.2.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Require-Bundle: org.eclipse.cdt.core,
+ org.eclipse.capra.core,
+ org.eclipse.text,
+ org.eclipse.ltk.core.refactoring,
+ org.eclipse.capra.core,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.ui.ide,
+ org.eclipse.capra.ui.notification,
+ org.apache.httpcomponents.httpclient,
+ org.apache.httpcomponents.httpcore
+Export-Package: org.eclipse.capra.handler.cdt,
+ org.eclipse.capra.handler.cdt.notification;x-internal:=true,
+ org.eclipse.capra.handler.cdt.preferences
+Bundle-Activator: org.eclipse.capra.handler.cdt.Activator
+Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: org.eclipse.capra.handler.cdt
+

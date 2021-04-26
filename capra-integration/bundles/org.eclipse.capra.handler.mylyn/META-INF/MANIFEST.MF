@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Localization: plugin
+Bundle-Name: %Bundle-Name
+Bundle-Vendor: %Bundle-Vendor
+Bundle-SymbolicName: org.eclipse.capra.handler.mylyn;singleton:=true
+Bundle-Version: 0.8.2.qualifier
+Require-Bundle: org.eclipse.mylyn.tasks.core,
+ org.eclipse.mylyn.tasks.ui,
+ org.eclipse.capra.core,
+ org.eclipse.core.resources
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Export-Package: org.eclipse.capra.handler.mylyn
+Automatic-Module-Name: org.eclipse.capra.handler.mylyn

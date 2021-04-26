@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Localization: plugin
+Bundle-Name: %Bundle-Name
+Bundle-Vendor: %Bundle-Vendor
+Bundle-SymbolicName: org.eclipse.capra.handler.gef;singleton:=true
+Bundle-Version: 0.8.2.qualifier
+Require-Bundle: org.eclipse.capra.core,
+ org.eclipse.papyrus.infra.gmfdiag.css,
+ org.eclipse.papyrus.infra.emf,
+ org.eclipse.gmf.runtime.diagram.ui
+Import-Package: org.eclipse.capra.ui.helpers
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Export-Package: org.eclipse.capra.handler.gef
+Automatic-Module-Name: org.eclipse.capra.handler.gef

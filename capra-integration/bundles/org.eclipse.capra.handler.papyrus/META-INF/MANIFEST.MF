@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Localization: plugin
+Bundle-Name: %Bundle-Name
+Bundle-Vendor: %Bundle-Vendor
+Bundle-SymbolicName: org.eclipse.capra.handler.papyrus;singleton:=true
+Bundle-Version: 0.8.2.qualifier
+Require-Bundle: org.eclipse.capra.core,
+ org.eclipse.capra.ui,
+ org.eclipse.emf.ecore,
+ org.eclipse.papyrus.emf.facet.custom.metamodel,
+ org.eclipse.papyrus.infra.emf,
+ org.eclipse.core.resources
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Export-Package: org.eclipse.capra.handler.papyrus
+Automatic-Module-Name: org.eclipse.capra.handler.papyrus

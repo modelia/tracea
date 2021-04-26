@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--
+	Copyright (c) 2016 Chalmers | University of Gothenburg, rt-labs and others.
+	All rights reserved. This program and the accompanying materials
+	are made available under the terms of the Eclipse Public License v1.0
+	which accompanies this distribution, and is available at
+	http://www.eclipse.org/legal/epl-v10.html
+
+	Contributors:
+		Chalmers | University of Gothenburg and rt-labs - initial API and implementation and/or initial documentation
+--><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.eclipse.capra</groupId>
+	<artifactId>parent</artifactId>
+	<version>0.8.2-SNAPSHOT</version>
+	<packaging>pom</packaging>
+    <name>Capra</name>
+
+	<modules>
+		<module>bundles/org.eclipse.capra.core</module>
+		<module>bundles/org.eclipse.capra.documentation</module>
+		<module>bundles/org.eclipse.capra.generic.persistence</module>
+		<module>bundles/org.eclipse.capra.generic.priority</module>
+		<module>bundles/org.eclipse.capra.generic.tracemodel</module>
+		<module>bundles/org.eclipse.capra.generic.artifactmodel</module>
+		<module>bundles/org.eclipse.capra.handler.app4mc</module>
+		<module>bundles/org.eclipse.capra.handler.cdt</module>
+		<module>bundles/org.eclipse.capra.handler.emf</module>
+		<module>bundles/org.eclipse.capra.handler.file</module>
+		<module>bundles/org.eclipse.capra.handler.gef</module>
+		<module>bundles/org.eclipse.capra.handler.jdt</module>
+		<module>bundles/org.eclipse.capra.handler.hudson</module>
+		<module>bundles/org.eclipse.capra.handler.office</module>
+		<module>bundles/org.eclipse.capra.handler.reqIf</module>
+		<module>bundles/org.eclipse.capra.handler.marker</module>
+		<module>bundles/org.eclipse.capra.handler.mylyn</module>
+		<module>bundles/org.eclipse.capra.handler.papyrus</module>
+		<module>bundles/org.eclipse.capra.handler.php</module>
+		<module>bundles/org.eclipse.capra.handler.uml</module>
+		<module>bundles/org.eclipse.capra.handler.featureide</module>
+		<module>bundles/org.eclipse.capra.handler.ode</module>
+		<module>bundles/org.eclipse.capra.ui</module>
+		<module>bundles/org.eclipse.capra.ui.notification</module>
+		<module>bundles/org.eclipse.capra.ui.plantuml</module>
+		<module>bundles/org.eclipse.capra.ui.cdt</module>
+		<module>bundles/org.eclipse.capra.ui.jdt</module>
+		<module>bundles/org.eclipse.capra.ui.office</module>
+		<module>bundles/org.eclipse.capra.ui.drive</module>
+		<module>bundles/org.eclipse.capra.ui.reqif</module>
+		<module>bundles/org.eclipse.capra.ui.xtext</module>
+		<module>bundles/org.eclipse.capra.ui.sunburst</module>
+		<module>bundles/org.eclipse.capra.ui.matrix</module>
+
+		<!-- Tests -->
+		<module>tests/org.eclipse.capra.testsupport</module>
+		<module>tests/org.eclipse.capra.testsuite</module>
+		<module>tests/org.eclipse.capra.handler.cdt.tests</module>
+		<module>tests/org.eclipse.capra.handler.jdt.tests</module>
+		<module>tests/org.eclipse.capra.handler.uml.tests</module>
+		<module>tests/org.eclipse.capra.handler.featureide.tests</module>
+
+		<!-- Branding -->
+		<module>releng/org.eclipse.capra.branding</module>
+
+		<!-- Features -->
+		<module>features/org.eclipse.capra.feature</module>
+		<module>features/org.eclipse.capra.core.feature</module>
+		<module>features/org.eclipse.capra.generic.feature</module>
+		<module>features/org.eclipse.capra.handler.app4mc.feature</module>
+		<module>features/org.eclipse.capra.handler.cdt.feature</module>
+		<module>features/org.eclipse.capra.handler.hudson.feature</module>
+		<module>features/org.eclipse.capra.handler.office.feature</module>
+		<module>features/org.eclipse.capra.handler.jdt.feature</module>
+		<module>features/org.eclipse.capra.handler.reqIf.feature</module>
+		<module>features/org.eclipse.capra.handler.papyrus.feature</module>
+		<module>features/org.eclipse.capra.handler.php.feature</module>
+		<module>features/org.eclipse.capra.handler.featureide.feature</module>
+		<module>features/org.eclipse.capra.handler.ode.feature</module>
+		<module>features/org.eclipse.capra.ui.feature</module>
+		<module>features/org.eclipse.capra.ui.plantuml.feature</module>
+		<module>features/org.eclipse.capra.ui.xtext.feature</module>
+		<module>features/org.eclipse.capra.ui.sunburst.feature</module>
+		<module>features/org.eclipse.capra.ui.matrix.feature</module>
+
+		<!-- Releng -->
+		<module>releng/org.eclipse.capra.releng.target</module>
+		<module>releng/org.eclipse.capra.releng.p2</module>
+
+	</modules>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<tycho-version>2.1.0</tycho-version>
+		<org.jboss.tools.tycho-plugins.version>1.6.0</org.jboss.tools.tycho-plugins.version>
+		<jacoco.version>0.8.6</jacoco.version>
+
+		<sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/../../releng/org.eclipse.capra.releng.p2/target/site/jacoco-aggregate/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+		<sonar.surefire.reportsPath>**/surefire-reports/</sonar.surefire.reportsPath>
+		<sonar.exclusions>**/src-gen/**/*,**/xtend-gen/**/*,**/xcore-gen/**/*</sonar.exclusions>
+		<sonar.issue.ignore.allfile>generated</sonar.issue.ignore.allfile>
+		<sonar.issue.ignore.allfile.generated.fileRegexp>@generated</sonar.issue.ignore.allfile.generated.fileRegexp>
+		<sonar.java.source>11</sonar.java.source>
+		<!-- coverage exclusions -->
+		<sonar.coverage.exclusions>**/*.tests/**/*.java,**/*.testsuite/**/*.java</sonar.coverage.exclusions>
+		<!-- duplication exclusion -->
+		<sonar.cpd.exclusions>**/*.tests/**/*.java,**/*.testsuite/**/*.java</sonar.cpd.exclusions>
+	</properties>
+
+	<profiles>
+		<profile>
+			<id>macosx-jvm-flags</id>
+			<activation>
+				<os>
+					<family>mac</family>
+				</os>
+			</activation>
+			<properties>
+				<!-- The property tycho.testArgLine is used by Jacoco to inject
+				     the agent when preparing data for Sonar. By using the same
+				     property, we don't need any extra work for Tycho to pick up
+				     the right argument. Since Jenkins uses Linux, this profiles
+				     is not active when building for Sonar. -->
+				<tycho.testArgLine>-XstartOnFirstThread</tycho.testArgLine>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>sonar</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.jacoco</groupId>
+						<artifactId>jacoco-maven-plugin</artifactId>
+
+						<configuration>
+							<sessionId>${project.artifactId}</sessionId>
+						</configuration>
+
+						<executions>
+							<execution>
+								<goals>
+									<goal>prepare-agent</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+	<repositories>
+		<repository>
+			<id>license-feature</id>
+			<url>http://download.eclipse.org/cbi/updates/license/</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>jboss</id>
+			<url>https://repository.jboss.org/nexus/content/repositories/public/</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
+
+	 <scm>
+       <connection>scm:git:https://git.eclipse.org/r/capra/org.eclipse.capra.git</connection>
+       <developerConnection>scm:git:https://git.eclipse.org/r/capra/org.eclipse.capra.git</developerConnection>
+       <tag>0.7.0</tag>
+	</scm>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>${jacoco.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+
+			<!-- Only required if tests need UI -->
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-surefire-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<useUIHarness>true</useUIHarness>
+					<useUIThread>true</useUIThread>
+					<argLine>${tycho.testArgLine}</argLine>
+					<dependencies>
+						<dependency>
+							<type>eclipse-plugin</type>
+							<artifactId>org.eclipse.equinox.event</artifactId>
+							<version>0.0.0</version>
+						</dependency>
+					</dependencies>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<target>
+						<artifact>
+							<groupId>org.eclipse.capra</groupId>
+							<artifactId>org.eclipse.capra.releng.target</artifactId>
+							<version>0.8.2-SNAPSHOT</version>
+						</artifact>
+					</target>
+					<environments>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>com.itemis.maven.plugins</groupId>
+				<artifactId>unleash-maven-plugin</artifactId>
+				<version>2.10.0</version>
+				<dependencies>
+					<dependency>
+						<groupId>com.itemis.maven.plugins</groupId>
+						<artifactId>unleash-scm-provider-git</artifactId>
+						<version>2.3.0</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

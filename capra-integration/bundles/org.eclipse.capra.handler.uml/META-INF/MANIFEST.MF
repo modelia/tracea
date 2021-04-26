@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Localization: plugin
+Bundle-Name: %Bundle-Name
+Bundle-Vendor: %Bundle-Vendor
+Bundle-SymbolicName: org.eclipse.capra.handler.uml;singleton:=true
+Bundle-Version: 0.8.2.qualifier
+Export-Package: org.eclipse.capra.handler.uml
+Require-Bundle: org.eclipse.uml2.uml,
+ org.eclipse.emf.ecore,
+ org.eclipse.capra.core,
+ org.eclipse.core.resources
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Automatic-Module-Name: org.eclipse.capra.handler.uml

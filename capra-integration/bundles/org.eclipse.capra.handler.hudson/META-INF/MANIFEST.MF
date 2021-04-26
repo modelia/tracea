@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Localization: plugin
+Bundle-Name: %Bundle-Name
+Bundle-Vendor: %Bundle-Vendor
+Bundle-SymbolicName: org.eclipse.capra.handler.hudson;singleton:=true
+Bundle-Version: 0.8.2.qualifier
+Require-Bundle: org.eclipse.mylyn.hudson.core,
+ org.eclipse.mylyn.builds.core,
+ org.eclipse.capra.core,
+ org.eclipse.core.resources
+Export-Package: org.eclipse.capra.handler.hudson
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Automatic-Module-Name: org.eclipse.capra.handler.hudson
