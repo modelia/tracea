@@ -72,6 +72,10 @@ public class TracemodelAdapterFactory extends AdapterFactoryImpl {
 				return createGenericTraceModelAdapter();
 			}
 			@Override
+			public Adapter caseTraceLink(TraceLink object) {
+				return createTraceLinkAdapter();
+			}
+			@Override
 			public Adapter caseRelatedTo(RelatedTo object) {
 				return createRelatedToAdapter();
 			}
@@ -106,6 +110,20 @@ public class TracemodelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createGenericTraceModelAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.capra.generic.tracemodel.TraceLink <em>Trace Link</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.capra.generic.tracemodel.TraceLink
+	 * @generated
+	 */
+	public Adapter createTraceLinkAdapter() {
 		return null;
 	}
 

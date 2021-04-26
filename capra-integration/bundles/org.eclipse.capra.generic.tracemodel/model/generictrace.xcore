@@ -6,11 +6,16 @@ class GenericTraceModel{
 	contains RelatedTo[0..*] traces
 } 
 
-class RelatedTo {
+abstract class TraceLink {
 	derived String ID get {
 			EcoreUtil.generateUUID();
 	}
 	String name
+	double confidenceValue
+}
+
+class RelatedTo extends TraceLink {
 	refers EObject [1] origin
 	refers EObject [1..*] targets 
 }    
+

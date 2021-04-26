@@ -18,12 +18,16 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 
 /**
  * Contains methods to work with {@link EObject} instances encountered when
  * handling EMF models.
  */
 public class EMFHelper {
+
+	/** Default value for traces without explicit confidence value. */
+	private static final double DEFAULT_CONFIDENCE = 1.0;
 
 	private EMFHelper() {
 		super();
@@ -223,5 +227,54 @@ public class EMFHelper {
 			}
 		}
 		return false;
+	}
+	
+	/**
+	 * Public API access for other classes to get the confidence value of a tlink (from {@code Connection)}
+	 * 
+	 * @param tlink
+	 * @return double confidence value
+	 */
+	public static double getConfidenceValue(EObject tlink) {
+		double confidenceValue = DEFAULT_CONFIDENCE;
+		try {
+			EStructuralFeature esfConfidence = getEStructuralFeatureByName(tlink, "confidenceValue");
+			confidenceValue = (double)tlink.eGet(esfConfidence);
+		} catch (Exception e) {
+			return DEFAULT_CONFIDENCE;
+//			e.printStackTrace();
+		}
+		return confidenceValue;
+	}
+
+	/**
+	 * Gets the structural feature corresponding to the name in parameter
+	 * @param eo
+	 * @param esfName
+	 * @return ESTrcturalFeature corresponding to esfName in eo.EClass.
+	 */
+	public static EStructuralFeature getEStructuralFeatureByName(EObject eo, String esfName) {
+		for (EStructuralFeature	esf : eo.eClass().getEAllStructuralFeatures()) {
+			if(esf.getName().equals(esfName)) {
+				return esf;
+			}
+		}
+		return null;
+	}
+	
+	
+	/**
+	 * Gets the name of an EObject (or its ID if there is no name attribute).
+	 * This method shoul only be used for debug and/or log tasks.
+	 * @param eobject
+	 * @return The name (or ID) of the eobject
+	 */
+	public static String getName(EObject eobject) {
+		EStructuralFeature eo = null;
+		if( (eo = getEStructuralFeatureByName(eobject, "name")) != null)
+			return (String)eobject.eGet(eo);
+		else if ( (eo = getEStructuralFeatureByName(eobject, "ID")) != null)
+			return (String)eobject.eGet(eo);
+		else return "NO_NAME";
 	}
 }

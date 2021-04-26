@@ -4,6 +4,7 @@ package org.eclipse.capra.generic.tracemodel.impl;
 
 import org.eclipse.capra.generic.tracemodel.GenericTraceModel;
 import org.eclipse.capra.generic.tracemodel.RelatedTo;
+import org.eclipse.capra.generic.tracemodel.TraceLink;
 import org.eclipse.capra.generic.tracemodel.TracemodelFactory;
 import org.eclipse.capra.generic.tracemodel.TracemodelPackage;
 
@@ -28,6 +29,13 @@ public class TracemodelPackageImpl extends EPackageImpl implements TracemodelPac
 	 * @generated
 	 */
 	private EClass genericTraceModelEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass traceLinkEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -123,6 +131,42 @@ public class TracemodelPackageImpl extends EPackageImpl implements TracemodelPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getTraceLink() {
+		return traceLinkEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTraceLink_ID() {
+		return (EAttribute)traceLinkEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTraceLink_Name() {
+		return (EAttribute)traceLinkEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTraceLink_ConfidenceValue() {
+		return (EAttribute)traceLinkEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getRelatedTo() {
 		return relatedToEClass;
 	}
@@ -132,26 +176,8 @@ public class TracemodelPackageImpl extends EPackageImpl implements TracemodelPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getRelatedTo_ID() {
-		return (EAttribute)relatedToEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getRelatedTo_Name() {
-		return (EAttribute)relatedToEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getRelatedTo_Origin() {
-		return (EReference)relatedToEClass.getEStructuralFeatures().get(2);
+		return (EReference)relatedToEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -160,7 +186,7 @@ public class TracemodelPackageImpl extends EPackageImpl implements TracemodelPac
 	 * @generated
 	 */
 	public EReference getRelatedTo_Targets() {
-		return (EReference)relatedToEClass.getEStructuralFeatures().get(3);
+		return (EReference)relatedToEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -194,9 +220,12 @@ public class TracemodelPackageImpl extends EPackageImpl implements TracemodelPac
 		genericTraceModelEClass = createEClass(GENERIC_TRACE_MODEL);
 		createEReference(genericTraceModelEClass, GENERIC_TRACE_MODEL__TRACES);
 
+		traceLinkEClass = createEClass(TRACE_LINK);
+		createEAttribute(traceLinkEClass, TRACE_LINK__ID);
+		createEAttribute(traceLinkEClass, TRACE_LINK__NAME);
+		createEAttribute(traceLinkEClass, TRACE_LINK__CONFIDENCE_VALUE);
+
 		relatedToEClass = createEClass(RELATED_TO);
-		createEAttribute(relatedToEClass, RELATED_TO__ID);
-		createEAttribute(relatedToEClass, RELATED_TO__NAME);
 		createEReference(relatedToEClass, RELATED_TO__ORIGIN);
 		createEReference(relatedToEClass, RELATED_TO__TARGETS);
 	}
@@ -232,14 +261,18 @@ public class TracemodelPackageImpl extends EPackageImpl implements TracemodelPac
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		relatedToEClass.getESuperTypes().add(this.getTraceLink());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(genericTraceModelEClass, GenericTraceModel.class, "GenericTraceModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getGenericTraceModel_Traces(), this.getRelatedTo(), null, "traces", null, 0, -1, GenericTraceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(traceLinkEClass, TraceLink.class, "TraceLink", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTraceLink_ID(), theEcorePackage.getEString(), "ID", null, 0, 1, TraceLink.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTraceLink_Name(), theEcorePackage.getEString(), "name", null, 0, 1, TraceLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTraceLink_ConfidenceValue(), theEcorePackage.getEDouble(), "confidenceValue", null, 0, 1, TraceLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(relatedToEClass, RelatedTo.class, "RelatedTo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRelatedTo_ID(), theEcorePackage.getEString(), "ID", null, 0, 1, RelatedTo.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRelatedTo_Name(), theEcorePackage.getEString(), "name", null, 0, 1, RelatedTo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRelatedTo_Origin(), theEcorePackage.getEObject(), null, "origin", null, 1, 1, RelatedTo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRelatedTo_Targets(), theEcorePackage.getEObject(), null, "targets", null, 1, -1, RelatedTo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

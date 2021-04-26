@@ -94,14 +94,14 @@ public interface TracemodelPackage extends EPackage {
 	int GENERIC_TRACE_MODEL_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.capra.generic.tracemodel.impl.RelatedToImpl <em>Related To</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.capra.generic.tracemodel.impl.TraceLinkImpl <em>Trace Link</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.capra.generic.tracemodel.impl.RelatedToImpl
-	 * @see org.eclipse.capra.generic.tracemodel.impl.TracemodelPackageImpl#getRelatedTo()
+	 * @see org.eclipse.capra.generic.tracemodel.impl.TraceLinkImpl
+	 * @see org.eclipse.capra.generic.tracemodel.impl.TracemodelPackageImpl#getTraceLink()
 	 * @generated
 	 */
-	int RELATED_TO = 1;
+	int TRACE_LINK = 1;
 
 	/**
 	 * The feature id for the '<em><b>ID</b></em>' attribute.
@@ -110,7 +110,7 @@ public interface TracemodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RELATED_TO__ID = 0;
+	int TRACE_LINK__ID = 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -119,7 +119,71 @@ public interface TracemodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RELATED_TO__NAME = 1;
+	int TRACE_LINK__NAME = 1;
+
+	/**
+	 * The feature id for the '<em><b>Confidence Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACE_LINK__CONFIDENCE_VALUE = 2;
+
+	/**
+	 * The number of structural features of the '<em>Trace Link</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACE_LINK_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Trace Link</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACE_LINK_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.capra.generic.tracemodel.impl.RelatedToImpl <em>Related To</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.capra.generic.tracemodel.impl.RelatedToImpl
+	 * @see org.eclipse.capra.generic.tracemodel.impl.TracemodelPackageImpl#getRelatedTo()
+	 * @generated
+	 */
+	int RELATED_TO = 2;
+
+	/**
+	 * The feature id for the '<em><b>ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELATED_TO__ID = TRACE_LINK__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELATED_TO__NAME = TRACE_LINK__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Confidence Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELATED_TO__CONFIDENCE_VALUE = TRACE_LINK__CONFIDENCE_VALUE;
 
 	/**
 	 * The feature id for the '<em><b>Origin</b></em>' reference.
@@ -128,7 +192,7 @@ public interface TracemodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RELATED_TO__ORIGIN = 2;
+	int RELATED_TO__ORIGIN = TRACE_LINK_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Targets</b></em>' reference list.
@@ -137,7 +201,7 @@ public interface TracemodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RELATED_TO__TARGETS = 3;
+	int RELATED_TO__TARGETS = TRACE_LINK_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Related To</em>' class.
@@ -146,7 +210,7 @@ public interface TracemodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RELATED_TO_FEATURE_COUNT = 4;
+	int RELATED_TO_FEATURE_COUNT = TRACE_LINK_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Related To</em>' class.
@@ -155,7 +219,7 @@ public interface TracemodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RELATED_TO_OPERATION_COUNT = 0;
+	int RELATED_TO_OPERATION_COUNT = TRACE_LINK_OPERATION_COUNT + 0;
 
 
 	/**
@@ -180,6 +244,49 @@ public interface TracemodelPackage extends EPackage {
 	EReference getGenericTraceModel_Traces();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.capra.generic.tracemodel.TraceLink <em>Trace Link</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Trace Link</em>'.
+	 * @see org.eclipse.capra.generic.tracemodel.TraceLink
+	 * @generated
+	 */
+	EClass getTraceLink();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.capra.generic.tracemodel.TraceLink#getID <em>ID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>ID</em>'.
+	 * @see org.eclipse.capra.generic.tracemodel.TraceLink#getID()
+	 * @see #getTraceLink()
+	 * @generated
+	 */
+	EAttribute getTraceLink_ID();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.capra.generic.tracemodel.TraceLink#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.capra.generic.tracemodel.TraceLink#getName()
+	 * @see #getTraceLink()
+	 * @generated
+	 */
+	EAttribute getTraceLink_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.capra.generic.tracemodel.TraceLink#getConfidenceValue <em>Confidence Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Confidence Value</em>'.
+	 * @see org.eclipse.capra.generic.tracemodel.TraceLink#getConfidenceValue()
+	 * @see #getTraceLink()
+	 * @generated
+	 */
+	EAttribute getTraceLink_ConfidenceValue();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.capra.generic.tracemodel.RelatedTo <em>Related To</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -188,28 +295,6 @@ public interface TracemodelPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getRelatedTo();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.capra.generic.tracemodel.RelatedTo#getID <em>ID</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>ID</em>'.
-	 * @see org.eclipse.capra.generic.tracemodel.RelatedTo#getID()
-	 * @see #getRelatedTo()
-	 * @generated
-	 */
-	EAttribute getRelatedTo_ID();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.capra.generic.tracemodel.RelatedTo#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.eclipse.capra.generic.tracemodel.RelatedTo#getName()
-	 * @see #getRelatedTo()
-	 * @generated
-	 */
-	EAttribute getRelatedTo_Name();
 
 	/**
 	 * Returns the meta object for the reference '{@link org.eclipse.capra.generic.tracemodel.RelatedTo#getOrigin <em>Origin</em>}'.
@@ -275,6 +360,40 @@ public interface TracemodelPackage extends EPackage {
 		EReference GENERIC_TRACE_MODEL__TRACES = eINSTANCE.getGenericTraceModel_Traces();
 
 		/**
+		 * The meta object literal for the '{@link org.eclipse.capra.generic.tracemodel.impl.TraceLinkImpl <em>Trace Link</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.capra.generic.tracemodel.impl.TraceLinkImpl
+		 * @see org.eclipse.capra.generic.tracemodel.impl.TracemodelPackageImpl#getTraceLink()
+		 * @generated
+		 */
+		EClass TRACE_LINK = eINSTANCE.getTraceLink();
+
+		/**
+		 * The meta object literal for the '<em><b>ID</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRACE_LINK__ID = eINSTANCE.getTraceLink_ID();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRACE_LINK__NAME = eINSTANCE.getTraceLink_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Confidence Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRACE_LINK__CONFIDENCE_VALUE = eINSTANCE.getTraceLink_ConfidenceValue();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.capra.generic.tracemodel.impl.RelatedToImpl <em>Related To</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -283,22 +402,6 @@ public interface TracemodelPackage extends EPackage {
 		 * @generated
 		 */
 		EClass RELATED_TO = eINSTANCE.getRelatedTo();
-
-		/**
-		 * The meta object literal for the '<em><b>ID</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute RELATED_TO__ID = eINSTANCE.getRelatedTo_ID();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute RELATED_TO__NAME = eINSTANCE.getRelatedTo_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Origin</b></em>' reference feature.

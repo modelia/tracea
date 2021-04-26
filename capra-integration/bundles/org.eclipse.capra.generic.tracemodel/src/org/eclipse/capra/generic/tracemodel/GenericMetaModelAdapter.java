@@ -44,6 +44,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 public class GenericMetaModelAdapter extends AbstractMetaModelAdapter implements TraceMetaModelAdapter {
 
 	private static final int DEFAULT_INITIAL_TRANSITIVITY_DEPTH = 1;
+	private static final double DEFAULT_INITIAL_CONFIDENCE_THRESHOLD = 0.5;
 
 	public GenericMetaModelAdapter() {
 		// TODO Auto-generated constructor stub
@@ -156,19 +157,21 @@ public class GenericMetaModelAdapter extends AbstractMetaModelAdapter implements
 	}
 
 	private List<Connection> getTransitivelyConnectedElements(EObject element, EObject traceModel,
-			List<Object> accumulator, int currentDepth, int maximumDepth) {
+			List<Object> accumulator, int currentDepth, int maximumDepth, double confidenceThreshold) {
 		List<Connection> directElements = getConnectedElements(element, traceModel);
 		List<Connection> allElements = new ArrayList<>();
 
 		int currDepth = currentDepth + 1;
 		for (Connection connection : directElements) {
 			if (!accumulator.contains(connection.getTlink())) {
-				allElements.add(connection);
-				accumulator.add(connection.getTlink());
-				for (EObject e : connection.getTargets()) {
-					if (maximumDepth == 0 || currDepth <= maximumDepth) {
-						allElements.addAll(
-								getTransitivelyConnectedElements(e, traceModel, accumulator, currDepth, maximumDepth));
+				if (connection.getConfidenceValue() > confidenceThreshold) {
+					allElements.add(connection);
+					accumulator.add(connection.getTlink());
+					for (EObject e : connection.getTargets()) {
+						if (maximumDepth == 0 || currDepth <= maximumDepth) {
+							allElements.addAll(getTransitivelyConnectedElements(e, traceModel, accumulator, 
+									currDepth, maximumDepth, confidenceThreshold));
+						}
 					}
 				}
 			}
@@ -177,11 +180,20 @@ public class GenericMetaModelAdapter extends AbstractMetaModelAdapter implements
 	}
 
 	@Override
-	public List<Connection> getTransitivelyConnectedElements(EObject element, EObject traceModel, int maximumDepth) {
-		List<Object> accumulator = new ArrayList<>();
-		return getTransitivelyConnectedElements(element, traceModel, accumulator, DEFAULT_INITIAL_TRANSITIVITY_DEPTH,
-				maximumDepth);
+	public List<Connection> getTransitivelyConnectedElements(EObject element, EObject traceModel, 
+			int maximumDepth) {
+		return getTransitivelyConnectedElements( element,  traceModel,	maximumDepth, 
+				DEFAULT_INITIAL_CONFIDENCE_THRESHOLD);
 	}
+	
+	@Override
+	public List<Connection> getTransitivelyConnectedElements(EObject element, EObject traceModel, 
+			int maximumDepth, double confidenceThreshold) {
+		List<Object> accumulator = new ArrayList<>();
+		return getTransitivelyConnectedElements(element, traceModel, accumulator, 
+				DEFAULT_INITIAL_TRANSITIVITY_DEPTH,	maximumDepth, confidenceThreshold);
+		
+	}	
 
 	@Override
 	public List<Connection> getAllTraceLinks(EObject traceModel) {
@@ -235,24 +247,34 @@ public class GenericMetaModelAdapter extends AbstractMetaModelAdapter implements
 	@Override
 	public List<Connection> getTransitivelyConnectedElements(EObject element, EObject traceModel,
 			List<String> traceLinkTypes, int maximumDepth) {
+		return getTransitivelyConnectedElements( element,  traceModel,
+				traceLinkTypes, maximumDepth, DEFAULT_INITIAL_CONFIDENCE_THRESHOLD);
+	}
+
+	
+	@Override
+	public List<Connection> getTransitivelyConnectedElements(EObject element, EObject traceModel,
+			List<String> traceLinkTypes, int maximumDepth, double confidenceThreshold) {
 		List<Object> accumulator = new ArrayList<>();
 		return getTransitivelyConnectedElements(element, traceModel, accumulator, traceLinkTypes,
-				DEFAULT_INITIAL_TRANSITIVITY_DEPTH, maximumDepth);
+				DEFAULT_INITIAL_TRANSITIVITY_DEPTH, maximumDepth, confidenceThreshold);
 	}
 
 	private List<Connection> getTransitivelyConnectedElements(EObject element, EObject traceModel,
-			List<Object> accumulator, List<String> traceLinkTypes, int currentDepth, int maximumDepth) {
+			List<Object> accumulator, List<String> traceLinkTypes, int currentDepth, int maximumDepth, double confidenceThreshold) {
 		List<Connection> directElements = getConnectedElements(element, traceModel, traceLinkTypes);
 		List<Connection> allElements = new ArrayList<>();
 		int currDepth = currentDepth + 1;
 		for (Connection connection : directElements) {
 			if (!accumulator.contains(connection.getTlink())) {
-				allElements.add(connection);
-				accumulator.add(connection.getTlink());
-				for (EObject e : connection.getTargets()) {
-					if (maximumDepth == 0 || currDepth <= maximumDepth) {
-						allElements.addAll(getTransitivelyConnectedElements(e, traceModel, accumulator, traceLinkTypes,
-								currDepth, maximumDepth));
+				if (connection.getConfidenceValue() > confidenceThreshold) {
+					allElements.add(connection);
+					accumulator.add(connection.getTlink());
+					for (EObject e : connection.getTargets()) {
+						if (maximumDepth == 0 || currDepth <= maximumDepth) {
+							allElements.addAll(getTransitivelyConnectedElements(e, traceModel, accumulator, 
+									traceLinkTypes, currDepth, maximumDepth, confidenceThreshold));
+						}
 					}
 				}
 			}

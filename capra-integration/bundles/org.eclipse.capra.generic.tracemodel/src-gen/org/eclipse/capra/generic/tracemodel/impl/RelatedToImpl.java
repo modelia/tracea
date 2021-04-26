@@ -16,10 +16,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,45 +27,13 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.capra.generic.tracemodel.impl.RelatedToImpl#getID <em>ID</em>}</li>
- *   <li>{@link org.eclipse.capra.generic.tracemodel.impl.RelatedToImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.capra.generic.tracemodel.impl.RelatedToImpl#getOrigin <em>Origin</em>}</li>
  *   <li>{@link org.eclipse.capra.generic.tracemodel.impl.RelatedToImpl#getTargets <em>Targets</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class RelatedToImpl extends MinimalEObjectImpl.Container implements RelatedTo {
-	/**
-	 * The default value of the '{@link #getID() <em>ID</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getID()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String ID_EDEFAULT = null;
-
-	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
-
+public class RelatedToImpl extends TraceLinkImpl implements RelatedTo {
 	/**
 	 * The cached value of the '{@link #getOrigin() <em>Origin</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -105,36 +71,6 @@ public class RelatedToImpl extends MinimalEObjectImpl.Container implements Relat
 	@Override
 	protected EClass eStaticClass() {
 		return TracemodelPackage.Literals.RELATED_TO;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getID() {
-		return EcoreUtil.generateUUID();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TracemodelPackage.RELATED_TO__NAME, oldName, name));
 	}
 
 	/**
@@ -195,10 +131,6 @@ public class RelatedToImpl extends MinimalEObjectImpl.Container implements Relat
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case TracemodelPackage.RELATED_TO__ID:
-				return getID();
-			case TracemodelPackage.RELATED_TO__NAME:
-				return getName();
 			case TracemodelPackage.RELATED_TO__ORIGIN:
 				if (resolve) return getOrigin();
 				return basicGetOrigin();
@@ -217,9 +149,6 @@ public class RelatedToImpl extends MinimalEObjectImpl.Container implements Relat
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case TracemodelPackage.RELATED_TO__NAME:
-				setName((String)newValue);
-				return;
 			case TracemodelPackage.RELATED_TO__ORIGIN:
 				setOrigin((EObject)newValue);
 				return;
@@ -239,9 +168,6 @@ public class RelatedToImpl extends MinimalEObjectImpl.Container implements Relat
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case TracemodelPackage.RELATED_TO__NAME:
-				setName(NAME_EDEFAULT);
-				return;
 			case TracemodelPackage.RELATED_TO__ORIGIN:
 				setOrigin((EObject)null);
 				return;
@@ -260,32 +186,12 @@ public class RelatedToImpl extends MinimalEObjectImpl.Container implements Relat
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case TracemodelPackage.RELATED_TO__ID:
-				return ID_EDEFAULT == null ? getID() != null : !ID_EDEFAULT.equals(getID());
-			case TracemodelPackage.RELATED_TO__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case TracemodelPackage.RELATED_TO__ORIGIN:
 				return origin != null;
 			case TracemodelPackage.RELATED_TO__TARGETS:
 				return targets != null && !targets.isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(')');
-		return result.toString();
 	}
 
 } //RelatedToImpl

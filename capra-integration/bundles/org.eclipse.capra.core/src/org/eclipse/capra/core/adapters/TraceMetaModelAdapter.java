@@ -157,6 +157,31 @@ public interface TraceMetaModelAdapter {
 	 */
 	List<Connection> getTransitivelyConnectedElements(EObject element, EObject traceModel, int transitivityDepth);
 
+	
+	/**
+	 * Determine a list of all objects transitively connected to {@code element}
+	 * according to the given trace model.
+	 * <p>
+	 * This means that if a trace model contains a link A->B and a link B->C, this
+	 * method will return the two connections representing this link if
+	 * {@code transitivityDepth} is either 0 or greater than 1. If the trace model
+	 * does not contain any transitive links of this sort or the
+	 * {@code transitivityDepth} is set to 1, this method should behave exactly like
+	 * {@link #getConnectedElements(EObject, EObject, List)}.
+	 * 
+	 * @param element           The element used to determine the list of connected
+	 *                          objects. Note that this element could be a trace in
+	 *                          the trace model.
+	 * @param traceModel        Trace model to base calculation on
+	 * @param transitivityDepth The maximum depth of the transitive closure.
+	 *                          {@code 0} means that no limit is applied.
+	 * @param confidenceThreshold Minimum confidence value to constraint calculation on
+	 * @return a list of {@link Connection}s from the provided {@code traceModel}
+	 *         that contain {@code element} as one of their origins or a
+	 *         representation of {@code element} if {@code element} is a trace link
+	 */
+	List<Connection> getTransitivelyConnectedElements(EObject element, EObject traceModel, int transitivityDepth, double confidenceThreshold);
+
 	/**
 	 * Determine a list of all objects transitively connected to {@code element}
 	 * according to the given trace model based on the provided list of trace link
@@ -177,6 +202,28 @@ public interface TraceMetaModelAdapter {
 	 */
 	List<Connection> getTransitivelyConnectedElements(EObject element, EObject traceModel, List<String> traceLinkTypes,
 			int transitivityDepth);
+
+	/**
+	 * Determine a list of all objects transitively connected to {@code element}
+	 * according to the given trace model based on the provided list of trace link
+	 * types. If {@code selectedRelationshipTypes} is empty or {@code null}, this
+	 * method behaves exactly like
+	 * {@link #getTransitivelyConnectedElements(EObject, EObject, int)}.
+	 * 
+	 * @param element           the element used to determine the list of connected
+	 *                          objects.
+	 * @param traceModel        trace model to base calculation on
+	 * @param traceLinkTypes    a list of permissible trace link types (may be
+	 *                          {@code null} or empty)
+	 * @param transitivityDepth The maximum depth of the transitive closure.
+	 *                          {@code 0} means that no limit is applied.
+	 * @param confidenceThreshold Minimum confidence value to constraint calculation on
+	 * @return a list of {@link Connection}s from the provided {@code traceModel}
+	 *         that contain {@code element} as one of their origins or a
+	 *         representation of {@code element} if {@code element} is a trace link
+	 */
+	List<Connection> getTransitivelyConnectedElements(EObject element, EObject traceModel, List<String> traceLinkTypes,
+			int transitivityDepth, double confidenceThreshold);
 
 	/**
 	 * Given a trace model, this method returns a list of all trace links in the

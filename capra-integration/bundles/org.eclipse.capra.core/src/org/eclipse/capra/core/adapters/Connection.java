@@ -28,6 +28,15 @@ import org.eclipse.emf.ecore.EObject;
  * @author Anthony Anjorin, Salome Maro
  */
 public class Connection {
+	/** Default confidence. in the absence of specification confidence is 100%, or 1.0.	 */
+	public static final double DEFAULT_CONFIDENCE = 1.0;
+	
+	/** Name of the reference leading to Confidence class from RelatedTo trace link.	 */
+	public static final String TLINK_REFERENCE_CONFIDENCE = "confidence";
+	
+	/** Name of the attribute leading to Confidence.value from RelatedTo trace link.	 */
+	public static final String CONFIDENCE_ATTRIBUTE_VALUE = "value";
+
 	private List<EObject> origins;
 	private List<EObject> targets;
 	private EObject tlink;
@@ -72,6 +81,16 @@ public class Connection {
 	 */
 	public EObject getTlink() {
 		return tlink;
+	}
+
+	/**
+	 * Gets the underlying trace link from the trace model.
+	 * @return the confidence value of the trace link which this {@code Connection} instance represents
+	 */
+	public double getConfidenceValue() {
+		if(tlink == null)
+			return DEFAULT_CONFIDENCE;
+		return EMFHelper.getConfidenceValue(tlink);
 	}
 
 	@Override
