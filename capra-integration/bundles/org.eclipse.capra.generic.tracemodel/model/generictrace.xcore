@@ -1,66 +1,15 @@
 package org.eclipse.capra.generic.tracemodel
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.util.EcoreUtil
 
 class GenericTraceModel{
 	contains RelatedTo[0..*] traces
 } 
 
-abstract class TracingElement {
-	String ID 	
-	String timestamp 
-	
-	contains Agent [0..*] agents
-}
-
-
-class RelatedTo extends TracingElement {
+class RelatedTo {
+	derived String ID get {
+			EcoreUtil.generateUUID();
+	}
 	String name
-	refers EObject [1] origin
-	refers EObject [1..*] targets 
-	
-	contains Confidence [0..1] confidence
+	refers EObject [0..*] item 
 }    
-
-class DomainLink extends RelatedTo {}
-class EngineeringLink extends RelatedTo {}
-
-
-abstract class Agent extends TracingElement {
-	String name
-}
-
-class HumanAgent extends Agent {
-	String role
-}
-class MachineAgent extends Agent {
-	String machineType
-}
-
-
-class Confidence extends TracingElement {
-	contains Evidence [0..1] evidence
-	double value
-}
-
-
-abstract class Evidence  extends TracingElement {
-	String description
-	refers TracingElement [0..*] supportingElements
-}
-
-class AIEvidence extends Evidence {
-	String algorithm
-	String dataSet
-	int executionDate
-	double precision
-	double recall
-}
-
-class RuleEvidence extends Evidence {
-	String rule
-	int executionDate
-}
-
-class AnnotationEvidence extends Evidence {
-	String explanation
-}

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2021 Chalmers | University of Gothenburg, rt-labs and others.
+ * Copyright (c) 2016, 2019 Chalmers | University of Gothenburg, rt-labs and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
@@ -18,15 +18,12 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 
 /**
  * Contains methods to work with {@link EObject} instances encountered when
  * handling EMF models.
  */
 public class EMFHelper {
-
-	private static final double DEFAULT_CONFIDENCE = 1.0;
 
 	private EMFHelper() {
 		super();
@@ -60,9 +57,12 @@ public class EMFHelper {
 		List<EAttribute> attributes = eObject.eClass().getEAllAttributes();
 		StringBuilder identifier = new StringBuilder();
 
-		success = tryGetNameAttribute(eObject, identifier);
+		success = tryGetSingleAttribute(eObject, attributes, identifier);
 
-		// We didn't find a name. Try finding something else that we can use.
+		if (!success) {
+			success = tryGetNameAttribute(eObject, attributes, identifier);
+		}
+
 		if (!success) {
 			success = tryGetAnyAttribute(eObject, attributes, identifier);
 		}
@@ -77,90 +77,77 @@ public class EMFHelper {
 	}
 
 	/**
-	 * Tries to retrieve a {@code String} representation of the provided
-	 * {@code EAttribute} for the provided {@code EObject}. If the attribute is
-	 * {@code null}, it is not a valid attribute of the given {@code EObject} or the
-	 * value of the attribute is {@code} null, this method will return {@code false}
-	 * and the provided {@code StringBuilder} will not be altered.
-	 * 
-	 * @param builder {@code StringBuilder} to construct the String representation
-	 *                of the provided {@code EAttribute}. If this method returns
-	 *                {@code true}, this parameter has been changed, if it returns
-	 *                {@code false}, the {@code StringBuilder} is unaltered.
-	 * @return indicates the success of this function and if the
-	 *         {@code StringBuilder} contains output.
+	 * @param name Use an empty StringBuilder as input. If this function returns
+	 *             true, this parameter has been filled, if it returns false,
+	 *             nothing happened.
+	 * @return Indicates the success of this function and if the last parameter
+	 *         contains output.
 	 */
-	public static boolean tryGetAttribute(final EObject eObject, final EAttribute attribute, final StringBuilder name) {
+	public static boolean tryGetSingleAttribute(final EObject eObject, final List<EAttribute> attributes,
+			final StringBuilder name) {
 		boolean success = false;
-		if (attribute != null) {
-			try {
-				Object obj = eObject.eGet(attribute);
+		if (attributes.size() == 1) {
+			Object obj = eObject.eGet(attributes.get(0));
+			if (obj != null) {
+				name.append(obj.toString());
+				success = true;
+			}
+		}
+		return success;
+	}
+
+	/**
+	 * @param name Use an empty StringBuilder as input. If this function returns
+	 *             true, this parameter has been filled, if it returns false,
+	 *             nothing happened.
+	 * @return Indicates the success of this function and if the last parameter
+	 *         contains output.
+	 */
+	public static boolean tryGetNameAttribute(final EObject eObject, final List<EAttribute> attributes,
+			final StringBuilder name) {
+		boolean success = false;
+		for (EAttribute feature : attributes) {
+			if (feature.getName().equals("name")) {
+				Object obj = eObject.eGet(feature);
 				if (obj != null) {
 					name.append(obj.toString());
 					success = true;
+					break;
 				}
-			} catch (IllegalArgumentException ex) {
-				// Deliberately do nothing.
-				// This can happen if the provided attribute is not an attribute of the eObject.
-				// In this case, we just want the method to return false, which it does if we
-				// just hold our feet still.
 			}
 		}
 		return success;
 	}
 
 	/**
-	 * Tries to retrieve a String representation of the attribute "name" from the
-	 * provided {@code EObject}.
-	 * 
-	 * @param builder {@code StringBuilder} to construct the String representation
-	 *                of the {@code EObject}'s "name" attribute. If this function
-	 *                returns {@code true}, this parameter has been filled, if it
-	 *                returns {@code false}, the {@code StringBuilder} is unaltered.
-	 * @return indicates the success of this function and if the
-	 *         {@code StringBuilder} contains output.
-	 * @see #tryGetAttribute(EObject, EAttribute, StringBuilder)
-	 */
-	public static boolean tryGetNameAttribute(final EObject eObject, final StringBuilder builder) {
-		boolean success = false;
-		for (EAttribute attribute : eObject.eClass().getEAllAttributes()) {
-			if (attribute.getName().equals("name")) {
-				success = tryGetAttribute(eObject, attribute, builder);
-			}
-		}
-		return success;
-	}
-
-	/**
-	 * Attempts to retrieve a {@code String} representation of any of the given
-	 * attributes. For that purpose, it iterates over all attributes until it finds
-	 * one which is not null and non-empty. It then adds the String representation
-	 * of that attribute's value to the provided {@code StringBuilder} and returns
-	 * {@code true}.
-	 * 
-	 * @param builder {@code StringBuilder} to construct the String representation
-	 *                of the first non-null, non-empty attribute. If this function
-	 *                returns {@code true}, this parameter has been filled, if it
-	 *                returns {@code false}, the {@code StringBuilder} is unaltered.
-	 * @return indicates the success of this function and if the
-	 *         {@code StringBuilder} contains output.
+	 * @param name Use an empty StringBuilder as input. If this function returns
+	 *             true, this parameter has been filled, if it returns false,
+	 *             nothing happened.
+	 * @return Indicates the success of this function and if the last parameter
+	 *         contains output.
 	 */
 	public static boolean tryGetAnyAttribute(final EObject eObject, final List<EAttribute> attributes,
 			final StringBuilder name) {
 		boolean success = false;
-		String stringName = "";
+		String nonStringName = null;
+		String stringName = null;
 		for (EAttribute feature : attributes) {
 			Object obj = eObject.eGet(feature);
+			if (obj == null)
+				continue;
 			if (obj instanceof String) {
 				stringName = (String) obj;
-			} else if (obj != null) {
-				stringName = obj.toString();
-			}
-			if (stringName != null && !stringName.equals("null")) {
-				name.append(stringName);
-				success = true;
 				break;
+			} else {
+				nonStringName = obj.toString();
 			}
+		}
+		if (stringName != null && !stringName.equals("null")) {
+			name.append(stringName);
+			success = true;
+		} else if (nonStringName != null && !nonStringName.equals("null")) {
+			name.append(nonStringName);
+			success = true;
 		}
 		return success;
 	}
@@ -176,11 +163,11 @@ public class EMFHelper {
 	 *         {@link EObject}
 	 */
 	public static List<EObject> linearize(Object object) {
-		ArrayList<EObject> elementList = new ArrayList<>();
+		ArrayList<EObject> elementList = new ArrayList<EObject>();
 		if (object instanceof EObject) {
 			EObject root = (EObject) object;
 			elementList.add(root);
-			root.eAllContents().forEachRemaining(elementList::add);
+			root.eAllContents().forEachRemaining(element -> elementList.add(element));
 		}
 		return elementList;
 	}
@@ -192,9 +179,16 @@ public class EMFHelper {
 	 * @return String
 	 */
 	public static String getNameAttribute(final EObject eObject) {
-		StringBuilder name = new StringBuilder();
-		tryGetNameAttribute(eObject, name);
-		return name.toString();
+		String name = "";
+		for (EAttribute feature : eObject.eClass().getEAllAttributes()) {
+			if (feature.getName().equals("name")) {
+				Object obj = eObject.eGet(feature);
+				if (obj != null) {
+					name = obj.toString();
+				}
+			}
+		}
+		return name;
 	}
 
 	/**
@@ -227,61 +221,4 @@ public class EMFHelper {
 		}
 		return false;
 	}
-
-	
-	
-	/**
-	 * Public API access for other classes to get the confidence value of a tlink (from {@code Coennection)}
-	 * 
-	 * @param tlink
-	 * @return double confidence value
-	 */
-	public static double getConfidenceValue(EObject tlink) {
-		EObject confidenceEO = null;
-		try {
-			EStructuralFeature esfConfidence = getEStructuralFeatureByName(tlink, "confidence");
-			confidenceEO = (EObject)tlink.eGet(esfConfidence);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		if(confidenceEO == null)
-			return DEFAULT_CONFIDENCE;
-		
-		EStructuralFeature esfValue = getEStructuralFeatureByName(confidenceEO, "value");
-		return (double)confidenceEO.eGet(esfValue);
-	}
-
-	/**
-	 * Gets the structural feature corresponding to the name in parameter
-	 * @param eo
-	 * @param esfName
-	 * @return ESTrcturalFeature corresponding to esfName in eo.EClass.
-	 */
-	public static EStructuralFeature getEStructuralFeatureByName(EObject eo, String esfName) {
-		for (EStructuralFeature	esf : eo.eClass().getEAllStructuralFeatures()) {
-			if(esf.getName().equals(esfName)) {
-				return esf;
-			}
-		}
-		return null;
-	}
-	
-	
-	/**
-	 * Gets the name of an EObject (or its ID if there is no name attribute).
-	 * This method shoul only be used for debug and/or log tasks.
-	 * @param eobject
-	 * @return The name (or ID) of the eobject
-	 */
-	public static String getName(EObject eobject) {
-		EStructuralFeature eo = null;
-		if( (eo = getEStructuralFeatureByName(eobject, "name")) != null)
-			return (String)eobject.eGet(eo);
-		else if ( (eo = getEStructuralFeatureByName(eobject, "ID")) != null)
-			return (String)eobject.eGet(eo);
-		else return "NO_NAME";
-	}
-
 }
-	
