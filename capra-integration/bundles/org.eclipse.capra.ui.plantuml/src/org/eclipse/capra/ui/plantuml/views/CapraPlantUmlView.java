@@ -28,6 +28,8 @@ import net.sourceforge.plantuml.eclipse.views.PlantUmlView;
  */
 public class CapraPlantUmlView extends PlantUmlView {
 
+	private static double CONFIDENCE_THRESHOLD = 0.5;
+
 	private static final String COMMANDS_TOGGLE_STATE = "org.eclipse.ui.commands.toggleState";
 
 	@Override
@@ -51,4 +53,12 @@ public class CapraPlantUmlView extends PlantUmlView {
 		}
 
 	}
+	
+	public static void setConfidenceThreshold(double value) {
+		CONFIDENCE_THRESHOLD = value;
+	}
+	public static double getConfidenceThreshold() {
+		return CONFIDENCE_THRESHOLD;
+	}
+
 }

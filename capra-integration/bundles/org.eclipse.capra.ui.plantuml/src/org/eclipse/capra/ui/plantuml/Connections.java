@@ -123,14 +123,17 @@ public class Connections {
 		connections.forEach(c -> {
 			c.getOrigins().forEach(org -> {
 				c.getTargets().forEach(trg -> {
-					arrows.add(object2Id.get(EMFHelper.getIdentifier(org)) + "--"
-							+ object2Id.get(EMFHelper.getIdentifier(trg)) + ": "
-							+ EMFHelper.getIdentifier(c.getTlink()));
+					arrows.add(nameArrow(c, org, trg));
 				});
 			});
 		});
 
 		return arrows.stream().collect(Collectors.toList());
+	}
+	private String nameArrow(Connection c, EObject org, EObject trg) {
+		return object2Id.get(EMFHelper.getIdentifier(org)) + "--" 
+	+ object2Id.get(EMFHelper.getIdentifier(trg)) + ": "+"("+c.getConfidenceValue()+")"
+				+ EMFHelper.getIdentifier(c.getTlink());
 	}
 
 }
