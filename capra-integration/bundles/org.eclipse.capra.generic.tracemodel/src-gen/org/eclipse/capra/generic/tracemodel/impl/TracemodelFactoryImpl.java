@@ -58,6 +58,12 @@ public class TracemodelFactoryImpl extends EFactoryImpl implements TracemodelFac
 		switch (eClass.getClassifierID()) {
 			case TracemodelPackage.GENERIC_TRACE_MODEL: return createGenericTraceModel();
 			case TracemodelPackage.RELATED_TO: return createRelatedTo();
+			case TracemodelPackage.HUMAN_AGENT: return createHumanAgent();
+			case TracemodelPackage.MACHINE_AGENT: return createMachineAgent();
+			case TracemodelPackage.CONFIDENCE: return createConfidence();
+			case TracemodelPackage.AI_EVIDENCE: return createAIEvidence();
+			case TracemodelPackage.RULE_EVIDENCE: return createRuleEvidence();
+			case TracemodelPackage.ANNOTATION_EVIDENCE: return createAnnotationEvidence();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -81,6 +87,66 @@ public class TracemodelFactoryImpl extends EFactoryImpl implements TracemodelFac
 	public RelatedTo createRelatedTo() {
 		RelatedToImpl relatedTo = new RelatedToImpl();
 		return relatedTo;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public HumanAgent createHumanAgent() {
+		HumanAgentImpl humanAgent = new HumanAgentImpl();
+		return humanAgent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MachineAgent createMachineAgent() {
+		MachineAgentImpl machineAgent = new MachineAgentImpl();
+		return machineAgent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Confidence createConfidence() {
+		ConfidenceImpl confidence = new ConfidenceImpl();
+		return confidence;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AIEvidence createAIEvidence() {
+		AIEvidenceImpl aiEvidence = new AIEvidenceImpl();
+		return aiEvidence;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RuleEvidence createRuleEvidence() {
+		RuleEvidenceImpl ruleEvidence = new RuleEvidenceImpl();
+		return ruleEvidence;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AnnotationEvidence createAnnotationEvidence() {
+		AnnotationEvidenceImpl annotationEvidence = new AnnotationEvidenceImpl();
+		return annotationEvidence;
 	}
 
 	/**

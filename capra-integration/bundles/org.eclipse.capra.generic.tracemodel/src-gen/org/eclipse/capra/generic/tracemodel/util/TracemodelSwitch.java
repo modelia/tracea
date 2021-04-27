@@ -72,9 +72,16 @@ public class TracemodelSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case TracemodelPackage.TRACING_ELEMENT: {
+				TracingElement tracingElement = (TracingElement)theEObject;
+				T result = caseTracingElement(tracingElement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case TracemodelPackage.TRACE_LINK: {
 				TraceLink traceLink = (TraceLink)theEObject;
 				T result = caseTraceLink(traceLink);
+				if (result == null) result = caseTracingElement(traceLink);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -82,6 +89,68 @@ public class TracemodelSwitch<T> extends Switch<T> {
 				RelatedTo relatedTo = (RelatedTo)theEObject;
 				T result = caseRelatedTo(relatedTo);
 				if (result == null) result = caseTraceLink(relatedTo);
+				if (result == null) result = caseTracingElement(relatedTo);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TracemodelPackage.AGENT: {
+				Agent agent = (Agent)theEObject;
+				T result = caseAgent(agent);
+				if (result == null) result = caseTracingElement(agent);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TracemodelPackage.HUMAN_AGENT: {
+				HumanAgent humanAgent = (HumanAgent)theEObject;
+				T result = caseHumanAgent(humanAgent);
+				if (result == null) result = caseAgent(humanAgent);
+				if (result == null) result = caseTracingElement(humanAgent);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TracemodelPackage.MACHINE_AGENT: {
+				MachineAgent machineAgent = (MachineAgent)theEObject;
+				T result = caseMachineAgent(machineAgent);
+				if (result == null) result = caseAgent(machineAgent);
+				if (result == null) result = caseTracingElement(machineAgent);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TracemodelPackage.CONFIDENCE: {
+				Confidence confidence = (Confidence)theEObject;
+				T result = caseConfidence(confidence);
+				if (result == null) result = caseTracingElement(confidence);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TracemodelPackage.EVIDENCE: {
+				Evidence evidence = (Evidence)theEObject;
+				T result = caseEvidence(evidence);
+				if (result == null) result = caseTracingElement(evidence);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TracemodelPackage.AI_EVIDENCE: {
+				AIEvidence aiEvidence = (AIEvidence)theEObject;
+				T result = caseAIEvidence(aiEvidence);
+				if (result == null) result = caseEvidence(aiEvidence);
+				if (result == null) result = caseTracingElement(aiEvidence);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TracemodelPackage.RULE_EVIDENCE: {
+				RuleEvidence ruleEvidence = (RuleEvidence)theEObject;
+				T result = caseRuleEvidence(ruleEvidence);
+				if (result == null) result = caseEvidence(ruleEvidence);
+				if (result == null) result = caseTracingElement(ruleEvidence);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TracemodelPackage.ANNOTATION_EVIDENCE: {
+				AnnotationEvidence annotationEvidence = (AnnotationEvidence)theEObject;
+				T result = caseAnnotationEvidence(annotationEvidence);
+				if (result == null) result = caseEvidence(annotationEvidence);
+				if (result == null) result = caseTracingElement(annotationEvidence);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -101,6 +170,21 @@ public class TracemodelSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseGenericTraceModel(GenericTraceModel object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Tracing Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Tracing Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTracingElement(TracingElement object) {
 		return null;
 	}
 
@@ -131,6 +215,126 @@ public class TracemodelSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseRelatedTo(RelatedTo object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Agent</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Agent</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAgent(Agent object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Human Agent</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Human Agent</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseHumanAgent(HumanAgent object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Machine Agent</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Machine Agent</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMachineAgent(MachineAgent object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Confidence</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Confidence</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConfidence(Confidence object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Evidence</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Evidence</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEvidence(Evidence object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>AI Evidence</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>AI Evidence</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAIEvidence(AIEvidence object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Rule Evidence</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Rule Evidence</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRuleEvidence(RuleEvidence object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Annotation Evidence</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Annotation Evidence</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAnnotationEvidence(AnnotationEvidence object) {
 		return null;
 	}
 

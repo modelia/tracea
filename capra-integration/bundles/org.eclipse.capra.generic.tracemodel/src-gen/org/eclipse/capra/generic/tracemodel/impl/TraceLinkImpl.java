@@ -2,17 +2,17 @@
  */
 package org.eclipse.capra.generic.tracemodel.impl;
 
+import org.eclipse.capra.generic.tracemodel.Confidence;
 import org.eclipse.capra.generic.tracemodel.TraceLink;
 import org.eclipse.capra.generic.tracemodel.TracemodelPackage;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,24 +22,14 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.capra.generic.tracemodel.impl.TraceLinkImpl#getID <em>ID</em>}</li>
  *   <li>{@link org.eclipse.capra.generic.tracemodel.impl.TraceLinkImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.capra.generic.tracemodel.impl.TraceLinkImpl#getConfidenceValue <em>Confidence Value</em>}</li>
+ *   <li>{@link org.eclipse.capra.generic.tracemodel.impl.TraceLinkImpl#getConfidence <em>Confidence</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class TraceLinkImpl extends MinimalEObjectImpl.Container implements TraceLink {
-	/**
-	 * The default value of the '{@link #getID() <em>ID</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getID()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String ID_EDEFAULT = null;
-
+public abstract class TraceLinkImpl extends TracingElementImpl implements TraceLink {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -71,14 +61,14 @@ public abstract class TraceLinkImpl extends MinimalEObjectImpl.Container impleme
 	protected static final double CONFIDENCE_VALUE_EDEFAULT = 0.0;
 
 	/**
-	 * The cached value of the '{@link #getConfidenceValue() <em>Confidence Value</em>}' attribute.
+	 * The cached value of the '{@link #getConfidence() <em>Confidence</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getConfidenceValue()
+	 * @see #getConfidence()
 	 * @generated
 	 * @ordered
 	 */
-	protected double confidenceValue = CONFIDENCE_VALUE_EDEFAULT;
+	protected Confidence confidence;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -97,15 +87,6 @@ public abstract class TraceLinkImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	protected EClass eStaticClass() {
 		return TracemodelPackage.Literals.TRACE_LINK;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getID() {
-		return EcoreUtil.generateUUID();
 	}
 
 	/**
@@ -135,7 +116,14 @@ public abstract class TraceLinkImpl extends MinimalEObjectImpl.Container impleme
 	 * @generated
 	 */
 	public double getConfidenceValue() {
-		return confidenceValue;
+		Confidence _confidence = this.getConfidence();
+		boolean _tripleNotEquals = (_confidence != null);
+		if (_tripleNotEquals) {
+			return this.getConfidence().getValue();
+		}
+		else {
+			return 1.0;
+		}
 	}
 
 	/**
@@ -143,11 +131,56 @@ public abstract class TraceLinkImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setConfidenceValue(double newConfidenceValue) {
-		double oldConfidenceValue = confidenceValue;
-		confidenceValue = newConfidenceValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TracemodelPackage.TRACE_LINK__CONFIDENCE_VALUE, oldConfidenceValue, confidenceValue));
+	public Confidence getConfidence() {
+		return confidence;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetConfidence(Confidence newConfidence, NotificationChain msgs) {
+		Confidence oldConfidence = confidence;
+		confidence = newConfidence;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TracemodelPackage.TRACE_LINK__CONFIDENCE, oldConfidence, newConfidence);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setConfidence(Confidence newConfidence) {
+		if (newConfidence != confidence) {
+			NotificationChain msgs = null;
+			if (confidence != null)
+				msgs = ((InternalEObject)confidence).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TracemodelPackage.TRACE_LINK__CONFIDENCE, null, msgs);
+			if (newConfidence != null)
+				msgs = ((InternalEObject)newConfidence).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TracemodelPackage.TRACE_LINK__CONFIDENCE, null, msgs);
+			msgs = basicSetConfidence(newConfidence, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TracemodelPackage.TRACE_LINK__CONFIDENCE, newConfidence, newConfidence));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case TracemodelPackage.TRACE_LINK__CONFIDENCE:
+				return basicSetConfidence(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -158,12 +191,12 @@ public abstract class TraceLinkImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case TracemodelPackage.TRACE_LINK__ID:
-				return getID();
 			case TracemodelPackage.TRACE_LINK__NAME:
 				return getName();
 			case TracemodelPackage.TRACE_LINK__CONFIDENCE_VALUE:
 				return getConfidenceValue();
+			case TracemodelPackage.TRACE_LINK__CONFIDENCE:
+				return getConfidence();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -179,8 +212,8 @@ public abstract class TraceLinkImpl extends MinimalEObjectImpl.Container impleme
 			case TracemodelPackage.TRACE_LINK__NAME:
 				setName((String)newValue);
 				return;
-			case TracemodelPackage.TRACE_LINK__CONFIDENCE_VALUE:
-				setConfidenceValue((Double)newValue);
+			case TracemodelPackage.TRACE_LINK__CONFIDENCE:
+				setConfidence((Confidence)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -197,8 +230,8 @@ public abstract class TraceLinkImpl extends MinimalEObjectImpl.Container impleme
 			case TracemodelPackage.TRACE_LINK__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case TracemodelPackage.TRACE_LINK__CONFIDENCE_VALUE:
-				setConfidenceValue(CONFIDENCE_VALUE_EDEFAULT);
+			case TracemodelPackage.TRACE_LINK__CONFIDENCE:
+				setConfidence((Confidence)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -212,12 +245,12 @@ public abstract class TraceLinkImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case TracemodelPackage.TRACE_LINK__ID:
-				return ID_EDEFAULT == null ? getID() != null : !ID_EDEFAULT.equals(getID());
 			case TracemodelPackage.TRACE_LINK__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case TracemodelPackage.TRACE_LINK__CONFIDENCE_VALUE:
-				return confidenceValue != CONFIDENCE_VALUE_EDEFAULT;
+				return getConfidenceValue() != CONFIDENCE_VALUE_EDEFAULT;
+			case TracemodelPackage.TRACE_LINK__CONFIDENCE:
+				return confidence != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -234,8 +267,6 @@ public abstract class TraceLinkImpl extends MinimalEObjectImpl.Container impleme
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
-		result.append(", confidenceValue: ");
-		result.append(confidenceValue);
 		result.append(')');
 		return result.toString();
 	}
