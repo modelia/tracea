@@ -122,6 +122,9 @@ public class TraceabilityMatrixView extends ViewPart {
 
 	private static final String SAME_LABEL = "SAME"; // When column header and row header are the same
 	private static final String LINK_LABEL = "LINKED"; // When there is a link between
+	public static final String LINK_UNCERTAIN_LABEL = "LINK_UNCERTAIN"; // When there is a link between
+	
+	private static double CONFIDENCE_THRESHOLD = 0.5;
 
 	private NatTable traceMatrixTable;
 	private Action deleteLinkAction;
@@ -194,6 +197,11 @@ public class TraceabilityMatrixView extends ViewPart {
 			configRegistry.registerConfigAttribute(CellConfigAttributes.CELL_STYLE, cellStyle, DisplayMode.NORMAL,
 					LINK_LABEL);
 
+			// Green background for cells where there is a link with confidence under threshold.
+			cellStyle = new Style();
+			cellStyle.setAttributeValue(CellStyleAttributes.BACKGROUND_COLOR, GUIHelper.COLOR_RED);
+			configRegistry.registerConfigAttribute(CellConfigAttributes.CELL_STYLE, cellStyle, DisplayMode.NORMAL,	LINK_UNCERTAIN_LABEL);
+
 			// Style that is applied when cells are hovered
 			Style style = new Style();
 			style.setAttributeValue(CellStyleAttributes.BACKGROUND_COLOR, GUIHelper.COLOR_YELLOW);
@@ -247,11 +255,20 @@ public class TraceabilityMatrixView extends ViewPart {
 			} else {
 				String cellText = (String) bodyDataProvider.getDataValue(columnIndex, rowIndex);
 				if (!cellText.equals("")) {
-					configLabels.addLabel(LINK_LABEL);
+					Connection eoCell = bodyDataProvider.getCellConnection(columnIndex, rowIndex);
+					configLabels.addLabel(isDataValueUncertain(eoCell));
 				}
 			}
 		}
 	};
+
+	private static String isDataValueUncertain(Connection dataValueConnection) {
+		double confidence = dataValueConnection.getConfidenceValue();
+		if(confidence > CONFIDENCE_THRESHOLD)
+			return LINK_LABEL;
+		else
+			return LINK_UNCERTAIN_LABEL;
+	}
 
 	@Override
 	public void createPartControl(Composite parent) {
@@ -288,7 +305,7 @@ public class TraceabilityMatrixView extends ViewPart {
 	 * Also layouts the parent to make sure the table is displayed correctly.
 	 */
 	@SuppressWarnings("unchecked")
-	protected void updateTraceabilityMatrix() {
+	public void updateTraceabilityMatrix() {
 		EObject selectedObject;
 		List<Connection> traces = new ArrayList<>();
 
@@ -587,4 +604,13 @@ public class TraceabilityMatrixView extends ViewPart {
 			return this.selectionLayer;
 		}
 	}
+	
+	public static void setConfidenceThreshold(double value) {
+		CONFIDENCE_THRESHOLD = value;
+	}
+	public static double getConfidenceThreshold() {
+		return CONFIDENCE_THRESHOLD;
+	}
+
+
 }
