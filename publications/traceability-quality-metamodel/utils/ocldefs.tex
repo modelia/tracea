@@ -1,0 +1,94 @@
+% --------------------------------------------------------------------
+% OCL definitions for LaTeX
+% --------------------------------------------------------------------
+
+% --------------------------------------------------------------------
+% Package used by the OCL definitions
+% --------------------------------------------------------------------
+%\usepackage{fancybox}
+
+% --------------------------------------------------------------------
+% Text styles
+% --------------------------------------------------------------------
+
+% Style for OCL constraints
+%\newcommand{\OCLtext}{\sf}
+\newcommand{\OCLtext}{}{\tt}
+
+% Specific style for OCL keywords
+%\newcommand{\OCLkeyword}[1]{{\OCLtext \textbf{#1}}}
+\newcommand{\OCLkeyword}[1]{{\OCLtext #1}}
+% Specific style for OCL comments
+\newcommand{\OCLtextcomment}[1]{ {\OCLtext \emph{#1}} }
+
+% --------------------------------------------------------------------
+% Environments for OCL constraints
+% --------------------------------------------------------------------
+
+% Box-less OCL environment
+\newenvironment{ocl}[1][\linewidth]%
+  {\begin{minipage}{#1} \OCLtext }%
+  {\end{minipage}}
+% Boxed OCL environment  
+\newenvironment{ocl-boxed}[1][\linewidth]%
+  {\begin{Sbox}\begin{minipage}{#1} \OCLtext }%
+  {\end{minipage}\end{Sbox}{\setlength\fboxsep{7pt}\cornersize{0.3}\ovalbox{\TheSbox}}}
+
+% --------------------------------------------------------------------
+% OCL language elements
+% --------------------------------------------------------------------
+
+% Keywords
+% body, init, derive are not keywords according to the spec (?)
+\newcommand{\OCLand}{\OCLkeyword{and}}
+\newcommand{\OCLattr}{\OCLkeyword{attr}}
+\newcommand{\OCLbody}{\OCLkeyword{body}}
+\newcommand{\OCLcontext}{\OCLkeyword{\textbf{context}}}
+\newcommand{\OCLdef}{\OCLkeyword{def}}
+\newcommand{\OCLderive}{\OCLkeyword{derive}}
+\newcommand{\OCLelse}{\OCLkeyword{else}}
+\newcommand{\OCLendif}{\OCLkeyword{endif}}
+\newcommand{\OCLendpackage}{\OCLkeyword{endpackage}}
+\newcommand{\OCLif}{\OCLkeyword{if}}
+\newcommand{\OCLimplies}{\OCLkeyword{implies}}
+\newcommand{\OCLin}{\OCLkeyword{in}}
+\newcommand{\OCLinit}{\OCLkeyword{init}}
+\newcommand{\OCLinv}{\OCLkeyword{\textbf{inv}}}
+\newcommand{\OCLlet}{\OCLkeyword{let}}
+\newcommand{\OCLnot}{\OCLkeyword{not}}
+\newcommand{\OCLoper}{\OCLkeyword{oper}}
+\newcommand{\OCLor}{\OCLkeyword{or}}
+\newcommand{\OCLpackage}{\OCLkeyword{package}}
+\newcommand{\OCLpost}{\OCLkeyword{post}}
+\newcommand{\OCLpre}{\OCLkeyword{pre}}
+\newcommand{\OCLself}{\OCLkeyword{self}}
+\newcommand{\OCLthen}{\OCLkeyword{then}}
+\newcommand{\OCLxor}{\OCLkeyword{xor}}
+
+% ->
+%\newcommand{\OCLarrow}{$\rightarrow$}
+\newcommand{\OCLarrow}{$-{>}$}
+
+
+% Comments
+\newcommand{\OCLcomment}[1]{{--}{--} \OCLtextcomment{#1}}
+
+% --------------------------------------------------------------------
+% Simple OCL constraints
+% --------------------------------------------------------------------
+
+% Precondition
+\newcommand{\OCLprecond}[2]{\OCLcontext #1 \\ \OCLpre #2}
+% Postcondition
+\newcommand{\OCLpostcond}[2]{\OCLcontext #1 \\ \OCLpost #2}
+% Pre and postcondition
+\newcommand{\OCLprepostcond}[3]{\OCLcontext #1 \\ \OCLpre #2 \\ \OCLpost #3}
+% Invariant
+\newcommand{\OCLinvariant}[2]{\OCLcontext #1\OCLinv \\ #2}
+% Indent a paragraph
+\newcommand{\OCLindent}[1]{{\parbox{8pt}{~} \hfill \parbox[b]{\linewidth}{\vspace{2pt}#1} }}
+% If-then-else
+\newcommand{\OCLifthenelse}[3]{\OCLif #1 \OCLthen \\ \OCLindent{#2} \OCLelse \\ \OCLindent{#3}  \OCLendif}
+% If-then
+\newcommand{\OCLifthen}[2]{\OCLif #1 \OCLthen \\ \OCLindent{#2} \OCLendif}
+

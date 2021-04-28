@@ -1,0 +1,353 @@
+
+\section{Case of Learning Well-Formedness Rules from Examples}\label{sec:approach}
+We illustrate the GP-based learning of MDE artifacts with the case of well-formedness rules (WFR) derivation from examples. Similar to the work in \cite{faunes2013}, we derive OCL constraints on metamodels from examples and counter examples of models. To this end, we use multi-objective fitness guidance to consider, in addition to the example conformance, the size of solutions.
+%coupled with recent advances in genetic programming to boost scalability~\citep{batot2018}. %It is based on results on the use of WFR in MDE~\citep{cadavid2015} for pragmatic space reduction.
+%\eb{The rules are often called constraints. In this article, these two terms are interchangeable.}
+%\eb{Some words (on representativeness and the burden of instrumentation, maybe?) would be appreciated to remind the reader that this paper is not about WFR derivation only ?!}
+
+\subsection{Problem Statement}
+\begin{figure}[b]
+	\centering
+	\includegraphics[width=.8\columnwidth]{images/intentedspace-juan}
+	\caption{Modelling space, intended application domain, and (in)valid models}
+	\label{fig:intentedspace}
+\end{figure}
+
+
+
+The definition of a modelling language begins with the construction of a metamodel representing the concepts or constructs to be instantiated, their attributes and the relationships they maintain with each other. The grammar of the language is thus defined roughly. Yet, all instances complying with these syntactic rules (metamodel compliant models) are not necessarily well formed w.r.t. the specific application domain targeted~\citep{cadavid2012}.
+
+
+\begin{figure}[h]
+	\centering
+	%	\includegraphics[width=6cm]{images/typegraph}
+	\includegraphics[width=.5\columnwidth]{images/model/Family}
+	\caption{A type graph for Family DSML}
+	\label{fig:typegraph}
+\end{figure}
+
+For instance, consider a metamodel intended to capture the most basic elements to represent family trees. This metamodel, depicted in \Fig{fig:typegraph}, has three concepts: \texttt{Person}, \texttt{Male} and \texttt{Female}. \texttt{Person} has a \texttt{mother} and a \texttt{father}, and possibly \texttt{children}. This basic structure will allow to instantiate any family tree. Nonetheless, if the metamodel captures properly all useful concepts, it does not avoid from building instances that break some basic rules family trees are required to respect, as shown in in the examples of \Fig{fig:exs-valid-ivalid}. 
+%for examples of valid families.
+%The first one exhibits a grandmother, her son and his two children; the second represents grandparents, %their only son and his son.%; the bottom one shows a couple, their son and daughter and their respective %children.
+%\Fig{fig:exs-valid-concrete} shows the first example in a concrete syntax.
+
+Thus, as illustrated in \Fig{fig:intentedspace}, a metamodel defines a modelling space larger than the intended application domain. To better precise the modelling space, a set of WFRs classifies models as valid or invalid with regard to that application domain.
+%\tosem{R2: "perhaps Differentiation (DIFF) should better be called Classification? After all, WFR are a form of classifier." }
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=.8\columnwidth]{images/exs-valid-invalid}
+	\caption{Examples of valid/invalid instances of the Family DSML}
+	\label{fig:exs-valid-ivalid}
+\end{figure}
+
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=.1\linewidth]{images/exs-valid-concrete}
+%	\caption{First example from \Fig{fig:exs-valid} in concrete syntax}
+%	\label{fig:exs-valid-concrete}
+%\end{figure}
+It is possible to express WFRs with the Object Constraint Language (\OCL\footnote{http://www.omg.org/spec/OCL/}).
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=.5\columnwidth]{images/model/exs-invalid-1}
+%	\caption{Examples of invalid instances of the Family DSML}
+%	\label{fig:exs-invalid-1}
+%\end{figure}
+Listing~\ref{lst:not-own-mother}, for instance, shows a constraint written in OCL that forbids the instantiation of \texttt{own-mother} pattern. The context defines on which class the constraint applies. In this case, invariants involve \texttt{mother} and \texttt{father} references and refrain them from pointing to the context instance. %{Unfortunately}, due to the inherent complexity of OCL, it is a burden to write rules manually - especially for domain experts who are not familiar with programming languages. 
+%\cite{faunes2013} show it is possible to circumvent this issue by learning automatically certain types of constraints from a set of examples (valid models) and counter-examples (invalid models).
+%\todo{TRANSITION !!}
+Our goal is to learn such constraints automatically from the valid/invalid examples.
+\begin{figure}
+	\centering
+	\begin{lstlisting}[
+	breaklines=true,
+	keepspaces=false,
+	breakindent=0pt,
+	basicstyle=\ttfamily\footnotesize,
+	label={lst:not-own-mother},
+	caption={Wellformedness rule 'not-own-mother/father'}]
+	Context Person:
+	inv not-own-mother: 	self.mother <> self
+	inv not-own-father: 	self.father <> self
+	\end{lstlisting}
+\end{figure}
+
+
+
+%\subsection{Pragmatic Solution Space}
+%\label{art3:solspace}
+
+The solution targeted by the learning process is a set of rules that classifies automatically models as valid and invalid and draws the limit of the intent domain. But how to define the space within which to search for a good solution? Roughly speaking, and independently from its accuracy to classify models, any set of rules written in OCL using the metamodel constructs is a potential solution. The set of all potential solutions is then very large, possibly infinite.
+%\begin{figure}
+%	\centering
+%	\begin{lstlisting}[
+%	breaklines=true,
+%	keepspaces=false,
+%	breakindent=0pt,
+%	basicstyle=\ttfamily\footnotesize,
+%	label={lst:not-own-ancestor},
+%	caption={Well-formedness rule 'ancestry-bares-no-loop'}]
+%	Context Person:
+%	inv ancestry-bares-no-loop:
+%	self.mother->closure()->excludes(self)
+%	and
+%	self.father->closure()->excludes(self)
+%	\end{lstlisting}
+%\end{figure}
+%\subsection{Pragmatic space}\label{sec:pragmaticspace}
+Although very large in theory, \cite{cadavid2012-t} shows that the space of possible solutions can be reduced dramatically. Through the study of hundreds of metamodels at work in both academe and industry, he found that there exist 21 OCL patterns defined at the meta-meta-level (MetaObject Facility\footnote{http://www.omg.org/mof/}) that, combined together, can express all \textit{usefull} WFRs. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\columnwidth]{images/pattern}
+	\caption{MOF structure of pattern A1:\textit{AcyclicReference}}
+	\label{fig:patternA1}
+\end{figure}
+
+More precisely, a pattern definition contains the \textit{MOF structure} that characterizes the structural situations in which the pattern may apply (\eg classes and features involved); a set of parameters; and, an \textit{OCL Expression Template} that defines how the listed parameters are used to instantiate the pattern. 
+%The \textit{MOF structure} characterizes the structural situations in which the pattern may apply (\eg classes and features involved). The \textit{OCL Expression Template} defines the type of WFRs by explaining how the listed parameters are used to express these rules. 
+\Fig{fig:patternA1} gives the description of the \textit{AcyclicReference} pattern.
+
+
+
+\begin{figure}[h]
+	\includegraphics[width=\columnwidth]{images/solution-example}
+	\caption{Abstract syntax tree of well-formedness rule 'ancestry-bares-no-loop' with instantiations of pattern \texttt{AcyclicReference}}
+	\label{fig:representation-pattern}
+\end{figure}
+
+%Finally, the process to learn WFRs, rather than searching for any OCL expression that can apply to a metamodel, searches only for instances of these higher-level templates that match the metamodel structure.
+Coming back to our family-tree metamodel, the WFR of Listing~\ref{lst:not-own-ancestor}  can be instantiated with two instances of the pattern A1 (see \Fig{fig:patternA1}) as depicted in \Fig{fig:representation-pattern}. This WFR is obtained by combining two instances of \textit{AcyclicReference} pattern with different parameters. One involves \texttt{mother} reference, the other \texttt{father} reference.
+
+%The idea of exploiting Cadavid's patterns to learn WFRs was first coined by \cite{faunes2013}. Instead of searching for all possible OCL constraints, they focused on instances of a limited set of patterns. They did not exploit all the 21 patterns, they rather considered only those dealing with reference cardinalities.
+%\ugh{Neither did they consider OCL collections operators. } 
+
+\subsection{Need for Multi-Objective Search}
+\label{sec:fitness}
+%From ideal to optimal solution.
+The learning is thereof a matter of composing OCL patterns into a set of constraints in order to classify correctly a set of training examples.
+Training examples (\ie valid and invalid models) offers a convenient support for a semantic guidance of the search space. The first objective of the search is to maximize the number of examples a solution correctly classifies as valid/invalid.
+
+
+In addition, high-level artefacts such as OCL constraints allows syntactically distinct solutions to solve all examples correctly. 
+Some of these solutions can be very verbose, featuring tautologies and other unwanted constructs. In GP, this highly expressive nature may lead to what is known as \textit{bloating} (or \textit{code growth})~\citep{luke2006}. 
+To address this (non-functional) issue, we consider the minimization of the size of solutions as a second objective. This inlines with the fact that, in the context of MDE, it seems mandatory to derive humanly readable artefacts (\ie of small size) since a human actor must be able to validate them \citep{lu2019-refactorOCL}. Moreover, in the instance of safety-critical software, an amenable size is of utmost importance as well~\citep{schumann2016-nasa-mbswe}.s
+
+\ugh{(Finally,)} When searching for the best solution, another potential side effect is the premature convergence towards local optima. When learning MDE artefacts from examples, solutions that correctly classify a majority of cases have better chances to be considered during the evolution. 
+However, those that classify a few but uncommon examples (not classified by the majority of solutions) and, due to their low accuracy score, they tend to be ignored. As a consequence, their genetic material is lost during the evolution. 
+To circumvent this phenomenon, maintaining diversity during the search is essential.
+
+%\subsubsection{Fitness}
+%Semantics, and size, and diversity
+In summary, three different concerns will frame the exploration of the pragmatic space.
+\begin{itemize}
+	\item \textbf{Classification accuracy}: the more examples a solution classifies accurately the better;
+	\item \textbf{Size consideration}: the shorter a solution the more it is legible and maintainable by a human end user;
+	\item \textbf{Diversity concern}: giving more chances to solutions that accurately classify uncommon examples improves our chances to learn the optimal WFR set~\citep{batot2018}.
+\end{itemize}
+
+%These three concerns are competing by nature with one another and it is convenient to use a multi-objective algorithm.
+In conclusion, the learning of WFR can be considered as an optimization process with two main objectives: correctness (w.r.t. examples) and size of solutions. Additionally, diversity should be maintained during the search. We propose to solve the WFR learning problem using multi-objective genetic programming algorithm \nsga~\citep{deb2000}, illustrated in \Fig{fig:nsga2}.
+
+
+
+\subsection{Adaptation/Implementation}
+In this section, we introduce Multi Objective Optimization Problem (MOOP) and Multi Objective Genetic Programming vocabulary, their characteristics and main concepts before detailing how the learning of WFRs can be adapted to this methodology.
+
+
+\subsubsection{Introduction to Multi Objective Genetic Programming}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\columnwidth]{images/gp}
+	\caption{A typical genetic programming cycle}
+	\label{fig:gp}
+\end{figure}	
+The force of genetic programming is that the algorithm explores empirically a solution space (potentially infinite), guided by heuristic objectives based on potential solutions' outputs (\ie their semantics).
+
+The most effective way to understand genetic programming is to look at the process sketched in \Fig{fig:gp}. A first generation of solutions is created. Every entity in the ensuing population is executed on the  input examples, and its output evaluated to measure its fitness. If a termination criterion is reached, the process ends and the solution is given to the user. Otherwise, the population is reproduced using genetic operators, and the new entities are executed and evaluated again. The process repeats until a termination criterion is reached.
+Adapting this process to a specific learning problem requires four steps: defining a solution representation for this problem; defining how new solutions are created from existing ones; defining how the fitness of a solution is measured; and defining a termination criterion. The adaptation should also take into account the multi-objective nature of our problem.
+
+As we model the learning of WFRs as a multi-objective problem, let us give some basic definitions about MOOP.
+
+
+\paragraph{Definitions}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\columnwidth]{images/nsga2}
+	\caption{Non-Sorting Genetic Algorithm (NSGA-II) by \cite{deb2000}}
+	\label{fig:nsga2}
+\end{figure}
+
+%Since we use a multi-objective algorithm, we shall explain now some key concepts required to understand well our methodology. More precisely, we used \nsga~\cite{deb2000} illustrated in \Fig{fig:nsga2}. \todo{Should we take the figure out?}
+\begin{definition}
+	A \textbf{multi-objective optimization problem} (MOOP) consists in minimizing or maximizing an objective function vector $f(x)= [f_{1}(x),f_{2}(x),$ $...,f_{M}(x)]$ of $M$ objectives under some constraints. The set of feasible solutions, \emph{i.e.,} those that satisfy the problem constraints, defines the search space $\Omega$. The resolution of a MOOP consists in approximating the whole \textbf{Pareto-optimal front}.
+\end{definition}
+\begin{definition}
+	\textbf{Pareto optimality: }In the case of a minimization problem, a solution $x^{*}\in\Omega$ is Pareto optimal if $\forall x\in\Omega$ and $\forall m\in I=\{1,...,M\}$ either $f_{m}(x)\ge f_{m}(x^{*})$ and there is at least one $m\in I$ such that $f_{m}(x)>f_{m}(x^{*})$. In other words, $x^{*}$ is Pareto optimal if no feasible solution exists, which would improve some objective without causing a simultaneous worsening in at least another one. %Other important definitions associated with Pareto optimality are essentially the following:
+\end{definition}
+\begin{definition}	
+	\textbf{Pareto dominance: }
+	A solution $u$ is said to dominate another solution $v$  (denoted by $f(u)\preceq f(v)$) if and only if f(u) is partially less than f(v), \emph{i.e.,} $\forall m\in\{1,...M\}$ we have $f_{m}(u)\leq f_{m}(v)$ and $\exists m\in\{1,...,M\}$ where $f_{m}(u)<f_{m}(v)$.
+\end{definition}
+\begin{definition}	
+	\textbf{Pareto-optimal front: }
+	For a MOOP f(x), the Pareto-optimal front is $P^{*}=\left\{ x\in\Omega|\neg\exists x'\in\Omega, f(x')\preceq f(x)\right\} $.
+\end{definition}
+
+
+We detail in the next subsections the four steps required to adapt WFR learning to MOOP. We detail how solutions are encoded and created. Then, we show how genetic operators stir the so provided genetic material. The third step consists in defining a manner to evaluate among a set of solutions which ones dominate, based on different criteria. Finally, since there is no way to ensure the optimal solution exists, an end criterion must be defined to put an end to the evolution process.
+
+\subsubsection{Solution Representation and Initial Population Creation}\label{sec:solcreation}
+A solution to our problem is \textit{a set of OCL constraints}.
+In our metaphor, a set of constraints is a genetic entity, containing $K$ genes (individual constraints like one of \Fig{fig:representation-pattern}).
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\columnwidth]{images/solution-representation}
+	\caption{Abstract syntax tree of a well-formedness rule representation using patterns}
+	\label{fig:representation-general}
+\end{figure}
+More generally, a constraint, as pictured in \Fig{fig:representation-general}, is represented as a tree whose nodes are operators and leaves are instances of WFR patterns. Operators are of two different kinds: logical operators and quantifiers.
+
+\begin{definition}
+	We consider logical operators $NOT$, $OR$, $AND$, and $IMPLIES$; and quantifiers $forAll$, and $exists$.
+	%\eb{Removed the exhaustive list of defintions ("Not is a Not" are useless).}
+%	\begin{itemize}
+%		\item \textbf{NOT:} Negation of the subtree
+%		\item \textbf{AND:} Logical \texttt{and} between the two subtrees
+%		\item \textbf{OR:} Logical \texttt{or} between the two subtrees
+%		\item \textbf{IMPLIES:} Logical \texttt{implies} between the two subtrees
+%	\end{itemize}
+%	Considered quantifiers are $forAll$, and $exists$
+	\begin{itemize}
+		\item \textbf{forAll:} Encapsulates a subtree in a \texttt{forAll} expression (See Listing~\ref{lst:firstorder})
+		\item \textbf{exists:} Encapsulates a subtree in an \texttt{exists} expression (See Listing~\ref{lst:firstorder})
+	\end{itemize}
+
+\begin{figure}[h]
+	\centering
+	\begin{lstlisting}[
+	breaklines=true,
+	keepspaces=false,
+	breakindent=0pt,
+	basicstyle=\ttfamily\footnotesize,
+	label={lst:firstorder},
+	caption={Examples of using ForAll and Exists quantifiers}]
+	self.kids->forAll(Person k | k.mother = self)
+	self.kids->exists(Person k | k.mother = self)
+	\end{lstlisting}
+\end{figure}
+\end{definition}
+
+The first step of the evolution consists in producing a random set of solutions (\ie constraint sets). To derive the initial generation $G_0$ of $N$ solutions, we generate randomly $N$ sets of $k$ constraints. $k$ is randomly decided for each initial solution.
+
+Each constraint set is built using randomly operators and pattern instances. The average size of constraints (in terms of number of leaves) as well as the depth of their respective abstract syntax tree is parameterizable.
+
+
+\subsubsection{Genetic Operators}
+
+During the evolution, we derive new solutions from existing ones using two kinds of operators: \textbf{crossover} and \textbf{mutation}.
+
+\paragraph{Crossover Operator}
+
+As illustrated in \Fig{fig:ap-operators}, the crossover operator uses a single cut-point. Each parent solution is divided into two constraint subsets using a randomly selected cut point. Then, the constraint subsets of the parent solutions are exchanged to form two new solutions.
+% Note that the crossover does not alter the constraints as the cut point cannot be within a constraint tree. \tosem{Crossover probability}
+
+%\eb{We do not cut "within the tree" because of our choice to implement the operators/patterns as nodes/leaves structure.} }
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\columnwidth]{images/operators}
+	\caption{Crossover and mutation operators adapted to our framework}
+	\label{fig:ap-operators}
+\end{figure}
+
+\paragraph{Mutation Operators}
+We implemented different mutation operators as depicted in \Fig{fig:mutations}, grouped in two categories.
+\begin{itemize}
+	\item \textbf{Pattern mutation:} chooses randomly a leaf (\ie a pattern instance) in the constraint's tree and changes its parameters if there exist any valid alternative, or replace the pattern instance with a new one otherwise. See \Fig{fig:mutations-0} for a sketch.
+	\item \textbf{Logic mutations:} modifies the constraint's abstract tree by replacing an operator by another one, or by inserting a \texttt{NOT} operator or a quantifier. The logic mutations are applied as follows:
+	\begin{enumerate}
+		\item A node $n_i$ is randomly selected from the constraint's tree ;
+		\item Then, either
+		\begin{itemize}
+			\item $n_i$'s operand is replaced by another  compatible operand depending on the number of children. Binary operators $AND$, $OR$ or $IMPLIES$ can replace each other. Similarly, unary operator $NOT$ and quantifiers can be exchanged (\Fig{fig:mutations-1}); or
+			\item a quantifier or a $NOT$ node is inserted between $n_i$ and its parent (\Fig{fig:mutations-2}); or
+			\item $n_i$ is replaced by a randomly created node. The new node will respect context ascendency (\Fig{fig:mutations-3}). 
+		\end{itemize}
+%		See respectively Figures~\ref{fig:mutations-1},~\ref{fig:mutations-2}, and ~\ref{fig:mutations-3} for insight.
+	\end{enumerate}
+\end{itemize}
+
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{.50\linewidth}
+		\centering
+		\includegraphics[width=5.5cm]{images/mutations-0}
+		\caption{Pattern replacement}
+		\label{fig:mutations-0}
+	\end{subfigure}
+	\begin{subfigure}{.48\linewidth}
+		\centering
+		\includegraphics[width=5.5cm]{images/mutations-1}
+		\caption{Node's operand replacement}
+		\label{fig:mutations-1}
+	\end{subfigure}
+	\begin{subfigure}{.48\linewidth}
+		\centering
+		\includegraphics[width=5.5cm]{images/mutations-2}
+		\caption{\texttt{NOT} node insertion}
+		\label{fig:mutations-2}
+	\end{subfigure}
+	\begin{subfigure}{.48\linewidth}
+		\centering
+		\includegraphics[width=5.5cm]{images/mutations-3}
+		\caption{New node replacement}
+		\label{fig:mutations-3}
+	\end{subfigure}
+	\caption{Mutations}
+	\label{fig:mutations}
+\end{figure}
+
+
+\paragraph{Pruning}
+\cite{cabot2007} have shown how complex can become OCL and how the complexity can be reduced automatically. In our case, we used a pruning technique to limit the redundancy in abstract trees.
+When two sub trees are identical, we collapse them into one equivalent.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=11.5cm]{images/pruning}
+	\caption{Pruning of similar subtrees}
+	\label{fig:ap-pruning}
+\end{figure}
+
+\subsubsection{Fitness}
+As stated in \Sect{sec:fitness}, two objectives guide the search: the ratio of examples properly classified by a solution; and the constraint size of the solution.
+Additionally, a diversity measure is taken into consideration as well. To foster efficiency and generalizability of the solutions, we embodied it in the \textit{crowding distance measurement} of \nsga. See \cite{batot2018} for details.
+
+%\paragraph{Precisions on training examples} As mentioned, our first guiding objective rely on the set of examples gathered as a training set. In the case of learning WFRs, the evaluation equals whether or not the solution judges adequately each models as valid or invalid as defined by the expert of the domain.
+
+\subsubsection{Termination Criterion}
+We do not know, a priori, if a perfect solution exists, neither if it would be at reach. The termination criterion is thus set to a certain amount of iterations or a percentage of examples accurately treated (algorithm parameter).
+
+\subsection{Conclusion: On the Importance of the Quality of Partial Examples}
+\eb{We defined our approach in terms of adaptation of NSGA for the learning of WFR. Why do we focus now on examples' characteristics? }
+
+Work from \cite{faunes2013} showed interesting results in learning WFR from (counter-)examples with simple cases. Yet, the protocol they followed is biased since examples were derived from the oracle.
+Our approach is not fundamentally new in the sense that it reuse \cite{faunes2013-2} algorithm. We reimplementd their methodology with some differences: foreach and exists, and complex composition, and multi-objective (non-functional concern).
+
+%We offer, in this paper to further Faunes \etal work to compare, when emplying a common algorithm, how the characteristics of training sets impact the learning accuracy.
+
+In the process, variability lies in the examples.
+NSGA is well assessed. Adaptation is a matter of trade-off between solution complexity and search space dimensions.
+Same execution will give different results depending on the training set. On the characteristics w.r.t. the representativeness of the training sample against all potential inputs.
+
+
+The overall learning methodology discussed in Section~\ref{sec:problemstatement} allows us to draw a clear evaluation protocol to asses wether COV is a convenient proxy for representativeness. \ugh{In doing so we hope for reproductions featuring other proxies.}
+
+
+Yet, the only measure used to assess representativeness is the coverage of the examples with respect to the metamodel. We showed that this coverage considers the input parts of examples only. In the next section, we will see to which degree common coverage measurement impacts the quality of solutions and to which degree solutions comply with expectations.
+
+\nsga and other GP techniques' efficiency has been proven. Yet, representativeness....

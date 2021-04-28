@@ -1,0 +1,91 @@
+\section{Analysis of the survey results}\label{sec:results}
+
+%\begin{table}[]
+%	\begin{tabular}{ll|ll|ll}
+%		\hline
+%		\multicolumn{2}{|l|}{\textbf{Publication type}} & \multicolumn{2}{l|}{\textbf{Phase targeted}} & \multicolumn{2}{l|}{\textbf{Nature of artefacts targeted}} \\ \hline
+%		\multicolumn{1}{|l}{Journal}          & 41      & Requirement                  & 68            & Unstructured text         & \multicolumn{1}{l|}{68}        \\ \hline
+%		\multicolumn{1}{|l}{Conference}       & 82      & Design/Modelling             & 51            & Grammar based             & \multicolumn{1}{l|}{22}        \\ \hline
+%		\multicolumn{1}{|l}{Workshop}         & 34      & Implementation               & 22            & Model based               & \multicolumn{1}{l|}{41}        \\ \hline
+%		&         & Test                         & 8             &                           &                                \\ \cline{3-4}
+%	\end{tabular}
+%	\caption{Publication types, and artefacts characteristics of traceability approaches.}
+%	\label{tab:classification-tm}
+%\end{table}
+
+\subsection{RQ1: Traceability features}\label{sec:traceaMDE}
+As we mentioned earlier, there is no common representation or standard of traceability but a thrive of domain specific approaches. They describe usages and results of traceability applied to greater fields of research such as program understanding, with approaches facilitating the localisation of features~\cite{seiler2019-comparing-trac-through-IR-Commits-Logs} and bugs~\cite{ko2008-whyline-debugging}, assisting the decomposition of the software into relevant partitions~\cite{laghouaouta2017-model-composition-tracaebility} or slices~\cite{nejat2012-traceability-sysml-safety-certification}, enabling a better reuse of software artefacts~\cite{tinnes2019-improving-art-reuse-with-traceability}, and supporting general explainability of the software process and product~\cite{wohlrab2020-traceability-organization-process-culture}. 
+Such approaches compose techniques with combinations of different features of traceability. To support debugging or to help gather evidences for certification, all approaches present their tailored representation for trace artefacts. The very notion of trace as well as their aim differ from one perspective to another. If this hampers the emergence of a common knowledge, it has the value to explore the need of application domains without the overhead of a pre-defined standard tooling. Researchers present generic graph-based representations particularly suitable for model-based environment~\cite{schwarz2010-graph-based-traceability,grammel2012-model-matching-for-traceability-in-MDE} ; while others focus on  the verification and validation of software artefacts~\cite{Dubois_2010,vonknethen2002-change-oriented-req-traceability-evolution-of-embedded-systems} and traceability artefacts~\cite{rempl2014-conformance-of-traceability-to-guidelines} ; and others target the maintenance of software systems and present representations for change impact analysis~\cite{goknil2014-change-impact-analysis-for-requirement-metamodel} or multi-model consistency~\cite{Szabo_2013}. Representations are so diverse that our survey selected more than 80 papers mentioning their own distinct definitions for trace-based approaches, with 41 \textit{Traceability Information Models}, or tracing metamodels effectively depicted. 
+%\eb{So many perspectives shall provide enough details for a standard, or at least a common understanding (cf our metamodel?).}
+
+Many publications tackle the difficulty to automate the identification of trace links and introduce representations convenient for the application of information retrieval techniques -- we explore in the next research question (RQ2) the automation of trace identification in more details. Teams investigate as well ways to {record} on the fly traces of the execution and the evolution of software artefacts. There are initiatives to instrument existing languages such as ATL with rich log generation~\cite{Santiago_2013,la_Fosse_2018}, others consider trace record an aspect that can be plugged on current existing languages~\cite{Pfeiffer_2014,Santiago_2013}. Ziegenhagen \textit{et al.} mix execution traces with metadatas~\cite{ziegenhagen2020-expanding-tracea-with-dynamic-tracing-data}, and use developer interaction records~\cite{ziegenhagen2019-developer-tool-interaction} to enrich existing traceability artefact.
+
+
+Trace links suffers a gradual decay that must be considered seriously to avoid having to re-elicit traces every time they need be analysed. A manual maintenance is out of reach for the amount of information such inspections would involve is enormous. Quality aspects of trace artefacts are mentioned in most of the papers we studied. The relevance of traces, their coverage of the (part of) the system they target, their integrity or versatility have been long due for in depth investigation and standardization. The relevance of trace artefacts is mainly evaluated with precision and recall measurements, and some include a user feedback. Their coverage is mainly mentioned in approaches to software testing. Integrity of traces is addressed in work on model transformation where co-evolution figures an automatic verification of their coherences with the other (versatile) software artefacts. The co-evolution of traces implies measuring some kind of distance between tracing artefacts (syntactic, cognitive, geographic, cultural...). It also refers to the analysis of the changes of the system that impact traceability artefacts. In our survey, nine papers address artefacts co-evolution and 17 tackle model transformation limitations. These latter figuring a valuable tool to automate co-evolution tasks. The other quality concerns are left for future work and remain mainly an open issue.
+
+To augment the automation of trace maintenance, the {retrieval} of existing traces which number and complexity may grow exponential in large software systems has also gained in scrutiny. Work query datasets of traces to assist users show promising results~\cite{dietrich2013-learning-efective-query-transformation-for-enhanced-req-trace-retrieval} and visualization techniques emerge in frameworks dedicated to traceability~\cite{ruiz18-traceME-conceptual-model-evolution,santiago2013traceability-in-MDE,heisig2019-generic-traceability-metamodel-end-to-end-capra}. 
+Co-evolution techniques~\cite{mader2008-rule-based-maintenance-post-requirements-traceability,drivalos2010-state-based-traceability} as well as integrity measurement~\cite{rahimi2019-Evolving-trace-req2source} and visualization initiatives~\cite{fittkau2013-explorviz-Trace-Visualization} attempt to tackle the burden to maintain trace links up-to-date~\cite{seibel2010-dynamic-hierarchical-models-comprehensive-traceability,Bunder_2017_query-for-quality}. 
+
+Assisting efficiently end-users in the retrieval, visualization and analysis of traces is not easily granted when studies on the topic remain scarce in comparison to other concerns. Therefore, there is still great space for improvement~\cite{antoniol2017-traceability-grand-challenges}. 
+There exists on-going research on this matter but, again, calls for more are redundant through literature studies~\cite{Gotel2012}.
+
+As strange as it may seems, investigations directly related to the use of traceability for certification and guideline conformance are not numerous. {We question whether intellectual property constraints hampers the publication of work on certification and verification.}
+To mention some relevant references, Rempl \textit{et al.} collect automatically evidences of missing trace links to augment the coverage of the system under examination~\cite{rempl2014-conformance-of-traceability-to-guidelines}. Kokaly \textit{et al.} augment safety case impact assessment in the automotive industry with automated highlighting of missing trace links, redundant or inconsistent data, and other problems~\cite{kokaly2017-safety-case-impact-assessment-model-based-automotive}. One of the finding is that out of seven safety critical software systems none of the evaluated projects fully conformed to their relevant guidelines. Post \textit{et al.} show that more formalized requirements and formal verification surpass tradition testing approach to the discoveries of implementation problems~\cite{post2009-link-functional-req-to-verification}.
+SysML v2, is trying to formalize traceability relationships more clearly, rather than just using a dependency-like mechanism. A emphasis is put on requirements with the definition of mechanisms in the concrete syntax to check their satisfaction~\cite{Haidrar_2016}. Verification shall be similarly formalized but for now it is not part of the agenda. 
+
+
+
+\subsubsection{Tracing model-based development}\label{sec:MDEtracing}%modelling activities}
+Our selection shows numerous publications referring to the application of tracing features to model-based approaches. As authors report, the use of MDE tooling such as ATL~\cite{Santiago_2013,Jim_nez_2013}, or the Eclipse Modeling Framework (EMF) allows the automated generation of traceability information as a side effect of executing operations~\cite{galvao2007-survey-traceability-in-MDE,winkler2010-survey-traceability-and-MDE}. 
+As a matter of fact, among our selection of approaches, more than 45 metamodels are proposed by authors, \textit{e.g.,} generic metamodels for end-to-end traceability~\cite{heisig2019-generic-traceability-metamodel-end-to-end-capra,Haidrar_2016}, or metamodels specific to engineering domain such as model transformation~\cite{Jim_nez_2013,anquetil2010-model-driven-tracea-for-SPL,vara2014-traceability-in-MDD-MTransfo} or software product line~\cite{Jim_nez_2013,vara2014-traceability-in-MDD-MTransfo}. 
+Another example it the Requirement Interchange Format (ReqIF) which is an attempt to standardise requirement tracing in the EMF community~\cite{Graf_2012}.
+Yet, industry has not standardised on EMF - they use a wide variety of technologies for modeling, and some of it does not conform to the usual notions of modeling technology: they may not have explicit metamodels.
+Paige \textit{et al.} offer to address this issue in a call for more flexible modeling where models of different formats are associated to each other with annotations that allow automated bond or dependency inference~\cite{seiler2019-comparing-trac-through-IR-Commits-Logs,paige2017-changing-mde}.
+
+Model transformations are considered the hearth and soul of MDE and, consequently, numerous studies attempt to enrich trace generation during transformation execution~\cite{vara2014-traceability-in-MDD-MTransfo,Saada_2013,la_Fosse_2018}. This allows a semantically rich tracing of target and source artefacts~\cite{paige2011-traces-in-moel-driven-engineering}. We found 17 approaches directly related to model transformation augmentation in our survey. An other centre of interest in MDE is the assistance of the co-evolution of modeling artefacts~\cite{Szabo_2013}.  
+
+
+%{RQ2: \textit{Trace link} identification is an important feature, what is the current state-of-the-art?}
+\subsection{RQ2:  Domain contextualisation}\label{sec:}
+Borillo \textit{et al.} published a precursor article on the use of information retrieval techniques for linguistics applied to spatial software engineering. They opened the box for AI-augmented traceability~\cite{borillo1992-linguistic-engineering-to-spacial-SE}.
+Over the time, a growing interest for AI solutions to trace identification emerged. Supporting the ideal goal of full automation, synthetic papers on AI for traceability have been published~\cite{borg2012-tracea-taxonomy-for-IR-tools,delucia2012-information-retrieval-for-traceability,borg2013-IR-in-traceability-birds-view,borg2014-SmS-IR-for-traceability}. These papers draw a classification of works using information retrieval techniques for traceability. They conclude a lack of rich assessment strategies and complain a generalized use of precision and recall to evaluate approaches in comparison to each other. 
+
+To trace the progress in terms of trace identification techniques, information retrieval algorithms applied to traceability first extracted word vectors from natural language artefacts to take account of the neighbouring words a term in the application domain may relate to~\cite{delucia2012-information-retrieval-for-traceability}. Allowing automated generation of the mnemonics related to various concepts in both application and engineering domains~\cite{antoniol2002-tracing-code-documentation-links}, this effort made the identification of bonds between requirement specifications and other artefacts possible with a gradually improving precision. Since then, many other information retrieval techniques for natural language processing were applied with success~\cite{arunthavanathan2016-traceability-with-NLP}. For example, Florez \textit{et al.} derivate fine grained requirement to source code links~\cite{florez2019-finegrained-req2code}, Rath \textit{et al.} complete missing links between commits and issues~\cite{rath2018-guo-augmenting-incomplete-traces}, Marcus \textit{et al.} identify links between documentation and source code\cite{marcus2003-latent-semantic-indexing-for-traceability-LSI}. An intersting publication from Poshyvanyk \textit{et al.} shows that mixing expertize both in information retrieval techniques and engineering domains (they exemplify their theory with feature localization) gives far better results than expertizes taken separately.
+Teams are also using genetic algorithms to cope with the variety of algorithms and parameters these approaches use~\cite{marcen2020-req2model-with-EA-ranking-train-system,panichella2013-genetic-programming-for-effective-topic-modeling}, and structural information to foster methodologies interweaving~\cite{panichella2013-using-structural-information-to-improve-IR-traceability}. Unfortunately, a common critique rose against these positive results. Too many teams compete with each others to accomplish better quantified precision and recall when too few attempt at qualifying the overall relation between these measurement and the effective impact on software development~\cite{clelandhuang2014-traceability-trends-and-futurte-direction}. 
+Ultimately, the reach for an ideal end-to-end automated traceability has led research, with the buzzing of AI, into a technical competition where teams compete with each others to beat the state-of-the-art Precision\&Recall for link identification between text artefacts~\cite{shin2015-guidelines-benchmark-auto-traceability}. 
+%Despite authors enthusiasm about their results, 
+Borg \textit{et al.} conclude their systematic literature mapping on information retrieval approaches to traceability noticing that there are no empirical evidence that any IR model outperforms another model consistently~\cite{borg2014-SmS-IR-for-traceability}. 
+
+Domain contextualization with means of machine learning for topic modeling, word embedding, and more generally knowledge extraction from unorganized text documents is the most studied feature of traceability~\cite{guo2017-semantically-enhanced-tracebility-deep-learning,wohlrab2020-traceability-organization-process-culture}. We found 22 approaches dedicated to this topic in our survey. 
+
+
+
+%{RQ3: To what purposes is traceability put into application?}
+\subsection{RQ3: Traceability purposes}
+\label{sec:traceablitypurposes}
+
+
+%\subsection{{Bibliometrics}}
+%\label{sec:survey:results}
+%Many chose model-driven paradigm to tailor a specific language. 
+%\begin{itemize}
+%	\item Specific to a purpose.. change impact analysis\cite{goknil2014-change-impact-analysis-for-requirement-metamodel}, error detection\cite{aboussoror2012-Seeing-errors-trace-visualisation}, visualization\cite{mader2010-visual-tracability-modeling-language,van_Amstel_2012}, software reus,  \cite{badreddin2014-req-traceability-model-based-approach}, software comprehension \cite{Guana_2017}
+%	
+%	\item Specific to a type of artefacts.. 
+%	Req to code\cite{badreddin2014-req-traceability-model-based-approach}, 
+%	BPMN UML seq.\cite{Bouzidi_2020}, 
+%	code to documentation\cite{antoniol2002-tracing-code-documentation-links} , 
+%	testing \cite{naslavsky2007-traceability-of-MB-Testing-MT}, 
+%	NLP and AADL \cite{Wang_2020}
+%	non-functional req. \cite{Yrj_nen_2010}
+%	Model to text \cite{Olsen}
+%	
+%	
+%	\item Specific to an engineering domain.. SPL\cite{anquetil2010-model-driven-tracea-for-SPL}, MDE co-evolution \cite{amar2013-model-coevolution-uding-traceability,rutle2018-MT-coevolution-with-traceability-and-graph-transfo,seibel2012-efficient-traceability-for-MDE}, Unified Process \cite{tekinerdogan2007-metamodel-for-tracing-concers-accross-life-cycle}, MT maintenance \cite{vara2014-traceability-in-MDD-MTransfo, aranega2011-trace-for-mutation-analysis-in-model-transformation,Jim_nez_2013,Mani_2016}, Req tracing\cite{Haidrar_2016,Haidrar_2018}
+%	\item Specific to an application domain.. Avionics\cite{Mason}, Hardware description languages \cite{Peischl_2005}
+%	\item Specific to a language.. \cite{Santiago_2013}
+%	\item Specific to a technique in particular.. \cite{schwarz2010-graph-based-traceability} chose graph grammar to address.. 
+%	\item Specific to genericity.. \cite{azevedo2019-traceability-metamodel-and-reference-model,heisig2019-generic-traceability-metamodel-end-to-end-capra,Boulanger_2014,Pfeiffer_2014}
+%	\item Focus on trace maintenance against gradual decay.. \cite{drivalos2010-state-based-traceability}
+%	\item Tracing communication.. \cite{Rosenkranz_2013}
+%\end{itemize}

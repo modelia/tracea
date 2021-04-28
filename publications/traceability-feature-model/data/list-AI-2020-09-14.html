@@ -1,0 +1,1016 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>JabRef references</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript">
+<!--
+// QuickSearch script for JabRef HTML export (no Abstract/BibTeX)
+// Version: 3.0
+//
+// Copyright (c) 2006-2011, Mark Schenk
+//
+// This software is distributed under a Creative Commons Attribution 3.0 License
+// http://creativecommons.org/licenses/by/3.0/
+//
+// Features:
+// - intuitive find-as-you-type searching
+//    ~ case insensitive
+//    ~ ignore diacritics (optional)
+//
+// - search with/without Regular Expressions
+// - match BibTeX key
+//
+
+// Search settings
+var noSquiggles = true; 	// ignore diacritics when searching
+var searchRegExp = false; 	// enable RegExp searches
+
+
+if (window.addEventListener) {
+	window.addEventListener("load",initSearch,false); }
+else if (window.attachEvent) {
+	window.attachEvent("onload", initSearch); }
+
+function initSearch() {
+	// check for quick search table and searchfield
+	if (!document.getElementById('qs_table')||!document.getElementById('quicksearch')) { return; }
+
+	// load all the rows and sort into arrays
+	loadTableData();
+	
+	//find the query field
+	qsfield = document.getElementById('qs_field');
+
+	// previous search term; used for speed optimisation
+	prevSearch = '';
+
+	//find statistics location
+	stats = document.getElementById('stat');
+	setStatistics(-1);
+	
+	// set up preferences
+	initPreferences();
+
+	// shows the searchfield
+	document.getElementById('quicksearch').style.display = 'block';
+	document.getElementById('qs_field').onkeyup = quickSearch;
+}
+
+function loadTableData() {
+	// find table and appropriate rows
+	searchTable = document.getElementById('qs_table');
+	var allRows = searchTable.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+	// split all rows into entryRows and infoRows (e.g. abstract, comment, bibtex)
+	entryRows = new Array();
+
+	// get data from each row
+	entryRowsData = new Array();
+	
+	BibTeXKeys = new Array();
+	
+	for (var i=0, k=0, j=0; i<allRows.length;i++) {
+		if (allRows[i].className.match(/entry/)) {
+			entryRows[j] = allRows[i];
+			entryRowsData[j] = stripDiacritics(getTextContent(allRows[i]));
+			allRows[i].id ? BibTeXKeys[j] = allRows[i].id : allRows[i].id = 'autokey_'+j;
+			j ++;
+		}
+	}
+	//number of entries and rows
+	numEntries = entryRows.length;
+}
+
+function quickSearch(){
+	
+	tInput = qsfield;
+
+	if (tInput.value.length == 0) {
+		showAll();
+		setStatistics(-1);
+		qsfield.className = '';
+		return;
+	} else {
+		t = stripDiacritics(tInput.value);
+
+		if(!searchRegExp) { t = escapeRegExp(t); }
+			
+		// only search for valid RegExp
+		try {
+			textRegExp = new RegExp(t,"i");
+			qsfield.className = '';
+		}
+			catch(err) {
+			prevSearch = tInput.value;
+			qsfield.className = 'invalidsearch';
+			return;
+		}
+	}
+	
+	// count number of hits
+	var hits = 0;
+
+	// start looping through all entry rows
+	for (var i = 0; cRow = entryRows[i]; i++){
+
+		// only show search the cells if it isn't already hidden OR if the search term is getting shorter, then search all
+		if(cRow.className.indexOf('noshow')==-1 || tInput.value.length <= prevSearch.length){
+			var found = false; 
+
+			if (entryRowsData[i].search(textRegExp) != -1 || BibTeXKeys[i].search(textRegExp) != -1){ 
+				found = true;
+			}
+			
+			if (found){
+				cRow.className = 'entry show';
+				hits++;
+			} else {
+				cRow.className = 'entry noshow';
+			}
+		}
+	}
+
+	// update statistics
+	setStatistics(hits)
+	
+	// set previous search value
+	prevSearch = tInput.value;
+}
+
+
+// Strip Diacritics from text
+// http://stackoverflow.com/questions/990904/javascript-remove-accents-in-strings
+
+// String containing replacement characters for stripping accents 
+var stripstring = 
+    'AAAAAAACEEEEIIII'+
+    'DNOOOOO.OUUUUY..'+
+    'aaaaaaaceeeeiiii'+
+    'dnooooo.ouuuuy.y'+
+    'AaAaAaCcCcCcCcDd'+
+    'DdEeEeEeEeEeGgGg'+
+    'GgGgHhHhIiIiIiIi'+
+    'IiIiJjKkkLlLlLlL'+
+    'lJlNnNnNnnNnOoOo'+
+    'OoOoRrRrRrSsSsSs'+
+    'SsTtTtTtUuUuUuUu'+
+    'UuUuWwYyYZzZzZz.';
+
+function stripDiacritics(str){
+
+    if(noSquiggles==false){
+        return str;
+    }
+
+    var answer='';
+    for(var i=0;i<str.length;i++){
+        var ch=str[i];
+        var chindex=ch.charCodeAt(0)-192;   // Index of character code in the strip string
+        if(chindex>=0 && chindex<stripstring.length){
+            // Character is within our table, so we can strip the accent...
+            var outch=stripstring.charAt(chindex);
+            // ...unless it was shown as a '.'
+            if(outch!='.')ch=outch;
+        }
+        answer+=ch;
+    }
+    return answer;
+}
+
+// http://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
+// NOTE: must escape every \ in the export code because of the JabRef Export...
+function escapeRegExp(str) {
+  return str.replace(/[-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+}
+
+function setStatistics (hits) {
+	if(hits < 0) { hits=numEntries; }
+	if(stats) { stats.firstChild.data = hits + '/' + numEntries}
+}
+
+function getTextContent(node) {
+	// Function written by Arve Bersvendsen
+	// http://www.virtuelvis.com
+	
+	if (node.nodeType == 3) {
+	return node.nodeValue;
+	} // text node
+	if (node.nodeType == 1 && node.className != "infolinks") { // element node
+	var text = [];
+	for (var chld = node.firstChild;chld;chld=chld.nextSibling) {
+		text.push(getTextContent(chld));
+	}
+	return text.join("");
+	} return ""; // some other node, won't contain text nodes.
+}
+
+function showAll(){
+	for (var i = 0; i < numEntries; i++){ entryRows[i].className = 'entry show'; }
+}
+
+function clearQS() {
+	qsfield.value = '';
+	showAll();
+}
+
+function redoQS(){
+	showAll();
+	quickSearch(qsfield);
+}
+
+function updateSetting(obj){
+	var option = obj.id;
+	var checked = obj.value;
+
+	switch(option)
+	 {
+	 case "opt_useRegExp":
+	   searchRegExp=!searchRegExp;
+	   redoQS();
+	   break;
+	 case "opt_noAccents":
+	   noSquiggles=!noSquiggles;
+	   loadTableData();
+	   redoQS();
+	   break;
+	 }
+}
+
+function initPreferences(){
+	if(noSquiggles){document.getElementById("opt_noAccents").checked = true;}
+	if(searchRegExp){document.getElementById("opt_useRegExp").checked = true;}
+}
+
+function toggleSettings(){
+	var togglebutton = document.getElementById('showsettings');
+	var settings = document.getElementById('settings');
+	
+	if(settings.className == "hidden"){
+		settings.className = "show";
+		togglebutton.innerText = "close settings";
+		togglebutton.textContent = "close settings";
+	}else{
+		settings.className = "hidden";
+		togglebutton.innerText = "settings...";		
+		togglebutton.textContent = "settings...";
+	}
+}
+
+-->
+</script>
+<style type="text/css">
+body { background-color: white; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.2; padding: 1em; color: #2E2E2E; margin: auto 2em; }
+
+form#quicksearch { width: auto; border-style: solid; border-color: gray; border-width: 1px 0px; padding: 0.7em 0.5em; display:none; position:relative; }
+span#searchstat {padding-left: 1em;}
+
+div#settings { margin-top:0.7em; /* border-bottom: 1px transparent solid; background-color: #efefef; border: 1px grey solid; */ }
+div#settings ul {margin: 0; padding: 0; }
+div#settings li {margin: 0; padding: 0 1em 0 0; display: inline; list-style: none; }
+div#settings li + li { border-left: 2px #efefef solid; padding-left: 0.5em;}
+div#settings input { margin-bottom: 0px;}
+
+div#settings.hidden {display:none;}
+
+#showsettings { border: 1px grey solid; padding: 0 0.5em; float:right; line-height: 1.6em; text-align: right; }
+#showsettings:hover { cursor: pointer; }
+
+.invalidsearch { background-color: red; }
+input[type="button"] { background-color: #efefef; border: 1px #2E2E2E solid;}
+
+table { width: 100%; empty-cells: show; border-spacing: 0em 0.2em; margin: 1em 0em; border-style: none; }
+th, td { border: 1px gray solid; border-width: 1px 1px; padding: 0.5em; vertical-align: top; text-align: left; }
+th { background-color: #efefef; }
+td + td, th + th { border-left: none; }
+
+td a { color: navy; text-decoration: none; }
+td a:hover  { text-decoration: underline; }
+
+tr.noshow { display: none;}
+tr.highlight td { background-color: #EFEFEF; border-top: 2px #2E2E2E solid; font-weight: bold; }
+tr.abstract td, tr.comment td, tr.bibtex td { background-color: #EFEFEF; text-align: justify; border-bottom: 2px #2E2E2E solid; }
+tr.nextshow td { border-bottom: 1px gray solid; }
+
+tr.bibtex pre { width: 100%; overflow: auto; white-space: pre-wrap;}
+p.infolinks { margin: 0.3em 0em 0em 0em; padding: 0px; }
+
+@media print {
+	p.infolinks, #qs_settings, #quicksearch, t.bibtex { display: none !important; }
+	tr { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<form action="" id="quicksearch">
+<input type="text" id="qs_field" autocomplete="off" placeholder="Type to search..." /> <input type="button" onclick="clearQS()" value="clear" />
+<span id="searchstat">Matching entries: <span id="stat">0</span></span>
+<div id="showsettings" onclick="toggleSettings()">settings...</div>
+<div id="settings" class="hidden">
+<ul>
+<li><input type="checkbox" class="search_setting" id="opt_useRegExp" onchange="updateSetting(this)"><label for="opt_useRegExp"> use RegExp</label></li>
+<li><input type="checkbox" class="search_setting" id="opt_noAccents" onchange="updateSetting(this)"><label for="opt_noAccents"> ignore accents</label></li>
+</ul>
+</div>
+</form>
+<table id="qs_table" border="1">
+<thead><tr><th width="20%">Author</th><th width="30%">Title</th><th width="5%">Year</th><th width="30%">Journal/Proceedings</th><th width="10%">Reftype</th><th width="5%">DOI/URL</th></tr></thead>
+<tbody><tr id="Abdessalem_2018" class="entry">
+	<td>Abdessalem, R.B., Nejati, S., Briand, L.C. and Stifter, T.</td>
+	<td>Testing vision-based control systems using learnable evolutionary algorithms</td>
+	<td>2018</td>
+	<td>Proceedings of the 40th International Conference on Software Engineering&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/3180155.3180160">DOI</a> <a href="https://doi.org/10.1145%2F3180155.3180160">URL</a>&nbsp;</td>
+</tr>
+<tr id="Aggarwal_2019" class="entry">
+	<td>Aggarwal, A., Lohia, P., Nagar, S., Dey, K. and Saha, D.</td>
+	<td>Black box fairness testing of machine learning models</td>
+	<td>2019</td>
+	<td>Proceedings of the 2019 27th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering - ESEC/FSE 2019&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/3338906.3338937">DOI</a> <a href="https://doi.org/10.1145%2F3338906.3338937">URL</a>&nbsp;</td>
+</tr>
+<tr id="Alizadeh_2019" class="entry">
+	<td>Alizadeh, V., Ouali, M.A., Kessentini, M. and Chater, M.</td>
+	<td>RefBot: Intelligent Software Refactoring Bot</td>
+	<td>2019</td>
+	<td>2019 34th IEEE/ACM International Conference on Automated Software Engineering (ASE)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/ase.2019.00081">DOI</a> <a href="https://doi.org/10.1109%2Fase.2019.00081">URL</a>&nbsp;</td>
+</tr>
+<tr id="Azim_2014" class="entry">
+	<td>Azim, M.T., Neamtiu, I. and Marvel, L.M.</td>
+	<td>Towards self-healing smartphone software via automated patching</td>
+	<td>2014</td>
+	<td>Proceedings of the 29th ACM/IEEE international conference on Automated software engineering - ASE &#39;14&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/2642937.2642955">DOI</a> <a href="https://doi.org/10.1145%2F2642937.2642955">URL</a>&nbsp;</td>
+</tr>
+<tr id="Ben_Abdessalem_2016" class="entry">
+	<td>Abdessalem, R.B., Nejati, S., Briand, L.C. and Stifter, T.</td>
+	<td>Testing advanced driver assistance systems using multi-objective search and neural networks</td>
+	<td>2016</td>
+	<td>Proceedings of the 31st IEEE/ACM International Conference on Automated Software Engineering - ASE 2016&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/2970276.2970311">DOI</a> <a href="https://doi.org/10.1145%2F2970276.2970311">URL</a>&nbsp;</td>
+</tr>
+<tr id="Borgida_1999" class="entry">
+	<td>Borgida, A. and Devanbu, P.</td>
+	<td>Adding more &ldquo;DL&rdquo; to IDL</td>
+	<td>1999</td>
+	<td>Proceedings of the 21st international conference on Software engineering - ICSE &#39;99&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/302405.302660">DOI</a> <a href="https://doi.org/10.1145%2F302405.302660">URL</a>&nbsp;</td>
+</tr>
+<tr id="Brun" class="entry">
+	<td>Brun, Y. and Ernst, M.</td>
+	<td>Finding latent code errors via machine learning over program executions</td>
+	<td></td>
+	<td>Proceedings. 26th International Conference on Software Engineering&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/icse.2004.1317470">DOI</a> <a href="https://doi.org/10.1109%2Ficse.2004.1317470">URL</a>&nbsp;</td>
+</tr>
+<tr id="Cambronero_2019" class="entry">
+	<td>Cambronero, J., Li, H., Kim, S., Sen, K. and Chandra, S.</td>
+	<td>When deep learning met code search</td>
+	<td>2019</td>
+	<td>Proceedings of the 2019 27th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering - ESEC/FSE 2019&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/3338906.3340458">DOI</a> <a href="https://doi.org/10.1145%2F3338906.3340458">URL</a>&nbsp;</td>
+</tr>
+<tr id="Cervantes_2016" class="entry">
+	<td>Cervantes, H., Haziyev, S., Hrytsay, O. and Kazman, R.</td>
+	<td>Smart decisions</td>
+	<td>2016</td>
+	<td>Proceedings of the 38th International Conference on Software Engineering Companion - ICSE &#39;16&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/2889160.2889184">DOI</a> <a href="https://doi.org/10.1145%2F2889160.2889184">URL</a>&nbsp;</td>
+</tr>
+<tr id="Chen_2011" class="entry">
+	<td>Chen, N., Hoi, S.C.H. and Xiao, X.</td>
+	<td>Software process evaluation: A machine learning approach</td>
+	<td>2011</td>
+	<td>2011 26th IEEE/ACM International Conference on Automated Software Engineering (ASE 2011)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/ase.2011.6100070">DOI</a> <a href="https://doi.org/10.1109%2Fase.2011.6100070">URL</a>&nbsp;</td>
+</tr>
+<tr id="Chen_2019" class="entry">
+	<td>Chen, Y., Su, T. and Su, Z.</td>
+	<td>Deep Differential Testing of JVM Implementations</td>
+	<td>2019</td>
+	<td>2019 IEEE/ACM 41st International Conference on Software Engineering (ICSE)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/icse.2019.00127">DOI</a> <a href="https://doi.org/10.1109%2Ficse.2019.00127">URL</a>&nbsp;</td>
+</tr>
+<tr id="Cleland_Huang_2010" class="entry">
+	<td>Cleland-Huang, J., Czauderna, A., Gibiec, M. and Emenecker, J.</td>
+	<td>A machine learning approach for tracing regulatory codes to product specific requirements</td>
+	<td>2010</td>
+	<td>Proceedings of the 32nd ACM/IEEE International Conference on Software Engineering - ICSE &#39;10&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/1806799.1806825">DOI</a> <a href="https://doi.org/10.1145%2F1806799.1806825">URL</a>&nbsp;</td>
+</tr>
+<tr id="Devos_2012" class="entry">
+	<td>Devos, N., Ponsard, C., Deprez, J.-C., Bauvin, R., Moriau, B. and Anckaerts, G.</td>
+	<td>Efficient reuse of domain-specific test knowledge: An industrial case in the smart card domain</td>
+	<td>2012</td>
+	<td>2012 34th International Conference on Software Engineering (ICSE)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/icse.2012.6227107">DOI</a> <a href="https://doi.org/10.1109%2Ficse.2012.6227107">URL</a>&nbsp;</td>
+</tr>
+<tr id="Di_Nardo_2015" class="entry">
+	<td>Nardo, D.D., Pastore, F., Arcuri, A. and Briand, L.</td>
+	<td>Evolutionary Robustness Testing of Data Processing Systems Using Models and Data Mutation (T)</td>
+	<td>2015</td>
+	<td>2015 30th IEEE/ACM International Conference on Automated Software Engineering (ASE)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/ase.2015.13">DOI</a> <a href="https://doi.org/10.1109%2Fase.2015.13">URL</a>&nbsp;</td>
+</tr>
+<tr id="Di_Nitto_1999" class="entry">
+	<td>Nitto, E.D. and Rosenblum, D.</td>
+	<td>Exploiting ADLs to specify architectural styles induced by middleware infrastructures</td>
+	<td>1999</td>
+	<td>Proceedings of the 21st international conference on Software engineering - ICSE &#39;99&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/302405.302406">DOI</a> <a href="https://doi.org/10.1145%2F302405.302406">URL</a>&nbsp;</td>
+</tr>
+<tr id="Di_Ruscio_2010" class="entry">
+	<td>Ruscio, D.D., Malavolta, I., Muccini, H., Pelliccione, P. and Pierantonio, A.</td>
+	<td>Developing next generation ADLs through MDE techniques</td>
+	<td>2010</td>
+	<td>Proceedings of the 32nd ACM/IEEE International Conference on Software Engineering - ICSE &#39;10&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/1806799.1806816">DOI</a> <a href="https://doi.org/10.1145%2F1806799.1806816">URL</a>&nbsp;</td>
+</tr>
+<tr id="Du_2019" class="entry">
+	<td>Du, X., Xie, X., Li, Y., Ma, L., Liu, Y. and Zhao, J.</td>
+	<td>DeepStellar: model-based quantitative analysis of stateful deep learning systems</td>
+	<td>2019</td>
+	<td>Proceedings of the 2019 27th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering - ESEC/FSE 2019&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/3338906.3338954">DOI</a> <a href="https://doi.org/10.1145%2F3338906.3338954">URL</a>&nbsp;</td>
+</tr>
+<tr id="Duley_2010" class="entry">
+	<td>Duley, A., Spandikow, C. and Kim, M.</td>
+	<td>A program differencing algorithm for verilog HDL</td>
+	<td>2010</td>
+	<td>Proceedings of the IEEE/ACM international conference on Automated software engineering - ASE &#39;10&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/1858996.1859093">DOI</a> <a href="https://doi.org/10.1145%2F1858996.1859093">URL</a>&nbsp;</td>
+</tr>
+<tr id="Fu_2017" class="entry">
+	<td>Fu, W. and Menzies, T.</td>
+	<td>Easy over hard: a case study on deep learning</td>
+	<td>2017</td>
+	<td>Proceedings of the 2017 11th Joint Meeting on Foundations of Software Engineering - ESEC/FSE 2017&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/3106237.3106256">DOI</a> <a href="https://doi.org/10.1145%2F3106237.3106256">URL</a>&nbsp;</td>
+</tr>
+<tr id="Fucci_2019" class="entry">
+	<td>Fucci, D., Mollaalizadehbahnemiri, A. and Maalej, W.</td>
+	<td>On using machine learning to identify knowledge in API reference documentation</td>
+	<td>2019</td>
+	<td>Proceedings of the 2019 27th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering - ESEC/FSE 2019&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/3338906.3338943">DOI</a> <a href="https://doi.org/10.1145%2F3338906.3338943">URL</a>&nbsp;</td>
+</tr>
+<tr id="Godefroid_2017" class="entry">
+	<td>Godefroid, P., Peleg, H. and Singh, R.</td>
+	<td>Learn&amp;Fuzz: Machine learning for input fuzzing</td>
+	<td>2017</td>
+	<td>2017 32nd IEEE/ACM International Conference on Automated Software Engineering (ASE)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/ase.2017.8115618">DOI</a> <a href="https://doi.org/10.1109%2Fase.2017.8115618">URL</a>&nbsp;</td>
+</tr>
+<tr id="Gopinath_2019" class="entry">
+	<td>Gopinath, D., Converse, H., Pasareanu, C. and Taly, A.</td>
+	<td>Property Inference for Deep Neural Networks</td>
+	<td>2019</td>
+	<td>2019 34th IEEE/ACM International Conference on Automated Software Engineering (ASE)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/ase.2019.00079">DOI</a> <a href="https://doi.org/10.1109%2Fase.2019.00079">URL</a>&nbsp;</td>
+</tr>
+<tr id="Grech_2019" class="entry">
+	<td>Grech, N., Brent, L., Scholz, B. and Smaragdakis, Y.</td>
+	<td>Gigahorse: Thorough, Declarative Decompilation of Smart Contracts</td>
+	<td>2019</td>
+	<td>2019 IEEE/ACM 41st International Conference on Software Engineering (ICSE)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/icse.2019.00120">DOI</a> <a href="https://doi.org/10.1109%2Ficse.2019.00120">URL</a>&nbsp;</td>
+</tr>
+<tr id="Gu_2016" class="entry">
+	<td>Gu, X., Zhang, H., Zhang, D. and Kim, S.</td>
+	<td>Deep API learning</td>
+	<td>2016</td>
+	<td>Proceedings of the 2016 24th ACM SIGSOFT International Symposium on Foundations of Software Engineering - FSE 2016&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/2950290.2950334">DOI</a> <a href="https://doi.org/10.1145%2F2950290.2950334">URL</a>&nbsp;</td>
+</tr>
+<tr id="Gu_2018" class="entry">
+	<td>Gu, X., Zhang, H. and Kim, S.</td>
+	<td>Deep code search</td>
+	<td>2018</td>
+	<td>Proceedings of the 40th International Conference on Software Engineering&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/3180155.3180167">DOI</a> <a href="https://doi.org/10.1145%2F3180155.3180167">URL</a>&nbsp;</td>
+</tr>
+<tr id="Guo_2014" class="entry">
+	<td>Guo, J., Monaikul, N., Plepel, C. and Cleland-Huang, J.</td>
+	<td>Towards an intelligent domain-specific traceability solution</td>
+	<td>2014</td>
+	<td>Proceedings of the 29th ACM/IEEE international conference on Automated software engineering - ASE &#39;14&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/2642937.2642970">DOI</a> <a href="https://doi.org/10.1145%2F2642937.2642970">URL</a>&nbsp;</td>
+</tr>
+<tr id="Guo_2017" class="entry">
+	<td>Guo, J., Cheng, J. and Cleland-Huang, J.</td>
+	<td>Semantically Enhanced Software Traceability Using Deep Learning Techniques</td>
+	<td>2017</td>
+	<td>2017 IEEE/ACM 39th International Conference on Software Engineering (ICSE)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/icse.2017.9">DOI</a> <a href="https://doi.org/10.1109%2Ficse.2017.9">URL</a>&nbsp;</td>
+</tr>
+<tr id="Guo_2019" class="entry">
+	<td>Guo, Q., Chen, S., Xie, X., Ma, L., Hu, Q., Liu, H., Liu, Y., Zhao, J. and Li, X.</td>
+	<td>An Empirical Study Towards Characterizing Deep Learning Development and Deployment Across Different Frameworks and Platforms</td>
+	<td>2019</td>
+	<td>2019 34th IEEE/ACM International Conference on Automated Software Engineering (ASE)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/ase.2019.00080">DOI</a> <a href="https://doi.org/10.1109%2Fase.2019.00080">URL</a>&nbsp;</td>
+</tr>
+<tr id="Ha_2019" class="entry">
+	<td>Ha, H. and Zhang, H.</td>
+	<td>DeepPerf: Performance Prediction for Configurable Software with Deep Sparse Neural Network</td>
+	<td>2019</td>
+	<td>2019 IEEE/ACM 41st International Conference on Software Engineering (ICSE)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/icse.2019.00113">DOI</a> <a href="https://doi.org/10.1109%2Ficse.2019.00113">URL</a>&nbsp;</td>
+</tr>
+<tr id="Hellendoorn_2017" class="entry">
+	<td>Hellendoorn, V.J. and Devanbu, P.</td>
+	<td>Are deep neural networks the best choice for modeling source code?</td>
+	<td>2017</td>
+	<td>Proceedings of the 2017 11th Joint Meeting on Foundations of Software Engineering - ESEC/FSE 2017&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/3106237.3106290">DOI</a> <a href="https://doi.org/10.1145%2F3106237.3106290">URL</a>&nbsp;</td>
+</tr>
+<tr id="Hellendoorn_2018" class="entry">
+	<td>Hellendoorn, V.J., Bird, C., Barr, E.T. and Allamanis, M.</td>
+	<td>Deep learning type inference</td>
+	<td>2018</td>
+	<td>Proceedings of the 2018 26th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering - ESEC/FSE 2018&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/3236024.3236051">DOI</a> <a href="https://doi.org/10.1145%2F3236024.3236051">URL</a>&nbsp;</td>
+</tr>
+<tr id="Hu_2018" class="entry">
+	<td>Hu, G., Zhu, L. and Yang, J.</td>
+	<td>AppFlow: using machine learning to synthesize robust, reusable UI tests</td>
+	<td>2018</td>
+	<td>Proceedings of the 2018 26th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering - ESEC/FSE 2018&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/3236024.3236055">DOI</a> <a href="https://doi.org/10.1145%2F3236024.3236055">URL</a>&nbsp;</td>
+</tr>
+<tr id="Inkumsah_2008" class="entry">
+	<td>Inkumsah, K. and Xie, T.</td>
+	<td>Improving Structural Testing of Object-Oriented Programs via Integrating Evolutionary Testing and Symbolic Execution</td>
+	<td>2008</td>
+	<td>2008 23rd IEEE/ACM International Conference on Automated Software Engineering&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/ase.2008.40">DOI</a> <a href="https://doi.org/10.1109%2Fase.2008.40">URL</a>&nbsp;</td>
+</tr>
+<tr id="Islam_2019" class="entry">
+	<td>Islam, M.J., Nguyen, G., Pan, R. and Rajan, H.</td>
+	<td>A comprehensive study on deep learning bug characteristics</td>
+	<td>2019</td>
+	<td>Proceedings of the 2019 27th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering - ESEC/FSE 2019&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/3338906.3338955">DOI</a> <a href="https://doi.org/10.1145%2F3338906.3338955">URL</a>&nbsp;</td>
+</tr>
+<tr id="Jaaskelainen_2009" class="entry">
+	<td>Jaaskelainen, A., Katara, M., Kervinen, A., Maunumaa, M., Paakkonen, T., Takala, T. and Virtanen, H.</td>
+	<td>Automatic GUI test generation for smartphone applications - an evaluation</td>
+	<td>2009</td>
+	<td>2009 31st International Conference on Software Engineering - Companion Volume&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/icse-companion.2009.5070969">DOI</a> <a href="https://doi.org/10.1109%2Ficse-companion.2009.5070969">URL</a>&nbsp;</td>
+</tr>
+<tr id="Jiang_2018" class="entry">
+	<td>Jiang, B., Liu, Y. and Chan, W.K.</td>
+	<td>ContractFuzzer: fuzzing smart contracts for vulnerability detection</td>
+	<td>2018</td>
+	<td>Proceedings of the 33rd ACM/IEEE International Conference on Automated Software Engineering - ASE 2018&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/3238147.3238177">DOI</a> <a href="https://doi.org/10.1145%2F3238147.3238177">URL</a>&nbsp;</td>
+</tr>
+<tr id="Jiang_2019" class="entry">
+	<td>Jiang, L., Liu, H. and Jiang, H.</td>
+	<td>Machine Learning Based Recommendation of Method Names: How Far are We</td>
+	<td>2019</td>
+	<td>2019 34th IEEE/ACM International Conference on Automated Software Engineering (ASE)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/ase.2019.00062">DOI</a> <a href="https://doi.org/10.1109%2Fase.2019.00062">URL</a>&nbsp;</td>
+</tr>
+<tr id="Kashyap_2014" class="entry">
+	<td>Kashyap, V., Dewey, K., Kuefner, E.A., Wagner, J., Gibbons, K., Sarracino, J., Wiedermann, B. and Hardekopf, B.</td>
+	<td>JSAI: a static analysis platform for JavaScript</td>
+	<td>2014</td>
+	<td>Proceedings of the 22nd ACM SIGSOFT International Symposium on Foundations of Software Engineering - FSE 2014&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/2635868.2635904">DOI</a> <a href="https://doi.org/10.1145%2F2635868.2635904">URL</a>&nbsp;</td>
+</tr>
+<tr id="Kazman_2011" class="entry">
+	<td>Kazman, R., Bass, L., Ivers, J. and Moreno, G.A.</td>
+	<td>Architecture evaluation without an architecture</td>
+	<td>2011</td>
+	<td>Proceeding of the 33rd international conference on Software engineering - ICSE &#39;11&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/1985793.1985886">DOI</a> <a href="https://doi.org/10.1145%2F1985793.1985886">URL</a>&nbsp;</td>
+</tr>
+<tr id="Khatchadourian_2019" class="entry">
+	<td>Khatchadourian, R., Tang, Y., Bagherzadeh, M. and Ahmed, S.</td>
+	<td>Safe Automated Refactoring for Intelligent Parallelization of Java 8 Streams</td>
+	<td>2019</td>
+	<td>2019 IEEE/ACM 41st International Conference on Software Engineering (ICSE)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/icse.2019.00072">DOI</a> <a href="https://doi.org/10.1109%2Ficse.2019.00072">URL</a>&nbsp;</td>
+</tr>
+<tr id="Kim_2019" class="entry">
+	<td>Kim, J., Feldt, R. and Yoo, S.</td>
+	<td>Guiding Deep Learning System Testing Using Surprise Adequacy</td>
+	<td>2019</td>
+	<td>2019 IEEE/ACM 41st International Conference on Software Engineering (ICSE)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/icse.2019.00108">DOI</a> <a href="https://doi.org/10.1109%2Ficse.2019.00108">URL</a>&nbsp;</td>
+</tr>
+<tr id="Kongmanee_2019" class="entry">
+	<td>Kongmanee, J., Kijsanayothin, P. and Hewett, R.</td>
+	<td>Securing Smart Contracts in Blockchain</td>
+	<td>2019</td>
+	<td>2019 34th IEEE/ACM International Conference on Automated Software Engineering Workshop (ASEW)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/asew.2019.00032">DOI</a> <a href="https://doi.org/10.1109%2Fasew.2019.00032">URL</a>&nbsp;</td>
+</tr>
+<tr id="Kultur_2008" class="entry">
+	<td>Kultur, Y., Turhan, B. and Bener, A.B.</td>
+	<td>ENNA</td>
+	<td>2008</td>
+	<td>Proceedings of the 16th ACM SIGSOFT International Symposium on Foundations of software engineering - SIGSOFT &#39;08/FSE-16&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/1453101.1453148">DOI</a> <a href="https://doi.org/10.1145%2F1453101.1453148">URL</a>&nbsp;</td>
+</tr>
+<tr id="Kusmenko_2019" class="entry">
+	<td>Kusmenko, E., Pavlitskaya, S., Rumpe, B. and Stuber, S.</td>
+	<td>On the Engineering of AI-Powered Systems</td>
+	<td>2019</td>
+	<td>2019 34th IEEE/ACM International Conference on Automated Software Engineering Workshop (ASEW)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/asew.2019.00042">DOI</a> <a href="https://doi.org/10.1109%2Fasew.2019.00042">URL</a>&nbsp;</td>
+</tr>
+<tr id="Lam_2015" class="entry">
+	<td>Lam, A.N., Nguyen, A.T., Nguyen, H.A. and Nguyen, T.N.</td>
+	<td>Combining Deep Learning with Information Retrieval to Localize Buggy Files for Bug Reports (N)</td>
+	<td>2015</td>
+	<td>2015 30th IEEE/ACM International Conference on Automated Software Engineering (ASE)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/ase.2015.73">DOI</a> <a href="https://doi.org/10.1109%2Fase.2015.73">URL</a>&nbsp;</td>
+</tr>
+<tr id="Lee_2014" class="entry">
+	<td>Lee, S., Jung, C. and Pande, S.</td>
+	<td>Detecting memory leaks through introspective dynamic behavior modelling using machine learning</td>
+	<td>2014</td>
+	<td>Proceedings of the 36th International Conference on Software Engineering - ICSE 2014&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/2568225.2568307">DOI</a> <a href="https://doi.org/10.1145%2F2568225.2568307">URL</a>&nbsp;</td>
+</tr>
+<tr id="Lee_2017" class="entry">
+	<td>Lee, S.-R., Heo, M.-J., Lee, C.-G., Kim, M. and Jeong, G.</td>
+	<td>Applying deep learning based automatic bug triager to industrial projects</td>
+	<td>2017</td>
+	<td>Proceedings of the 2017 11th Joint Meeting on Foundations of Software Engineering - ESEC/FSE 2017&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/3106237.3117776">DOI</a> <a href="https://doi.org/10.1145%2F3106237.3117776">URL</a>&nbsp;</td>
+</tr>
+<tr id="Li_2014" class="entry">
+	<td>Li, D., Tran, A.H. and Halfond, W.G.J.</td>
+	<td>Making web applications more energy efficient for OLED smartphones</td>
+	<td>2014</td>
+	<td>Proceedings of the 36th International Conference on Software Engineering - ICSE 2014&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/2568225.2568321">DOI</a> <a href="https://doi.org/10.1145%2F2568225.2568321">URL</a>&nbsp;</td>
+</tr>
+<tr id="Li_2016" class="entry">
+	<td>Li, X., Liang, Y., Qian, H., Hu, Y.-Q., Bu, L., Yu, Y., Chen, X. and Li, X.</td>
+	<td>Symbolic execution of complex program driven by machine learning based constraint solving</td>
+	<td>2016</td>
+	<td>Proceedings of the 31st IEEE/ACM International Conference on Automated Software Engineering - ASE 2016&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/2970276.2970364">DOI</a> <a href="https://doi.org/10.1145%2F2970276.2970364">URL</a>&nbsp;</td>
+</tr>
+<tr id="Liu_2014" class="entry">
+	<td>Liu, Y., Xu, C. and Cheung, S.-C.</td>
+	<td>Characterizing and detecting performance bugs for smartphone applications</td>
+	<td>2014</td>
+	<td>Proceedings of the 36th International Conference on Software Engineering - ICSE 2014&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/2568225.2568229">DOI</a> <a href="https://doi.org/10.1145%2F2568225.2568229">URL</a>&nbsp;</td>
+</tr>
+<tr id="Liu_2018" class="entry">
+	<td>Liu, H., Xu, Z. and Zou, Y.</td>
+	<td>Deep learning based feature envy detection</td>
+	<td>2018</td>
+	<td>Proceedings of the 33rd ACM/IEEE International Conference on Automated Software Engineering - ASE 2018&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/3238147.3238166">DOI</a> <a href="https://doi.org/10.1145%2F3238147.3238166">URL</a>&nbsp;</td>
+</tr>
+<tr id="Liu_2018" class="entry">
+	<td>Liu, H., Liu, C., Zhao, W., Jiang, Y. and Sun, J.</td>
+	<td>S-gram: towards semantic-aware security auditing for Ethereum smart contracts</td>
+	<td>2018</td>
+	<td>Proceedings of the 33rd ACM/IEEE International Conference on Automated Software Engineering - ASE 2018&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/3238147.3240728">DOI</a> <a href="https://doi.org/10.1145%2F3238147.3240728">URL</a>&nbsp;</td>
+</tr>
+<tr id="Ma_2017" class="entry">
+	<td>Ma, S., Aafer, Y., Xu, Z., Lee, W.-C., Zhai, J., Liu, Y. and Zhang, X.</td>
+	<td>LAMP: data provenance for graph based machine learning algorithms through derivative computation</td>
+	<td>2017</td>
+	<td>Proceedings of the 2017 11th Joint Meeting on Foundations of Software Engineering - ESEC/FSE 2017&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/3106237.3106291">DOI</a> <a href="https://doi.org/10.1145%2F3106237.3106291">URL</a>&nbsp;</td>
+</tr>
+<tr id="Ma_2018" class="entry">
+	<td>Ma, L., Liu, Y., Zhao, J., Wang, Y., Juefei-Xu, F., Zhang, F., Sun, J., Xue, M., Li, B., Chen, C., Su, T. and Li, L.</td>
+	<td>DeepGauge: multi-granularity testing criteria for deep learning systems</td>
+	<td>2018</td>
+	<td>Proceedings of the 33rd ACM/IEEE International Conference on Automated Software Engineering - ASE 2018&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/3238147.3238202">DOI</a> <a href="https://doi.org/10.1145%2F3238147.3238202">URL</a>&nbsp;</td>
+</tr>
+<tr id="Ma_2018" class="entry">
+	<td>Ma, S., Liu, Y., Lee, W.-C., Zhang, X. and Grama, A.</td>
+	<td>MODE: automated neural network model debugging via state differential analysis and input selection</td>
+	<td>2018</td>
+	<td>Proceedings of the 2018 26th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering - ESEC/FSE 2018&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/3236024.3236082">DOI</a> <a href="https://doi.org/10.1145%2F3236024.3236082">URL</a>&nbsp;</td>
+</tr>
+<tr id="Mahmood_2014" class="entry">
+	<td>Mahmood, R., Mirzaei, N. and Malek, S.</td>
+	<td>EvoDroid: segmented evolutionary testing of Android apps</td>
+	<td>2014</td>
+	<td>Proceedings of the 22nd ACM SIGSOFT International Symposium on Foundations of Software Engineering - FSE 2014&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/2635868.2635896">DOI</a> <a href="https://doi.org/10.1145%2F2635868.2635896">URL</a>&nbsp;</td>
+</tr>
+<tr id="Mashayekhi_1994" class="entry">
+	<td>Mashayekhi, V., Feulner, C. and Riedl, J.</td>
+	<td>CAIS</td>
+	<td>1994</td>
+	<td>Proceedings of the 2nd ACM SIGSOFT symposium on Foundations of software engineering - SIGSOFT &#39;94&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/193173.195290">DOI</a> <a href="https://doi.org/10.1145%2F193173.195290">URL</a>&nbsp;</td>
+</tr>
+<tr id="Mesbah_2019" class="entry">
+	<td>Mesbah, A., Rice, A., Johnston, E., Glorioso, N. and Aftandilian, E.</td>
+	<td>DeepDelta: learning to repair compilation errors</td>
+	<td>2019</td>
+	<td>Proceedings of the 2019 27th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering - ESEC/FSE 2019&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/3338906.3340455">DOI</a> <a href="https://doi.org/10.1145%2F3338906.3340455">URL</a>&nbsp;</td>
+</tr>
+<tr id="Misra_2019" class="entry">
+	<td>Misra, J. and Podder, S.</td>
+	<td>Mining Text in Incident Repositories: Experiences and Perspectives on Adopting Machine Learning Solutions in Practice</td>
+	<td>2019</td>
+	<td>2019 34th IEEE/ACM International Conference on Automated Software Engineering Workshop (ASEW)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/asew.2019.00039">DOI</a> <a href="https://doi.org/10.1109%2Fasew.2019.00039">URL</a>&nbsp;</td>
+</tr>
+<tr id="Nejadgholi_2019" class="entry">
+	<td>Nejadgholi, M. and Yang, J.</td>
+	<td>A Study of Oracle Approximations in Testing Deep Learning Libraries</td>
+	<td>2019</td>
+	<td>2019 34th IEEE/ACM International Conference on Automated Software Engineering (ASE)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/ase.2019.00078">DOI</a> <a href="https://doi.org/10.1109%2Fase.2019.00078">URL</a>&nbsp;</td>
+</tr>
+<tr id="Osterweil_2003" class="entry">
+	<td>Osterweil, L.J.</td>
+	<td>Understanding process and the quest for deeper questions in software engineering research</td>
+	<td>2003</td>
+	<td>Proceedings of the 9th European software engineering conference held jointly with 10th ACM SIGSOFT international symposium on Foundations of software engineering - ESEC/FSE &#39;03&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/940071.940073">DOI</a> <a href="https://doi.org/10.1145%2F940071.940073">URL</a>&nbsp;</td>
+</tr>
+<tr id="Pham_2019" class="entry">
+	<td>Pham, H.V., Lutellier, T., Qi, W. and Tan, L.</td>
+	<td>CRADLE: Cross-Backend Validation to Detect and Localize Bugs in Deep Learning Libraries</td>
+	<td>2019</td>
+	<td>2019 IEEE/ACM 41st International Conference on Software Engineering (ICSE)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/icse.2019.00107">DOI</a> <a href="https://doi.org/10.1109%2Ficse.2019.00107">URL</a>&nbsp;</td>
+</tr>
+<tr id="Ray_2003" class="entry">
+	<td>Ray, A. and Cleaveland, R.</td>
+	<td>Architectural interaction diagrams: AIDs for system modeling</td>
+	<td>2003</td>
+	<td>25th International Conference on Software Engineering, 2003. Proceedings.&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/icse.2003.1201218">DOI</a> <a href="https://doi.org/10.1109%2Ficse.2003.1201218">URL</a>&nbsp;</td>
+</tr>
+<tr id="Raza_2016" class="entry">
+	<td>Raza, M. and Faria, J.P.</td>
+	<td>ProcessPAIR: a tool for automated performance analysis and improvement recommendation in software development</td>
+	<td>2016</td>
+	<td>Proceedings of the 31st IEEE/ACM International Conference on Automated Software Engineering - ASE 2016&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/2970276.2970284">DOI</a> <a href="https://doi.org/10.1145%2F2970276.2970284">URL</a>&nbsp;</td>
+</tr>
+<tr id="Roy_2018" class="entry">
+	<td>Roy, S., Pandey, A., Dolan-Gavitt, B. and Hu, Y.</td>
+	<td>Bug synthesis: challenging bug-finding tools with deep faults</td>
+	<td>2018</td>
+	<td>Proceedings of the 2018 26th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering - ESEC/FSE 2018&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/3236024.3236084">DOI</a> <a href="https://doi.org/10.1145%2F3236024.3236084">URL</a>&nbsp;</td>
+</tr>
+<tr id="Saccente_2019" class="entry">
+	<td>Saccente, N., Dehlinger, J., Deng, L., Chakraborty, S. and Xiong, Y.</td>
+	<td>Project Achilles: A Prototype Tool for Static Method-Level Vulnerability Detection of Java Source Code Using a Recurrent Neural Network</td>
+	<td>2019</td>
+	<td>2019 34th IEEE/ACM International Conference on Automated Software Engineering Workshop (ASEW)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/asew.2019.00040">DOI</a> <a href="https://doi.org/10.1109%2Fasew.2019.00040">URL</a>&nbsp;</td>
+</tr>
+<tr id="Siebra_2008" class="entry">
+	<td>Siebra, C.A., Costa, P.H.R., Santos, A.L.M. and Silva, F.Q.B.</td>
+	<td>Improving the handsets network test process via DMAIC concepts</td>
+	<td>2008</td>
+	<td>Proceedings of the 13th international conference on Software engineering - ICSE &#39;08&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/1368088.1368191">DOI</a> <a href="https://doi.org/10.1145%2F1368088.1368191">URL</a>&nbsp;</td>
+</tr>
+<tr id="Sun_2018" class="entry">
+	<td>Sun, Y., Wu, M., Ruan, W., Huang, X., Kwiatkowska, M. and Kroening, D.</td>
+	<td>Concolic testing for deep neural networks</td>
+	<td>2018</td>
+	<td>Proceedings of the 33rd ACM/IEEE International Conference on Automated Software Engineering - ASE 2018&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/3238147.3238172">DOI</a> <a href="https://doi.org/10.1145%2F3238147.3238172">URL</a>&nbsp;</td>
+</tr>
+<tr id="Tian_2018" class="entry">
+	<td>Tian, Y., Pei, K., Jana, S. and Ray, B.</td>
+	<td>DeepTest</td>
+	<td>2018</td>
+	<td>Proceedings of the 40th International Conference on Software Engineering&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/3180155.3180220">DOI</a> <a href="https://doi.org/10.1145%2F3180155.3180220">URL</a>&nbsp;</td>
+</tr>
+<tr id="Vendome_2017" class="entry">
+	<td>Vendome, C., Linares-Vasquez, M., Bavota, G., Penta, M.D., German, D. and Poshyvanyk, D.</td>
+	<td>Machine Learning-Based Detection of Open Source License Exceptions</td>
+	<td>2017</td>
+	<td>2017 IEEE/ACM 39th International Conference on Software Engineering (ICSE)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/icse.2017.19">DOI</a> <a href="https://doi.org/10.1109%2Ficse.2017.19">URL</a>&nbsp;</td>
+</tr>
+<tr id="Wan_2018" class="entry">
+	<td>Wan, Y., Zhao, Z., Yang, M., Xu, G., Ying, H., Wu, J. and Yu, P.S.</td>
+	<td>Improving automatic source code summarization via deep reinforcement learning</td>
+	<td>2018</td>
+	<td>Proceedings of the 33rd ACM/IEEE International Conference on Automated Software Engineering - ASE 2018&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/3238147.3238206">DOI</a> <a href="https://doi.org/10.1145%2F3238147.3238206">URL</a>&nbsp;</td>
+</tr>
+<tr id="Wang_2018" class="entry">
+	<td>Wang, J., Bagheri, H. and Cohen, M.B.</td>
+	<td>An evolutionary approach for analyzing Alloy specifications</td>
+	<td>2018</td>
+	<td>Proceedings of the 33rd ACM/IEEE International Conference on Automated Software Engineering - ASE 2018&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/3238147.3240468">DOI</a> <a href="https://doi.org/10.1145%2F3238147.3240468">URL</a>&nbsp;</td>
+</tr>
+<tr id="Wang_2019" class="entry">
+	<td>Wang, J., Dong, G., Sun, J., Wang, X. and Zhang, P.</td>
+	<td>Adversarial Sample Detection for Deep Neural Network through Model Mutation Testing</td>
+	<td>2019</td>
+	<td>2019 IEEE/ACM 41st International Conference on Software Engineering (ICSE)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/icse.2019.00126">DOI</a> <a href="https://doi.org/10.1109%2Ficse.2019.00126">URL</a>&nbsp;</td>
+</tr>
+<tr id="White_2016" class="entry">
+	<td>White, M., Tufano, M., Vendome, C. and Poshyvanyk, D.</td>
+	<td>Deep learning code fragments for code clone detection</td>
+	<td>2016</td>
+	<td>Proceedings of the 31st IEEE/ACM International Conference on Automated Software Engineering - ASE 2016&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/2970276.2970326">DOI</a> <a href="https://doi.org/10.1145%2F2970276.2970326">URL</a>&nbsp;</td>
+</tr>
+<tr id="Winter_2015" class="entry">
+	<td>Winter, S., Schwahn, O., Natella, R., Suri, N. and Cotroneo, D.</td>
+	<td>No PAIN, No Gain? The Utility of PArallel Fault INjections</td>
+	<td>2015</td>
+	<td>2015 IEEE/ACM 37th IEEE International Conference on Software Engineering&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/icse.2015.67">DOI</a> <a href="https://doi.org/10.1109%2Ficse.2015.67">URL</a>&nbsp;</td>
+</tr>
+<tr id="Wong_2011" class="entry">
+	<td>Wong, S. and Cai, Y.</td>
+	<td>Generalizing evolutionary coupling with stochastic dependencies</td>
+	<td>2011</td>
+	<td>2011 26th IEEE/ACM International Conference on Automated Software Engineering (ASE 2011)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/ase.2011.6100065">DOI</a> <a href="https://doi.org/10.1109%2Fase.2011.6100065">URL</a>&nbsp;</td>
+</tr>
+<tr id="Xu_2016" class="entry">
+	<td>Xu, B., Ye, D., Xing, Z., Xia, X., Chen, G. and Li, S.</td>
+	<td>Predicting semantically linkable knowledge in developer online forums via convolutional neural network</td>
+	<td>2016</td>
+	<td>Proceedings of the 31st IEEE/ACM International Conference on Automated Software Engineering - ASE 2016&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/2970276.2970357">DOI</a> <a href="https://doi.org/10.1145%2F2970276.2970357">URL</a>&nbsp;</td>
+</tr>
+<tr id="Xu_2017" class="entry">
+	<td>Xu, Z., Chen, B., Chandramohan, M., Liu, Y. and Song, F.</td>
+	<td>SPAIN: Security Patch Analysis for Binaries towards Understanding the Pain and Pills</td>
+	<td>2017</td>
+	<td>2017 IEEE/ACM 39th International Conference on Software Engineering (ICSE)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/icse.2017.49">DOI</a> <a href="https://doi.org/10.1109%2Ficse.2017.49">URL</a>&nbsp;</td>
+</tr>
+<tr id="Yida_Mao" class="entry">
+	<td>Mao, Y., Sahraoui, H. and Lounis, H.</td>
+	<td>Reusability hypothesis verification using machine learning techniques: a case study</td>
+	<td></td>
+	<td>Proceedings 13th IEEE International Conference on Automated Software Engineering (Cat. No.98EX239)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/ase.1998.732582">DOI</a> <a href="https://doi.org/10.1109%2Fase.1998.732582">URL</a>&nbsp;</td>
+</tr>
+<tr id="Zage_2003" class="entry">
+	<td>Zage, D. and Zage, W.</td>
+	<td>An analysis of the fault correction process in a large-scale SDL production model</td>
+	<td>2003</td>
+	<td>25th International Conference on Software Engineering, 2003. Proceedings.&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/icse.2003.1201239">DOI</a> <a href="https://doi.org/10.1109%2Ficse.2003.1201239">URL</a>&nbsp;</td>
+</tr>
+<tr id="Zelkowitz" class="entry">
+	<td>Zelkowitz, M. and Rus, I.</td>
+	<td>Understanding IV&amp;IV in a safety critical and complex evolutionary environment: the nasa space shuttle program</td>
+	<td></td>
+	<td>Proceedings of the 23rd International Conference on Software Engineering. ICSE 2001&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/icse.2001.919108">DOI</a> <a href="https://doi.org/10.1109%2Ficse.2001.919108">URL</a>&nbsp;</td>
+</tr>
+<tr id="Zhang_2014" class="entry">
+	<td>Zhang, M., Wu, Y., Lu, S., Qi, S., Ren, J. and Zheng, W.</td>
+	<td>AI: a lightweight system for tolerating concurrency bugs</td>
+	<td>2014</td>
+	<td>Proceedings of the 22nd ACM SIGSOFT International Symposium on Foundations of Software Engineering - FSE 2014&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/2635868.2635885">DOI</a> <a href="https://doi.org/10.1145%2F2635868.2635885">URL</a>&nbsp;</td>
+</tr>
+<tr id="Zhang_2018" class="entry">
+	<td>Zhang, M., Zhang, Y., Zhang, L., Liu, C. and Khurshid, S.</td>
+	<td>DeepRoad: GAN-based metamorphic testing and input validation framework for autonomous driving systems</td>
+	<td>2018</td>
+	<td>Proceedings of the 33rd ACM/IEEE International Conference on Automated Software Engineering - ASE 2018&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/3238147.3238187">DOI</a> <a href="https://doi.org/10.1145%2F3238147.3238187">URL</a>&nbsp;</td>
+</tr>
+<tr id="Zhang_2019" class="entry">
+	<td>Zhang, H. and Chan, W.</td>
+	<td>Apricot: A Weight-Adaptation Approach to Fixing Deep Learning Models</td>
+	<td>2019</td>
+	<td>2019 34th IEEE/ACM International Conference on Automated Software Engineering (ASE)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/ase.2019.00043">DOI</a> <a href="https://doi.org/10.1109%2Fase.2019.00043">URL</a>&nbsp;</td>
+</tr>
+<tr id="Zhao_2018" class="entry">
+	<td>Zhao, G. and Huang, J.</td>
+	<td>DeepSim: deep learning code functional similarity</td>
+	<td>2018</td>
+	<td>Proceedings of the 2018 26th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering - ESEC/FSE 2018&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1145/3236024.3236068">DOI</a> <a href="https://doi.org/10.1145%2F3236024.3236068">URL</a>&nbsp;</td>
+</tr>
+<tr id="Zheng_2019" class="entry">
+	<td>Zheng, Y., Xie, X., Su, T., Ma, L., Hao, J., Meng, Z., Liu, Y., Shen, R., Chen, Y. and Fan, C.</td>
+	<td>Wuji: Automatic Online Combat Game Testing Using Evolutionary Deep Reinforcement Learning</td>
+	<td>2019</td>
+	<td>2019 34th IEEE/ACM International Conference on Automated Software Engineering (ASE)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="https://doi.org/10.1109/ase.2019.00077">DOI</a> <a href="https://doi.org/10.1109%2Fase.2019.00077">URL</a>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<footer>
+ <small>Created by <a href="http://jabref.sourceforge.net">JabRef</a> on 15/09/2020.</small>
+</footer>
+
+<!-- file generated by JabRef -->
+
+</body>
+</html>

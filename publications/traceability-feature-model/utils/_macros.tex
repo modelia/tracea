@@ -1,0 +1,66 @@
+
+% Standard shortcuts
+\newcommand{\eg}{\emph{e.g.,~}}							% exempli gratia (for the sake of example)
+\newcommand{\ie}{\emph{i.e.,~}}							% id est (that is)
+\newcommand{\Fig}[1]{Fig.~\ref{#1}}  			% choose Fig. or Figure, depending on the style
+\newcommand{\Table}[1]{Table~\ref{#1}}	    % Table reference
+\newcommand{\Sect}[1]{Section~\ref{#1}}	  % section name always with a capital S
+\newcommand{\Model}[1]{\textsf{\small{#1}}} % name of any modeling artifact (e.g., formalism, model element, rule, ...)
+\newcommand{\Code}[1]{\texttt{\small{#1}}}	% inline code
+\providecommand{\e}[1]{\ensuremath{\times 10^{#1}}}	% scientific notation: x.10^y
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Shortcuts
+\newcommand{\MOF}{\textsc{MOF}\xspace}
+\newcommand{\ocl}{\textsc{OCL}\xspace}
+\newcommand{\OCL}{\textsc{OCL}\xspace}
+\newcommand{\nsga}{\textsc{NSGA-II}\xspace}
+\newcommand{\MDE}{\textsc{MDE}\xspace}
+\newcommand{\MT}{\textsc{MT}\xspace}
+\newcommand{\WFR}{\textsc{WFR}\xspace}
+\newcommand{\Ecore}{\textsc{Ecore}\xspace}
+\newcommand{\OURNAME}{{our approach}\xspace}
+
+
+
+\newcommand{\ra}{$\rightarrow$}
+\newcommand{\la}{$\leftarrow$}
+\newcommand{\ugh}[1]{\textcolor{red}{\uwave{#1}}} % please rephrase
+\newcommand{\ins}[1]{\textcolor{blue}{\uline{#1}}} % please insert
+\newcommand{\del}[1]{\textcolor{red}{\sout{#1}}} % please delete
+\newcommand{\chg}[2]{\textcolor{red}{\sout{#1}}{\ra}\textcolor{blue}{\uline{#2}}} % please change
+\newcommand{\move}[2]{\textcolor{blue}{\uwave{#1} (Move to #2)}} % please move
+
+
+\newboolean{showcomments}
+\setboolean{showcomments}{true} % toggle to show or hide comments
+\ifthenelse{\boolean{showcomments}}
+{\newcommand{\nb}[2]{
+		\fcolorbox{gray}{yellow}{\bfseries\sffamily\scriptsize#1}
+		{$\blacktriangleright$#2$\blacktriangleleft$}
+	}
+	\newcommand{\version}{\emph{\scriptsize$-$working$-$}}
+}
+{\newcommand{\nb}[2]{}
+	\newcommand{\version}{}
+}
+
+
+
+\newcommand\eb[1]{\nb{EB}{\textcolor{red}{\textsl{#1}}}}
+\newcommand\jc[1]{\nb{JC}{\textcolor{red}{\textsl{#1}}}}
+\newcommand{\todo}[1]{\textbf{\textcolor{red}{TODO: #1}}}
+\newcommand\syn[0]{\fcolorbox{gray}{green}{\bfseries\sffamily\scriptsize{SYN.}}}
+
+\newcommand\bluefat[1]{$\blacktriangleright$\textcolor{blue}{\textit{#1}}$\blacktriangleleft$}
+\newcommand\blue[1]{\textcolor{blue}{#1}}
+\newcommand\red[1]{\textcolor{red}{#1}}
+
+\makeatletter
+\def\ughu{\bgroup \markoverwith{\lower3.5\p@\hbox{\sixly \textcolor{red}{\char58}}}\ULon}
+\font\sixly=lasy6 % does not re-load if already loaded, so no memory problem.
+\makeatother
+
+
+\newcommand\missref[1]{\ughu{#1}~\ugh{[?]}}

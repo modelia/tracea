@@ -1,0 +1,27 @@
+\section{Introduction} \label{sec:intro}
+
+Traceability is the ability to trace different artefacts of a system (of systems). It is defined in the IEEE Standard Glossary of Software Engineering Terminology \cite{ieeeglossary-se} as the degree to which a relationship can be established between two or more products of the development process, especially products having a predecessor–successor or master–subordinate relationship to one another. 
+
+The need for traceability has always been a recurrent aspect of software development. Across the years, there has been a continuous interest in developing techniques to facilitate the representation and analysis of traces and links between related artefacts. It helps explaining their execution and evolution as traces offer a different perspective on a system, arbitrary and customizable, where the relationships between elements is the most salient artefact. Traceability rises awareness on specific purposes or goals \cite{clelandhuang2014-traceability-trends-and-futurte-direction} and has been proven useful in a diverse number of software engineering challenges \cite{guo2017-semantically-enhanced-tracebility-deep-learning}. It is transient to any software maintenance effort such as change impact prediction \cite{helming2009-traceability-change-awareness,goknil2014-change-impact-analysis-for-requirement-metamodel}, debugging \cite{ko2008-whyline-debugging,aboussoror2012-Seeing-errors-trace-visualisation}, feature location \cite{dit2013informationRetrievalTraceabilityForFeatureLocation,meinicke2017-feature-traceability} or certification \cite{moy2013-DO-178C-testing} among many others~\cite{jaber2013-effect-on-maintenance}.
+
+Importance of traceability is reflected in the production of many metamodels targeting the modeling of traceability aspects. Many of them focus on specific aspects or domains where the traceability mechanism is applied \cite{antoniol2017-traceability-grand-challenges,wohlrab2020-traceability-organization-process-culture,winkler2010-survey-traceability-and-MDE}. Metamodels flourish but their knowledge remains scattered among software engineering research fields. There is even work dedicated to the engineering of metamodels for traceability that offers a language dedicated to defining traceability metamodels \cite{drivalos2008-engineering-a-DSL-for-traceability}. Overall, we are still missing a generic metamodel for traceability that covers not only the representation of artefacts, traces and links between them but also quality aspects that can be used to interpret the relevance and integrity of traces. 
+
+%We hypothesis that traceability has not made the buzz it deserves partly because past approaches have been addressing mainly technical limitations. As such most of traceability research remains separated from the effect that using traces may have on software products and agents.
+
+The surge of artificial intelligence (AI) applications in software engineering makes good traceability support even more important as part of explainability mechanisms inherent to these AI applications \cite{ozkaya2020-differences-in-AI-enabled-engineering,Mikkonen2021}. And conversely, AI can also be a mechanism to infer new traces among sets of artefacts  \cite{borg2014-SmS-IR-for-traceability,guo2017-semantically-enhanced-tracebility-deep-learning}, which will need to come hand in hand with the proper explainability support, specially considering the non-deterministic nature of information retrieval algorithms. This non-deterministic nature draws in a significant degree of uncertainty about the results such algorithms may yield. Traces automatically identified show variable confidence. This dimension should be considered as a core concern to traceability.
+
+In this sense, the contribution of this paper is the definition of Trace\textit{a}: a generic and extensible traceability metamodel integrating quality concerns (e.g. decay, confidence and explainability) in the definition of traces. The design of the metamodel favours also its adaptation to specific application domains and model-driven toolchains to open the door to a new generation of techniques (E.g., for impact analysis) that could benefit from our more expressive metamodel.
+
+
+The rest of this paper is structured as follows. \Sect{sec:soa} introduces the state of the art through a comparison between a selected set of approaches addressing the modeling of traceability.
+\Sect{sec:requirements} presents the limitations of current solutions through their main quality concerns. In \Sect{sec:metamodel}, we show and depict our metamodel Trace\textit{a} and display an illustrative example. We discuss about the integration of Tracea and more generally of traceability modeling into existing tooling in \Sect{sec:integration} before we conclude in \Sect{sec:conclusion}.
+
+%Importance of traceability in SW eng. We can also mention it's more important now due to AI...
+
+%Existing metamodels explore specific features or specific targets, or miss some important quality concerns. Quality aspects inherent to the relevance and precision of traces, as well as related to the uncertainty caused by automated trace retrieval techniques.
+
+%Here is a generic (re)definition of traceability addressing these limitations.
+
+%Example use cases
+
+

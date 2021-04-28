@@ -1,0 +1,58 @@
+\section{State of the art} \label{sec:soa}
+
+Cite \cite{lindval1996-practical-implications-of-traceability}.
+Cite \cite{lin2021-traceability-IR-BERT-models,hotlmann2020-MB-traceability-terminology}
+
+
+Traceability was proposed, from the very beginning of software engineering, as a measure to ensure that a system being developed actually reflects its design. Already in the original NATO working conference, quality projects were praised for making "the system that they are designing contain explicit traces of
+the design process"~\cite{randel68-nato-system-design}. From that point on, traceability has been studied from a myriad of perspectives, dimensions and applications. 
+
+As such, it is no surprise that there have been other previous attempts to characterize and summarize the state of the art in the traceability field. In what follows, we compare our own proposal with previous surveys of traceability papers and related work aiming to systematize what we know about traceability. As we will see, ours stands out by combining both types of works, i.e. by proposing a traceability systematic description grounded on a thorough analysis of traceability proposals in the literature, instead of just offering a more descriptive survey or an individual and/or partial traceability model.
+
+Publications around traceability started to grow in the 90's with a seminal work from Gotel \textit{et al.}~\cite{gotel1994} with, probably, the first systematic analysis of the traceability problem.  %
+Since then, many researchers attempted to draft general traceability frameworks and methods. For instance, in 2007, Cleland Huang \textit{et al.} described best practices that remain essential today \cite{clelandhuang2007bestPracticeForAutomatedTraceability}. They distinguish three categories of concern: the purpose and constraints of tracing in a specific environment; the creation of traceable artefacts with a project glossary, quality requirements and rich, organized content; and the automation of tracing processes. As we will see in the next section, these concerns are an important part of the feature model.
+
+With the proliferation of traceability purposes, some authors explicitly asked for better sharing of experiences in using traceability \cite{Gotel2012} and evaluating the solutions existing so far \cite{shin2015-guidelines-benchmark-auto-traceability}. Surveys and literature reviews trying to group and compare them began to appear as well, though most of them focused on specific subareas such as requirement engineering~\cite{gotel1994,bouillon2013-survey-on-usage-scenario-requirements-traceability-in-practice}, model-driven development~\cite{galvao2007-survey-traceability-in-MDE,winkler2010-survey-traceability-and-MDE,paige2010-MDE-Traceability-classifications,santiago2012-MDE-as-a-new-landscape-for-traceability-SLR,mustafa2017-literature-review}, software product lines~\cite{vale2017-SPL-traceability-a-sms,anquetil2010-model-driven-tracea-for-SPL}, benchmarking~\cite{shin2015-guidelines-benchmark-auto-traceability}, and information retrieval ~\cite{delucia2012-information-retrieval-for-traceability,borg2014-SmS-IR-for-traceability,guo2017-semantically-enhanced-tracebility-deep-learning}. To complement this more scientific surveys, Konigs \textit{et al.} survey industrial application of traceability approaches~\cite{konigs2012-industry-systems-engineering}, showing its limited penetration. Neumuller \textit{et al.} show that the adoption is worse in small businesses where traceability is even less automated~\cite{neumuller2006-industry-small-companies-case-study}. Finally, Charalampidou \textit{et al.} review traceability approaches in the prism of their empirical evaluation. Authors add to the conclusion of other surveys that "although many studies include some empirical validation", there is still much to be done with respect to validation and reproducibility~\cite{charalampidou2020-mapping-study}.
+
+These surveys point to some shared concerns, like the crucial lack of a common terminology and that existing traceability solutions struggle to achieve satisfactory cost/benefit ratios, in part because of the nonexistence of such common traceability knowledge base that facilitates the reusability and improvement of available traceability tools and techniques. This is aggravated by the fact that, as pointed out above, many of the proposals belong to different research subfields, which limits the discovery and awareness of alternative solutions. For instance, Winkler \textit{et al.} point out that researchers in requirement engineering and in model-based development do not communicate enough among each others~\cite{winkler2010-survey-traceability-and-MDE}. This lack of communication and shared understanding is one of the open challenges in the traceability domain ~\cite{clelandhuang2014-traceability-trends-and-futurte-direction,antoniol2017-traceability-grand-challenges}.
+
+To solve this issue several works aim at proposing specific traceability models. Unfortunately, many investigations suffer a lack of generalizability due the specific nature of the problem being solved (\textit{e.g.,} certification conformity~\cite{kokaly2017-safety-case-impact-assessment-model-based-automotive}, model transformation coevolution~\cite{Guana_2017}), or the specific nature of the solution considered (\textit{e.g.,} w.r.t. its language: SysML~\cite{nejat2012-traceability-sysml-safety-certification}, w.r.t. its engineering field: SPL~\cite{anquetil2010-model-driven-tracea-for-SPL}). 
+
+As an example, the automatic identification of trace links is one of the most studied features. There are plenty of proposals to achieve this but as they are evaluated using different datasets and configurations, they cannot be directly compared ~\cite{seiler2019-comparing-trac-through-IR-Commits-Logs,guo2017-semantically-enhanced-tracebility-deep-learning,borg2014-SmS-IR-for-traceability}. 
+Another example would be model-driven engineering, where the proposal and usage of traceability languages and models shoud be more ``natural''. Nevertheless, not even there we find a unified traceability representation model: Mustafa \textit{et al.} argue that
+"the main issues in traceability nowadays are building traceability models that can accommodate the capturing of traceability information and providing common semantics for trace links"~\cite{mustafa2017-literature-review}. Proposals tend to focus also on a specific model-driven engineering problem: the co-evolution of models and transformations ~\cite{amar2013-model-coevolution-uding-traceability,santiago2013traceability-in-MDE,paige2011-traces-in-moel-driven-engineering,feldmann2019-mde-intermodel-inconsistencies} instead of aiming for more general solutions.
+
+As a result of this confusing situation, a few authors asked for more standardized practices. These proposals are however restricted to specific application or engineering domains and miss their general target. Debiasi \textit{et al.} propose to build a common body of knowledge on traceability. They refer to requirements traceability and focus on the organizational challenges of the implementation of traceability approaches~\cite{debiasi2016-traceBoK}. Heisig \textit{et al.}~\cite{heisig2019-generic-traceability-metamodel-end-to-end-capra} present Capra, an Ecore implementation of a framework for the traceability of software product lines. %In all case, there is no trace to prove that the adaptation of these tools will not overpass the cost of building one from scratch - or doing a harsh but sporadic manual investigation.
+
+We agree with these authors that this lack of \textit{de juro / de facto} traceability standard is hampering the benefits of current traceability solutions and hindering evolution in the field. This paper intends to cover this gap by proposing a traceability characterization that stems from the analysis of all existing proposals. We believe this model can be useful to researchers trying to improve traceability techniques in any subfield and to practitioners looking for a way to compare and choose the traceability solution that best suits their needs. 
+
+
+%In the model-driven engineering community the use traceability specific languages together with automated model transformation appears as an ideal soil to grow end-to-end traceability. This led authors to present classifications and terminologies for a systematic perspective on the tracing of MDE development. Unfortunately, this body of work limit its focus to the maintenance and coevolution of model transformations
+
+%This application and optimization of information retrieval processes to identify traces is scattered among various research fields. As a result, approaches are legion and compete with each other according to precision and recall measurement. Yet, the values for precision and recall are obtained with different data sets. Therefore, these values are specific to the data set used. "The reported values serve as an example for the precision and recall spectrum but are not directly comparable
+
+
+
+%MDE researchers have proposed classifications to render and ease the exploitation of traceability features~\cite{paige2010-MDE-Traceability-classifications,feldmann2019-mde-intermodel-inconsistencies,santiago2013traceability-in-MDE}. Yet, they only consider the tracing of model transformations.
+
+
+
+%Mader \textit{et al.} point out the importance of the typing of trace links. The relationships between artefacts must be typed in the form the user requires it: in the specific domain or project tracing will be used~\cite{mader2009-motivation-matters-in-traceability-practitioner-survey}. Authors also show that the mandatory nature of traceability (\textit{e;g.,} for certification conformance) shows the little motivation of practitioners. If tracing is not forced, why should they bother the overhead of traceability? Hereof, they miss a long reach goal to traceability : an ubiquitous tool for explainability.
+
+
+
+
+
+
+%{\cite{Pfeiffer_2010,Dubois_2010,Her_2010}}
+
+
+
+ %Few years later the most profuse authors of the field published their fundamentals to traceability. To address the first point, they defined a terminology and introduced basic types and concepts to invite researchers to share their experiences\footnote{As strange as it may seems, almost a decade later the publications has only been cited 40 times - when publications involving tracing features are hundreds.}. Shin \textit{et al.} call for the edification of guidelines to comparatively evaluate automated traceability solutions\footnote{Nine citations only.}
+
+%As we intent to build upon past publications and to foster the emergence of common knowledge about traceability, we first introduce the state of the art of work aiming at the systematisation of traceability. 
+
+%We then present meta-studies and surveys relating past trends found in the literature. 
+
+%\subsection{Surveys and literature reviews}
+%\label{sec:related-surveys}

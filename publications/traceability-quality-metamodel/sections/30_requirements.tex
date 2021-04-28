@@ -1,0 +1,88 @@
+	\vspace{-0.2truecm}
+\section{Requirements}\label{sec:requirements}
+	\vspace{-0.2truecm}
+
+%We target traceability - not only the traces themselves but also their characteristics (confidence, decay) and rationale (explainability).
+%To this extend we offer top-level type separation to include any artefact without modifying the metamodel. And we integrate in the metamodel the concepts necessary to express the quality and explainability of tracing elements. 
+
+Following up on the state of the art analysis, this section details the traceability requirements we believe are needed in order to have a complete traceability modeling solution, able to be used in a variety of scenarios, including industrial applications. Next section describes our proposed metamodel and how its different components satisfy these requirements.
+
+ %Yet, looking at the selection of approaches in Section \ref{sec:soa}, we see that the last decade has seen more and more researchers approaching traceability with a focus on the \textit{generalizability} of their work. 
+
+%Nonetheless, we foresaw a consequent lack in the process of modelling traceability that hinders its propagation. To build upon the previous section, we can say that modeling traceability would benefit from five main properties (see Table \ref{tab:qualities}). While the first (Adaptability) is addressed in many ways by generic approaches, the others are mostly absent from the scientific literature. We present them in this section.
+%\begin{table}[ht]
+%    \label{tab:qualities}
+%    \centering
+%    \begin{tabular}{l|l|l|l|l}
+%        \textbf{Adaptability} & \textbf{Granularity} & \textbf{Consistency} & \textbf{Confidence} & \textbf{Explainability} \\ \hline
+%        Fixed types    & 1-step link          & --            & --     & -- \\
+%        Specific types & Multi-steps traces    & Timeliness          & Valuation & Agents         \\
+%        Generic types  & Compositional traces & Context sensitive   & Propagation measure  & Evidences     
+%    \end{tabular}
+%    \caption{Main properties for modeling traceability}
+%\end{table}
+
+\subsection{Adaptability \& Configurability}
+Reusability of a traceability solution is key for its industrial adoption. When traces are seen as useful only to conform a very specific requirement (e.g. software certification deadline). Enterprises have shown that it is \textit{easier} or \textit{cheaper} to execute it as a manual and \textit{ad hoc} process \cite{clelandhuang2014-traceability-trends-and-futurte-direction}.
+
+We aim for a metamodel that it is configurable and adaptable to maximize its reusability in a number of application scenarios thus favouring its adoption by companies. For example, a specific certification paragraph might be better suited (\textit{i.e.,} more precise) for the user than the entire certification document containing this paragraph. Or, if the purpose is to trace the impact of changes in a model on the source code, does the user want to know about the \textit{occurrence} or the \textit{location} of a change? Does the user want to find the right \textit{file} or the right \textit{class}, the right \textit{method}, or the right \textit{package}?
+In other words, \textit{what kind of artefacts} of the software product is of interest (\textit{e.g.,} design models, source code) and to \textit{which level of granularity} ? 
+
+%"Typing of relationship is versatile" and the naive approaches that consist in regenerating the whole graph of dependencies between artefact does not scale. The authors show a tool able to main traces thank to maintenance rules written \textit{ad hoc} for that purpose.  
+High-level types for artefacts as well as peculiar level of granularity must be adequately designed in the tracing solution.
+
+\subsubsection{Configurable tracing} 
+A trace is commonly expressed as the combination of atomic trace links representing direct connections between a number of artefacts. For example, a certification document (\textit{e.g.,} ISO-26262 \cite{iso26262}) is "linked" or "related" to a set of design documents, or models, themselves being used for (or "relating to") the generation of source code or other related artefacts such as behavioral models \cite{lorenzoli2008-automatic-generation-of-software-behavioral-model}. Depending on authors intentions and problem constraints, they define traces with a single or multiple sources and end with one or many targets.  
+
+There is little attention put on more complex tracing purposes such as the complete sequence from certification specifications to source code implementation, or long reach tracing ability involving sequences of artefacts or decisions in chain. %\ugh{These cases are a minority in the literature and this might be partly due to a limited configurability.}
+
+We believe a traceability metamodel must come with several levels of granularity to enable users express traceability relationships either at a coarse-grained or a fine-grained level depending on their needs. Moreover, if defined at a fine-grained level, the model should be able to use that information to propagate those trace links to the container components to offer automatically the coarse-level view as well.
+%Many research teams have proposed insight on the adaptability issue and offer ways to address it at various levels. The idea is to give the user anchors with high-level abstractions and invite her to define her own domain specific concepts to foster further analysis in her own language. 
+
+\subsubsection{Adaptable tracing} 
+The exact set of artefact types we must trace in a project may not be completely known upfront. And they will probably change over time. As such, we need our metamodel to be extensible with new artefact types that perfectly match the elements users want under scrutiny.  
+%Metamodeling traceability solutions must offer a high degree of variability with regard to the kind of artefacts they may relate as well as with regard to the types of these relations. 
+To ensure reuse, it is convenient to craft a base metamodel and adapt it to specific situations where traceability will be needed. 
+
+It is important not only to be able to extend this base metamodel with new artefact types but also with new types of relationships (each one with its own semantics) among them. 
+%A major distinction between tracing for change impact management and tracing for debugging lies not only in the \textit{kind} of artefacts they target, but also in \textit{the kind of relationship} they use. 
+%Change impact management needs to detail the part of the software product that is \textit{impacted} by a change (say) in the requirement. Whereas debugging needs a description of the bug, its location, its status on the one hand. And, on the other hand, it needs also relationships specific such as \textit{coverage} of test cases for regression testing. 
+Most approaches offer fixed types among which to choose. They are either specific to the domain of application \cite{pavalkis2017-TIM-for-BPMN,florez2019-finegrained-req2code} or generic and relate to a greater extend to the nature of the artefacts \cite{seibel2012-efficient-traceability-for-MDE,diaz2015-tracing-variability-from-features-to-product-line-SPL}. As Maro \textit{et al.} warn, "avoid implicit, convention-based traceability links and strive instead for explicit links that can be checked with tool support," \cite{maro2016_maintenance_factors_and_guidelines}.
+in that regard, a distinction based on the nature of artefacts to provide high level types is recommended by many traceability researchers \cite{clelandhuang2014-traceability-trends-and-futurte-direction}. 
+
+
+\subsection{Consistency}
+One of the main argument against investing in automated traceability support remains the cost of maintaining traces up-to-date \cite{clelandhuang2014-traceability-trends-and-futurte-direction}.
+Software systems evolve and endure maintenance bug fixing and patches that can potentially modify their constitutive elements at every level. Even their architecture changes through time to cope with increasing scalability needs, to comply with new privacy regulations, or to add or modify the panel of features offered to the different kind of "users" of the system.
+Tracing is no alien to this phenomenon and the cost to maintain traces consistent with the system increases hand in hand with the system volatility.
+
+There is no consensus on the means to ensure that traces remain \textit{consistent} to the system. Yet, the naive method that consist in rebuilding the entire graph of traces each time \textit{from scratch} does not scale \cite{seibel2012-efficient-traceability-for-MDE}. Gervasi \textit{et al.} exploit the information contained in previously defined traces, in order to facilitate the creation and ongoing maintenance of traces, as the requirements evolve \cite{gervasi2014-maintenance-coevolution-with-affinity}. 
+Seibel \textit{et al.} have shown that the MDE paradigm offers auspicious horizon to the maintenance of traces \cite{seibel2012-efficient-traceability-for-MDE}. They execute rules in order to maintain a set of links \textit{representative} to the trace types predefined beforehand. Authors extend the concept of \textit{timestamp} to consider context changes and thus to reflect better the system volatility.
+
+We agree that traceability metamodels should be able to represent temporal information \cite{CabotOT03}, not only for the traces but for all the traced elements so that we can compare them and evaluate the potential traces decay. 
+%Despite those attempts to address directly the issue, the topic remains open. Moreover, with the increasing complexity and volatility of software system, the need for consistency check has become prominent.
+
+
+\subsection{Confidence}
+%As mention earlier, time is playing against tracing. While a system software evolves, tracing artefacts must be kept up-to-date -- or at least some measurement of versatility shall be considered to acknowledge for the gradual loss of confidence in outdated trace artefacts.
+
+Decay is not the only factor that can affect our confidence on the consistency and relevance of a trace. The execution of automated processes to identify traces raises \textit{uncertainty} about the actual existence of the results they yield. Learning techniques, using deep learning algorithms such as in \cite{guo2017-semantically-enhanced-tracebility-deep-learning}, offer to bridge the cognitive gap among artefacts of different nature but accuracy is never perfect.
+%Using them implies taking into account the margin of error they generate. 
+There lies an open topic at the intersection between "traditional" and "AI-enabled" software practices. Systems with AI-enabled components [generally probabilistic] can have a high margin of error due to the uncertainty that often follows predictive algorithms \cite{ozkaya2020-differences-in-AI-enabled-engineering}. Taking account of the non deterministic nature of AI modules is a key factor for AI-enabled software of quality. Nevertheless, even a manual trace identification process can have some uncertainty as designers may not be completely sure about the real relationship between components that may have been created a long time ago. 
+
+Therefore, we need to be able to express in a traceability model the confidence we have on the traces. Where to draw the line between a useful trace based on this confidence level depends on the envisioned application. There is a trade-off to evaluate between the level of confidence and the level of critically of the project. If the purpose is to evaluate a requirement change impact on the source code, traces with a low confidence level may trigger false positive and generate some additional work but still be reasonable useful. If traces are used as part of a security certification, a high confidence level is a must to obtain valid results. 
+%The evaluation of uncertainty, or of \textit{the degree of confidence of a trace} is mandatory to report adequately the state of tracing artefacts. It is a proxy to measure the gradual decay that tracing artefacts undergo. 
+The propagation of uncertainty is an open topic that authors attempt to address with a  mix of boolean logic and Gaussian statistics \cite{burgueno2018-uncertainty-confidence-in-mdd} and that should be applied to trace uncertainty as well.
+
+
+\subsection{Explainability}
+Explainability is more and more important in any software system due to increasing transparency, ethical and regulatory concerns. Users do not only require that the answer of the system is the one expected, they need to know \textit{how} did the system proceeded to yield such answer. AI-enabled systems raises this issue to a new level of salience.
+
+To support explainability, we need to be able to explain the reason why a link among artefacts is identified. Trace links can be elicited manually (and a textual report would precise why in natural language); or identified automatically using information retrieval and rule-based techniques. We need to be able to register this nature as well as the details of the identification process.
+
+For example, programmers often use mnemonics for identifiers that help associate code with high-level concepts in the requirements and vice-versa \cite{antoniol2002-tracing-code-documentation-links}.
+If traces, used for quality audit, have been identified thanks to a rule-based approach exploiting this mnemonics, this information needs to be part of the traceability model as those traces could be later used as evidences to automatically check for potential mismatches or coverage analysis of requirements not supported in the implementation.
+
+%We found little evidence of the use of evidences in the literature dedicated to traceability. Traces are used as such and explainability is not mentioned explicitly. Yet, we envision that the need for accountability in the identification of traces is going to gain attention in close future due to the rise of ethical concerns.
+
+

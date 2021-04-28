@@ -1,0 +1,72 @@
+\section{Towards a common traceablility terminology}\label{sec:terminology}
+
+%\nb{1}{The incoherency problem.} 
+A clear conclusion of the previous section is the lack of a common conceptualization for traceability that helps evaluating, comparing and reusing traceability solutions over a variety of scenarios and application domains. Thus, the \textit{incoherency problem} still arises in traceability research~\cite{watts2017-incoherency-problem}. Even if an individual article makes a claim that withstood rigorous testing and statistical analysis, it might not use the same words as an adjacent article, or it would use the same words but intend different meanings.
+For instance, the term \textit{traceability} is used to designate both the ability to trace system elements, and the traceability links (the relations) themselves~\cite{bouillon2013-survey-on-usage-scenario-requirements-traceability-in-practice,antoniol2017-traceability-grand-challenges}.
+
+Therefore, before proposing our global traceability model, we first recap the different usages of the key traceability concepts and propose a unified definition that we will use in the rest of the paper. 
+%In this section, we review the different usages of traceability in the literature and then we integrate them in a set of term definitions that we believe will help to understand and compare the different approaches we will be analyzing later on. 
+
+%The ubiquitous presence of traceability in software literature, spread throughout different research fields and application scenarios, has hampered the use of a consistent and shared terminology around the key traceability concepts. %\footnote{A trace-based paper was awarded the most influential paper in the past 10 years at one of the main venue on software engineering (ICSE) ~\cite{ko2008-whyline-debugging}. The work introduced a novel trace-based approach to debugging that prominent industrials made use of with brio. Yet, if debugging has made a buzz, traceability remained a secondary concern. (Even though "trace" is mention 46 times in the 10 pages paper). The same occurred at MoDELS'20 with a paper presenting a traceability framework for software product lines elected as one of the three most influential papers of the decade~\cite{anquetil2010-model-driven-tracea-for-SPL}}.  
+%In this perspective, Regarded as a mere mandatory constraint in safety critical domains or as a lucky by-product of model transformation execution in automated model manipulation, no \textit{de-facto} or \textit{de-juro} standard rules the landscape of traceability investigations~\cite{mader2009-motivation-matters-in-traceability-practitioner-survey}.
+
+
+% and in industrial scenarios as those depicted above through many a research field has hampered a clear and constructive terminology to emerge. %Vast unstructured use of traceability, without standard, leads to a lack in communication (when "collaboration and traceability management have the potential to be mutually beneficial")~\cite{wohlrab2020-traceability-organization-process-culture}. 
+
+\subsection{Traceability components}
+Traceability research refers mainly to a definition from Gotel \textit{et al.} that defines traceability as the  ability  to  describe and  follow  the life-cycle of a requirement, from its initial specification to the design and code elements of the system implementing it~\cite{gotel1994}. This is still the most popular meaning for traceability~\cite{bouillon2013-survey-on-usage-scenario-requirements-traceability-in-practice,badreddin2014-req-traceability-model-based-approach} even if modeling approaches try to generalize this notion by seeing traceability as a valuable tool to link all types of linking artefacts at either the same or different levels of abstraction~\cite{mader2007-tracing-unified-process,tekinerdogan2007-metamodel-for-tracing-concers-accross-life-cycle}. %And \textit{transformation approaches} make profit of the use of automated transformations to generate (and maintain) automatically trace artefacts~\cite{galvao2007-survey-traceability-in-MDE}. 
+%Others uses \textit{feature traceability} to refer to the ability to locate features in software artefacts~\cite{meinicke2017-feature-traceability}.
+
+Regardless the specific interpretation of traceability we observe a division of knowledge into four main areas: %i) strategizing traceability, ii) the representation  and evolution of trace artefacts, iii) the identification and record of trace links, and iv) the usability of trace representations~\cite{winkler2010-survey-traceability-and-MDE,antoniol2017-traceability-grand-challenges}).
+\begin{itemize}
+	\item \textbf{Strategizing traceability}. It involves defining the explicit traceability purpose for the project at hand and how to best reach that goal. 
+	\item \textbf{Trace and artefact representation}. It covers the design / adaptation of a language to be used to define the traces and decisions regarding its syntax, expressiveness, variability, integrations, etc. For instance, this can be done by means of creating a full traceability domain-specific language. %In this area, model artefacts and traces co-evolution is an important concern in the model-driven paradigm.
+	\item \textbf{Trace link identification}. It designates the identification of traces in a software system, be it a post-requirement assisted elicitation, a live record during a system execution or an automatic AI-based inference process. This latter approach is the clear trend right now to help the identification of links between heterogeneous artefacts.
+	\item \textbf{Trace management}. It refers to the ways to use and maintain the traces. This includes tool support for the persistence, retrieval, and analysis of traces. 
+\end{itemize}
+
+The first area is a high-level concern that influences the requirements on the other three to cover the specific needs of a project. These three will therefore be used to structure our feature model later on. Note that the representation component should be part of any traceability solution as it is the base component to be able to, at the very least, express traceability information. 
+
+\subsection{Traceability glossary}
+We propose some general definitions for the most frequently encountered traceability terms while searching for and studying solutions for traceability in any of the above categories. These definitions, partly borrowed from past literature~\cite{Gotel2012}, aim to encompass the different uses and dimensions of traceability depicted above. Our set of terms is not exhaustive but provide a common core generic enough to be then adapted to specific scenarios. This is also why we try to be precise with the definitions while also offering room for slightly different (but compatible) interpretations. %We did this work before conducting the survey as a preliminary step, based on our knowledge of the field, to help us classify the survey results and not as a result of the survey itself.
+
+\begin{itemize}
+	\renewcommand\labelitemi{--}
+	\item[--] \textbf{Traceability} is the ability to trace different artefacts of a system (of systems). It is defined in the IEEE Standard Glossary of Software Engineering Terminology \cite{ieeeglossary-se} as 
+	\begin{enumerate}
+		\item The degree to which a relationship can be established between two or more products of the development process, especially products having a predecessor–successor or master–subordinate relationship to one another. [...]
+		\item The degree to which each element in a software development product establishes its reason for existing.
+	\end{enumerate}
+	Gotel \textit{et al.} define traceability as "requirements traceability [which]  refers  to  the  ability  to  describe and  follow  the life of a requirement, in both a forwards and backwards direction"~\cite{gotel1994}.
+	Aizenbud-Reshef and colleagues extend the Gotel’s definition of traceability and define MDE
+	traceability as "any relationship that exists between artifacts	involved in the software engineering life cycle"~\cite{aizenbud2006-model-traceability}.
+	
+	\item \textbf{{End-to-end traceability}} refers to a complete and ubiquitous traceability application, comprising a set of traces that extend throughout the entire life of a development project, from the requirements phase to, test, exploitation and retirement phases. "End-to-end traceability weaves artifacts together in tandem with the various phases of the life cycle"~\cite{asuncion2007-end-to-end-industrial}.
+	
+	\item A \textbf{trace} is a path from one artefact to another. A trace is composed of atomic \textbf{links} that directly relate artefacts with each others. The representation of traces, their data structure and behaviour, is defined in a traceability grammar or metamodel~\cite{drivalos2009-engineering-DSL-for-traceability} depending on how the trace language is defined. In any case, the language definition specifies the concepts and relationships available to define traces. As discussed before, no standard language has emerged yet. 
+	
+	\item An \textbf{artefact} can be any element of a system - \eg unstructured documentation, source code, design diagrams, test cases and suites... The nature of artefacts follows two main dimensions: the life cycle phase they belong to (\eg specification, design, implementation, test), and their type (\eg unstructured natural language, grammar-based code, model-based artefact). The \textbf{granularity of artefacts} is the level to which artefacts can be decomposed into sub parts. We call a \textbf{fragment}, the resulting product of the decomposition of an artefact. A fragment can be itself broken down into smaller parts (or sub-fragments), and so on. %For instance, a software requirement document could include a guideline for certification which in turn could include sub-sections and a model-level definition of their implications.
+	
+	\item A \textbf{link} is a direct relationship between two artefacts. Links can be typed to better support the heterogeneous nature of traceability applications. The type of the link can help express the rationale behind the relationship - it informs not only \textit{how} artefacts are linked but also \textit{why}~\cite{mader2009-motivation-matters-in-traceability-practitioner-survey}. Typing is a primary concern in conceptual modeling in general~\cite{olive2002-representation-of-generic-relationship-types-in-modeling}. %Here, the \textbf{type of a relationship} informs about its semantics in its application domain. 
+	This link definition is consistent with the concept of link in popular modeling languages like UML or SysML, where \textit{link} is a specialization of the concept of Dependence (which is itself a specialization of DirectedRelationship) which is used to explicitly model a traceability relation between two sets of elements. We add the need of additional typing to this relationship. 
+	
+	Links can be explicit or implicit. An \textbf{implicit link} show artefacts bondage at a syntactic or semantic level without the need for an \textbf{explicit link} to be part of the model (\textit{e.g.,} a binary class and its respective source code artefact are implicitly "linked" to each other)~\cite{paige2010-MDE-Traceability-classifications}. 
+		
+	\item A \textbf{referee} is the (human) actor accountable for an artefact, or a link.
+	
+	\item \textbf{Application and engineering traceability domains:} the specific nature of a traceability project follows two dimensions: i) the domain of the target - that is, the application domain, and ii) the domain of solution considered - the engineering domain.
+	
+	\item \textbf{Trace integrity} is the degree of reliability that bares a trace. It is an indirect measure that includes, for example, both the age of a trace, the volatility of artefacts targeted by the trace, and the automation level of tracing features. This indication is supported by \textbf{evidences} that can be quantitative or qualitative. For example, how long (how many versions ago) has the trace been identified in the system? Or, has the trace been identified manually or automatically? Is there an automated co-evolution mechanism between traces and targeted artefacts? What is the level of experience of the trustee who identified it? 
+	The volatility of source and target artefacts are also factors that may influence the relevance and accuracy of a trace.
+	
+	\item \textbf{Pre-requirement and post-requirement} traceability refer to, respectively, traces identified during specifications elicitation and during the implementation (design and code) step of a specification~\cite{gotel1994}.
+	The IEEE Guide for Software Requirements Specifications mentions \textbf{forward} and \textbf{backward} traceability, referring to the ability to follow traceability links from a source to a specific artefact, or the opposite from the artefact to its source respectively~\cite{ieeeglossary-req} but, technically, the direction of traceability link (from source to target, or from target to source) does not make a difference.
+	
+	\item \textbf{Vertical traceability} refers to the linkage between artefacts at different levels of abstraction (\textit{e.g.,} derives, implements, inherits) whereas \textbf{horizontal traceability} refers to artefacts at the same level (\textit{e.g.,} uses, depends on). 
+	
+	\item \textbf{Time related traceability} goes along two dimensions: the evolution of (a group of) elements through successive development tasks, or the evolution of artefact properties during an execution of the system. %\cite{yu2012-maintainging-invariant-traceability}.
+\end{itemize}
+
+Some of these concepts will explicitly appear in our feature traceability model while others act as requirements and usages that should be supported/facilitated by the features in the model and taken into account when choosing a specific traceability solution depending on how well that solution covers the specific features of interest for the project at hand.
+
+%\footnote{Note that most of the work aiming at modeling "traceability" actually models traceability links. This suits the OMG standard definition of traceability which consider the only input/output of transformations~\cite{winkler2010-survey-traceability-and-MDE}. }

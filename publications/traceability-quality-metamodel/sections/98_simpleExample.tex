@@ -1,0 +1,102 @@
+\subsection{Illustrative example}
+
+
+In this section, we introduce a simple illustrative example: tracing the impact of a change in the requirements onto their implementation in Java classes. We show through this example the customization of artefacts and relationships, the importance of a quality evaluation, and how we circumvent consequences of using AI-enabled modules for trace identification.
+In this example, links are relating requirements to Java classes that undergo modifications. 
+
+ 
+\subsubsection{Customization of artefacts and relationships}
+In this case, a trace aligns two kinds of artefacts: 
+\footnotesize\verb" Requirement specification " and \verb" Source class".
+\normalsize
+
+These artefacts are too complex to be used at a coarse level of granularity. Java classes may comprise hundreds (or even thousands) of lines of code, requirement specification documents contain hundreds of sections. To address this size issue, a source \texttt{Artefact} (e.g., a class) is decomposed into smaller part (such as methods). In the same manner, specification documents are decomposed into sections. Listing \ref{lst:declare} shows an excerpt of our textual concrete syntax applied to this example where we can see the fragmentation of artefacts. The structure of the traced system is first described with artefacts and fragments sections. For legibility concern, the only kind of relationship in that example is \texttt{Implement}, \textit{i.e.,} a source class \textit{implements} a requirement section. 
+
+
+\lstset{style=mystyle}
+\noindent\begin{minipage}[t]{.45\textwidth}
+\begin{lstlisting}[caption={Artefacts, Fragments, Relationships, and Agents declaration},frame=tlrb,label=lst:declare]{Name}
+artefacts {
+   Requirement r_01 {fragments {sAuth, sLogout}},
+   Source Login.java {fragments { mLogin, mLogError, mLogout }},
+}
+fragments {
+   RequirementSection sAuth { },
+   RequirementSection sLogout { },
+   Method mLogin { },
+   Method mLogError { },
+   Method mLogOut { },
+}
+relationshiptypes {
+   EngineeringType Implements {},
+}
+agents {
+   HumanAgent 5e8a5T1e4,
+   MachineAgent Rd15OUA5RD 
+}
+\end{lstlisting}
+\end{minipage}\hfill
+\begin{minipage}[t]{.45\textwidth}
+\begin{lstlisting}[caption={Trace instance},frame=tlrb,label=lst:trace]{Name}
+Trace ChangeImpact {
+   tracelinks {  
+      NodeTraceLink link01 { 
+         source sAuth
+         target mLogin
+         successors {link02}
+         relationshiptype Implements  
+         agents 5e8a5T1e4
+      },
+      LeafTraceLink link02 { 
+         source mLogin
+         target mLogError
+         relationshiptype Implements  
+      },
+      LeafTraceLink link03 { 
+         source sLogout
+         target mLogout
+         successors {}
+         relationshiptype Implements  
+         agents Rd15OUA5RD
+         confidence c01
+      },
+   }
+}
+\end{lstlisting}
+\end{minipage}
+
+
+
+The concrete traces are recorded as illustrated in Listing \ref{lst:trace}. A Trace is identifiable by its name and contains trace links whose composition is described through successors. This example is the minimalist expression of a trace. Each and every element is susceptible to refer to an \texttt{Agent} that indicates who and what is the nature of that “who” responsible for the edification of the trace. In our case, \texttt{link\_01} and \texttt{link\_03} have referees.
+
+\subsubsection{Explainability for AI-enabled traceability}
+There exists automated evaluation techniques for change impact that predicts which classes are most likely to change. In this scenario, a change in the requirements links to \textit{potentially} impacted classes, and to \textit{actually} modified classes. This distinction shows a distinction in nature of the links themselves. The former is more inclined to suffer a low level of confidence than the automatized latter. In our case, Listing \ref{lst:trace} shows that links \texttt{link\_01} and \texttt{link\_02} have been manually identified, and thus, there the confidence is \texttt{1.0} whereas \texttt{Link\_03} has been automatically suggested and boasts a confidence of \texttt{0.8}.
+This level of confidence relies on evidence based on the algorithm employed, its parameterization, and its training setting. As can be seen in Listing \ref{lst:integrity}, a confidence is related to a \texttt{Trace} or a \texttt{TraceLink} and a set of \texttt{Evidence}s. %This representation simplifies the sections in which artefacts, fragments and links are defined. 
+
+Evidences may be an \texttt{AIEvidence} like the one we just described, or \texttt{RuleEvide- nce} that relates patterns used for automatic identification, or \texttt{AnnotationEvidence} that simply contains a textual explanation of the evidence. 
+In the example in Listing \ref{lst:integrity}, the confidence \texttt{value} represents the confidence in the prediction that the method \textit{mLogin} is impacted by a change in requirement \texttt{sAuth}. This prediction has been made using a specific algorithm which run settings can be found in the evidences section.
+
+\begin{center}
+\noindent\begin{minipage}[t]{.72\textwidth}
+\begin{lstlisting}[caption={Confidence, evidence, and agency},frame=tlrb,label=lst:integrity]
+confidences {
+   Confidence c01 { 
+      value 0.8
+      evidence {Evidence_link03}
+   },
+}
+evidences {
+   AIEvidence Evidence_link03 {
+      algorithmUsed "AI4All"
+      parameters {"platform:/resource/training/pos_202012"}
+      executionDate "20201207-123536"
+      trainingResults .8 .7    
+      impactedElements ("link02", mLogin, otherMethod) 
+   },
+}
+agency {
+   Rd15OUA5RD {Evidence_link03}
+}
+\end{lstlisting}
+\end{minipage}
+\end{center}

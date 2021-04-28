@@ -1,0 +1,106 @@
+
+
+\subsection{illustrative example}
+in this section, we introduce a simple illustrative example: tracing the impact of a change (source code, commit) on the certification pledge. To ensure a change in the system does not affect certification commitments, its impact is traced from the test benchmark that ensure the validity of the code to the certification assertions that depend on the results of these tests.
+
+Links in that case are relating commit descriptions to the (Java) classes that undergo modifications. These Java classes are related to test cases – and these test cases are used to assess that a specific certification assertion (or section) is respected. Here, we see that a commit impacts source classes. Test cases verify those classes and validate certification assertions. 
+
+
+A trace here aligns five kinds of artefacts: 
+
+\footnotesize\verb"Change request" -- \verb"Commit" -- \verb"Test" --  \verb"Certification".
+\normalsize
+
+Change request - Commit – Source code – Test– Certification.
+These kinds are too large pieces to be used at such a coarse level of granularity. Classes may be long of thousands of complex lines of code, test cases point to specific methods, or successions of methods, certification documents contain hundreds of sections. To address this size issue, a source Artefact (e.g., a class) is decomposed into smaller part (such as methods, or code block). In the same manner, certification documents are decomposed into sections. These parts are ArtefactFragments. Listing \ref{lst:artefacts} shows an excerpt of our textual concrete syntax applied to this example. The structure of the traced system is first described with artefacts and fragments sections.
+
+\lstset{style=mystyle}
+\begin{lstlisting}[caption=Artefacts and fragments,label=lst:artefacts]
+artefacts {
+   ChangeRequest cr_01 {},
+   Commit Commit_01234 {},
+   Source Login.java {fragments { mLogin }},
+   Test AuthenticationTest {},
+   Certification ISO26262 {fragments { AuthenticationSection }},
+}
+fragments {
+   CertificationSection AuthenticationSection { },
+   Method mLogin { },
+}
+\end{lstlisting}
+
+The type of relationship relating the different artefacts of this tracing project depend mainly on the kind of artefact they bond to each other. Section \texttt{relationshiptypes} in Listing \ref{lst:relationships} shows four types of relationships: Actuates, Implements, Impacts, Verifies. In a nutshell, a change request actuates into commits ; source code changes implements a commit ; source code changes impacts test cases ; and test cases verify certification sections.
+
+\begin{lstlisting}[caption=Relationship types,label=lst:relationships]
+relationshiptypes {
+   DomainType Actuates {},
+   EngineeringType Implements {}},
+   EngineeringType Impacts {},
+   DomainType Verify {},
+}
+\end{lstlisting}
+
+
+The actual traces are recorded as can be seen in Listing \ref{lst:trace}. A Trace referenced by its name contains trace links which composition is described through successors. This example is the minimalist expression of a trace. Each and every element is susceptible to refer to an Agent referee that indicates who and what is the nature of that “who” responsible for the edification of that trace. 
+\begin{lstlisting}[caption=Trace instance,label=lst:trace]
+Trace ChangeImpact {
+   tracelinks {  
+      NodeTraceLink link01 { 
+         source cr_01
+         target Commit_01234 
+         successors {link02}
+         relationshiptype Implements  
+      },
+      NodeTraceLink link02 { 
+         source Commit_01234 
+         target mLogin 
+         successors {link03,link04}
+         relationshiptype Impacts  
+         referee Rd15OUA5RD
+         confidence c01
+      },
+      NodeTraceLink link03 { 
+         source mLogin 
+         target AuthenticationTest
+         successors {link04}
+         relationshiptype Verifies  
+         referee 5e8a5T1e4
+      },
+      LeafTraceLink link04 { 
+         source AuthenticationTest
+         target AuthenticationSection
+         relationshiptype Verifies  
+      },
+	
+      // ...
+   }
+}
+agents {
+   HumanAgent 5e8a5T1e4,
+   MachineAgent Rd15OUA5RD 
+}
+\end{lstlisting}
+
+Imagine now that there exists an automated evaluation of change impact that predicts which classes are most likely to change (e.g., to fix an issue, to add a feature). In this scenario, a change request links to potentially impacted classes, and to actually modified classes. This distinction shows a distinction in nature of the links themselves. The former is more inclined to suffer a low level of confidence than the latter. This level of confidence relies on evidence based on the algorithm employed, its parameterization, and its training setting. As can be seen in Listing \ref{lst:trace}, a confidence is related to a Trace or a TraceLink and a set of Evidence. This representation simplifies the part where artefacts, fragments and links are defined. Evidences may be AIEvidence like the one we just described, or RuleEvidence that relate patterns used for automatic identification, or AnnotationEvidence that simply contains a textual description of the evidence. 
+In the example in Listing \ref{lst:integrity}, a confidence value of 0.8 is given to link02. This link represents the prediction that the method mLogin is impacted by the commit Commit\_01234. This prediction has been made using AI4ALL algorithm which execution settings can be found in evidences sections.
+
+\begin{lstlisting}[caption={Confidence, evidence, and agency},label=lst:integrity]
+confidences {
+   Confidence c01 { 
+      value 0.8
+      evidences {Evidence_link02}
+   },
+}
+evidences {
+   AIEvidence Evidence_link02 {
+      algorithmused "AI4All"
+      parameters {"platform:/resource/training/pos_202012"}
+      executiondate "20201207-123536"
+      results .8 .7    
+      impactedelements ("link02", mLogin, otherMethod) 
+   },
+}
+agency {
+   Rd15OUA5RD {Evidence_link02}
+}
+\end{lstlisting}

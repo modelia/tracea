@@ -1,0 +1,112 @@
+
+% Intolerance of ambiguity is the sign of an authoritarian personality.
+
+
+%\documentclass[natbib]{svjour3}
+%\documentclass[manuscript]{acmart}
+%\documentclass[10pt,journal,compsoc]{IEEEtran}
+%\documentclass{sig-alternate}
+\documentclass{llncs}
+
+\usepackage{booktabs} % For formal tables
+\usepackage[T1]{fontenc}
+\usepackage[]{hyperref} %sections as bookmarks in adobe pdf
+%\hypersetup{pdfpagelabels=false}
+\hypersetup{
+	colorlinks = true, %Colours links instead of ugly boxes
+	urlcolor   = blue, %Colour for external hyperlinks
+	linkcolor  = blue, %Colour of internal links
+	citecolor  = blue   %Colour of citations
+}
+
+\usepackage{times}
+\usepackage{multirow}
+\usepackage{wrapfig}
+%\usepackage[usenames, dvipsnames]{color}
+
+
+% Macros for proof-reading & corrections
+\usepackage[normalem]{ulem} % for \sout
+\usepackage{xcolor,xspace}
+% Put edit comments in a really ugly standout display
+\usepackage{ifthen}
+
+% Advanced Math
+\usepackage{amsmath}
+%\usepackage{amssymb}	% double line font letters (for number sets N,Z,D,Q,R)
+
+% Images and Floats
+\usepackage{epsfig}
+%\usepackage{epstopdf}
+
+%\usepackage{caption}
+%\usepackage{subcaption}
+
+%\usepackage{enumitem}
+\usepackage{graphicx,wrapfig,lipsum}
+\usepackage{flushend}
+
+
+
+%For code listings:
+\usepackage{listings}
+\usepackage{parcolumns}
+%\usepackage[sectionbib,square]{natbib}
+
+
+%\setlength{\paperheight}{11in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\input{utils/_macros.tex}
+
+
+\begin{document}
+
+
+\title{(Not) Yet Another Metamodel For Traceability} 
+
+
+\author{
+Edouard R. Batot\inst{1} \and
+Sebastien Gérard\inst{2} \and
+Jordi Cabot\inst{1,3}
+}
+
+
+\authorrunning{E. R. Batot et al.}
+
+\institute{
+    Universitat Oberta de Catalunya -- \email{\{ebatot,jcabot\}@uoc.edu} \and
+    CEA~LIST -- \email{sebastien.gerard@cea.fr} \and
+    ICREA -- \email{jordi.cabot@icrea.cat} 
+}
+
+\maketitle
+
+	\input{sections/00_abstract}
+    %\hrulefill
+    \input{sections/10_introduction}
+    %\input{sections/20_motivation}
+    \input{sections/21_stateoftheart}
+    \input{sections/30_requirements}
+    \input{sections/50_metamodel}
+    \input{sections/60_integration}
+    \input{sections/90_conclusion}
+    %\input{sections/98_simpleExample}
+
+
+%\bibliographystyle{utils/spbasic}      % basic style, author-year citations
+\bibliographystyle{utils/splncs04}      % basic style, author-year citations
+
+
+%\bibliographystyle{spbasic}      % basic style, author-year citations
+%\bibliographystyle{spmpsci}      % mathematics and physical sciences
+%\bibliographystyle{spphys}       % APS-like style for physics
+%\bibliographystyle{utils/plainnatnourl}
+%\setcitestyle{numbers}
+\bibliography{bib/strings-abbr,bib/uoc2021_traceaMM,bib/added,bib/trace-and-models}
+
+
+\end{document}

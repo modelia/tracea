@@ -1,0 +1,732 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>JabRef references</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript">
+<!--
+// QuickSearch script for JabRef HTML export 
+// Version: 3.0
+//
+// Copyright (c) 2006-2011, Mark Schenk
+//
+// This software is distributed under a Creative Commons Attribution 3.0 License
+// http://creativecommons.org/licenses/by/3.0/
+//
+// Features:
+// - intuitive find-as-you-type searching
+//    ~ case insensitive
+//    ~ ignore diacritics (optional)
+//
+// - search with/without Regular Expressions
+// - match BibTeX key
+//
+
+// Search settings
+var searchAbstract = true;	// search in abstract
+var searchComment = true;	// search in comment
+
+var noSquiggles = true; 	// ignore diacritics when searching
+var searchRegExp = false; 	// enable RegExp searches
+
+
+if (window.addEventListener) {
+	window.addEventListener("load",initSearch,false); }
+else if (window.attachEvent) {
+	window.attachEvent("onload", initSearch); }
+
+function initSearch() {
+	// check for quick search table and searchfield
+	if (!document.getElementById('qs_table')||!document.getElementById('quicksearch')) { return; }
+
+	// load all the rows and sort into arrays
+	loadTableData();
+	
+	//find the query field
+	qsfield = document.getElementById('qs_field');
+
+	// previous search term; used for speed optimisation
+	prevSearch = '';
+
+	//find statistics location
+	stats = document.getElementById('stat');
+	setStatistics(-1);
+	
+	// set up preferences
+	initPreferences();
+
+	// shows the searchfield
+	document.getElementById('quicksearch').style.display = 'block';
+	document.getElementById('qs_field').onkeyup = quickSearch;
+}
+
+function loadTableData() {
+	// find table and appropriate rows
+	searchTable = document.getElementById('qs_table');
+	var allRows = searchTable.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+	// split all rows into entryRows and infoRows (e.g. abstract, comment, bibtex)
+	entryRows = new Array(); infoRows = new Array(); absRows = new Array(); revRows = new Array();
+
+	// get data from each row
+	entryRowsData = new Array(); absRowsData = new Array(); revRowsData = new Array(); 
+	
+	BibTeXKeys = new Array();
+	
+	for (var i=0, k=0, j=0; i<allRows.length;i++) {
+		if (allRows[i].className.match(/entry/)) {
+			entryRows[j] = allRows[i];
+			entryRowsData[j] = stripDiacritics(getTextContent(allRows[i]));
+			allRows[i].id ? BibTeXKeys[j] = allRows[i].id : allRows[i].id = 'autokey_'+j;
+			j ++;
+		} else {
+			infoRows[k++] = allRows[i];
+			// check for abstract/comment
+			if (allRows[i].className.match(/abstract/)) {
+				absRows.push(allRows[i]);
+				absRowsData[j-1] = stripDiacritics(getTextContent(allRows[i]));
+			} else if (allRows[i].className.match(/comment/)) {
+				revRows.push(allRows[i]);
+				revRowsData[j-1] = stripDiacritics(getTextContent(allRows[i]));
+			}
+		}
+	}
+	//number of entries and rows
+	numEntries = entryRows.length;
+	numInfo = infoRows.length;
+	numAbs = absRows.length;
+	numRev = revRows.length;
+}
+
+function quickSearch(){
+	
+	tInput = qsfield;
+
+	if (tInput.value.length == 0) {
+		showAll();
+		setStatistics(-1);
+		qsfield.className = '';
+		return;
+	} else {
+		t = stripDiacritics(tInput.value);
+
+		if(!searchRegExp) { t = escapeRegExp(t); }
+			
+		// only search for valid RegExp
+		try {
+			textRegExp = new RegExp(t,"i");
+			closeAllInfo();
+			qsfield.className = '';
+		}
+			catch(err) {
+			prevSearch = tInput.value;
+			qsfield.className = 'invalidsearch';
+			return;
+		}
+	}
+	
+	// count number of hits
+	var hits = 0;
+
+	// start looping through all entry rows
+	for (var i = 0; cRow = entryRows[i]; i++){
+
+		// only show search the cells if it isn't already hidden OR if the search term is getting shorter, then search all
+		if(cRow.className.indexOf('noshow')==-1 || tInput.value.length <= prevSearch.length){
+			var found = false; 
+
+			if (entryRowsData[i].search(textRegExp) != -1 || BibTeXKeys[i].search(textRegExp) != -1){ 
+				found = true;
+			} else {
+				if(searchAbstract && absRowsData[i]!=undefined) {
+					if (absRowsData[i].search(textRegExp) != -1){ found=true; } 
+				}
+				if(searchComment && revRowsData[i]!=undefined) {
+					if (revRowsData[i].search(textRegExp) != -1){ found=true; } 
+				}
+			}
+			
+			if (found){
+				cRow.className = 'entry show';
+				hits++;
+			} else {
+				cRow.className = 'entry noshow';
+			}
+		}
+	}
+
+	// update statistics
+	setStatistics(hits)
+	
+	// set previous search value
+	prevSearch = tInput.value;
+}
+
+
+// Strip Diacritics from text
+// http://stackoverflow.com/questions/990904/javascript-remove-accents-in-strings
+
+// String containing replacement characters for stripping accents 
+var stripstring = 
+    'AAAAAAACEEEEIIII'+
+    'DNOOOOO.OUUUUY..'+
+    'aaaaaaaceeeeiiii'+
+    'dnooooo.ouuuuy.y'+
+    'AaAaAaCcCcCcCcDd'+
+    'DdEeEeEeEeEeGgGg'+
+    'GgGgHhHhIiIiIiIi'+
+    'IiIiJjKkkLlLlLlL'+
+    'lJlNnNnNnnNnOoOo'+
+    'OoOoRrRrRrSsSsSs'+
+    'SsTtTtTtUuUuUuUu'+
+    'UuUuWwYyYZzZzZz.';
+
+function stripDiacritics(str){
+
+    if(noSquiggles==false){
+        return str;
+    }
+
+    var answer='';
+    for(var i=0;i<str.length;i++){
+        var ch=str[i];
+        var chindex=ch.charCodeAt(0)-192;   // Index of character code in the strip string
+        if(chindex>=0 && chindex<stripstring.length){
+            // Character is within our table, so we can strip the accent...
+            var outch=stripstring.charAt(chindex);
+            // ...unless it was shown as a '.'
+            if(outch!='.')ch=outch;
+        }
+        answer+=ch;
+    }
+    return answer;
+}
+
+// http://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
+// NOTE: must escape every \ in the export code because of the JabRef Export...
+function escapeRegExp(str) {
+  return str.replace(/[-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+}
+
+function toggleInfo(articleid,info) {
+
+	var entry = document.getElementById(articleid);
+	var abs = document.getElementById('abs_'+articleid);
+	var rev = document.getElementById('rev_'+articleid);
+	var bib = document.getElementById('bib_'+articleid);
+	
+	if (abs && info == 'abstract') {
+		abs.className.indexOf('noshow') == -1?abs.className = 'abstract noshow':abs.className = 'abstract show';
+	} else if (rev && info == 'comment') {
+		rev.className.indexOf('noshow') == -1?rev.className = 'comment noshow':rev.className = 'comment show';
+	} else if (bib && info == 'bibtex') {
+		bib.className.indexOf('noshow') == -1?bib.className = 'bibtex noshow':bib.className = 'bibtex show';
+	} else { 
+		return;
+	}
+
+	// check if one or the other is available
+	var revshow; var absshow; var bibshow;
+	(abs && abs.className.indexOf('noshow') == -1)? absshow = true: absshow = false;
+	(rev && rev.className.indexOf('noshow') == -1)? revshow = true: revshow = false;	
+	(bib && bib.className.indexOf('noshow') == -1)? bibshow = true: bibshow = false;
+	
+	// highlight original entry
+	if(entry) {
+		if (revshow || absshow || bibshow) {
+		entry.className = 'entry highlight show';
+		} else {
+		entry.className = 'entry show';
+		}
+	}
+	
+	// When there's a combination of abstract/comment/bibtex showing, need to add class for correct styling
+	if(absshow) {
+		(revshow||bibshow)?abs.className = 'abstract nextshow':abs.className = 'abstract';
+	} 
+	if (revshow) {
+		bibshow?rev.className = 'comment nextshow': rev.className = 'comment';
+	}	
+	
+}
+
+function setStatistics (hits) {
+	if(hits < 0) { hits=numEntries; }
+	if(stats) { stats.firstChild.data = hits + '/' + numEntries}
+}
+
+function getTextContent(node) {
+	// Function written by Arve Bersvendsen
+	// http://www.virtuelvis.com
+	
+	if (node.nodeType == 3) {
+	return node.nodeValue;
+	} // text node
+	if (node.nodeType == 1 && node.className != "infolinks") { // element node
+	var text = [];
+	for (var chld = node.firstChild;chld;chld=chld.nextSibling) {
+		text.push(getTextContent(chld));
+	}
+	return text.join("");
+	} return ""; // some other node, won't contain text nodes.
+}
+
+function showAll(){
+	closeAllInfo();
+	for (var i = 0; i < numEntries; i++){ entryRows[i].className = 'entry show'; }
+}
+
+function closeAllInfo(){
+	for (var i=0; i < numInfo; i++){
+		if (infoRows[i].className.indexOf('noshow') ==-1) {
+			infoRows[i].className = infoRows[i].className + ' noshow';
+		}
+	}
+}
+
+function clearQS() {
+	qsfield.value = '';
+	showAll();
+}
+
+function redoQS(){
+	showAll();
+	quickSearch(qsfield);
+}
+
+function updateSetting(obj){
+	var option = obj.id;
+	var checked = obj.value;
+
+	switch(option)
+	 {
+	 case "opt_searchAbs":
+	   searchAbstract=!searchAbstract;
+	   redoQS();
+	   break;
+	 case "opt_searchComment":
+	   searchComment=!searchComment;
+	   redoQS();
+	   break;
+	 case "opt_useRegExp":
+	   searchRegExp=!searchRegExp;
+	   redoQS();
+	   break;
+	 case "opt_noAccents":
+	   noSquiggles=!noSquiggles;
+	   loadTableData();
+	   redoQS();
+	   break;
+	 }
+}
+
+function initPreferences(){
+	if(searchAbstract){document.getElementById("opt_searchAbs").checked = true;}
+	if(searchComment){document.getElementById("opt_searchComment").checked = true;}
+	if(noSquiggles){document.getElementById("opt_noAccents").checked = true;}
+	if(searchRegExp){document.getElementById("opt_useRegExp").checked = true;}
+	
+	if(numAbs==0) {document.getElementById("opt_searchAbs").parentNode.style.display = 'none';}
+	if(numRev==0) {document.getElementById("opt_searchComment").parentNode.style.display = 'none';}	
+}
+
+function toggleSettings(){
+	var togglebutton = document.getElementById('showsettings');
+	var settings = document.getElementById('settings');
+	
+	if(settings.className == "hidden"){
+		settings.className = "show";
+		togglebutton.innerText = "close settings";
+		togglebutton.textContent = "close settings";
+	}else{
+		settings.className = "hidden";
+		togglebutton.innerText = "settings...";		
+		togglebutton.textContent = "settings...";
+	}
+}
+
+-->
+</script>
+<style type="text/css">
+body { background-color: white; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.2; padding: 1em; color: #2E2E2E; width: 50em; margin: auto auto; }
+
+form#quicksearch { width: auto; border-style: solid; border-color: gray; border-width: 1px 0px; padding: 0.7em 0.5em; display:none; position:relative; }
+span#searchstat {padding-left: 1em;}
+
+div#settings { margin-top:0.7em; /* border-bottom: 1px transparent solid; background-color: #efefef; border: 1px grey solid; */ }
+div#settings ul {margin: 0; padding: 0; }
+div#settings li {margin: 0; padding: 0 1em 0 0; display: inline; list-style: none; }
+div#settings li + li { border-left: 2px #efefef solid; padding-left: 0.5em;}
+div#settings input { margin-bottom: 0px;}
+
+div#settings.hidden {display:none;}
+
+#showsettings { border: 1px grey solid; padding: 0 0.5em; float:right; line-height: 1.6em; text-align: right; }
+#showsettings:hover { cursor: pointer; }
+
+.invalidsearch { background-color: red; }
+input[type="button"] { background-color: #efefef; border: 1px #2E2E2E solid;}
+
+table { border: 1px gray none; width: 100%; empty-cells: show; border-spacing: 0em 0.1em; margin: 1em 0em; }
+th, td { border: none; padding: 0.5em; vertical-align: top; text-align: justify; }
+
+td a { color: navy; text-decoration: none; }
+td a:hover  { text-decoration: underline; }
+
+tr.noshow { display: none;}
+tr.highlight td { background-color: #EFEFEF; border-top: 2px #2E2E2E solid; font-weight: bold; }
+tr.abstract td, tr.comment td, tr.bibtex td { background-color: #EFEFEF; text-align: justify; border-bottom: 2px #2E2E2E solid; }
+tr.nextshow td { border-bottom-style: none; }
+
+tr.bibtex pre { width: 100%; overflow: auto; white-space: pre-wrap;}
+p.infolinks { margin: 0.3em 0em 0em 0em; padding: 0px; }
+
+@media print {
+	p.infolinks, #qs_settings, #quicksearch, t.bibtex { display: none !important; }
+	tr { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<form action="" id="quicksearch">
+<input type="text" id="qs_field" autocomplete="off" placeholder="Type to search..." /> <input type="button" onclick="clearQS()" value="clear" />
+<span id="searchstat">Matching entries: <span id="stat">0</span></span>
+<div id="showsettings" onclick="toggleSettings()">settings...</div>
+<div id="settings" class="hidden">
+<ul>
+<li><input type="checkbox" class="search_setting" id="opt_searchAbs" onchange="updateSetting(this)"><label for="opt_searchAbs"> include abstract</label></li>
+<li><input type="checkbox" class="search_setting" id="opt_searchComment" onchange="updateSetting(this)"><label for="opt_searchComment"> include comment</label></li>
+<li><input type="checkbox" class="search_setting" id="opt_useRegExp" onchange="updateSetting(this)"><label for="opt_useRegExp"> use RegExp</label></li>
+<li><input type="checkbox" class="search_setting" id="opt_noAccents" onchange="updateSetting(this)"><label for="opt_noAccents"> ignore accents</label></li>
+</ul>
+</div>
+</form>
+<table id="qs_table" border="1">
+<tbody>
+<tr id="antoniol2017-traceability-grand-challenges" class="entry">
+	<td>Antoniol G, Cleland-Huang J, Hayes JH and Vierhauser M (2017), <i>"Grand Challenges of Traceability: The Next Ten Years"</i>, CoRR.  Vol. abs/1710.03129
+	<p class="infolinks">[<a href="javascript:toggleInfo('antoniol2017-traceability-grand-challenges','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('antoniol2017-traceability-grand-challenges','bibtex')">BibTeX</a>] [<a href="http://arxiv.org/abs/1710.03129" target="_blank">URL</a>]</p>
+	</td>
+</tr>
+<tr id="abs_antoniol2017-traceability-grand-challenges" class="abstract noshow">
+	<td><b>Abstract</b>: n 2007, the software and systems traceability community met at the first Natural Bridge symposium on the Grand Challenges of Traceability to establish and address research goals for achieving effective, trustworthy, and ubiquitous traceability. Ten years later, in 2017, the community came together to evaluate a decade of progress towards achieving these goals. These proceedings document some of that progress. They include a series of short position papers, representing current work in the community organized across four process axes of traceability practice. The sessions covered topics from Trace Strategizing, Trace Link Creation and Evolution, Trace Link Usage, real-world applications of Traceability, and Traceability Datasets and benchmarks. Two breakout groups focused on the importance of creating and sharing traceability datasets within the research community, and discussed challenges related to the adoption of tracing techniques in industrial practice. Members of the research community are engaged in many active, ongoing, and impactful research projects. Our hope is that ten years from now we will be able to look back at a productive decade of research and claim that we have achieved the overarching Grand Challenge of Traceability, which seeks for traceability to be always present, built into the engineering process, and for it to have "effectively disappeared without a trace". We hope that others will see the potential that traceability has for empowering software and systems engineers to develop higher-quality products at increasing levels of complexity and scale, and that they will join the active community of Software and Systems traceability researchers as we move forward into the next decade of research.</td>
+</tr>
+<tr id="bib_antoniol2017-traceability-grand-challenges" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@article{antoniol2017-traceability-grand-challenges,
+  author = {Giuliano Antoniol and Jane Cleland-Huang and Jane Huffman Hayes and Michael Vierhauser},
+  title = {Grand Challenges of Traceability: The Next Ten Years},
+  journal = {CoRR},
+  year = {2017},
+  volume = {abs/1710.03129},
+  url = {http://arxiv.org/abs/1710.03129}
+}
+</pre></td>
+</tr>
+<tr id="borg2012-tracea-taxonomy-for-IR-tools" class="entry">
+	<td>Borg M, Runeson P and Brodén L (2012), <i>"Evaluation of traceability recovery in context: A taxonomy for information retrieval tools"</i>, In 16th International Conference on Evaluation Assessment in Software Engineering (EASE 2012)., May, 2012. , pp. 111-120.
+	<p class="infolinks">[<a href="javascript:toggleInfo('borg2012-tracea-taxonomy-for-IR-tools','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('borg2012-tracea-taxonomy-for-IR-tools','bibtex')">BibTeX</a>] [<a href="https://doi.org/10.1049/ic.2012.0014" target="_blank">DOI</a>]</p>
+	</td>
+</tr>
+<tr id="abs_borg2012-tracea-taxonomy-for-IR-tools" class="abstract noshow">
+	<td><b>Abstract</b>: Background: Development of complex, software intensive systems generates large amounts of information. Several researchers have developed tools implementing information retrieval (IR) approaches to suggest traceability links among artifacts. Aim: We explore the consequences of the fact that a majority of the evaluations of such tools have been focused on benchmarking of mere tool output. Method: To illustrate this issue, we have adapted a framework of general IR evaluations to a context taxonomy specifically for IR-based traceability recovery. Furthermore, we evaluate a previously proposed experimental framework by conducting a study using two publicly available tools on two datasets originating from development of embedded software systems. Results: Our study shows that even though both datasets contain software artifacts from embedded development, the characteristics of the two datasets differ considerably, and consequently the traceability outcomes. Conclusions: To enable replications and secondary studies, we suggest that datasets should be thoroughly characterized in future studies on traceability recovery, especially when they can not be disclosed. Also, while we conclude that the experimental framework provides useful support, we argue that our proposed context taxonomy is a useful complement. Finally, we discuss how empirical evidence of the feasibility of IR-based traceability recovery can be strengthened in future research.</td>
+</tr>
+<tr id="bib_borg2012-tracea-taxonomy-for-IR-tools" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{borg2012-tracea-taxonomy-for-IR-tools,
+  author = {M. Borg and P. Runeson and L. Brodén},
+  title = {Evaluation of traceability recovery in context: A taxonomy for information retrieval tools},
+  booktitle = {16th International Conference on Evaluation Assessment in Software Engineering (EASE 2012)},
+  year = {2012},
+  pages = {111-120},
+  doi = {10.1049/ic.2012.0014}
+}
+</pre></td>
+</tr>
+<tr id="borg2013-IR-in-traceability-birds-view" class="entry">
+	<td>Borg M and Runeson P (2013), <i>"IR in Software Traceability: From a Bird's Eye View"</i>, In 2013 ACM / IEEE International Symposium on Empirical Software Engineering and Measurement., Oct, 2013. , pp. 243-246.
+	<p class="infolinks">[<a href="javascript:toggleInfo('borg2013-IR-in-traceability-birds-view','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('borg2013-IR-in-traceability-birds-view','comment')">Comment</a>]  [<a href="javascript:toggleInfo('borg2013-IR-in-traceability-birds-view','bibtex')">BibTeX</a>] [<a href="https://doi.org/10.1109/ESEM.2013.39" target="_blank">DOI</a>]</p>
+	</td>
+</tr>
+<tr id="abs_borg2013-IR-in-traceability-birds-view" class="abstract noshow">
+	<td><b>Abstract</b>: Background. Several researchers have proposed creating after-the-fact structure among software artifacts using trace recovery based on Information Retrieval (IR). Due to significant variation points in previous studies, results are not easily aggregated. Aim. We aim at an overview picture of the outcome of previous evaluations. Method. Based on a systematic mapping study, we perform a synthesis of published research. Results. Our synthesis shows that there are no empirical evidence that any IR model outperforms another model consistently. We also display a strong dependency between the Precision and Recall (P-R) values and the input datasets. Finally, our mapping of P-R values on the possible output space highlights the difficulty of recovering accurate trace links using naïve cut-off strategies. Conclusion. Based on our findings, we stress the need for empirical evaluations beyond the basic P-R 'race'.</td>
+</tr>
+<tr id="rev_borg2013-IR-in-traceability-birds-view" class="comment noshow">
+	<td><b>Comment</b>: All IR technic give comparable P-R results</td>
+</tr>
+<tr id="bib_borg2013-IR-in-traceability-birds-view" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{borg2013-IR-in-traceability-birds-view,
+  author = {M. Borg and P. Runeson},
+  title = {IR in Software Traceability: From a Bird's Eye View},
+  booktitle = {2013 ACM / IEEE International Symposium on Empirical Software Engineering and Measurement},
+  year = {2013},
+  pages = {243-246},
+  doi = {10.1109/ESEM.2013.39}
+}
+</pre></td>
+</tr>
+<tr id="borg2014-SmS-IR-for-traceability" class="entry">
+	<td>Borg M, Runeson P and Ardö A (2014), <i>"Recovering from a decade: a systematic mapping of information retrieval approaches to software traceability"</i>, Empirical Software Engineering.  Vol. 19(6), pp. 1565-1616.
+	<p class="infolinks">[<a href="javascript:toggleInfo('borg2014-SmS-IR-for-traceability','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('borg2014-SmS-IR-for-traceability','bibtex')">BibTeX</a>] [<a href="https://doi.org/10.1007/s10664-013-9255-y" target="_blank">URL</a>]</p>
+	</td>
+</tr>
+<tr id="abs_borg2014-SmS-IR-for-traceability" class="abstract noshow">
+	<td><b>Abstract</b>: Engineers in large-scale software development have to manage large amounts of information, spread across many artifacts. Several researchers have proposed expressing retrieval of trace links among artifacts, i.e. trace recovery, as an Information Retrieval (IR) problem. The objective of this study is to produce a map of work on IR-based trace recovery, with a particular focus on previous evaluations and strength of evidence. We conducted a systematic mapping of IR-based trace recovery. Of the 79 publications classified, a majority applied algebraic IR models. While a set of studies on students indicate that IR-based trace recovery tools support certain work tasks, most previous studies do not go beyond reporting precision and recall of candidate trace links from evaluations using datasets containing less than 500 artifacts. Our review identified a need of industrial case studies. Furthermore, we conclude that the overall quality of reporting should be improved regarding both context and tool details, measures reported, and use of IR terminology. Finally, based on our empirical findings, we present suggestions on how to advance research on IR-based  trace recovery.</td>
+</tr>
+<tr id="bib_borg2014-SmS-IR-for-traceability" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@article{borg2014-SmS-IR-for-traceability,
+  author = {Borg, Markus and Runeson, Per and Ardö, Anders},
+  title = {Recovering from a decade: a systematic mapping of information retrieval approaches to software traceability},
+  journal = {Empirical Software Engineering},
+  year = {2014},
+  volume = {19},
+  number = {6},
+  pages = {1565--1616},
+  url = {https://doi.org/10.1007/s10664-013-9255-y}
+}
+</pre></td>
+</tr>
+<tr id="bouillon2013-survey-on-usage-scenario-requirements-traceability-in-practice" class="entry">
+	<td>Bouillon E, M&auml;der P and Philippow I (2013), <i>"A Survey on Usage Scenarios for Requirements Traceability in Practice"</i>, In Requirements Engineering: Foundation for Software Quality. , pp. 158-173. Springer Berlin Heidelberg.
+	<p class="infolinks">[<a href="javascript:toggleInfo('bouillon2013-survey-on-usage-scenario-requirements-traceability-in-practice','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('bouillon2013-survey-on-usage-scenario-requirements-traceability-in-practice','bibtex')">BibTeX</a>] [<a href="https://doi.org/10.1007/978-3-642-37422-7_12" target="_blank">DOI</a>] [<a href="https://doi.org/10.1007/978-3-642-37422-7_12" target="_blank">URL</a>]</p>
+	</td>
+</tr>
+<tr id="abs_bouillon2013-survey-on-usage-scenario-requirements-traceability-in-practice" class="abstract noshow">
+	<td><b>Abstract</b>: [Context and motivation] Requirements traceability is known as an important part of development projects. Studies showed that traceability is applied in practice, but insufficient tool- and method-support hinders its practical use. [Question/problem] We conducted a survey to understand which traceability usage scenarios are most relevant for practitioners. Gaining this information is a required step for providing better traceability support to practitioners. [Principal ideas/results] We identified a list of 29 regularly cited usage scenarios and asked practitioners to assess the frequency of use for each in a typical development project. Our analysis is restricted to those 56 participants that were actively using traceability in order to ensure comparable results. Subjects held various roles in the development and reported about diverse projects. [Contribution] This study provides not only an initial catalog of usage scenarios and their relevance, but also provides insights on practitioner’s traceability practices. In result, we found all scenarios to be used by practitioners. Participants use traceability especially for: finding origin and rationale of requirements, documenting a requirement’s history, and tracking requirement or task implementation state. Furthermore, we highlight topics for ongoing evaluation and better method and tool support in the area of requirements traceability.</td>
+</tr>
+<tr id="bib_bouillon2013-survey-on-usage-scenario-requirements-traceability-in-practice" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@incollection{bouillon2013-survey-on-usage-scenario-requirements-traceability-in-practice,
+  author = {Elke Bouillon and Patrick M&auml;der and Ilka Philippow},
+  title = {A Survey on Usage Scenarios for Requirements Traceability in Practice},
+  booktitle = {Requirements Engineering: Foundation for Software Quality},
+  publisher = {Springer Berlin Heidelberg},
+  year = {2013},
+  pages = {158--173},
+  url = {https://doi.org/10.1007/978-3-642-37422-7_12},
+  doi = {10.1007/978-3-642-37422-7_12}
+}
+</pre></td>
+</tr>
+<tr id="clelandhuang2007bestPracticeForAutomatedTraceability" class="entry">
+	<td>Cleland-Huang J, Berenbach B, Clark S, Settimi R and Romanova E (2007), <i>"Best Practices for Automated Traceability"</i>, Computer.  Vol. 40(6), pp. 27-35.
+	<p class="infolinks">[<a href="javascript:toggleInfo('clelandhuang2007bestPracticeForAutomatedTraceability','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('clelandhuang2007bestPracticeForAutomatedTraceability','bibtex')">BibTeX</a>]</p>
+	</td>
+</tr>
+<tr id="abs_clelandhuang2007bestPracticeForAutomatedTraceability" class="abstract noshow">
+	<td><b>Abstract</b>: Automated traceability applies information-retrieval techniques to generate candidate links, sharply reducing the effort of manual approaches to build and maintain a requirements trace matrix as well as providing after-the-fact traceability in legacy documents.The authors describe nine best practices for implementing effective automated traceability.</td>
+</tr>
+<tr id="bib_clelandhuang2007bestPracticeForAutomatedTraceability" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@article{clelandhuang2007bestPracticeForAutomatedTraceability,
+  author = {J. Cleland-Huang and B. Berenbach and S. Clark and R. Settimi and E. Romanova},
+  title = {Best Practices for Automated Traceability},
+  journal = {Computer},
+  year = {2007},
+  volume = {40},
+  number = {6},
+  pages = {27-35}
+}
+</pre></td>
+</tr>
+<tr id="clelandhuang2014-traceability-trends-and-futurte-direction" class="entry">
+	<td>Cleland-Huang J, Gotel OCZ, Huffman Hayes J, M&auml;der P and Zisman A (2014), <i>"Software Traceability: Trends and Future Directions"</i>, In Future of Software Engineering Proceedings. New York, NY, USA , pp. 55–69. Association for Computing Machinery.
+	<p class="infolinks">[<a href="javascript:toggleInfo('clelandhuang2014-traceability-trends-and-futurte-direction','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('clelandhuang2014-traceability-trends-and-futurte-direction','bibtex')">BibTeX</a>] [<a href="https://doi.org/10.1145/2593882.2593891" target="_blank">DOI</a>] [<a href="https://doi.org/10.1145/2593882.2593891" target="_blank">URL</a>]</p>
+	</td>
+</tr>
+<tr id="abs_clelandhuang2014-traceability-trends-and-futurte-direction" class="abstract noshow">
+	<td><b>Abstract</b>: Software traceability is a sought-after, yet often elusive quality in software-intensive systems. Required in safety-critical systems by many certifying bodies, such as the USA Federal Aviation Authority, software traceability is an essential element of the software development process. In practice, traceability is often conducted in an ad-hoc, after-the-fact manner and, therefore, its benefits are not always fully realized. Over the past decade, researchers have focused on specific areas of the traceability problem, developing more sophisticated tooling, promoting strategic planning, applying information retrieval techniques capable of semi-automating the trace creation and maintenance process, developing new trace query languages and visualization techniques that use trace links, and applying traceability in specific domains such as Model Driven Development, product line systems, and agile project environments. In this paper, we build upon a prior body of work to highlight the state-of-the-art in software traceability, and to present compelling areas of research that need to be addressed.</td>
+</tr>
+<tr id="bib_clelandhuang2014-traceability-trends-and-futurte-direction" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{clelandhuang2014-traceability-trends-and-futurte-direction,
+  author = {Cleland-Huang, Jane and Gotel, Orlena C. Z. and Huffman Hayes, Jane and M&auml;der, Patrick and Zisman, Andrea},
+  title = {Software Traceability: Trends and Future Directions},
+  booktitle = {Future of Software Engineering Proceedings},
+  publisher = {Association for Computing Machinery},
+  year = {2014},
+  pages = {55–69},
+  url = {https://doi.org/10.1145/2593882.2593891},
+  doi = {10.1145/2593882.2593891}
+}
+</pre></td>
+</tr>
+<tr id="delucia2012-information-retrieval-for-traceability" class="entry">
+	<td>De Lucia A, Marcus A, Oliveto R and Poshyvanyk D (2012), <i>"Information Retrieval Methods for Automated Traceability Recovery"</i>, In Software and Systems Traceability. London , pp. 71-98. Springer London.
+	<p class="infolinks">[<a href="javascript:toggleInfo('delucia2012-information-retrieval-for-traceability','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('delucia2012-information-retrieval-for-traceability','bibtex')">BibTeX</a>] [<a href="https://doi.org/10.1007/978-1-4471-2239-5_4" target="_blank">DOI</a>] [<a href="https://doi.org/10.1007/978-1-4471-2239-5_4" target="_blank">URL</a>]</p>
+	</td>
+</tr>
+<tr id="abs_delucia2012-information-retrieval-for-traceability" class="abstract noshow">
+	<td><b>Abstract</b>: The potential benefits of traceability are well known and documented, as well as the impracticability of recovering and maintaining traceability links manually. Indeed, the manual management of traceability information is an error prone and time consuming task. Consequently, despite the advantages that can be gained, explicit traceability is rarely established unless there is a regulatory reason for doing so. Extensive efforts have been brought forth to improve the explicit connection of software artifacts in the software engineering community (both research and commercial). Promising results have been achieved using Information Retrieval (IR) techniques for traceability recovery. IR-based traceability recovery methods propose a list of candidate traceability links based on the similarity between the text contained in the software artifacts. Software artifacts have different structures and the common element among many of them is the textual data, which most often captures the informal semantics of artifacts. For example, source code includes large volume of textual data in the form of comments and identifiers. In consequence, IR-based approaches are very well suited to address the traceability recovery problem. The conjecture is that artifacts with high textual similarity are good candidates to be traced to each other since they share several concepts. In this chapter we overview a general process of using IR-based methods for traceability link recovery and overview some of them in a greater detail: probabilistic, vector space, and Latent Semantic Indexing models. Finally, we discuss common approaches to measuring the performance of IR-based traceability recovery methods and the latest advances in techniques for the analysis of candidate links.</td>
+</tr>
+<tr id="bib_delucia2012-information-retrieval-for-traceability" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inbook{delucia2012-information-retrieval-for-traceability,
+  author = {De Lucia, Andrea and Marcus, Andrian and Oliveto, Rocco and Poshyvanyk, Denys},
+  editor = {Cleland-Huang, Jane and Gotel, Orlena and Zisman, Andrea},
+  title = {Information Retrieval Methods for Automated Traceability Recovery},
+  booktitle = {Software and Systems Traceability},
+  publisher = {Springer London},
+  year = {2012},
+  pages = {71--98},
+  url = {https://doi.org/10.1007/978-1-4471-2239-5_4},
+  doi = {10.1007/978-1-4471-2239-5_4}
+}
+</pre></td>
+</tr>
+<tr id="galvao2007-survey-traceability-in-MDE" class="entry">
+	<td>Galvao I and Goknil A (2007), <i>"Survey of Traceability Approaches in Model-Driven Engineering"</i>, In 11th IEEE International Enterprise Distributed Object Computing Conference (EDOC 2007)., Oct, 2007. , pp. 313-313.
+	<p class="infolinks">[<a href="javascript:toggleInfo('galvao2007-survey-traceability-in-MDE','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('galvao2007-survey-traceability-in-MDE','bibtex')">BibTeX</a>] [<a href="https://doi.org/10.1109/EDOC.2007.42" target="_blank">DOI</a>]</p>
+	</td>
+</tr>
+<tr id="abs_galvao2007-survey-traceability-in-MDE" class="abstract noshow">
+	<td><b>Abstract</b>: Models have been used in various engineering fields to help managing complexity and represent information in different abstraction levels, according to specific notations and stakeholder's viewpoints. Model-Driven Engineering (MDE) gives the basic principles for the use of models as primary artefacts throughout the software development phases and presents characteristics that simplify the engineering of software in various domains, such as Enterprise Computing Systems. Hence, for its successful application, MDE processes must consider traceability practices. They help the understanding, capturing, tracking and verification of software artefacts and their relationships and dependencies with other artefacts during the software life-cycle. In this survey, we discuss the state-of-the-art in traceability approaches in MDE and assess them with respect to five general comparison criteria: representation, mapping, scalability, change impact analysis and tool support. As a complementary result, we have identified some open issues that can be better explored by traceability in MDE.</td>
+</tr>
+<tr id="bib_galvao2007-survey-traceability-in-MDE" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{galvao2007-survey-traceability-in-MDE,
+  author = {I. Galvao and A. Goknil},
+  title = {Survey of Traceability Approaches in Model-Driven Engineering},
+  booktitle = {11th IEEE International Enterprise Distributed Object Computing Conference (EDOC 2007)},
+  year = {2007},
+  pages = {313-313},
+  doi = {10.1109/EDOC.2007.42}
+}
+</pre></td>
+</tr>
+<tr id="Gotel2012" class="entry">
+	<td>Gotel O, Cleland-Huang J, Hayes JH, Zisman A, Egyed A, Gr&uuml;nbacher P, Dekhtyar A, Antoniol G, Maletic J and M&auml;der P (2012), <i>"Traceability Fundamentals"</i>, In Software and Systems Traceability. London , pp. 3-22. Springer London.
+	<p class="infolinks">[<a href="javascript:toggleInfo('Gotel2012','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Gotel2012','bibtex')">BibTeX</a>] [<a href="https://doi.org/10.1007/978-1-4471-2239-5_1" target="_blank">DOI</a>] [<a href="https://doi.org/10.1007/978-1-4471-2239-5_1" target="_blank">URL</a>]</p>
+	</td>
+</tr>
+<tr id="abs_Gotel2012" class="abstract noshow">
+	<td><b>Abstract</b>: This chapter seeks to provide a reference resource on traceability fundamentals. It defines the essential traceability terminology of trace, trace artifact, trace link, traceability and tracing, and is supplemented by an extensive glossary that has been developed and endorsed by members of the traceability community. This chapter also offers a model of a generic traceability process and describes the essential activities involved in the life cycle of a trace. This model has been used as a frame of reference for articulating the grand challenge of traceability, as reported in the chapter by Gotel et al. of this book. The chapter also describes the basic types of traceability and explains a number of key associated concepts.</td>
+</tr>
+<tr id="bib_Gotel2012" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inbook{Gotel2012,
+  author = {Gotel, Orlena and Cleland-Huang, Jane and Hayes, Jane Huffman and Zisman, Andrea and Egyed, Alexander and Gr&uuml;nbacher, Paul and Dekhtyar, Alex and Antoniol, Giuliano and Maletic, Jonathan and M&auml;der, Patrick},
+  editor = {Cleland-Huang, Jane and Gotel, Orlena and Zisman, Andrea},
+  title = {Traceability Fundamentals},
+  booktitle = {Software and Systems Traceability},
+  publisher = {Springer London},
+  year = {2012},
+  pages = {3--22},
+  url = {https://doi.org/10.1007/978-1-4471-2239-5_1},
+  doi = {10.1007/978-1-4471-2239-5_1}
+}
+</pre></td>
+</tr>
+<tr id="mader2009-motivation-matters-in-traceability-practitioner-survey" class="entry">
+	<td>Mader P, Gotel O and Philippow I (2009), <i>"Motivation Matters in the Traceability Trenches"</i>, In 2009 17th IEEE International Requirements Engineering Conference., Aug, 2009. , pp. 143-148.
+	<p class="infolinks">[<a href="javascript:toggleInfo('mader2009-motivation-matters-in-traceability-practitioner-survey','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('mader2009-motivation-matters-in-traceability-practitioner-survey','bibtex')">BibTeX</a>] [<a href="https://doi.org/10.1109/RE.2009.23" target="_blank">DOI</a>]</p>
+	</td>
+</tr>
+<tr id="abs_mader2009-motivation-matters-in-traceability-practitioner-survey" class="abstract noshow">
+	<td><b>Abstract</b>: Reports from the field are few and far between when it comes to traceability. As a community, we know little more about the traceability practice in companies today than we did a decade ago. This paper reports on findings from a practitioner survey designed to get a high-level update on traceability practice and problems. What emerges is the importance of the prevailing motivation underlying traceability adoption in an organization and we characterize this in four ways. We use these perspectives to discuss our findings and their implications.</td>
+</tr>
+<tr id="bib_mader2009-motivation-matters-in-traceability-practitioner-survey" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{mader2009-motivation-matters-in-traceability-practitioner-survey,
+  author = {P. Mader and O. Gotel and I. Philippow},
+  title = {Motivation Matters in the Traceability Trenches},
+  booktitle = {2009 17th IEEE International Requirements Engineering Conference},
+  year = {2009},
+  pages = {143-148},
+  doi = {10.1109/RE.2009.23}
+}
+</pre></td>
+</tr>
+<tr id="santiago2012-MDE-as-a-new-landscape-for-traceability-SLR" class="entry">
+	<td>Santiago I, Jiménez Á, Vara JM, Castro] V[D, Bollati VA and Marcos E (2012), <i>"Model-Driven Engineering as a new landscape for traceability management: A systematic literature review"</i>, Information and Software Technology.  Vol. 54(12), pp. 1340 - 1356.
+	<p class="infolinks">[<a href="javascript:toggleInfo('santiago2012-MDE-as-a-new-landscape-for-traceability-SLR','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('santiago2012-MDE-as-a-new-landscape-for-traceability-SLR','bibtex')">BibTeX</a>] [<a href="https://doi.org/10.1016/j.infsof.2012.07.008" target="_blank">DOI</a>] [<a href="http://www.sciencedirect.com/science/article/pii/S0950584912001346" target="_blank">URL</a>]</p>
+	</td>
+</tr>
+<tr id="abs_santiago2012-MDE-as-a-new-landscape-for-traceability-SLR" class="abstract noshow">
+	<td><b>Abstract</b>: Context<br>Model-Driven Engineering provides a new landscape for dealing with traceability in software development.<br>Objective<br>Our goal is to analyze the current state of the art in traceability management in the context of Model-Driven Engineering.<br>Method<br>We use the systematic literature review based on the guidelines proposed by Kitchenham. We propose five research questions and six quality assessments.<br>Results<br>Of the 157 relevant studies identified, 29 have been considered primary studies. These studies have resulted in 17 proposals.<br>Conclusion<br>The evaluation shows that the most addressed operations are storage, CRUD and visualization, while the most immature operations are exchange and analysis traceability information.</td>
+</tr>
+<tr id="bib_santiago2012-MDE-as-a-new-landscape-for-traceability-SLR" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@article{santiago2012-MDE-as-a-new-landscape-for-traceability-SLR,
+  author = {Iván Santiago and Álvaro Jiménez and Juan Manuel Vara and Valeria [De Castro] and Verónica A. Bollati and Esperanza Marcos},
+  title = {Model-Driven Engineering as a new landscape for traceability management: A systematic literature review},
+  journal = {Information and Software Technology},
+  year = {2012},
+  volume = {54},
+  number = {12},
+  pages = {1340 - 1356},
+  note = {Special Section on Software Reliability and Security},
+  url = {http://www.sciencedirect.com/science/article/pii/S0950584912001346},
+  doi = {10.1016/j.infsof.2012.07.008}
+}
+</pre></td>
+</tr>
+<tr id="vale2017-SPL-traceability-a-SMS" class="entry">
+	<td>Vale T, [de Almeida] ES, Alves V, Kulesza U, Niu N and [de Lima] R (2017), <i>"Software product lines traceability: A systematic mapping study"</i>, Information and Software Technology.  Vol. 84, pp. 1 - 18.
+	<p class="infolinks">[<a href="javascript:toggleInfo('vale2017-SPL-traceability-a-SMS','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('vale2017-SPL-traceability-a-SMS','bibtex')">BibTeX</a>] [<a href="https://doi.org/10.1016/j.infsof.2016.12.004" target="_blank">DOI</a>] [<a href="http://www.sciencedirect.com/science/article/pii/S0950584916304463" target="_blank">URL</a>]</p>
+	</td>
+</tr>
+<tr id="abs_vale2017-SPL-traceability-a-SMS" class="abstract noshow">
+	<td><b>Abstract</b>: Context: Traceability in Software Product Lines (SPL) is the ability to interrelate software engineering artifacts through required links to answer specific questions related to the families of products and underlying development processes. Despite the existence of studies to map out available evidence on traceability for single systems development, there is a lack of understanding on common strategies, activities, artifacts, and research gaps for SPL traceability. Objective: This paper analyzes 62 studies dating from 2001 to 2015 and discusses seven aspects of SPL traceability: main goals, strategies, application domains, research intensity, research challenges, rigor, and industrial relevance. In addition to the analysis, this paper also synthesizes the available evidence, identifies open issues and points out areas calling for further research. Method: To gather evidence, we defined a mapping study process adapted from existing guidelines. Driven by a set of research questions, this process comprises three major phases: planning, conducting, and documenting the review. Results: This work provides a structured understanding of SPL traceability, indicating areas for further research. The lack of evidence regarding the application of research methods indicates the need for more rigorous SPL traceability studies with better description of context, study design, and limitations. For practitioners, although most identified studies have low industrial relevance, a few of them have high relevance and thus could provide some decision making support for application of SPL traceability in practice. Conclusions: This work concludes that SPL traceability is maturing and pinpoints areas where further investigation should be performed. As future work, we intend to improve the comparison between traceability proposals for SPL and single-system development.</td>
+</tr>
+<tr id="bib_vale2017-SPL-traceability-a-SMS" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@article{vale2017-SPL-traceability-a-SMS,
+  author = {Tassio Vale and Eduardo Santana [de Almeida] and Vander Alves and Uirá Kulesza and Nan Niu and Ricardo [de Lima]},
+  title = {Software product lines traceability: A systematic mapping study},
+  journal = {Information and Software Technology},
+  year = {2017},
+  volume = {84},
+  pages = {1 - 18},
+  url = {http://www.sciencedirect.com/science/article/pii/S0950584916304463},
+  doi = {10.1016/j.infsof.2016.12.004}
+}
+</pre></td>
+</tr>
+<tr id="winkler2010-survey-traceability-and-MDE" class="entry">
+	<td>Winkler S and von Pilgrim J (2010), <i>"A survey of traceability in requirements engineering and model-driven development"</i>, Software &amp; Systems Modeling.  Vol. 9(4), pp. 529-565.
+	<p class="infolinks">[<a href="javascript:toggleInfo('winkler2010-survey-traceability-and-MDE','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('winkler2010-survey-traceability-and-MDE','bibtex')">BibTeX</a>] [<a href="https://doi.org/10.1007/s10270-009-0145-0" target="_blank">URL</a>]</p>
+	</td>
+</tr>
+<tr id="abs_winkler2010-survey-traceability-and-MDE" class="abstract noshow">
+	<td><b>Abstract</b>: Traceability--the ability to follow the life of software artifacts--is a topic of great interest to software developers in general, and to requirements engineers and model-driven developers in particular. This article aims to bring those stakeholders together by providing an overview of the current state of traceability research and practice in both areas. As part of an extensive literature survey, we identify commonalities and differences in these areas and uncover several unresolved challenges which affect both domains. A good common foundation for further advances regarding these challenges appears to be a combination of the formal basis and the automated recording opportunities of MDD on the one hand, and the more holistic view of traceability in the requirements engineering domain on the other hand.</td>
+</tr>
+<tr id="bib_winkler2010-survey-traceability-and-MDE" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@article{winkler2010-survey-traceability-and-MDE,
+  author = {Winkler, Stefan and von Pilgrim, Jens},
+  title = {A survey of traceability in requirements engineering and model-driven development},
+  journal = {Software &amp; Systems Modeling},
+  year = {2010},
+  volume = {9},
+  number = {4},
+  pages = {529--565},
+  url = {https://doi.org/10.1007/s10270-009-0145-0}
+}
+</pre></td>
+</tr>
+</tbody>
+</table>
+<footer>
+ <small>Created by <a href="http://jabref.sourceforge.net">JabRef</a> on 19/08/2020.</small>
+</footer>
+<!-- file generated by JabRef -->
+</body>
+</html>
