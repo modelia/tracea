@@ -1,0 +1,59 @@
+\subsubsection{Uncertainty}
+
+Uncertainty can be defined as ``the quality or state that involves imperfect and/or unknown information''~\cite{JCGM100:2008}. 
+Two different sources of uncertainty can be considered when modeling a system~\cite{OBERKAMPF2002333,Thunnissen03,ZhangSAYON16,Zhang2017,PSUM}. %,}.
+: aleatoric and epistemic.
+{\emph{Aleatory} uncertainty refers to the notion of randomness, i.e., the variations on a system due to random effects. For instance, in a CPS, aleatory uncertainty may be produced by the inherent variation associated with the physical system under consideration, or its environment. In contrast, \emph{epistemic} uncertainty refers to the potential inaccuracy or vagueness that is due to the lack of knowledge~\cite{OBERKAMPF2002333}.} 
+
+Logic predicates that refer to physical systems should be able to capture uncertainty of both aleatory and epistemic natures. For instance, aleatory uncertainty happens when we compare two uncertain real numbers (e.g., $3.0\pm 0.1 < 3.1\pm 0.1$). The result can be expressed by the probability that one is in fact less than the other: in this case, 0.383, cf.~\cite{BBMV19}. On the other hand, epistemic uncertainty happens, for example, when somebody is asked whether it will rain tomorrow or not.
+
+Hüllermeier et al.~\cite{hllermeier2019aleatoric} make explicit the need to distinguish these two types of uncertainty when dealing with Machine Learning systems, this is, distinguish between the probability score associated to each prediction and the uncertainty in that prediction. In other words, they remark the importance on epistemic uncertainty or ``uncertainty on uncertainty''.
+
+\subsubsection{Belief Uncertainty}
+
+A particular kind of epistemic uncertainty, called \emph{Belief Uncertainty}, occurs when a user is not sure about the truth of an statement, i.e., a Boolean predicate. %, made about the system.
+This is directly related to trust~\cite{JosangKD05}.  
+Several extensions to the Boolean logic enable dealing with belief uncertainty, including probability theory~\cite{Feller08,Finetti2017}, possibility theory (based on fuzzy logic~\cite{Zimmerman01,RussellNorvig2010}), plausibility (a measure in the Dempster-Shafer theory of evidence~\cite{Shafer76}) and uncertainty theory~\cite{UncertaintyTheory}. 
+These proposals assign different probabilities to propositions, rather than truth values, and probability formulas replace truth tables. 
+%assigns a degree of confidence to each Boolean value, normally by means of a real number in the range [0,1] that represents the likelihood that such a value is true. 
+%In other words, they allow Boolean values or predicates to be \emph{partially} true.
+
+In~\cite{BBMV19}, we proposed an extension of all UML and OCL primitive datatypes ({Boolean}, Real, String, Integer) able to deal with uncertainty. Type embedding was used to define the extensions, and subtyping ensured safe replaceability of values and operations. In particular, type \code{UReal} extends the OCL type \code{Real} by adding the uncertainty of measurement associated to its values, expressed as the standard deviation of their potential measurements~\cite{JCGM100:2008}. Thus, possible \code{UReal} values are $3.0\pm0.1$ or $4.5\pm0.0$.
+%, which are represented in OCL by \code{UReal(3.0,0.1)} and \code{UReal(4.5,0.0)}, respectively. 
+This last uncertain real number represents the embedding of the \code{Real} value 4.5 into \code{UReal}.
+
+The type \code{UBoolean} extends the type \code{Boolean} by adding the probability that expresses the likelihood that the value is \code{true}. In other words, it allows Boolean values or predicates to be \emph{partially} true. %, providing a probabilistic extension to binary logic. 
+Possible \code{UBoolean} values are $(\emph{true},0.90)$ or $(\emph{false},0.70)$. The type \code{Boolean} can be naturally embedded into \code{UBoolean} by lifting \emph{true} to $(\emph{true},1.0)$ and \emph{false} to $(\emph{true},0.0)$.
+
+However, as we mentioned in the introduction, this probabilistic extension to binary logic presents some limitations when the modeler is uncertain about the probability that she has to assign to a logic predicate or to a Boolean attribute. This uncertainty is typically called \emph{second-order probability} or \emph{second-order uncertainty} in the literature of statistics and economics, and needs to be explicitly represented, propagated and taken into account in the results, in order to make informed decisions about the system. Therefore the need to count on notations that deal with such uncertainty as a first-class concept, and on a type system that extends that of UML and OCL and enables its transparent manipulation and propagation.
+
+
+\subsubsection{Subjective logic}
+
+Subjective logic, invented by Audun Jøsang~\cite{Josang01,Josang16}, is a type of probabilistic logic that explicitly takes uncertainty and trust into account. Subjective opinions express beliefs about the truth of propositions under degrees of uncertainty, and can indicate ownership of an opinion whenever required.
+
+Let $x$ be a state value in a binary domain, e.g., a Boolean predicate. A binomial \emph{opinion} about the truth of state value $x$ is the quadruple $\omega_{x}=(b_{x},d_{x},u_{x},a_{x})$ where:
+
+\begin{itemize}
+\item $b_{x}$ (\emph{belief mass}) is the degree of belief that $x$ is true.
+\item $d_{x}$ (\emph{disbelief mass}) is the degree of {belief} that $x$ is false.
+\item $u_{x}$ (\emph{uncertainty mass}) is the degree of uncertainty about $x$, i.e., the amount of uncommitted belief.
+\item $a_{x}$ (\emph{base rate}) is the prior probability in the absence of belief or disbelief.
+\end{itemize}
+
+These values satisfy $b_{x}+d_{x}+u_{x}=1$, and $b_{x},d_{x},u_{x},a_{x}\in [0,1]$.
+%The characteristics of various opinion classes are listed below.
+Opinions where $b_{x}=1$ or $d_{x}=1$ are called  \emph{absolute} opinions, and are equivalent to the Boolean values \textit{true} and \textit{false}, respectively. An opinion where $b_{x}+d_{x}=1$	is a \emph{dogmatic} opinion which is equivalent to a traditional probability. If $b_{x}+d_{x}<1$, we have an \emph{uncertain} opinion which expresses a degree of uncertainty. Finally, if $b_{x}+d_{x}=0$	(i.e., $u_x=1$) we have a \emph{vacuous} opinion that expresses total uncertainty, or vacuity of belief.
+
+\begin{figure}[t!]
+\centering
+\includegraphics[width=0.7\linewidth]{images/Triangle1}
+\caption{Graphical representation of a binomial opinion \cite{Josang16}.}
+\label{fig:opinion}
+\end{figure}
+
+Opinions can be represented on an equilateral triangle using barycentric coordinates as shown in Fig.~\ref{fig:opinion}. A point inside the triangle represents a $(b_{x},d_{x},u_{x})$ triple. Vertices at the bottom represent absolute opinions, and the vertex at the top represents the vacuous opinion ($u_x=1$). Dogmatic opinions belong to the base line ($u_x=0$), and correspond to probabilities. The base rate $a_x$, or prior probability, is shown along the base line, too. 
+
+The \emph{projected probability} of an opinion is defined as ${P}_{x}=b_{x}+a_{x}u_{x}$. Graphically, it is formed by projecting the opinion $\omega_x$ onto the base, parallel to the base rate projector line (i.e., parallel to the \emph{director} line).
+
+% Logic operators (and, or, not, implies, equivalent, etc.) are defined for opinions, generalizing those of binary and probabilistic logic. The behaviors of the extended operators respect those of the base types when applied to base values. In case the argument opinions contain degrees of uncertainty, the operators produce derived opinions that always have correct projected probabilities, which ensures a correct subtyping relation between probabilities and opinions.

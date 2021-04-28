@@ -1,0 +1,24 @@
+%org.eclipse.capra.core.adapters.TraceMetaModelAdapter
+
+
+
+\begin{lstlisting}[caption={AbstractMetaModelAdapter interface},
+label=lst:timapi2,
+style=mystylexcore,
+frame=shadowbox, 
+rulesepcolor=\color{blue},
+morekeywords={class,contains,abstract,extends,\{,\},\[,\],refers,derived,String,get,int,double,List,Connection,EObject,void,String,boolean,Collection,EClass},
+linewidth=17.5cm,
+xleftmargin=0.3cm
+]
+void deleteTrace(List<Connection> toDelete, EObject traceModel);
+List<Connection> getInternalElements(EObject element, EObject traceModel, 
+    List<String> traceLinkTypes);
+List<Connection> getInternalElementsTransitive(EObject element, 
+    EObject traceModel, List<String> traceLinkTypes, int transitivityDepth);
+boolean isThereAnInternalTraceBetween(EObject first, EObject second);
+\end{lstlisting}
+
+
+
+

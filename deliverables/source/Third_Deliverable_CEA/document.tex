@@ -1,0 +1,105 @@
+\documentclass[12pt,twoside]{report}
+
+%\usepackage{todonotes}
+
+%\usepackage{ifthen}
+\usepackage{amssymb}
+\usepackage{ulem}
+\usepackage{xcolor}
+
+% Document Configuration
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{util/tables}
+\input{util/abbrev}
+\input{util/extra-packages}
+%\input{util/listings}
+%\input{util/diagrams}
+\input{util/preprint} 
+
+%For code listings:
+\usepackage{listings}
+\usepackage{parcolumns}
+
+
+\input{util/listings}
+
+\input{util/_macros}
+
+% Document Configuration 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+% \title{3\textsuperscript{rd} Deliverable:\\Traceability Solutions \\ -- Evaluation and extension ~~~~~~~~~~ -- APPLICATION TO capra}
+\title{3\textsuperscript{rd} Deliverable:\\Traceability solutions \\ -- Evaluation and extension}
+
+\author{
+  Edouard R. Batot 
+} 
+
+\date{ 
+  April 23, 2021
+}
+
+% Begin document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% Title page
+\maketitle 
+
+\title{3\textsuperscript{rd} Deliverable:\\Traceability Solutions -- Evaluation and extension}
+
+% Table of Contents
+\tableofcontents
+
+% Contents
+\cleardoublepage
+\renewcommand{\sectionbreak}{}
+\input{sections/acronyms}
+\listoffigures
+\lstlistoflistings
+\renewcommand{\sectionbreak}{\cleardoublepage}
+\cleardoublepage
+
+\input{sections/Introduction.tex}
+\input{sections/Evaluation.tex}
+\input{sections/EvaluationCapra.tex}
+\input{sections/Extension.tex}
+\input{sections/Limitations.tex}
+\input{sections/Conclusion.tex}
+\input{sections/ToolSupport.tex}
+
+
+%\appendix
+
+%\cleardoublepage
+
+%\section{Appendix}
+%\includepdf[pages=-]{paper/MODELS_19_Submission.pdf}
+%\label{sec:AppendixPaper}
+
+%\input{sections/aa-appendix}
+
+% Bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cleardoublepage
+\bibliographystyle{plain}
+\bibliography{bib/strings-abbr,bib/trace-and-models,bib/uoc2020_tracea,bib/added}
+
+% Clarifications
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Print them only if the notes package is loaded (c@pagenode exists)
+% and there are notes defined within the document (pnotesavechap > 0)
+
+\makeatletter
+\ifcsname c@pagenote\endcsname
+\ifthenelse{\value{pnotesavechap}>0}{\cleardoublepage\printnotes}{}
+\fi
+\makeatother
+
+%\makeback
+
+\end{document}          

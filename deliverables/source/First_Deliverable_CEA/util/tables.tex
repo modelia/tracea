@@ -1,0 +1,38 @@
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{ltxtable}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{collcell}
+\usepackage{trimspaces}
+\usepackage{multirow}
+\usepackage{rotating}
+
+%%%
+%%% Formatting
+%%%
+
+% New rule type
+\newcommand{\topruleb}{\midrule[\heavyrulewidth]}
+
+% Commands to control the alignment of headers
+\newcommand{\bfu}[1]{\textbf{\uppercase{#1}}}
+\newcommand{\headingl}[1]{\multicolumn{1}{l}{\bfu{#1}}}
+\newcommand{\headingc}[1]{\multicolumn{1}{c}{\bfu{#1}}}
+\newcommand{\headingr}[1]{\multicolumn{1}{r}{\bfu{#1}}}
+
+% Regular column types
+\newcolumntype{x}{>{\collectcell\textsc}l<{\endcollectcell}}
+\newcolumntype{y}{>{\collectcell\textsc}c<{\endcollectcell}}
+\newcolumntype{z}{>{\collectcell\textsc}r<{\endcollectcell}}
+\newcolumntype{u}{>{\collectcell\uppercase}l<{\endcollectcell}}
+\newcolumntype{v}{>{\collectcell\uppercase}c<{\endcollectcell}}
+\newcolumntype{w}{>{\collectcell\uppercase}r<{\endcollectcell}}
+\newcolumntype{U}{>{\bfseries\collectcell\uppercase}l<{\endcollectcell}}
+\newcolumntype{V}{>{\bfseries\collectcell\uppercase}c<{\endcollectcell}}
+\newcolumntype{W}{>{\bfseries\collectcell\uppercase}r<{\endcollectcell}}
+
+% Paragraph column types
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}

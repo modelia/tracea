@@ -1,0 +1,44 @@
+\section{Terminology}\label{sec:terminology}
+
+In this section, we review a set of term definitions that will help to grasp the detail of our DSL conceptualization. 
+These definitions aim to encompass and unify all the different uses and visions of traceability. They do not all appear directly in the metamodel, nor do they aim to cover all the different visions on traceability, but they provide a common generic core that shall be then adapted to specific scenarios or specific use cases for the DSL.
+
+\begin{itemize}
+	%\item \ugh{\textbf{Application and engineering domains}}
+	\renewcommand\labelitemi{--}
+	\item[--] \textbf{Traceability} is the ability to trace different artefacts of a system (of systems). It is defined in the IEEE Standard Glossary of Software Engineering Terminology \cite{ieeeglossary-se} as 
+	\begin{enumerate}
+		\item The degree to which a relationship can be established between two or more products of the development process, especially products having a predecessor–successor or master–subordinate relationship to one another. [...]
+		\item The degree to which each element in a software development product establishes its reason for existing.
+	\end{enumerate}
+	
+	
+	\item A \textbf{trace} is a path from one artefact to another. Composed of atomic \textbf{links} that directly relate artefacts with each others. The heterogeneous nature of traceability applications confers relationship types a peculiar attention since it helps understand the rationale behind relationships - it informs not only \textit{how} artefacts are linked but also \textit{why}~\cite{mader2009-motivation-matters-in-traceability-practitioner-survey}. Typing is a primary concern in conceptual modeling in general~\cite{olive2002-representation-of-generic-relationship-types-in-modeling}. Here, the \textbf{type of a relationship} informs about its semantics in its application domain.
+	
+	\item A \textbf{traceability information model}(TIM), or traceability metamodel, defines the representation of traces, their data structure and behaviour, ~\cite{drivalos2009-engineering-DSL-for-traceability}. In both cases it defines at the language level the concepts and relationships available for tracing. With the manifolds of traceability purposes, no common representation has emerged yet which is one of the key motivations for this work.
+	
+	\item A \textbf{referee} is the (human) actor responsible for a traceability artefact.
+	
+	\item A \textbf{link} is a concrete relationship between two artefacts. 
+	
+	Note that most of the work aiming at modeling "traceability" actually models traceability links. This suits the OMG standard definition of traceability which consider the only input/output of transformations~\cite{winkler2010-survey-traceability-and-MDE}. 
+	In UML or SysML, a \textit{link} is a specialization of the concept of Dependence (which is itself a specialization of DirectedRelationship) which is used to explicitly model a traceability relation between two sets of elements.
+	
+	\item \textbf{Explicit links} refer to artefacts that explicitly link to each other in the concrete syntax. 
+
+	\item \textbf{Implicit links} show artefacts bondage at a syntactic or semantic level without explicit link (\textit{e.g.,} binary class and their respective source code artefact are implicitly "linked" to each others)~\cite{paige2010-MDE-Traceability-classifications}. For pragmatic purposes, these links can become \textit{materialized}.
+	
+	\item An \textbf{artefact} can be any element of a system - \eg unstructured documentation, code, design diagrams, test cases and suites... The nature of artefacts follows two main dimensions: the lifecycle phase they belong to (\eg specification, design, implementation, test), and their type (\eg unstructured natural language, grammar-based code, model-based artefact). The \textbf{granularity of artefacts} is the level to which artefacts can be decomposed into sub parts. We call a \textbf{fragment}, the resulting product of the decomposition of an artefact. A fragment can be itself broken down into smaller parts (or sub-fragments), and so forth. For example, a software requirement document could include a guideline for certification which in turn could include sub-sections and a model-level definition of their implications.
+	
+	\item \textbf{Trace integrity} is the degree of reliability that bares a trace. It is an indirect measure that includes, for example, both the age of a trace, the volatility of artefacts targeted by the trace, and the automation level of tracing features. This indication is supported by \textbf{evidences} that can be quantitative or qualitative. For example, how long (how many versions ago) has the trace been identified in the system? Or, has the trace been identified manually or automatically? Is there an automated co-evolution mechanism between traces and targeted artefacts? What is the level of experience of the trustee who identified it? 
+	The volatility of source and target artefacts are also factors that may influence the relevance and accuracy of a trace.
+	
+	\item \textbf{Pre-requirement and post-requirement} traceability refer to, respectively, traces identified during specifications elicitation and during the implementation (design and code) step of a specification~\cite{gotel1994}.
+	The IEEE Guide for Software Requirements Specifications mentions \textbf{forward} and \textbf{backward} traceability, referring to the ability to follow traceability links from a source to a specific artefact, or the opposite from the artefact to its source respectively~\cite{ieeeglossary-req} but, technically, the direction of traceability link (from source to target, or from target to source) does not make a difference.
+	
+	\item \textbf{Vertical traceability} refers to the linkage between artefacts at different levels of abstraction (\textit{e.g.,} derives, implements, inherits) whereas \textbf{horizontal traceability} refers to artefacts at the same level (\textit{e.g.,} uses, depends on). 
+	
+	\item \textbf{Time related traceability} goes along two dimensions: the evolution of (a group of) elements through successive development tasks, or the evolution of artefact properties during an execution of the system. %\cite{yu2012-maintainging-invariant-traceability}.
+\end{itemize}
+
+

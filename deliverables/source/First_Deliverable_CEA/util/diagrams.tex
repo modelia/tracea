@@ -1,0 +1,99 @@
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{shapes}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning}
+\usetikzlibrary{calc}
+\usetikzlibrary{trees}
+
+\newcommand*{\stereotype}[1]{
+  <<{#1}>>
+}
+
+\newcommand*{\datatype}[1]{
+  \stereotype{datatype}\\
+  #1
+}
+
+\newcommand*{\enum}[1]{
+  \stereotype{enumeration}\\
+  #1
+}
+
+\newcommand*{\obj}[2]{
+  \underline{{#1}~:~{#2}}
+}
+
+\newcommand*{\attributes}[1]{
+  \nodepart{second}
+  \begin{tabular}{@{}l@{}}
+  #1
+  \end{tabular}
+}
+
+\newcommand*{\literals}[1]{
+  \nodepart{second}
+  \ttfamily
+  \begin{tabular}{@{}l@{}}
+  #1
+  \end{tabular}
+}
+
+\newcommand*{\operations}[1]{
+  \nodepart{third}
+  \begin{tabular}{@{}l@{}}
+  #1
+  \end{tabular}
+}
+
+\tikzstyle{reportcolor}=[
+  draw=black,
+  line width = 0.4pt
+]
+
+\tikzstyle{box}=[
+  reportcolor,
+  rectangle,
+  align=center,
+  minimum width=5em
+]
+
+\tikzstyle{abstractbox}=[box,
+  every text node part/.style={
+    font=\itshape
+  }
+]
+
+\tikzstyle{class}=[box,
+  rectangle split,
+  rectangle split parts=2,
+  minimum width=9em,
+  rectangle split part align={center, left}
+]
+
+\tikzstyle{classop}=[class,
+  rectangle split parts=3,
+  rectangle split part align={center, left, left}
+]
+  
+\tikzstyle{object}=[class]
+
+\tikzstyle{abstractclass}=[class,
+  every text node part/.style={
+    font=\itshape
+  }
+]
+
+\tikzstyle{enum}=[class]
+
+\tikzstyle{datatype}=[class]
+
+\tikzstyle{inherits}=[reportcolor, ->, > = open triangle 90]
+
+\tikzstyle{contains}=[reportcolor, diamond->, > = angle 45]
+
+\tikzstyle{assoc}=[reportcolor, ->, > = angle 45]
+
+\tikzstyle{biassoc}=[reportcolor, <->, > = angle 45]
+
+

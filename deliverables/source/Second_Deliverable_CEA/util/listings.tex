@@ -1,0 +1,57 @@
+\usepackage{listings}
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray45}{gray}{.45}
+\definecolor{gray20}{gray}{.20}
+
+\renewcommand\lstlistingname{LISTING}
+
+% Default format
+\lstset{
+  tabsize=2,
+  xleftmargin=.5cm,
+  framexleftmargin=.4cm,
+  keywordstyle=\color{Plum}\bfseries,
+  breaklines=true,
+  captionpos=t,
+  basicstyle=\ttfamily\scriptsize\color{Black},
+  showstringspaces=false,
+  numberstyle=\ttfamily\tiny,
+  numbersep=1.1cm,
+  numbers=left,
+  numbersep=5pt,
+  showspaces=false,
+  showtabs=false,
+  frame=single,
+  backgroundcolor=\color{gray97},
+  rulesepcolor=\color{black},
+  commentstyle=\color{ForestGreen}
+}
+
+% Inline OCL
+\lstdefinestyle{iOCL}{language=OCL,basicstyle=\ttfamily\normalsize\color{Black}}
+
+% QVTo
+\lstdefinestyle{QVT}{language=OCL,
+morekeywords={Bag, Collection, Dict, OrderedSet, Sequence, Set, Tuple, List, abstract,
+access, and, any, assert, blackbox, break, case, class, collect,
+collectNested, collectOne, collectselect, collectselectOne,
+composes, compute, configuration, constructor, continue, datatype,
+default, derived, disjuncts, do, elif, else, end, endif,
+enum, except, exists, extends, exception, false, forAll, forEach ,
+forOne, from, helper, if, implies, import , in, inherits, init,
+inout, intermediate, invresolve, invresolveIn, invresolveone,
+invresolveoneIn , isUnique, iterate, late, let, library, literal,
+log, main, map, mapping, merges, metamodel, modeltype, new, not,
+null, object, one, or, ordered, out, package, population, primitive, property,
+query, raise, readonly, references, refines, reject, resolve, resolveIn, resolveone,
+resolveoneIn, return, select, selectOne, sortedBy, static,
+switch, tag, then, transformation, true, try, typedef, unlimited,
+uses, var, when, where, while, with, xcollect , xmap, xor, xselect},
+morecomment=[l]{//},
+morecomment=[l]{--},
+morecomment=[s]{/*}{*/},
+stringstyle=\color{Blue},
+morestring=[b]',
+morestring=[b]"
+}

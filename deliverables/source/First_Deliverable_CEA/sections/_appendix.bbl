@@ -1,0 +1,1084 @@
+\begin{thebibliography}{100}
+
+\bibitem{aboussoror2012-Seeing-errors-trace-visualisation}
+El~Arbi Aboussoror, Ileana Ober, and Iulian Ober.
+\newblock Seeing errors: Model driven simulation trace visualization.
+\newblock In Robert~B. France, J{\"{u}}rgen Kazmeier, Ruth Breu, and Colin
+  Atkinson, editors, {\em Model Driven Engineering Languages and Systems - 15th
+  International Conference, {MODELS} 2012, Innsbruck, Austria, September
+  30-October 5, 2012. Proceedings}, volume 7590 of {\em Lecture Notes in
+  Computer Science}, pages 480--496. Springer, 2012.
+
+\bibitem{Alhaj_2013}
+Mohammad Alhaj and Dorina~C. Petriu.
+\newblock Traceability links in model transformations between software and
+  performance models.
+\newblock In {\em Lecture Notes in Computer Science}, pages 203--221. Springer
+  Berlin Heidelberg, 2013.
+
+\bibitem{Almeida_2006}
+Joao~Paulo Almeida, Pascal van Eck, and Maria eugenia Iacob.
+\newblock Requirements traceability and transformation conformance in
+  model-driven development.
+\newblock In {\em 2006 10th {IEEE} International Enterprise Distributed Object
+  Computing Conference ({EDOC}{\textquotesingle}06)}. {IEEE}, oct 2006.
+
+\bibitem{Almeida_2007}
+Jo{\~{a}}o Paulo~A. Almeida, Maria-Eugenia Iacob, and Pascal van Eck.
+\newblock Requirements traceability in model-driven development: Applying model
+  and transformation conformance.
+\newblock {\em Inf Syst Front}, 9(4):327--342, aug 2007.
+
+\bibitem{amar2013-model-coevolution-uding-traceability}
+B~Amar, H~Leblanc, B~Coulette, and P~Dhaussy.
+\newblock Automatic co-evolution of models using traceability.
+\newblock {\em Communications in Computer and Information Science}, 170, 2013.
+
+\bibitem{anquetil2010-model-driven-tracea-for-SPL}
+Nicolas Anquetil, Uirá Kulesza, Ralf Mitschke, Ana Moreira, Jean-Claude Royer,
+  Andreas Rummler, and André Sousa.
+\newblock A model-driven traceability framework for software product lines.
+\newblock {\em Software and Systems Modeling}, 9(4):427--451, 2010.
+
+\bibitem{antoniol2002-tracing-code-documentation-links}
+G.~{Antoniol}, G.~{Canfora}, G.~{Casazza}, A.~{De Lucia}, and E.~{Merlo}.
+\newblock Recovering traceability links between code and documentation.
+\newblock {\em IEEE Transactions on Software Engineering}, 28(10):970--983, Oct
+  2002.
+
+\bibitem{aranega2011-trace-for-mutation-analysis-in-model-transformation}
+Vincent Aranega, Jean-Marie Mottu, Anne Etien, and Jean-Luc Dekeyser.
+\newblock Traceability for mutation analysis in model transformation.
+\newblock In Juergen Dingel and Arnor Solberg, editors, {\em Models in Software
+  Engineering}, pages 259--273, Berlin, Heidelberg, 2011. Springer Berlin
+  Heidelberg.
+
+\bibitem{Arcelli_2019}
+Davide Arcelli, Vittorio Cortellessa, Daniele~Di Pompeo, Romina Eramo, and
+  Michele Tucci.
+\newblock Exploiting architecture/runtime model-driven traceability for
+  performance improvement.
+\newblock In {\em 2019 {IEEE} International Conference on Software Architecture
+  ({ICSA})}. {IEEE}, mar 2019.
+
+\bibitem{arunthavanathan2016-traceability-with-NLP}
+A.~{Arunthavanathan}, S.~{Shanmugathasan}, S.~{Ratnavel}, V.~{Thiyagarajah},
+  I.~{Perera}, D.~{Meedeniya}, and D.~{Balasubramaniam}.
+\newblock Support for traceability management of software artefacts using
+  natural language processing.
+\newblock In {\em 2016 Moratuwa Engineering Research Conference (MERCon)},
+  pages 18--23, April 2016.
+
+\bibitem{asuncion2010-software-traceability-with-topic-modeling}
+H.~U. {Asuncion}, A.~U. {Asuncion}, and R.~N. {Taylor}.
+\newblock Software traceability with topic modeling.
+\newblock In {\em 2010 ACM/IEEE 32nd International Conference on Software
+  Engineering}, volume~1, pages 95--104, May 2010.
+
+\bibitem{azevedo2019-traceability-metamodel-and-reference-model}
+Bruno Azevedo. and Mario Jino.
+\newblock Modeling traceability in software development: A metamodel and a
+  reference model for traceability.
+\newblock In {\em Proceedings of the 14th International Conference on
+  Evaluation of Novel Approaches to Software Engineering - Volume 1: ENASE,},
+  pages 322--329. INSTICC, SciTePress, 2019.
+
+\bibitem{badreddin2014-req-traceability-model-based-approach}
+O.~{Badreddin}, A.~{Sturm}, and T.~C. {Lethbridge}.
+\newblock Requirement traceability: A model-based approach.
+\newblock In {\em 2014 IEEE 4th International Model-Driven Requirements
+  Engineering Workshop (MoDRE)}, pages 87--91, Aug 2014.
+
+\bibitem{Bauman_2015}
+Spenser Bauman, Carl~Friedrich Bolz, Robert Hirschfeld, Vasily Kirilichev,
+  Tobias Pape, Jeremy~G. Siek, and Sam Tobin-Hochstadt.
+\newblock Pycket: a tracing {JIT} for a functional language.
+\newblock In {\em Proceedings of the 20th {ACM} {SIGPLAN} International
+  Conference on Functional Programming - {ICFP} 2015}. {ACM} Press, 2015.
+
+\bibitem{Belkadi_2006}
+Farouk Belkadi, Eric Bonjour, and Maryvonne Dulmet.
+\newblock Modelling framework of a traceability system to improve knowledge
+  sharing and collaborative design.
+\newblock In {\em Lecture Notes in Computer Science}, pages 355--364. Springer
+  Berlin Heidelberg, 2006.
+
+\bibitem{bin_Abid_2010}
+Saad bin Abid.
+\newblock Resolving feature dependency implementations inconsistencies during
+  product derivation.
+\newblock In {\em Proceedings of the 6th {ECMFA} Traceability Workshop on -
+  {ECMFA}-{TW} {\textquotesingle}10}. {ACM} Press, 2010.
+
+\bibitem{Bunder_2017_query-for-quality}
+Hendrik Bünder, Christoph Rieger, and Herbert Kuchen.
+\newblock A domain-specific language for configurable traceability analysis.
+\newblock In {\em Proceedings of the 5th International Conference on
+  Model-Driven Engineering and Software Development}. {SCITEPRESS} - Science
+  and Technology Publications, 2017.
+
+\bibitem{bonde2006-different-levels-of-abstraction}
+Lossan Bond{\'e}, Pierre Boulet, and Jean-Luc Dekeyser.
+\newblock {\em Traceability and Interoperability at Different Levels of
+  Abstraction in Model-Driven Engineering}, pages 263--276.
+\newblock Springer Netherlands, Dordrecht, 2006.
+
+\bibitem{borg2014-SmS-IR-for-traceability}
+Markus Borg, Per Runeson, and Anders Ardö.
+\newblock Recovering from a decade: a systematic mapping of information
+  retrieval approaches to software traceability.
+\newblock {\em Empirical Software Engineering}, 19(6):1565--1616, 2014.
+
+\bibitem{borillo1992-linguistic-engineering-to-spacial-SE}
+Mario Borillo, Andr\'{e}e Borillo, N\'{u}ria Castell, Dominique Latour, Yannick
+  Toussaint, and M.~Felisa Verdejo.
+\newblock Applying linguistic engineering to spatial software engineering: The
+  traceability problem.
+\newblock In {\em Proceedings of the 10th European Conference on Artificial
+  Intelligence}, ECAI ’92, page 593–595, USA, 1992. John Wiley \& Sons,
+  Inc.
+
+\bibitem{Borstler_1992}
+J.~Borstler and T.~Janning.
+\newblock Traceability between requirements and design: a transformational
+  approach.
+\newblock In {\em [1992] Proceedings. The Sixteenth Annual International
+  Computer Software and Applications Conference}. {IEEE} Comput. Soc. Press,
+  1992.
+
+\bibitem{Boskovic_2007}
+Marko Boskovic.
+\newblock Model-based empirical performance evaluation based on relational
+  traces.
+\newblock In {\em 14th Annual {IEEE} International Conference and Workshops on
+  the Engineering of Computer-Based Systems ({ECBS}{\textquotesingle}07)}.
+  {IEEE}, mar 2007.
+
+\bibitem{bouillon2013-survey-on-usage-scenario-requirements-traceability-in-practice}
+Elke Bouillon, Patrick M\"{a}der, and Ilka Philippow.
+\newblock A survey on usage scenarios for requirements traceability in
+  practice.
+\newblock In {\em Requirements Engineering: Foundation for Software Quality},
+  pages 158--173. Springer Berlin Heidelberg, 2013.
+
+\bibitem{Boulanger_2014}
+Frederic Boulanger, Christophe Jacquet, Cecile Hardebolle, and Iuliana Prodan.
+\newblock {TESL}: A language for reconciling heterogeneous execution traces.
+\newblock In {\em 2014 Twelfth {ACM}/{IEEE} Conference on Formal Methods and
+  Models for Codesign ({MEMOCODE})}. {IEEE}, oct 2014.
+
+\bibitem{Bouzidi_2020}
+Aljia Bouzidi, Nahla Haddar, Mounira Ben-Abdallah, and Kais Haddar.
+\newblock From {BPMN} to sequence diagrams: Transformation and traceability.
+\newblock In {\em Proceedings of the 15th International Conference on
+  Evaluation of Novel Approaches to Software Engineering}. {SCITEPRESS} -
+  Science and Technology Publications, 2020.
+
+\bibitem{Brassel_2006}
+Bernd Brassel, Sebastian Fischer, and Frank Huch.
+\newblock A program transformation for tracing functional logic computations.
+\newblock In {\em Logic-Based Program Synthesis and Transformation}, pages
+  160--176. Springer Berlin Heidelberg, 2006.
+
+\bibitem{Buchmann_2015}
+Robert~Andrei Buchmann and Dimitris Karagiannis.
+\newblock Modelling mobile app requirements for semantic traceability.
+\newblock {\em Requirements Eng}, 22(1):41--75, jul 2015.
+
+\bibitem{Cazzola_2016}
+Walter Cazzola, Paola Giannini, and Albert Shaqiri.
+\newblock Formal attributes traceability in modular language development
+  frameworks.
+\newblock {\em Electronic Notes in Theoretical Computer Science}, 322:119--134,
+  apr 2016.
+
+\bibitem{Clauzel_2009}
+Damien Clauzel, Karim Sehaba, and Yannick Pri{\'{e}}.
+\newblock Modelling and visualising traces for reflexivity in synchronous
+  collaborative systems.
+\newblock In {\em 2009 International Conference on Intelligent Networking and
+  Collaborative Systems}. {IEEE}, nov 2009.
+
+\bibitem{clelandHuang2012-trace-queries-safety-requirements-assurance}
+Jane Cleland-Huang, Mats Heimdahl, Jane~Huffman Hayes, Robyn Lutz, and Patrick
+  Maeder.
+\newblock Trace queries for safety requirements in high assurance systems.
+\newblock In {\em Requirements Engineering: Foundation for Software Quality},
+  pages 179--193. Springer Berlin Heidelberg, 2012.
+
+\bibitem{Corbett_1995}
+Albert~T. Corbett and John~R. Anderson.
+\newblock Knowledge tracing: Modeling the acquisition of procedural knowledge.
+\newblock {\em User Model User-Adap Inter}, 4(4):253--278, 1995.
+
+\bibitem{diaz2015-tracing-variability-from-features-to-product-line-SPL}
+Jessica Díaz, Jennifer Pérez, and Juan Garbajosa.
+\newblock A model for tracing variability from features to product-line
+  architectures: a case study in smart grids.
+\newblock {\em Requirements Engineering}, 20(3):323--343, 2015.
+
+\bibitem{Dickerson_2010}
+Charles Dickerson and Ricardo Valerdi.
+\newblock Using relational model transformations to reduce complexity in {SoS}
+  requirements traceability: Preliminary investigation.
+\newblock In {\em 2010 5th International Conference on System of Systems
+  Engineering}. {IEEE}, jun 2010.
+
+\bibitem{dietrich2013-learning-efective-query-transformation-for-enhanced-req-trace-retrieval}
+T.~{Dietrich}, J.~{Cleland-Huang}, and Y.~{Shin}.
+\newblock Learning effective query transformations for enhanced requirements
+  trace retrieval.
+\newblock In {\em 2013 28th IEEE/ACM International Conference on Automated
+  Software Engineering (ASE)}, pages 586--591, Nov 2013.
+
+\bibitem{Diskin_2017}
+Zinovy Diskin, Abel G{\'{o}}mez, and Jordi Cabot.
+\newblock Traceability mappings as a fundamental instrument in model
+  transformations.
+\newblock In {\em Fundamental Approaches to Software Engineering}, pages
+  247--263. Springer Berlin Heidelberg, 2017.
+
+\bibitem{dosimont2014-eficient-analysis-methodology-for-huge-application-traces}
+D.~{Dosimont}, G.~{Pagano}, G.~{Huard}, V.~M. {Huard}, and J.~{Vincent}.
+\newblock Efficient analysis methodology for huge application traces.
+\newblock In {\em 2014 International Conference on High Performance Computing
+  Simulation (HPCS)}, pages 951--958, July 2014.
+
+\bibitem{drivalos2009-engineering-DSL-for-traceability}
+Nikolaos Drivalos, Dimitrios~S. Kolovos, Richard~F. Paige, and Kiran~J.
+  Fernandes.
+\newblock Engineering a dsl for software traceability.
+\newblock In Dragan Ga{\v{s}}evi{\'{c}}, Ralf L{\"a}mmel, and Eric Van~Wyk,
+  editors, {\em Software Language Engineering}, pages 151--167, Berlin,
+  Heidelberg, 2009. Springer Berlin Heidelberg.
+
+\bibitem{drivalos2010-state-based-traceability}
+Nikolaos Drivalos-Matragkas, Dimitrios~S. Kolovos, Richard~F. Paige, and
+  Kiran~J. Fernandes.
+\newblock A state-based approach to traceability maintenance.
+\newblock In {\em Proceedings of the 6th ECMFA Traceability Workshop}, ECMFA-TW
+  ’10, page 23–30, New York, NY, USA, 2010. Association for Computing
+  Machinery.
+
+\bibitem{Dubois_2010}
+Hubert Dubois, Marie-Agnes Peraldi-Frati, and Fadoi Lakhal.
+\newblock A model for requirements traceability in a heterogeneous model-based
+  design process: Application to automotive embedded systems.
+\newblock In {\em 2010 15th {IEEE} International Conference on Engineering of
+  Complex Computer Systems}. {IEEE}, mar 2010.
+
+\bibitem{Faddegon_2016}
+Maarten Faddegon and Olaf Chitil.
+\newblock Lightweight computation tree tracing for lazy functional languages.
+\newblock In {\em Proceedings of the 37th {ACM} {SIGPLAN} Conference on
+  Programming Language Design and Implementation - {PLDI} 2016}. {ACM} Press,
+  2016.
+
+\bibitem{farrar2019-comparing-stemming-technics}
+D.~{Farrar} and J.~{Huffman Hayes}.
+\newblock A comparison of stemming techniques in tracing.
+\newblock In {\em 2019 IEEE/ACM 10th International Symposium on Software and
+  Systems Traceability (SST)}, pages 37--44, May 2019.
+
+\bibitem{Filax_2017}
+Marco Filax, Tim Gonschorek, and Frank Ortmeier.
+\newblock Building models we can rely on: Requirements traceability for
+  model-based verification techniques.
+\newblock In {\em Model-Based Safety and Assessment}, pages 3--18. Springer
+  International Publishing, 2017.
+
+\bibitem{fittkau2013-explorviz-Trace-Visualization}
+F.~{Fittkau}, J.~{Waller}, C.~{Wulf}, and W.~{Hasselbring}.
+\newblock Live trace visualization for comprehending large software landscapes:
+  The explorviz approach.
+\newblock In {\em 2013 First IEEE Working Conference on Software Visualization
+  (VISSOFT)}, pages 1--4, Sep. 2013.
+
+\bibitem{florez2019-finegrained-req2code}
+J.~M. {Florez}.
+\newblock Automated fine-grained requirements-to-code traceability link
+  recovery.
+\newblock In {\em 2019 IEEE/ACM 41st International Conference on Software
+  Engineering: Companion Proceedings (ICSE-Companion)}, pages 222--225, May
+  2019.
+
+\bibitem{Di_Francescomarino_2015}
+Chiara~Di Francescomarino, Chiara Ghidini, Sergio Tessaris, and
+  Itzel~V{\'{a}}zquez Sandoval.
+\newblock Completing workflow traces using action languages.
+\newblock In {\em Advanced Information Systems Engineering}, pages 314--330.
+  Springer International Publishing, 2015.
+
+\bibitem{2012}
+Diego~Alonso Francisca~Rosique, Pedro~Sánchez and Manuel Jiménez.
+\newblock Traceability support for {MDE} development of home automation
+  systems.
+\newblock In {\em Proceedings of the 7th International Conference on Software
+  Paradigm Trends}. {SciTePress} - Science and and Technology Publications,
+  2012.
+
+\bibitem{gallina2014-model-driven-certification-method-for-process-compliance}
+B.~{Gallina}.
+\newblock A model-driven safety certification method for process compliance.
+\newblock In {\em 2014 IEEE International Symposium on Software Reliability
+  Engineering Workshops}, pages 204--209, Nov 2014.
+
+\bibitem{gannous2019-Certification-into-Model-based-Testing-for-Safety-Critical-Systems}
+A.~{Gannous} and A.~{Andrews}.
+\newblock Integrating safety certification into model-based testing of
+  safety-critical systems.
+\newblock In {\em 2019 IEEE 30th International Symposium on Software
+  Reliability Engineering (ISSRE)}, pages 250--260, Oct 2019.
+
+\bibitem{Garces_2011}
+Kelly Garces, Julien Deantoni, and Frederic Mallet.
+\newblock A model-based approach for reconciliation of polychronous execution
+  traces.
+\newblock In {\em 2011 37th {EUROMICRO} Conference on Software Engineering and
+  Advanced Applications}. {IEEE}, aug 2011.
+
+\bibitem{George_2012}
+Mathew George, Klaus-Peter Fischer-Hellmann, Martin Knahl, Udo Bleimann, and
+  Shirley Atkinson.
+\newblock Traceability in model-based testing.
+\newblock {\em Future Internet}, 4(4):1026--1036, nov 2012.
+
+\bibitem{ghaisas2019-traceability-for-a-knowledge-driven-SW}
+S.~{Ghaisas}.
+\newblock Traceability for a knowledge-driven software engineering.
+\newblock In {\em 2019 IEEE/ACM 10th International Symposium on Software and
+  Systems Traceability (SST)}, pages 1--1, May 2019.
+
+\bibitem{Goknil_2010}
+Arda Goknil, Ivan Kurtev, and Klaas van~den Berg.
+\newblock Tool support for generation and validation of traces between
+  requirements and architecture.
+\newblock In {\em Proceedings of the 6th {ECMFA} Traceability Workshop on -
+  {ECMFA}-{TW} {\textquotesingle}10}. {ACM} Press, 2010.
+
+\bibitem{goknil2014-change-impact-analysis-for-requirement-metamodel}
+Arda Goknil, Ivan Kurtev, Klaas [van~den Berg], and Wietze Spijkerman.
+\newblock Change impact analysis for requirements: A metamodeling approach.
+\newblock {\em Information and Software Technology}, 56(8):950 -- 972, 2014.
+
+\bibitem{Gonzalez_2019}
+Daniel Gonzalez and Libertad Tansini.
+\newblock Modelling traceability in recommender systems.
+\newblock In {\em 2019 {XLV} Latin American Computing Conference ({CLEI})}.
+  {IEEE}, sep 2019.
+
+\bibitem{gotel1994}
+O.~C.~Z. {Gotel} and C.~W. {Finkelstein}.
+\newblock An analysis of the requirements traceability problem.
+\newblock In {\em Proceedings of IEEE International Conference on Requirements
+  Engineering}, pages 94--101, April 1994.
+
+\bibitem{Gotel2012}
+Orlena Gotel, Jane Cleland-Huang, Jane~Huffman Hayes, Andrea Zisman, Alexander
+  Egyed, Paul Gr{\"u}nbacher, Alex Dekhtyar, Giuliano Antoniol, Jonathan
+  Maletic, and Patrick M{\"a}der.
+\newblock {\em Traceability Fundamentals}, pages 3--22.
+\newblock Springer London, London, 2012.
+
+\bibitem{Graf_2012}
+Andreas Graf, Nirmal Sasidharan, and Ömer Gürsoy.
+\newblock Requirements, traceability and {DSLs} in eclipse with the
+  requirements interchange format ({ReqIF}).
+\newblock In {\em Complex Systems Design {\&} Management}, pages 187--199.
+  Springer Berlin Heidelberg, 2012.
+
+\bibitem{grammel2010-facet-based-traceability-data-extraction-in-MDE}
+Birgit Grammel and Stefan Kastenholz.
+\newblock A generic traceability framework for facet-based traceability data
+  extraction in model-driven software development.
+\newblock In {\em Proceedings of the 6th ECMFA Traceability Workshop}, ECMFA-TW
+  ’10, page 7–14, New York, NY, USA, 2010. Association for Computing
+  Machinery.
+
+\bibitem{grammel2012-model-matching-for-traceability-in-MDE}
+Birgit Grammel, Stefan Kastenholz, and Konrad Voigt.
+\newblock Model matching for trace link generation in model-driven software
+  development.
+\newblock In Robert~B. France, J{\"{u}}rgen Kazmeier, Ruth Breu, and Colin
+  Atkinson, editors, {\em Model Driven Engineering Languages and Systems - 15th
+  International Conference, {MODELS} 2012, Innsbruck, Austria, September
+  30-October 5, 2012. Proceedings}, volume 7590 of {\em Lecture Notes in
+  Computer Science}, pages 609--625. Springer, 2012.
+
+\bibitem{Grave_2010}
+Andrejs Grave.
+\newblock Testing and traceability aspects in the context of the model driven
+  architecture ({MDA}).
+\newblock {\em Scientific Journal of Riga Technical University. Computer
+  Sciences}, 41(1):52--59, jan 2010.
+
+\bibitem{Grosch_2011}
+Vanessa Grosch.
+\newblock Requirements traceability within model-based testing.
+\newblock {\em International Journal of Embedded and Real-Time Communication
+  Systems}, 2(2):1--21, apr 2011.
+
+\bibitem{Guana_2017}
+Victor Guana and Eleni Stroulia.
+\newblock End-to-end model-transformation comprehension through fine-grained
+  traceability information.
+\newblock {\em {Softw Syst Model} Systems Modeling}, 18(2):1305--1344, jun
+  2017.
+
+\bibitem{guo2013expertSystemInTraceabilityDSL}
+J.~{Guo}, J.~{Cleland-Huang}, and B.~{Berenbach}.
+\newblock Foundations for an expert system in domain-specific traceability.
+\newblock In {\em 2013 21st IEEE International Requirements Engineering
+  Conference (RE)}, pages 42--51, 2013.
+
+\bibitem{guo2017-semantically-enhanced-tracebility-deep-learning}
+Jin Guo, Jinghui Cheng, and Jane Cleland-Huang.
+\newblock Semantically enhanced software traceability using deep learning
+  techniques.
+\newblock In {\em Proceedings of the 39th International Conference on Software
+  Engineering}, ICSE ’17, page 3–14. IEEE Press, 2017.
+
+\bibitem{Haidrar_2018}
+Saida Haidrar, , Adil Anwar, Jean-Michel Bruel, and Ounsa Roudies.
+\newblock A domain-specific language to manage requirements traceability.
+\newblock {\em JSW}, 13(9):460--480, sep 2018.
+
+\bibitem{Haidrar_2016}
+Saida Haidrar, Adil Anwar, and Ounsa Roudies.
+\newblock Towards a generic framework for requirements traceability management
+  for {SysML} language.
+\newblock In {\em 2016 4th {IEEE} International Colloquium on Information
+  Science and Technology ({CiSt})}. {IEEE}, oct 2016.
+
+\bibitem{hayes2006}
+J.~H. {Hayes}, A.~{Dekhtyar}, and S.~K. {Sundaram}.
+\newblock Advancing candidate link generation for requirements tracing: the
+  study of methods.
+\newblock {\em IEEE Transactions on Software Engineering}, 32(1):4--19, 2006.
+
+\bibitem{Hegedus_2010}
+Abel Hegedus, Gabor Bergmann, Istvan Rath, and Daniel Varro.
+\newblock Back-annotation of simulation traces with change-driven model
+  transformations.
+\newblock In {\em 2010 8th {IEEE} International Conference on Software
+  Engineering and Formal Methods}. {IEEE}, sep 2010.
+
+\bibitem{heisig2019-generic-traceability-metamodel-end-to-end-capra}
+Philipp Heisig, Jan-Philipp Stegh\"{o}fer, Christopher Brink, and Sabine
+  Sachweh.
+\newblock A generic traceability metamodel for enabling unified end-to-end
+  traceability in software product lines.
+\newblock In {\em Proceedings of the 34th ACM/SIGAPP Symposium on Applied
+  Computing}, SAC ’19, page 2344–2353, New York, NY, USA, 2019. Association
+  for Computing Machinery.
+
+\bibitem{helming2009-traceability-change-awareness}
+Jonas Helming, Maximilian Koegel, Helmut Naughton, Jörn David, and Aleksandar
+  Shterev.
+\newblock Traceability-based change awareness.
+\newblock volume 5795, pages 372--376, 10 2009.
+
+\bibitem{Her_2010}
+Jin~Sun Her, Hao Yuan, and Soo~Dong Kim.
+\newblock Traceability-centric model-driven object-oriented engineering.
+\newblock {\em Information and Software Technology}, 52(8):845--870, aug 2010.
+
+\bibitem{Inostroza_2014}
+Pablo Inostroza, Tijs van~der Storm, and Sebastian Erdweg.
+\newblock Tracing program transformations with string origins.
+\newblock In {\em Theory and Practice of Model Transformations}, pages
+  154--169. Springer International Publishing, 2014.
+
+\bibitem{Jim_nez_2013}
+{\'{A}}lvaro Jim{\'{e}}nez, Juan~M. Vara, Ver{\'{o}}nica~A. Bollati, and
+  Esperanza Marcos.
+\newblock Model-driven development of model transformations supporting traces
+  generation.
+\newblock In {\em Building Sustainable Information Systems}, pages 233--245.
+  Springer {US}, 2013.
+
+\bibitem{keenan2012-workbench-for-traceability}
+E.~{Keenan}, A.~{Czauderna}, G.~{Leach}, J.~{Cleland-Huang}, Y.~{Shin},
+  E.~{Moritz}, M.~{Gethers}, D.~{Poshyvanyk}, J.~{Maletic}, J.~H. {Hayes},
+  A.~{Dekhtyar}, D.~{Manukian}, S.~{Hossein}, and D.~{Hearn}.
+\newblock Tracelab: An experimental workbench for equipping researchers to
+  innovate, synthesize, and comparatively evaluate traceability solutions.
+\newblock In {\em 2012 34th International Conference on Software Engineering
+  (ICSE)}, pages 1375--1378, June 2012.
+
+\bibitem{Kerstan_2008}
+C.~Kerstan, N.~Bannow, and W.~Rosenstiel.
+\newblock Enabling automated code transformation and variable tracing.
+\newblock In {\em 2008 Forum on Specification, Verification and Design
+  Languages}. {IEEE}, sep 2008.
+
+\bibitem{ko2008-whyline-debugging}
+Andrew~J. Ko and Brad~A. Myers.
+\newblock Debugging reinvented: Asking and answering why and why not questions
+  about program behavior.
+\newblock In {\em Proceedings of the 30th International Conference on Software
+  Engineering}, ICSE '08, page 301–310, New York, NY, USA, 2008. Association
+  for Computing Machinery.
+
+\bibitem{Kr_mer_2016}
+Jan-Peter Krämer, Joel Brandt, and Jan Borchers.
+\newblock Using runtime traces to improve documentation and unit test authoring
+  for dynamic languages.
+\newblock In {\em Proceedings of the 2016 {CHI} Conference on Human Factors in
+  Computing Systems}. {ACM}, may 2016.
+
+\bibitem{kuang2012-do-data-dependencies-complement-call-dependencies}
+H.~{Kuang}, P.~{Mäder}, H.~{Hu}, A.~{Ghabi}, L.~{Huang}, L.~{Jian}, and
+  A.~{Egyed}.
+\newblock Do data dependencies in source code complement call dependencies for
+  understanding requirements traceability?
+\newblock In {\em 2012 28th IEEE International Conference on Software
+  Maintenance (ICSM)}, pages 181--190, September 2012.
+
+\bibitem{la_Fosse_2018}
+Thibault~B{\'{e}}ziers la~Fosse, Massimo Tisi, and Jean-Marie Mottu.
+\newblock Injecting execution traces into a model-driven framework for program
+  analysis.
+\newblock In {\em Software Technologies: Applications and Foundations}, pages
+  3--13. Springer International Publishing, 2018.
+
+\bibitem{laghouaouta2017-model-composition-tracaebility}
+Youness Laghouaouta, Adil Anwar, Mahmoud Nassar, and Bernard Coulette.
+\newblock A dedicated approach for model composition traceability.
+\newblock {\em Information and Software Technology}, 91:142 -- 159, 2017.
+
+\bibitem{Laghouaouta_2014}
+Youness Laghouaouta, Mahmoud Nassar, Adil Anwar, and Jean-Michel Bruel.
+\newblock On the use of graph transformations for model composition
+  traceability.
+\newblock In {\em 2014 {IEEE} Eighth International Conference on Research
+  Challenges in Information Science ({RCIS})}. {IEEE}, may 2014.
+
+\bibitem{Lee_2016}
+Jihyun Lee and Sunmyung Hwang.
+\newblock Variability change management using the orthogonal variability
+  model-based traceability.
+\newblock {\em Wireless Pers Commun}, 89(3):729--745, jan 2016.
+
+\bibitem{Levendovszky_2010}
+Tihamer Levendovszky, Daniel Balasubramanian, Kevin Smyth, Feng Shi, and Gabor
+  Karsai.
+\newblock A transformation instance-based approach to traceability.
+\newblock In {\em Proceedings of the 6th {ECMFA} Traceability Workshop on -
+  {ECMFA}-{TW} {\textquotesingle}10}. {ACM} Press, 2010.
+
+\bibitem{li2013-trace-matrix-analyzer}
+W.~{Li}, J.~H. {Hayes}, F.~{Yang}, K.~{Imai}, J.~{Yannelli}, C.~{Carnes}, and
+  M.~{Doyle}.
+\newblock Trace matrix analyzer (tma).
+\newblock In {\em 2013 7th International Workshop on Traceability in Emerging
+  Forms of Software Engineering (TEFSE)}, pages 44--50, May 2013.
+
+\bibitem{li2013ontologybasedTraceRetrieval}
+Y.~{Li} and J.~{Cleland-Huang}.
+\newblock Ontology-based trace retrieval.
+\newblock In {\em 2013 7th International Workshop on Traceability in Emerging
+  Forms of Software Engineering (TEFSE)}, pages 30--36, 2013.
+
+\bibitem{li2012-which-visualization-in-this-context}
+Yang Li and Walid Maalej.
+\newblock Which traceability visualization is suitable in this context? a
+  comparative study.
+\newblock In {\em Requirements Engineering: Foundation for Software Quality},
+  pages 194--210. Springer Berlin Heidelberg, 2012.
+
+\bibitem{lian2019-Traceability-reveals-quality-in-source}
+X.~{Lian}, A.~{Fakhry}, L.~{Zhang}, and J.~{Cleland-Huang}.
+\newblock Leveraging traceability to reveal the tapestry of quality concerns in
+  source code.
+\newblock In {\em 2015 IEEE/ACM 8th International Symposium on Software and
+  Systems Traceability}, pages 50--56, May 2015.
+
+\bibitem{lohar2013}
+Sugandha Lohar, Sorawit Amornborvornwong, Andrea Zisman, and Jane
+  Cleland-Huang.
+\newblock Improving trace accuracy through data-driven configuration and
+  composition of tracing features.
+\newblock In {\em Proceedings of the 2013 9th Joint Meeting on Foundations of
+  Software Engineering}, ESEC/FSE 2013, pages 378--388, New York, NY, USA,
+  2013. Association for Computing Machinery.
+
+\bibitem{mader2009-motivation-matters-in-traceability-practitioner-survey}
+P.~{Mader}, O.~{Gotel}, and I.~{Philippow}.
+\newblock Motivation matters in the traceability trenches.
+\newblock In {\em 2009 17th IEEE International Requirements Engineering
+  Conference}, pages 143--148, Aug 2009.
+
+\bibitem{mader2010-visual-tracability-modeling-language}
+Patrick M{\"{a}}der and Jane Cleland{-}Huang.
+\newblock A visual traceability modeling language.
+\newblock In Dorina~C. Petriu, Nicolas Rouquette, and {\O}ystein Haugen,
+  editors, {\em Model Driven Engineering Languages and Systems - 13th
+  International Conference, {MODELS} 2010, Oslo, Norway, October 3-8, 2010,
+  Proceedings, Part {I}}, volume 6394 of {\em Lecture Notes in Computer
+  Science}, pages 226--240. Springer, 2010.
+
+\bibitem{mader2012-visual-language-for-traceability-queries}
+Patrick M\"{a}der and Jane Cleland-Huang.
+\newblock A visual language for modeling and executing traceability queries.
+\newblock {\em Software {\&} Systems Modeling}, 12(3):537--553, April 2012.
+
+\bibitem{mader2007-tracing-unified-process}
+P.~{Maeder}, I.~{Philippow}, and M.~{Riebisch}.
+\newblock A traceability link model for the unified process.
+\newblock In {\em Eighth ACIS International Conference on Software Engineering,
+  Artificial Intelligence, Networking, and Parallel/Distributed Computing (SNPD
+  2007)}, volume~3, pages 700--705, July 2007.
+
+\bibitem{Mani_2016}
+Nariman Mani, Dorina Petriu, and Murray Woodside.
+\newblock Cross-model traceability for coupled transformation of software and
+  performance models.
+\newblock In {\em Proceedings of the 28th International Conference on Software
+  Engineering and Knowledge Engineering}. {KSI} Research Inc. and Knowledge
+  Systems Institute Graduate School, jul 2016.
+
+\bibitem{Maoz_2009}
+Shahar Maoz.
+\newblock Using model-based traces as runtime models.
+\newblock {\em Computer}, 42(10):28--36, oct 2009.
+
+\bibitem{marcen2020-req2model-with-EA-ranking-train-system}
+Ana~Cristina Marc{\'{e}}n, Ra{\'{u}}l Lape{\~{n}}a, Oscar Pastor, and Carlos
+  Cetina.
+\newblock Traceability link recovery between requirements and models using an
+  evolutionary algorithm guided by a learning to rank algorithm: Train control
+  and management case.
+\newblock {\em J. Syst. Softw.}, 163:110519, 2020.
+
+\bibitem{marcus2003-latent-semantic-indexing-for-traceability-LSI}
+A.~{Marcus} and J.~I. {Maletic}.
+\newblock Recovering documentation-to-source-code traceability links using
+  latent semantic indexing.
+\newblock In {\em 25th International Conference on Software Engineering, 2003.
+  Proceedings.}, pages 125--135, May 2003.
+
+\bibitem{Markovic_2019}
+Milan Markovic, Daniel Garijo, Peter Edwards, and Wamberto Vasconcelos.
+\newblock Semantic modelling of plans and execution traces for enhancing
+  transparency of {IoT} systems.
+\newblock In {\em 2019 Sixth International Conference on Internet of Things:
+  Systems, Management and Security ({IOTSMS})}. {IEEE}, oct 2019.
+
+\bibitem{Mason}
+P.~Mason, A.~Saeed, P.~Arkely, and S.~Riddle.
+\newblock Meta-modelling approach to traceability for avionics: a framework for
+  managing the engineering of computer based aerospace systems.
+\newblock In {\em 10th {IEEE} International Conference and Workshop on the
+  Engineering of Computer-Based Systems, 2003. Proceedings.} {IEEE} Comput.
+  Soc, 2003.
+
+\bibitem{Mat__2014}
+Alejandro Mat{\'{e}} and Juan Trujillo.
+\newblock Tracing conceptual models{\textquotesingle} evolution in data
+  warehouses by using the model driven architecture.
+\newblock {\em {Computer Standards Interfaces} Interfaces}, 36(5):831--843,
+  sep 2014.
+
+\bibitem{mcmillan2009-combining-text-and-structural-analysis-for-traceability}
+C.~{McMillan}, D.~{Poshyvanyk}, and M.~{Revelle}.
+\newblock Combining textual and structural analysis of software artifacts for
+  traceability link recovery.
+\newblock In {\em 2009 ICSE Workshop on Traceability in Emerging Forms of
+  Software Engineering}, pages 41--48, May 2009.
+
+\bibitem{mader2008-rule-based-maintenance-post-requirements-traceability}
+P.~{Mäder}, O.~{Gotel}, and I.~{Philippow}.
+\newblock Rule-based maintenance of post-requirements traceability relations.
+\newblock In {\em 2008 16th IEEE International Requirements Engineering
+  Conference}, pages 23--32, Sep. 2008.
+
+\bibitem{mader2013-strategic-traceability-for-safety-critical-projects}
+P.~{Mäder}, P.~L. {Jones}, Y.~{Zhang}, and J.~{Cleland-Huang}.
+\newblock Strategic traceability for safety-critical projects.
+\newblock {\em IEEE Software}, 30(3):58--66, May 2013.
+
+\bibitem{meinicke2017-feature-traceability}
+Jens Meinicke, Thomas Th\"{u}m, Reimar Schr\"{o}ter, Fabian Benduhn, Thomas
+  Leich, and Gunter Saake.
+\newblock Feature traceability for feature-oriented programming.
+\newblock In {\em Mastering Software Variability with {FeatureIDE}}, pages
+  173--181. Springer International Publishing, 2017.
+
+\bibitem{Morgan_2010}
+Bo~Morgan.
+\newblock Funk2: A distributed processing language for reflective tracing of a
+  large critic-selector cognitive architecture.
+\newblock In {\em 2010 Fourth {IEEE} International Conference on Self-Adaptive
+  and Self-Organizing Systems Workshop}. {IEEE}, sep 2010.
+
+\bibitem{naslavsky2007-traceability-of-MB-Testing-MT}
+Leila Naslavsky, Hadar Ziv, and Debra~J. Richardson.
+\newblock Towards traceability of model-based testing artifacts.
+\newblock In {\em Proceedings of the 3rd International Workshop on Advances in
+  Model-Based Testing}, A-MOST ’07, page 105–114, New York, NY, USA, 2007.
+  Association for Computing Machinery.
+
+\bibitem{Naslavsky_2010}
+Leila Naslavsky, Hadar Ziv, and Debra~J. Richardson.
+\newblock {MbSRT}2: Model-based selective regression testing with traceability.
+\newblock In {\em 2010 Third International Conference on Software Testing,
+  Verification and Validation}. {IEEE}, 2010.
+
+\bibitem{nejat2012-traceability-sysml-safety-certification}
+Shiva Nejati, Mehrdad Sabetzadeh, Davide Falessi, Lionel Briand, and Thierry
+  Coq.
+\newblock A sysml-based approach to traceability management and design slicing
+  in support of safety certification: Framework, tool support, and case
+  studies.
+\newblock {\em Information and Software Technology}, 54(6):569 -- 590, 2012.
+\newblock Special Section: Engineering Complex Software Systems through
+  Multi-Agent Systems and Simulation.
+
+\bibitem{Nilsson_1999}
+Henrik Nilsson.
+\newblock Tracing piece by piece.
+\newblock In {\em Proceedings of the fourth {ACM} {SIGPLAN} international
+  conference on Functional programming - {ICFP} {\textquotesingle}99}. {ACM}
+  Press, 1999.
+
+\bibitem{Ogunyomi_2015}
+Babajide Ogunyomi, Louis~M. Rose, and Dimitrios~S. Kolovos.
+\newblock Property access traces for source incremental model-to-text
+  transformation.
+\newblock In {\em Modelling Foundations and Applications}, pages 187--202.
+  Springer International Publishing, 2015.
+
+\bibitem{Olsen}
+G{\o}ran~K. Olsen and Jon Oldevik.
+\newblock Scenarios of traceability in model to text transformations.
+\newblock In {\em Model Driven Architecture- Foundations and Applications},
+  pages 144--156. Springer Berlin Heidelberg, 2007.
+
+\bibitem{Ono_2010}
+Kouichi Ono, Manabu Toyota, Ryo Kawahara, Yoshifumi Sakamoto, Takeo Nakada, and
+  Naoaki Fukuoka.
+\newblock A model-based method for evaluating embedded system performance by
+  abstraction of execution traces.
+\newblock In {\em Modelling Foundations and Applications}, pages 233--244.
+  Springer Berlin Heidelberg, 2010.
+
+\bibitem{Pace_2014}
+Gordon~J. Pace and Michael Rosner.
+\newblock Explaining violation traces with finite state natural language
+  generation models.
+\newblock In {\em Lecture Notes in Computer Science}, pages 179--189. Springer
+  International Publishing, 2014.
+
+\bibitem{paige2010-MDE-Traceability-classifications}
+Richard Paige, Gøran Olsen, Dimitrios Kolovos, Steffen Zschaler, and
+  Christopher Power.
+\newblock Building model-driven engineering traceability classifications.
+\newblock 01 2010.
+
+\bibitem{paige2011-traces-in-moel-driven-engineering}
+Richard~F. Paige, Nikolaos Drivalos, Dimitrios~S. Kolovos, Kiran~J. Fernandes,
+  Christopher Power, Goran~K. Olsen, and Steffen Zschaler.
+\newblock Rigorous identification and encoding of trace-links in model-driven
+  engineering.
+\newblock {\em Software \& Systems Modeling}, 10(4):469--487, 2011.
+
+\bibitem{paige2017-changing-mde}
+Richard~F. Paige, Athanasios Zolotas, and Dimitris Kolovos.
+\newblock The changing face of model-driven engineering.
+\newblock In {\em Present and Ulterior Software Engineering}, pages 103--118.
+  Springer International Publishing, 2017.
+
+\bibitem{panichella2013-using-structural-information-to-improve-IR-traceability}
+A.~{Panichella}, C.~{McMillan}, E.~{Moritz}, D.~{Palmieri}, R.~{Oliveto},
+  D.~{Poshyvanyk}, and A.~{De Lucia}.
+\newblock When and how using structural information to improve ir-based
+  traceability recovery.
+\newblock In {\em 2013 17th European Conference on Software Maintenance and
+  Reengineering}, pages 199--208, March 2013.
+
+\bibitem{panis2010-req-traceability-deployment-in-commercial-engineering-organisation}
+M.~C. {Panis}.
+\newblock Successful deployment of requirements traceability in a commercial
+  engineering organization...really.
+\newblock In {\em 2010 18th IEEE International Requirements Engineering
+  Conference}, pages 303--307, Sep. 2010.
+
+\bibitem{Pape_2015}
+Tobias Pape, Tim Felgentreff, Robert Hirschfeld, Anton Gulenko, and
+  Carl~Friedrich Bolz.
+\newblock Language-independent storage strategies for tracing-{JIT}-based
+  virtual machines.
+\newblock In {\em Proceedings of the 11th Symposium on Dynamic Languages -
+  {DLS} 2015}. {ACM} Press, 2015.
+
+\bibitem{Peischl_2005}
+Bernhard Peischl and Franz Wotawa.
+\newblock Error traces in model-based debugging of hardware description
+  languages.
+\newblock In {\em Proceedings of the Sixth sixth international symposium on
+  Automated analysis-driven debugging - {AADEBUG}{\textquotesingle}05}. {ACM}
+  Press, 2005.
+
+\bibitem{Pfeiffer_2014}
+Rolf-Helge Pfeiffer, Jan Reimann, and Andrzej W{\k{a}}sowski.
+\newblock Language-independent traceability with lässig.
+\newblock In {\em Modelling Foundations and Applications}, pages 148--163.
+  Springer International Publishing, 2014.
+
+\bibitem{Pfeiffer_2010}
+Rolf-Helge Pfeiffer and Andrzej W{\k{a}}sowski.
+\newblock An aspect-based traceability mechanism for domain specific languages.
+\newblock In {\em Proceedings of the 6th {ECMFA} Traceability Workshop on -
+  {ECMFA}-{TW} {\textquotesingle}10}. {ACM} Press, 2010.
+
+\bibitem{poshyvanyk2007}
+D.~{Poshyvanyk}, Y.~{Gueheneuc}, A.~{Marcus}, G.~{Antoniol}, and V.~{Rajlich}.
+\newblock Feature location using probabilistic ranking of methods based on
+  execution scenarios and information retrieval.
+\newblock {\em IEEE Transactions on Software Engineering}, 33(6):420--432,
+  2007.
+
+\bibitem{post2009-link-functional-req-to-verification}
+H.~{Post}, C.~{Sinz}, F.~{Merz}, T.~{Gorges}, and T.~{Kropf}.
+\newblock Linking functional requirements and software verification.
+\newblock In {\em 2009 17th IEEE International Requirements Engineering
+  Conference}, pages 295--302, Aug 2009.
+
+\bibitem{rahimi2019-Evolving-trace-req2source}
+M.~{Rahimi} and J.~{Cleland-Huang}.
+\newblock Evolving software trace links between requirements and source code.
+\newblock In {\em 2019 IEEE/ACM 10th International Symposium on Software and
+  Systems Traceability (SST)}, pages 12--12, May 2019.
+
+\bibitem{rath2018-guo-augmenting-incomplete-traces}
+Michael Rath, Jacob Rendall, Jin L.~C. Guo, Jane Cleland-Huang, and Patrick
+  M\"{a}der.
+\newblock Traceability in the wild: Automatically augmenting incomplete trace
+  links.
+\newblock In {\em Proceedings of the 40th International Conference on Software
+  Engineering}, ICSE ’18, page 834–845, New York, NY, USA, 2018.
+  Association for Computing Machinery.
+
+\bibitem{rempl2014-conformance-of-traceability-to-guidelines}
+Patrick Rempel, Patrick M\"{a}der, Tobias Kuschke, and Jane Cleland-Huang.
+\newblock Mind the gap: Assessing the conformance of software traceability to
+  relevant guidelines.
+\newblock In {\em Proceedings of the 36th International Conference on Software
+  Engineering}, ICSE 2014, page 943–954, New York, NY, USA, 2014. Association
+  for Computing Machinery.
+
+\bibitem{Rosenkranz_2013}
+Christoph Rosenkranz, Marianne~Corvera Charaf, and Roland Holten.
+\newblock Language quality in requirements development: Tracing communication
+  in the process of information systems development.
+\newblock {\em Journal of Information Technology}, 28(3):198--223, sep 2013.
+
+\bibitem{ruiz18-traceME-conceptual-model-evolution}
+Marcela Ruiz.
+\newblock {\em TraceME: {A} Traceability-Based Method for Conceptual Model
+  Evolution - Model-Driven Techniques, Tools, Guidelines, and Open Challenges
+  in Conceptual Model Evolution}, volume 312 of {\em Lecture Notes in Business
+  Information Processing}.
+\newblock Springer, 2018.
+
+\bibitem{rutle2018-MT-coevolution-with-traceability-and-graph-transfo}
+A~Rutle, L~Iovino, H~König, and Z~Diskin.
+\newblock Automatic transformation co-evolution using traceability models and
+  graph transformation.
+\newblock {\em Modelling Foundations and Applications}, 10890, 2018.
+
+\bibitem{Saada_2013}
+Hajer Saada, Marianne Huchard, Clementine Nebut, and Houari Sahraoui.
+\newblock Recovering model transformation traces using multi-objective
+  optimization.
+\newblock In {\em 2013 28th {IEEE}/{ACM} International Conference on Automated
+  Software Engineering ({ASE})}. {IEEE}, nov 2013.
+
+\bibitem{Sanchez_2011}
+Pedro Sanchez, Diego Alonso, Francisca Rosique, Barbara Alvarez, and Juan~A.
+  Pastor.
+\newblock Introducing safety requirements traceability support in model-driven
+  development of robotic applications.
+\newblock {\em {IEEE Trans. Comput.} Transactions on Computers},
+  60(8):1059--1071, aug 2011.
+
+\bibitem{Sannier_2012}
+Nicolas Sannier and Benoit Baudry.
+\newblock Toward multilevel textual requirements traceability using
+  model-driven engineering and information retrieval.
+\newblock In {\em 2012 Second {IEEE} International Workshop on Model-Driven
+  Requirements Engineering ({MoDRE})}. {IEEE}, sep 2012.
+
+\bibitem{Santiago_2013}
+Iv{\'{a}}n Santiago, Juan~M. Vara, Valeria de~Castro, and Esperanza Marcos.
+\newblock Measuring the effect of enabling traces generation in {ATL} model
+  transformations.
+\newblock In {\em Communications in Computer and Information Science}, pages
+  229--240. Springer Berlin Heidelberg, 2013.
+
+\bibitem{santiago2013traceability-in-MDE}
+Iv{\'a}n Santiago, Juan~Manuel Vara, Mar{\'i}a~Valeria de~Castro, and Esperanza
+  Marcos.
+\newblock Towards the effective use of traceability in model-driven engineering
+  projects.
+\newblock In Wilfred Ng, Veda~C. Storey, and Juan~C. Trujillo, editors, {\em
+  Conceptual Modeling}, pages 429--437, Berlin, Heidelberg, 2013. Springer
+  Berlin Heidelberg.
+
+\bibitem{schwarz2010-graph-based-traceability}
+Hannes Schwarz, Jürgen Ebert, and Andreas Winter.
+\newblock Graph-based traceability: a comprehensive approach.
+\newblock {\em Software \& Systems Modeling}, 9(4):473--492, 2010.
+
+\bibitem{seibel2012-efficient-traceability-for-MDE}
+Andreas Seibel, Regina Hebig, and Holger Giese.
+\newblock {\em Traceability in Model-Driven Engineering: Efficient and Scalable
+  Traceability Maintenance}, pages 215--240.
+\newblock Springer London, London, 2012.
+
+\bibitem{seibel2010-dynamic-hierarchical-models-comprehensive-traceability}
+Andreas Seibel, Stefan Neumann, and Holger Giese.
+\newblock Dynamic hierarchical mega models: comprehensive traceability and its
+  efficient maintenance.
+\newblock {\em Software \& Systems Modeling}, 9(4):493--528, 2010.
+
+\bibitem{seiler2019-comparing-trac-through-IR-Commits-Logs}
+M.~{Seiler}, P.~{Hübner}, and B.~{Paech}.
+\newblock Comparing traceability through information retrieval, commits,
+  interaction logs, and tags.
+\newblock In {\em 2019 IEEE/ACM 10th International Symposium on Software and
+  Systems Traceability (SST)}, pages 21--28, May 2019.
+
+\bibitem{shin2015-guidelines-benchmark-auto-traceability}
+Y.~{Shin}, J.~H. {Hayes}, and J.~{Cleland-Huang}.
+\newblock Guidelines for benchmarking automated software traceability
+  techniques.
+\newblock In {\em 2015 IEEE/ACM 8th International Symposium on Software and
+  Systems Traceability}, pages 61--67, May 2015.
+
+\bibitem{sotovalero2020tracebased}
+César Soto-Valero, Thomas Durieux, Nicolas Harrand, and Benoit Baudry.
+\newblock Trace-based debloat for java bytecode, 2020.
+
+\bibitem{spanoudakis2004-rule-based-generation-of-req-traceability-relations}
+George Spanoudakis, Andrea Zisman, Elena Pérez-Miñana, and Paul Krause.
+\newblock Rule-based generation of requirements traceability relations.
+\newblock {\em Journal of Systems and Software}, 72(2):105 -- 127, 2004.
+
+\bibitem{Szabo_2013}
+Claudia Szabo and Yufei Chen.
+\newblock A model-driven approach for ensuring change traceability and
+  multi-model consistency.
+\newblock In {\em 2013 22nd Australian Software Engineering Conference}.
+  {IEEE}, jun 2013.
+
+\bibitem{tekinerdogan2007-metamodel-for-tracing-concers-accross-life-cycle}
+Bedir Tekinerdo{\u{g}}an, Christian Hofmann, Mehmet Ak{\c{s}}it, and Jethro
+  Bakker.
+\newblock Metamodel for tracing concerns across the life cycle.
+\newblock In Ana Moreira and John Grundy, editors, {\em Early Aspects: Current
+  Challenges and Future Directions}, pages 175--194, Berlin, Heidelberg, 2007.
+  Springer Berlin Heidelberg.
+
+\bibitem{tinnes2019-improving-art-reuse-with-traceability}
+C.~{Tinnes}, A.~{Biesdorf}, U.~{Hohenstein}, and F.~{Matthes}.
+\newblock Ideas on improving software artifact reuse via traceability and
+  self-awareness.
+\newblock In {\em 2019 IEEE/ACM 10th International Symposium on Software and
+  Systems Traceability (SST)}, pages 13--16, May 2019.
+
+\bibitem{tran2011-vbTrace-view-based-MDD-processdriven-SOAs-traceability}
+Huy Tran, Uwe Zdun, and Schahram Dustdar.
+\newblock Vbtrace: using view-based and model-driven development to support
+  traceability in process-driven soas.
+\newblock {\em Software \& Systems Modeling}, 10(1):5--29, 2011.
+
+\bibitem{Triebsees_2007}
+Thomas Triebsees.
+\newblock Constraint-based model transformation: Tracing the preservation of
+  semantic properties.
+\newblock {\em JSW}, 2(3), sep 2007.
+
+\bibitem{Valderas_2009}
+Pedro Valderas and Vicente Pelechano.
+\newblock Introducing requirements traceability support in model-driven
+  development of web applications.
+\newblock {\em Information and Software Technology}, 51(4):749--768, apr 2009.
+
+\bibitem{van_Amstel_2012}
+Marcel~F. van Amstel, Mark G.~J. van~den Brand, and Alexander Serebrenik.
+\newblock Traceability visualization in model transformations with {TraceVis}.
+\newblock In {\em Theory and Practice of Model Transformations}, pages
+  152--159. Springer Berlin Heidelberg, 2012.
+
+\bibitem{vara2014-traceability-in-MDD-MTransfo}
+Juan~Manuel Vara, Ver{\'{o}}nica~Andrea Bollati, {\'{A}}lvaro Jim{\'{e}}nez,
+  and Esperanza Marcos.
+\newblock Dealing with traceability in the mddof model transformations.
+\newblock {\em {IEEE} Trans. Software Eng.}, 40(6):555--583, 2014.
+
+\bibitem{vonknethen2002-change-oriented-req-traceability-evolution-of-embedded-systems}
+A.~{von Knethen}.
+\newblock Change-oriented requirements traceability. support for evolution of
+  embedded systems.
+\newblock In {\em International Conference on Software Maintenance, 2002.
+  Proceedings.}, pages 482--485, Oct 2002.
+
+\bibitem{Wang_2020}
+Fei Wang, Zhi-Bin Yang, Zhi-Qiu Huang, Cheng-Wei Liu, Yong Zhou, Jean-Paul
+  Bodeveix, and Mamoun Filali.
+\newblock An approach to generate the traceability between restricted natural
+  language requirements and {AADL} models.
+\newblock {\em {IEEE Trans. Rel.} Transactions on Reliability}, 69(1):154--173,
+  mar 2020.
+
+\bibitem{wenzel2007-Tracing-model-elements}
+S.~{Wenzel}, H.~{Hutter}, and U.~{Kelter}.
+\newblock Tracing model elements.
+\newblock In {\em 2007 IEEE International Conference on Software Maintenance},
+  pages 104--113, Oct 2007.
+
+\bibitem{wohlrab2020-traceability-organization-process-culture}
+Rebekka Wohlrab, Eric Knauss, Jan-Philipp Steghöfer, Salome Maro, Anthony
+  Anjorin, and Patrizio Pelliccione.
+\newblock Collaborative traceability management: a multiple case study from the
+  perspectives of organization, process, and culture.
+\newblock {\em Requirements Engineering}, 25(1):21--45, 2020.
+
+\bibitem{Yrj_nen_2010}
+Anton Yrjönen and Janne Merilinna.
+\newblock Tooling for the full traceability of non-functional requirements
+  within model-driven development.
+\newblock In {\em Proceedings of the 6th {ECMFA} Traceability Workshop on -
+  {ECMFA}-{TW} {\textquotesingle}10}. {ACM} Press, 2010.
+
+\bibitem{yu2012-maintainging-invariant-traceability}
+Y.~{Yu}, Y.~{Lin}, Z.~{Hu}, S.~{Hidaka}, H.~{Kato}, and L.~{Montrieux}.
+\newblock Maintaining invariant traceability through bidirectional
+  transformations.
+\newblock In {\em 2012 34th International Conference on Software Engineering
+  (ICSE)}, pages 540--550, June 2012.
+
+\bibitem{ziegenhagen2020-tracing-life-cycles}
+Dennis Ziegenhagen, Elke Pulverm{\"{u}}ller, and Andreas Speck.
+\newblock Capturing tracing data life cycles for supporting traceability.
+\newblock In Raian Ali, Hermann Kaindl, and Leszek~A. Maciaszek, editors, {\em
+  Proceedings of the 15th International Conference on Evaluation of Novel
+  Approaches to Software Engineering, {ENASE} 2020, Prague, Czech Republic, May
+  5-6, 2020}, pages 564--571. {SCITEPRESS}, 2020.
+
+\bibitem{ziegenhagen2019-developer-tool-interaction}
+Dennis Ziegenhagen., Andreas Speck., and Elke Pulvermüller.
+\newblock Using developer-tool-interactions to expand tracing capabilities.
+\newblock In {\em Proceedings of the 14th International Conference on
+  Evaluation of Novel Approaches to Software Engineering - Volume 1: ENASE,},
+  pages 518--525. INSTICC, SciTePress, 2019.
+
+\bibitem{ziegenhagen2020-expanding-tracea-with-dynamic-tracing-data}
+Dennis Ziegenhagen, Andreas Speck, and Elke Pulvermueller.
+\newblock Expanding tracing capabilities using dynamic tracing data.
+\newblock In {\em Communications in Computer and Information Science}, pages
+  319--340. Springer International Publishing, 2020.
+
+\end{thebibliography}

@@ -1,0 +1,56 @@
+\hrulefill
+\subsection{Context} \label{sec:intro}
+
+%\nb{AI-enabled risk}{The rise of uncertainty in our daily life decision assistants.} 
+%More and more safety critical software. IA intrusion into daily life - medicine, avionics, finance, and now apps for everything. Not mentioning the coming of 5G and other intrusive technologies such as the IoT and RFID tags will make more and more use of AI at every level. More data for more data-centric systems.
+%Moreover, the level of uncertainty brought into software development and research by AI techniques rises concern on the reliability and explainability of such systems.
+In the last decade we have acknowledged a tremendous {rise of artificial intelligence} (AI) techniques in our daily life experience and software systems are not an exception. %Not only such systems are used in the confinement of scientific research, or in industry intensive machinery ; they are today ubiquitous to most of our decisions. \textit{AI-enabled systems}, or so called "intelligent" systems, are used in medicine to help find new drugs, in avionics to manufacture hundred-passengers planes, in finance to assist traders and investors in their multi-billion dollar decisions. They are also present {at the heart of our lives} by means of our phones and other connected devices thanks to the {execution on the clouds of machine learning algorithms}. \jc{the paragraph can be shorten, no need to introduce so much the importance of AI}
+
+If the introduction of AI in software components (and even in the development of such components) has become widespread, it has also introduced a new degree of {uncertainty as to the potential variations in their behaviour}~\cite{hllermeier2019-aleatoric-and-epistemic-uncertiainty-in-ml}. %The outcome of these technologies suffers from the opacity of their operations in \textit{black box} that invalidates their explainability. 
+Indeed, better solutions must be developed to achieve a high-quality AI-enabled software~\cite{ozkaya2020-differences-in-AI-enabled-engineering}, mainly related to reduce the opacity of AI Components in favour of a better transparency and explainability of their decisions.
+%\jc{not sure about what you say of not suffering criticism, it is easy to point out quite a few examples of racist AIs for instance, that had to be retracted}.
+
+%\nb{Tracing for safety}{The quest for omniscience leads to ubiquitous traceability.} 
+%\jc{more than growing, renewed, the community had already been interested in all this but it is now that they realized we need traceabililty to help in explainability}
+This need has always been important in software and systems development as well. Across the years, there has always been an interest in developing techniques to facilitate the representation and analysis of traces and links between related artefacts to help explaining their execution and evolution. 
+
+The importance of traceability has been largely recognized, especially in systems engineering and it became a primary concern to commit to {certification authorities} in all commercial software-based aerospace systems with the RTCA DO-178C (2012)~\cite{moy2013-DO-178C-testing}. The consideration of various levels of abstraction in software development and the meaning of verification in model-based development paradigm - which figures abstract representations (models) as the core artefact for conceptualization -  was latter introduced with companion documents (Specifically, DO-331). The automotive industry has followed the same path with the construction of an international standard for functional safety~\cite{iso26262}. At code, requirement, model, human and organisational level, a transversal view provided through traces of processes and artefacts executions figures an ideal for software development and maintenance.
+
+Traceability is less considered in software engineering approaches. Despite these important evidences on the need for explicit (and automated) tracing abilities in software development, traceability is not widely adopted, even less automated and there is little feedback from its concrete use in industry~\cite{panis2010-req-traceability-deployment-in-commercial-engineering-organisation}.
+Winkler \textit{et al.}~\cite{winkler2010-survey-traceability-and-MDE} show all the disregard such "{mandatory}" characteristic implies - expressly to safety critical software demanding a legal assessment or certification to run~\cite{winkler2010-survey-traceability-and-MDE}, and Mader \textit{et al.} show that the benefits of automated traceability is still to be justified to stakeholders who still prefer the {\textit{ad hoc} manual burden}~\cite{mader2009-motivation-matters-in-traceability-practitioner-survey}.
+As a matter of fact, authors publishing a guide to the software engineering body of knowledge only mention traceability without in-depth reflection~\cite{swebok2014}. With no standard  definition or representation of traces , a gap remains between broader fields of investigation beneficial from automated tracing ability (\textit{e.g.,} requirement engineering, program understanding, testing). Many studies suggest that there is a {lack of synthetic investigations on traceability} and research on traceability is {locked into sub-fields}. For this lack of communication tools sharing between research teams remains insufficient~\cite{antoniol2017-traceability-grand-challenges,wohlrab2020-traceability-organization-process-culture,winkler2010-survey-traceability-and-MDE}.\cite{Rosenkranz_2013} 
+
+
+
+%In parallel to these discoveries in artificial intelligence, a renewed interest has come to creep into software engineering research: {the ability to trace} paths of executions, dependency trees, and the decision-making lines relating to software products and processes. The community had already been interested in traceability but it is now that they realized we need traceability to help in explainability. 
+
+%\jc{To introduce this paragraph we can say that the importance of traceabillity was largely recognized, especially in systems engineering}
+
+
+%Traceability is also {ubiquitous to software engineering} life cycles and artefacts at every level of abstraction and became a mandatory attribute to high quality development.
+%Traceability has been used to accommodate developers with better information.
+
+%\jc{To introduce the paragraph say that despite its importance, traceability is not widely adopted, at lest not automated}
+
+
+
+Notwithstanding these limitations, we see a lot of potential in the contribution of traceability techniques to software development. Even more in a context where AI techniques are being integrated in such development processes and therefore explainability concerns are increasing. This paper aims to first provide a comprehensive survey of the state of the art of traceabiilty techniques in software development and their limitations across several dimensions (trace representation, identification, management,...). To help compare current and future traceability proposals we also provide a feature model that aims to organize and structure the main traceability concepts. Next, we conducted a second survey more focused on the use of traceability in the new breed of AI techniques being integrated in software development. Here, the goal was to see how large was the opportunity of (and the need for) traceability in this growing field. 
+
+%\jc{I don't get this sentence on sharing between research teams}
+
+%[Metamodeling needed for communication~\cite{winkler2010-survey-traceability-and-MDE}]
+%[Metmodeling ISO/IEC 24744:2007 does not mention traceability.\ugh{Check 24744:2014}]
+
+%\nb{Technical competition}{The plunge of traceability research into trace identification.} 
+
+%\jc{Once we have introduced the need for explainability, the link between explainability and traceabilty and the fact that traceability was studied but with no final conclusions, we should now say that we see a lot of potential in the complementary of boths goals: AI could help to automate traceabilty detection and traces could help in explaining AI results, especilly when AI is a tool used in software development}
+
+
+%\jc{Then we could say that the goal of this paper is to study this bidirectionality in the current state of the art, looking at the work in traceability, with an emphasis on the AI techniques used there, and looking at the work of AI in SW Eng, looking if traceability is part of those AI components}.
+%The goal of this paper is to study this bi-directionality in the current state of the art, looking at the work in traceability, with an emphasis on the AI techniques used there, and {looking at the work of AI in software engineering to see if traceability is part of the quality of AI-enabled software systems}.
+%We map tracing abilities on a feature model to explore what has been done and where are the limitations. The feature model comes from the study of relevant literature on requirement engineering, traceability, and the conjunct use of modelling and traceability in the last two decades. Emphasis is placed on the distinction between the design of traceability and the use of trace links respectively to the division existing in research interest.
+
+
+The papers is organised as follows. After a brief introduction, we present in \Sect{sec:rw} a synthesis of the sate of the art in traceability research. We then introduce basics concept required to the remaining of the paper in \Sect{sec:terminology}. We establish research questions and describe our survey method in Sections \ref{sec:rqs} and \ref{sec:survey}. We answer the research questions with a detailed feature model grounded on the analysis of the survey resuts in Sections \ref{sec:fm}. 
+We question whether traceability is used for AI explainability in software engineering applications in \Sect{sec:explainability} before we conclude.
+

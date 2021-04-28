@@ -1,0 +1,35 @@
+
+
+%\begin{center}
+%\noindent\begin{minipage}[t]{.72\textwidth}
+\begin{lstlisting}[caption={Tracing element, trace model, and trace links},label=lst:traces,style=mystylexcore,frame=shadowbox, rulesepcolor=\color{blue},boxpos=b]
+class MyTraceModel {
+	contains TraceLink [0..*] links
+	contains Agent [0..*] agents
+}
+
+abstract class TracingElement {
+	derived String ID get {	EcoreUtil.generateUUID(); }
+	String name
+	String timestamp 
+	refers Agent agent
+}
+
+abstract class Agent extends TracingElement {}
+
+class HumanAgent extends Agent { String role }
+class MachineAgent extends Agent { String machineType }
+
+abstract class TraceLink extends TracingElement {
+  String name
+  double confidenceValue
+  contains Confidence [0..1] confidence
+}
+
+class RelatedTo extends TraceLink {
+	refers EObject [1] origin
+	refers EObject [1..*] targets
+}
+\end{lstlisting}
+%\end{minipage}
+%\end{center}
