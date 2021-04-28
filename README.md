@@ -6,7 +6,12 @@
 * [Content organisation](#contentorganisation)
 
 ## General info
-This project is aimed at addressing traceability current solutions' limitations.
+This project aims at addressing the current limitations of traceability solutions. 
+Tracea considers traceability as a prominent software quality attribute. 
+Indeed, tracing has been applied extensively in the history of software but the inherent 
+knowledge derived from those experiences remains scattered among various software engineering fields. 
+Tracea offers to consider the quality of the traces themselves to foster the role of tracers in the 
+software developement process.
 	
 ## Deliverables
 1. Survey of traceability techniques with a focus on their applications in AI-based software techniques
