@@ -595,9 +595,14 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TraceableElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="creationTimestamp" eType="ecore:EDataType types.ecore#//String"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modifiedTimestamp" eType="ecore:EDataType types.ecore#//String"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="deletionTimestamp" eType="ecore:EDataType types.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="creationTimestamp" upperBound="-1"
+        eType="ecore:EDataType types.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modifiedTimestamp" upperBound="-1"
+        eType="ecore:EDataType types.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="deletionTimestamp" upperBound="-1"
+        eType="ecore:EDataType types.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="evidence" upperBound="-1"
+        eType="#//TracingEvidence" eOpposite="#//TracingEvidence/impactedElements"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Trace">
     <eStructuralFeatures xsi:type="ecore:EReference" name="firstlevels" upperBound="-1"
@@ -712,11 +717,14 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TracingRelationship">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="confidenceValues" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="confidenceValues" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="startingTrace" upperBound="-1"
         eType="#//Trace" eOpposite="#//Trace/firstlevels"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="trace" upperBound="-1"
         eType="#//Trace" eOpposite="#//Trace/links"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="evidences" upperBound="-1"
+        eType="#//TracingEvidence" eOpposite="#//TracingEvidence/relationship"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CustomTracingRelationship" eSuperTypes="#//Relationship"/>
   <eClassifiers xsi:type="ecore:EEnum" name="VisibilityKind">
@@ -793,6 +801,13 @@
       <eAnnotations source="redefines" references="#//Relationship/owningRelatedElement"/>
       <eAnnotations source="subsets" references="#//Annotation/annotatedElement"/>
     </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TracingEvidence" eSuperTypes="#//Annotation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType types.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="impactedElements" upperBound="-1"
+        eType="#//TraceableElement" eOpposite="#//TraceableElement/evidence"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relationship" upperBound="-1"
+        eType="#//TracingRelationship" eOpposite="#//TracingRelationship/evidences"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AnnotatingElement" eSuperTypes="#//Element">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
