@@ -6,7 +6,8 @@
 * [Deliverables](#deliverables)
   * [D1 - Traceability survey and feature Model](#1-survey-of-traceability-techniques-with-a-focus-on-their-applications-in-ai-based-software-techniques)
   * [D2 - Traceability metamodel for quality tracing](#2-traceability-language----definition-and-editor)
-  * [D3 - Evaluatioin and extension of traceability solutions](#3-traceability-solutions----evaluation-and-extension)
+  * [D3 - Evaluation and extension of traceability solutions](#3-traceability-solutions----evaluation-and-extension)
+  * [D4 - Evaluation and extension of SysMLv2 for quality traceability](#4-traceability-integration----sysmlv2)
 * [Content organisation](#content-organisation)
 
 ## General info
@@ -24,7 +25,6 @@ AI, with a scrutiny on the potential such techniques could bring to AI-enabled s
 
 It contains the description of the state-of-the-art, a linguistic metamodel, and a feature model of 
 traceability research and industrial applications.
-
 
 ### 2. Traceability language -- Definition and editor
 This document corresponds to Deliverable 2. The core 
@@ -50,8 +50,8 @@ More specifically, this deliverable is made of
  * the integration of Tracea into Capra and the impact of the consecutive changes. 
  * we show the main conceptual and technical limitations of Capra. 
 
-
-
+### 4. Traceability integration -- SysMLv2
+**On going** Integration of Tracea into the [Eclipse pilot implementation of SysMLv2](https://github.com/Systems-Modeling/SysML-v2-Pilot-Implementation). 
 
 ## Content organisation
 
