@@ -54,23 +54,28 @@ More specifically, this deliverable is made of
 
 
 ## Content organisation
- * Folder [`deliverables`](https://github.com/modelia/tracea/tree/master/deliverables) contains the three report for deliverables together with their respective Latex source code
-    1. Survey of traceability techniques with a focus on their applications in AI-based software techniques
-    2. Traceability language -- Definition and editor
-    3. Traceability solutions -- Evaluation and extension
 
-* Folder [`dsl-tracea`](https://github.com/modelia/tracea/tree/master/dsl-tracea) contains the software artefacts for the second deliverable : 
+* Folder [`dsl-tracea`](https://github.com/modelia/tracea/tree/master/1-dsl-tracea) contains the software artefacts for the second deliverable : 
     * Tracea metamodel (ECore, OCL, Xtext grammar)
     * Tracea Xtext plugin for Eclipse (IDE plugin projects)
     * The running examples explained in the report (Transclusion)
     
- * Folder [`capra-integration`](https://github.com/modelia/tracea/tree/master/capra-integration) contains the software artefacts designed and implemented in the third deliverable
+ * Folder [`capra-integration`](https://github.com/modelia/tracea/tree/master/2-capra-integration) contains the software artefacts designed and implemented in the third deliverable
     * Commit [`d6c681af722767d8c447d8389e3f8d302e23d747`](https://github.com/modelia/tracea/commit/d6c681af722767d8c447d8389e3f8d302e23d747) reports the initial addition of Capra's source code 
     * Commit [`62d395559f0bab3950b6d8b7382427fe8022f22e`](https://github.com/modelia/tracea/commit/62d395559f0bab3950b6d8b7382427fe8022f22e) reports the minimal modification of Capra to integrate a confidence value for trace links
     * Commit [`830418d29e5acab9c547323b3d8addeddfd28e99`](https://github.com/modelia/tracea/commit/830418d29e5acab9c547323b3d8addeddfd28e99) reports the modification necessary to use the confidence value in the matrix viewer
     * Commit [`ee82ba268c741e3913266d3c21601806d6c9f0c5`](https://github.com/modelia/tracea/commit/ee82ba268c741e3913266d3c21601806d6c9f0c5) reports the modification necessary to use the confidence value in the PlantUML viewer
     * Commit [`3ec97548bc766459ebaa351fc672cf64ab6f1ccc`](https://github.com/modelia/tracea/commit/3ec97548bc766459ebaa351fc672cf64ab6f1ccc) reports the modification to augment the definition of confidence with values, Evidences and Agents
+
+* Folder [`sysml-integration`](https://github.com/modelia/tracea/tree/master/3-sysml-integration) contains the software artefacts for the forth deliverable : 
+    * SysML Ecosystem cheat sheet 	
+    * SysML metamodel augmented with Tracea 
+
+ * Folder [`deliverables`](https://github.com/modelia/tracea/tree/master/8-deliverables) contains the three report for deliverables together with their respective Latex source code
+    1. Survey of traceability techniques with a focus on their applications in AI-based software techniques
+    2. Traceability language -- Definition and editor
+    3. Traceability solutions -- Evaluation and extension
  
- * Folder [`publications`](https://github.com/modelia/tracea/tree/master/publications) contains publications (ongoing and published)
+ * Folder [`publications`](https://github.com/modelia/tracea/tree/master/9-publications) contains publications (ongoing and published)
     * A Survey-Driven Feature Model for Traceability
     * (Not) Yet Another Metamodel
