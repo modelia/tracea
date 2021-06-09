@@ -468,7 +468,7 @@
       <eAnnotations source="subsets" references="#//Namespace/membership"/>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Element">
+  <eClassifiers xsi:type="ecore:EClass" name="Element" eSuperTypes="#//TraceableElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="&lt;p>An Element is a constituent of a model that is uniquely identified relative to all other Elements. It can have Relationships with other Elements. Some of these Relationships might imply ownership of other Elements, which means that if an Element is deleted from a model, then so are all the Elements that it owns.&lt;/p>&#xA;&#xA;name = if owningNamespace = null then null&#xA;else owningNamespace.nameOf(self) endif&#xA;ownedElement = ownedRelationship.ownedRelatedElement&#xA;owner = owningRelationship.owningRelatedElement&#xA;documentationComment = documentation.documentingComment&#xA;qualifiedName =&#xA;    if owningNamespace = null then null&#xA;    else if owningNamespace.owner = null then escapedName()&#xA;    else if owningNamespace.qualifiedName = null then null&#xA;    else owningNamespace.qualifiedName + &quot;::&quot; + escapedName()&#xA;    endif endif endif&#xA;documentation = ownedAnnotation->selectByKind(Documentation)&#xA;ownedAnnotation = ownedRelationship->selectByKind(Annotation)->&#xA;    select(a | a.annotatedElement = self)&#xA;effectiveName()"/>
     </eAnnotations>
@@ -594,6 +594,17 @@
       <eAnnotations source="subsets" references="#//Element/aliasId"/>
     </eStructuralFeatures>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TraceableElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="creationTimestamp" eType="ecore:EDataType types.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modifiedTimestamp" eType="ecore:EDataType types.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="deletionTimestamp" eType="ecore:EDataType types.ecore#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Trace">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="firstlevels" upperBound="-1"
+        eType="#//TracingRelationship" eOpposite="#//TracingRelationship/startingTrace"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="links" upperBound="-1"
+        eType="#//TracingRelationship" eOpposite="#//TracingRelationship/trace"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Membership" eSuperTypes="#//Relationship">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="&lt;p>Membership is a Relationship between a Namespace and an Element that indicates the Element is a &lt;code>member&lt;/code> of (i.e., is contained in) the Namespace. The Membership may define a &lt;code>memberName&lt;/code> for the Element as a &lt;code>member&lt;/code> of the Namespace and specifies whether or not the Element is publicly visible as a &lt;code>member&lt;/code> of the Namespace from outside the Namespace. The Element may be owned by the Namespace, in which case it is an &lt;code>ownedMember&lt;/code> of the Namespace, or it may be referenced but not owned, in which case it is effectively individually imported into the Namespace.&lt;/p>&#xA;&#xA;if memberName &lt;> null then&#xA;    memberName&#xA;else&#xA;    memberElement.effectiveName&#xA;endif"/>
@@ -702,6 +713,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TracingRelationship">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="confidenceValues" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="startingTrace" upperBound="-1"
+        eType="#//Trace" eOpposite="#//Trace/firstlevels"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trace" upperBound="-1"
+        eType="#//Trace" eOpposite="#//Trace/links"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CustomTracingRelationship" eSuperTypes="#//Relationship"/>
   <eClassifiers xsi:type="ecore:EEnum" name="VisibilityKind">
