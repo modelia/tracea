@@ -1,4 +1,4 @@
-# SysML Ecosystem
+# Indicative notes about the SysML ecosystem
 
 ## Architecture
 
@@ -11,6 +11,12 @@ Namespaces, enabling an Element to have a different name when imported. [KerML d
 
 `Element Annotations Namespaces (& Relationships !)`
 *No semantics*
+
+`Annotations`: *An Annotation is a Relationship between an Element and an AnnotatingElement that provides additional information about the Element being annotated. Each Annotation is between a single AnnotatingElement and a single Element being annotated, but an AnnotatingElement may have multiple Annotation Relationships with different annotatedElements, and any Element may have multiple Annotations.*
+
+*An `AnnotatingElement` is an Element that is used to provide additional information on other elements. An
+Annotation is a Relationship between an annotating element and an element that is being described. An annotated
+element can annotate multiple elements, and each element can have multiple annotations.*
 
 ### Core
 
@@ -30,6 +36,8 @@ from processes (how things change over time). Structural elements include Classe
 Associa    tions between them, and Connectors (usages of Associations). [KerML doc]
 
 `Classification Structures Assocations ...`
+
+*Metadata is additional information on `Elements` of a model that does not have any instance-level semantics (in the sense described in 7.3.1.1). In general, metadata is specified in `AnnotatingElements` (including `Comments` and `TextualRepresentations`) attached to `annotatedElements` using `Annotation` `Relationships` (see 7.2.3). An `AnnotatingFeature` is a kind of `AnnotatingElement` that allows for the definition of structured metadata with modeler-specified attributes. This may be used, for example, to add tool-specific information to a model that can be relevant to the function various kinds of tooling that may use or process a model, or domain-specific information relevant to a certain project or organization. An `AnnotatingFeature` is syntactically a `Feature` (see 7.3.4) that is typed by a single `DataType` (see 7.4.2), with implicit multiplicity 1..1. If the `DataType` has no features, then the `AnnotatingFeature` simply acts as a userdefined syntactic tag on the `annotatedElement`. If the `DataType` has features, then the AnnotatingFeature must have nested features that redefine each of the features of its type, binding them to the results of model-level evaluable Expressions (see 7.4.8), which provide the values of the specified attributive metadata for the annotatedElement.*
 
 ### System
 
@@ -57,4 +65,4 @@ Libraries offers a set of semantically rich instances of the languages.
 
 - `KerML Library` & `SysML Library` contains example of usages of textual representation related to respective languages.
 
-
+### Metadata
