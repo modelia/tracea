@@ -1,0 +1,122 @@
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray45}{gray}{.45}
+\definecolor{gray20}{gray}{.20}
+
+\definecolor{codeblue}{rgb}{0.2,0.6,.6}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{black}\textbf,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    morekeywords={confidences,artefacts,fragments,relationshiptypes,relationshiptype,DomainType,EngineeringType,Trace,tracelinks,NodeTraceLink,LeafTraceLink,source,target,successors,referee,confidence,agents,HumanAgent,MachineAgent,Confidence,value,evidences,AIEvidence,agency,algorithmUsed,parameters,executionDate,trainingResults,impactedElements}
+}
+\lstdefinestyle{mystylesysml}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codepurple}\textit,
+    morecomment=[s][\color{codegreen}]{/**}{*/},
+    morecomment=[s][\color{codegreen}]{/*}{*/},
+    keywordstyle=\color{codepurple}\textbf,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codegray},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    linewidth=14cm,
+    xleftmargin=4.2cm,
+    frame=shadowbox,
+    rulesepcolor=\color{blue},
+   morekeywords={confidences,artefacts,fragments,relationshiptypes,relationshiptype,Trace,tracelinks,NodeTraceLink,LeafTraceLink,source,target,successors,referee,agents,value,evidences,agency,algorithmUsed,parameters,executionDate,trainingResults,impactedElements,from,trace,class,feature,to,impacts,package,attribute,def,import,metadata,about,assert,constraint,connect,connection,to}
+}
+
+
+\lstdefinestyle{mystylexcore}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{codeblue}\textbf,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    morekeywords={class,contains,abstract,extends,\{,\},\[,\],refers,derived,String,get,int,double},
+    linewidth=14.5cm,
+    xleftmargin=2.3cm
+}
+
+\lstdefinestyle{mystyleocl}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{black}\textbf,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    morekeywords={context,inv,includesAll,collect,self}
+}
+
+\lstdefinestyle{mystylextext}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{black}\textbf,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    % breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    morekeywords={context,inv,includesAll,collect,self},
+    linewidth=14cm,
+    xleftmargin=0cm
+}
