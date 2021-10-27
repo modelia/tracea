@@ -1,7 +1,7 @@
 \section{Background: Trace\textit{a} and SysML}\label{sec:background}
-% \sideboxbegin{o}
-% Cette section présente les technologies existantes (SysML et Trace\textit{a}) puis les besoins relatifs à une traçabilité de qualité (confidence et justification).
-% \sideboxend
+\sideboxbegin{o}
+This section introduces existing techniques we build upon (SysML and Trace\textit{a}) then presents high level requirements for trustable traceability.
+\sideboxend
 
 % Nous avons développé Trace\textit{a} pour combler les limitations éprouvées par les langages dédiés à la traçabilité. Dans la littérature spécialisée, les \textit{traces} et leurs éléments atomiques, les \textit{liens}, sont considérés comme des éléments dont la qualité n'est jamais remise en question.
 % \ughu{Les liens sont cependant volatiles: dû à la volatilité des systèmes logiciels, mais aussi à l'utilisation grandissante de techniques non-déterministes pour l'identification des liens. }
@@ -12,37 +12,35 @@
 
 
 
-This section presents the Trace\textit{a} metamodel and in particular the functionalities for evaluating the confidence of trace links.   
+This section first introduces the Trace\textit{a} metamodel \cite{batot2021-not-another-metamodel} and presents in particular the functionalities for evaluating the confidence of trace links.   
 
-Ensuite, une introduction à l'architecture KerML/SysMLv2 établi les notions préliminaires nécessaires à la compréhension du projet. L'utilisation de SysML ne requiert pas de connaissance particulières concernant KerML (dixit le SysML v2 Submission Team (SST)). Il nous semble cependant réducteur d'appréhender un langage sans en aborder les fondements. Nous les présenterons et nous verrons comment l'intégration de Trace\textit{a} peut et doit également être envisagée au niveau KerML.
-
-Finally it describes the high level requirements for quality traceability as defined in previous deliverables.
+Then, an introduction to the KerML / SysMLv2 architecture establishes the preliminary notions necessary for understanding the project. The use of SysML does not require special knowledge of KerML (according to the SysML v2 Submission Team (SST)). However, it seems reductive to understand a language without addressing its foundations. We will see how the integration of Trace\textit{a} can and should also be considered at the KerML level.
+Finally this section describes the high level requirements for quality traceability as defined in previous deliverables.
 
 % Le métamodèle Tracea a été développé pour pallier aux limitations des langages (et autres modélisations) de la traçabilité pour le logiciel.
 
-\subsection{Existant}
+\subsection{Existing}
+\subsubsection{Trace\textit{a}}
 \begin{figure}[ht]     
 	\centering
-	\includegraphics[width=.7\linewidth]{images/core.jpg}
+	\includegraphics[width=.8\linewidth]{images/core.jpg}
 	\caption{Core of Trace\textit{a}: Artefacts and (Trace)Links.}
 	\label{fig:mm-core}
 \end{figure}
-\subsubsection{Trace\textit{a}}
 
 
-Figure \Fig{fig:mm-core} presents the core of the Trace\textit{a} language. At its center we find the notions of \textit{Trace}, \textit{link} (TraceLink), \textit{artefact} and \textit{fragment}. Links make up the traces and connect \textit{fragments} of the system to each other. We also notice the abstract nature of the Artefacts and Fragments. These are by definition volatile and must be redefined for each project or company to be best suited to concrete tracing needs.
+\Fig{fig:mm-core} presents the core of the Trace\textit{a} language. At its center we find the notions of \textit{Trace}, \textit{link} (TraceLink), \textit{artefact} and \textit{fragment}. Links make up the traces and connect \textit{fragments} of the system to each other. We also notice the abstract nature of the Artefacts and Fragments. These are by definition volatile and must be redefined for each project or company to be best suited to concrete tracing needs.
 
-More precisely, the \Fig{fig:mm-explainability} shows an extract from Trace\textit{a} specialized in the qualification of traces and links. The concepts of confidence (applied to Trace and TraceLink), as well as the creation, modification and deletion dates of the trace elements are present. These concepts make it possible to put in contact the evolution of the elements, their agent in charge (human or not) and the level of confidence linked to the traces and links. 
+\Fig{fig:mm-explainability} shows an extract from Trace\textit{a} specialized in the qualification of traces and links. The concepts of confidence (applied to Trace and TraceLink), as well as the creation, modification and deletion dates of the trace elements are present. These concepts make it possible to put in contact the evolution of the elements, their agent in charge (human or not) and the level of confidence linked to the traces and links. 
 
 \begin{figure}[h]     
 	\centering
 	\includegraphics[width=.8\linewidth]{images/explainability.jpg}
-	\caption{Excerpt of Trace\textit{a} dedicated to trace and link quality.}
+	\caption{Excerpt of Trace\textit{a} dedicated to the quality of trace and link.}
 	\label{fig:mm-explainability}
 \end{figure}
 
-% Chaque trace (et chaque lien) possède éventuellement un attribut de confidence permettant de valuer le niveau de certitude quant à l'existence de celle-ci (de celui-ci). 
-Trace \textit{a} allows the attribution to the traces of a set of supporting elements (Evidence) allowing their confidence values to be justified. The execution parameters of the automated identification means (rules or learning algorithms) are thus available for consultation after their execution. Depending on the nature of the means of identification employed, these are an identification rule, a simple textual annotation, or the details of the training configuration and execution of a learning algorithm (classes at the bottom right corner). The evidence may also point to supporting elements implicated in the calculation and justification of the level of confidence.
+Moreover, Trace\textit{a} allows the attribution to the traces of information (evidences) allowing their confidence values to be justified. Depending on the nature of the means of identification employed, these are an identification rule, a simple textual annotation, or the details of the training configuration and execution of a learning algorithm (classes at the bottom right corner). The execution parameters of the automated identification means (rules or learning algorithms) are thus available for consultation after their execution. The evidence may also point to supporting elements implicated in the calculation and justification of the level of confidence.
 
 
 % \begin{figure}[h]     
@@ -56,9 +54,9 @@ Trace \textit{a} allows the attribution to the traces of a set of supporting ele
 
 
 \subsubsection{The KerML/SysMLv2 ecosystem.}
-\Fig{fig:kermlsysml} shows the architecture of the KerML / SysML ecosystem. The Kernel Modeling Language (KerML) formally defines a set of concepts allowing the development of languages specific to a given activity. It is defined from three main classes: elements (Element), links (Relationship) and annotations (Annotation). These classes form the \textit{root} elements of the language (Root syntax) and are purely syntactic: they have no semantics related to modeling. These are linguistic elements allowing the construction of complex structures.
-  
-KerML has language elements defined at the syntax core level, themselves reusing the root language elements to allow the use of constructs specific to system modeling. These classes are redefined to establish the precise elements of modeling: relative to the construction of sequence diagrams, classes, activity, and the whole panoply of UML diagrams among others. (For more details, see the KerML metamodel specification document ~\cite{kerML}).
+\Fig{fig:kermlsysml} shows the architecture of the KerML / SysML ecosystem. The Kernel Modeling Language (KerML) formally defines a set of concepts allowing the development of languages specific to a given activity. 
+% It is derived from three main classes: elements (Element), links (Relationship) and annotations (Annotation). These classes form the \textit{root} elements of the language (Root syntax) and are purely syntactic: they have no semantics related to modeling. These are linguistic elements allowing the construction of complex structures.
+KerML has language elements defined at the syntax core level, themselves reusing the root language elements to allow the use of constructs specific to system modeling. These classes are redefined to establish the precise elements of modeling: relative to the construction of sequence diagrams, classes, activity, and the whole panoply of UML diagrams, among others. (For more details, see the KerML metamodel specification document ~\cite{kerML}).
 
 \begin{figure}[ht]     
 	\centering
@@ -90,7 +88,7 @@ Finally, it is important to note that concrete elements of KerML cannot be insta
 % \end{descriptioncompact}
 
 \subsubsection{Elements, Relationships, and Annotations}
-Tel que mentionné précédemment, KerML s'organise autour de trois concepts fondamentaux~: les Elements, les Relationships et les Annotations. Les deux premiers forment la structure du langage et le troisième permet une approche orthogonale à celle-ci. 
+KerML is organized around three fundamental concepts: Elements, Relationships and Annotations. The first two form the structure of the language and the third allows an orthogonal approach to it. Every element in SysML derives from these concepts.
 
 \begin{figure}[ht]     
 	\centering
@@ -108,10 +106,10 @@ For information purposes, Figures~\ref{fig:eltshierarchy} and~\ref{fig:relhierar
 	\label{fig:annot}
 \end{figure}
 
-On the other hand, an Annotation is a relationship between an element and an AnnotatingElement that provides additional information about the annotated element. Each annotation falls between a single AnnotatingElement and a single element being annotated, but an AnnotatingElement can have multiple annotation relationships with different annotatedElements, and any element can have multiple annotations (KerML Specification, p. 37~\cite{kerML}).
+On the other hand, "an Annotation is a relationship between an element and an AnnotatingElement that provides additional information about the annotated element. Each annotation falls between a single AnnotatingElement and a single element being annotated, but an AnnotatingElement can have multiple annotation relationships with different annotatedElements, and any element can have multiple annotations." (KerML Specification, p. 37~\cite{kerML}).
 
 In the case of traceability, annotations can be used to identify types of links and tag \textit{relevant} links (\textit{i.e.,} according to the specific use we want to make of them). We will speak of an \textit{orthogonal} approach by annotations. 
-
+\vspace{5em}
 \begin{figure}[ht]     
 	\centering
 	\includegraphics[width=.99\linewidth]{images/kerml-element.png}
@@ -134,7 +132,6 @@ In the case of traceability, annotations can be used to identify types of links 
 % \end{descriptioncompact}
 
 
-\pagebreak
 \subsection{Goals}
 The needs in terms of traceability have been established in Deliverable 1 ~ \ cite {deliverable1}. We summarize here the high level needs to satisfy a quality traceability, \textit{i.e.,} allowing to qualify quantitatively and qualitatively the identified links useful for the tracing.
     

@@ -51,7 +51,8 @@ More specifically, this deliverable is made of
  * we show the main conceptual and technical limitations of Capra. 
 
 ### 4. Traceability integration -- SysMLv2
-**On going** Integration of Tracea into the [Eclipse pilot implementation of SysMLv2](https://github.com/Systems-Modeling/SysML-v2-Pilot-Implementation). 
+This report presents the integration of the concepts related to traceability developed 
+during these first three deliverables within SysMLv2. And more precisely, modification target the [Eclipse pilot implementation of SysMLv2](https://github.com/Systems-Modeling/SysML-v2-Pilot-Implementation). 
 
 ## Content organisation
 
@@ -75,6 +76,7 @@ More specifically, this deliverable is made of
     1. Survey of traceability techniques with a focus on their applications in AI-based software techniques
     2. Traceability language -- Definition and editor
     3. Traceability solutions -- Evaluation and extension
+    4. Trustable traceability for SysMLv2
  
  * Folder [`publications`](https://github.com/modelia/tracea/tree/master/9-publications) contains publications (ongoing and published)
     * A Survey-Driven Feature Model for Traceability
