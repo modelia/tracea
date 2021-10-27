@@ -44,15 +44,25 @@ traceability artefacts.
 In this third deliverable, we integrate parts of Tracea to extend and complete Capra.
 
 More specifically, this deliverable is made of
- * a protocol to evaluate the relevance and the robustness of solutions to traceability 
- * steps to extend tracers with quality aspects for trace links. 
- * the application of the protocol to Capra through our manual investigation. 
- * the integration of Tracea into Capra and the impact of the consecutive changes. 
- * we show the main conceptual and technical limitations of Capra. 
+ * a protocol to evaluate the relevance and the robustness of solutions to traceability.
+ * steps to extend tracers with quality aspects for trace links.
+ * the application of the protocol to Capra through our manual investigation.
+ * the integration of Tracea into Capra and the impact of the consecutive changes.
+ * we show the main conceptual and technical limitations of Capra.
 
 ### 4. Traceability integration -- SysMLv2
 This report presents the integration of the concepts related to traceability developed 
-during these first three deliverables within SysMLv2. And more precisely, modification target the [Eclipse pilot implementation of SysMLv2](https://github.com/Systems-Modeling/SysML-v2-Pilot-Implementation). 
+during these first three deliverables within SysMLv2. And more precisely, modification target the [Eclipse pilot implementation of SysMLv2](https://github.com/Systems-Modeling/SysML-v2-Pilot-Implementation).
+
+In particular, this deliverable contains
+ * an introduction to the KerML / SysML ecosystem with a presentation of high level concepts.
+ * the presentation of the different strategies we explored to integrate Tracea into this ecosystem.
+    * root level adaptations
+    * a type of annotation dedicated to tracing
+    * a new type of annotating feature
+    * a feature library for trustable traceability
+ * the definition of a metadata feature library for trustable traceability.
+
 
 ## Content organisation
 
