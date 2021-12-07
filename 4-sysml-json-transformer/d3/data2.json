@@ -1,0 +1,31 @@
+
+{ "links": [ 
+    { "id": "l01", "name": "link01", "type": "TypeE", "group": 0, "source_id": "e01", "target_id": "e03", "confidence": 100 },
+    { "id": "l02", "name": "link02", "type": "TypeE", "group": 0, "source_id": "e02", "target_id": "e03", "confidence": 80 }, 
+    { "id": "l03", "name": "link03", "type": "TypeE", "group": 0, "source_id": "e03", "target_id": "e04", "confidence": 50 }, 
+    { "id": "l04", "name": "link04", "type": "TypeE", "group": 0, "source_id": "e03", "target_id": "e05", "confidence": 10 }, 
+    { "id": "l05", "name": "link05", "type": "TypeA", "group": 1, "source_id": "e04", "target_id": "e06", "confidence": 100 }, 
+    { "id": "l06", "name": "link06", "type": "TypeA", "group": 1, "source_id": "e04", "target_id": "e07", "confidence": 20 }, 
+    { "id": "l07", "name": "link07", "type": "TypeA", "group": 1, "source_id": "e05", "target_id": "e08", "confidence": 30 }, 
+    { "id": "l08", "name": "link08", "type": "TypeA", "group": 1, "source_id": "e07", "target_id": "e09", "confidence": 50 }, 
+    { "id": "l09", "name": "link09", "type": "TypeA", "group": 1, "source_id": "e08", "target_id": "e10", "confidence": 100 }, 
+    { "id": "l10", "name": "link10", "type": "TypeA", "group": 1, "source_id": "e08", "target_id": "e11", "confidence": 100 },
+	
+	   { "id": "l11", "name": "link11", "type": "TypeA", "group": 1, "source_id": "e06", "target_id": "e07", "confidence": 50 } 
+
+],  
+   "nodes": [      
+    { "id": "e01", "name": "elt01", "type": "Req", "size": 100, "group":0 },
+    { "id": "e02", "name": "elt02", "type": "Req", "size": 100, "group":0},
+    { "id": "e03", "name": "elt03", "type": "Req", "size": 100, "group":0 },
+    { "id": "e04", "name": "elt04", "type": "Design", "size": 100, "group":1 },
+    { "id": "e05", "name": "elt05", "type": "Design", "size": 100, "group":1 },
+    { "id": "e06", "name": "elt06", "type": "Design", "size": 100, "group":1 },
+    { "id": "e07", "name": "elt07", "type": "Design", "size": 100, "group":1 },
+    { "id": "e08", "name": "elt08", "type": "Code", "size": 100, "group":2 },
+    { "id": "e09", "name": "elt09", "type": "Code", "size": 100, "group":2 },
+    { "id": "e10", "name": "elt10", "type": "Code", "size": 100, "group":2 },
+    { "id": "e11", "name": "elt11", "type": "Code", "size": 100, "group":2 },
+    { "id": "e12", "name": "elt12", "type": "Code", "size": 100, "group":2 }
+]
+}

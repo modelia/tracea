@@ -1,0 +1,24 @@
+{
+ "links": [
+  { "id": "c385db34-ef40-422a-a33c-26b2f7f5e522", "name": "rq1ToWing", "type": "Untyped", "source_id": "917e74eb-79c9-4eb1-83a4-4f0d9e8ca2ac", "target_id": "13506a84-7c51-409a-9c69-a4e9496e8f2c", "confidence": 100.0,"group": 0},
+  { "id": "1ac10075-216e-470b-a970-0c53c47e3aea", "name": "eng2front", "type": "typeC", "source_id": "13506a84-7c51-409a-9c69-a4e9496e8f2c", "target_id": "4b82186b-2863-447a-ba57-31d363a7613d", "confidence": 55.00000000000001,"group": 1},
+  { "id": "1ab75482-37a1-4adf-9581-16098d975bc5", "name": "frAx2frWi", "type": "typeE", "source_id": "4b82186b-2863-447a-ba57-31d363a7613d", "target_id": "7b4bb745-b939-44a5-985f-3ba22d005919", "confidence": 65.0,"group": 2},
+  { "id": "345719e4-0bd4-41e0-ae1d-50a646f8d0d6", "name": "reAx2reWi", "type": "Untyped", "source_id": "aa283dbb-eeb4-4d1d-a312-a74704f23130", "target_id": "43c90600-8574-4cd4-ade9-48d57fecb05e", "confidence": 100.0,"group": 0},
+  { "id": "454265b6-9b82-411b-98ed-d6d39e80ea5a", "name": "bod2bat", "type": "Untyped", "source_id": "67714c12-203c-4d06-b349-7a5f3eb9dddf", "target_id": "aeeaebd8-bab9-4a84-b186-502cd08db2a1", "confidence": 100.0,"group": 0},
+  { "id": "5709be8e-7c06-4ddb-8956-22db96777856", "name": "bod2eng", "type": "Untyped", "source_id": "67714c12-203c-4d06-b349-7a5f3eb9dddf", "target_id": "13506a84-7c51-409a-9c69-a4e9496e8f2c", "confidence": 100.0,"group": 0},
+  { "id": "358e3469-35a7-4593-bdb6-cd55c55a8b7a", "name": "bod2frAx", "type": "Untyped", "source_id": "67714c12-203c-4d06-b349-7a5f3eb9dddf", "target_id": "4b82186b-2863-447a-ba57-31d363a7613d", "confidence": 100.0,"group": 0},
+  { "id": "fa7a09ee-81c1-41c9-ae13-4938d89d3e3b", "name": "bod2reAx", "type": "Untyped", "source_id": "67714c12-203c-4d06-b349-7a5f3eb9dddf", "target_id": "aa283dbb-eeb4-4d1d-a312-a74704f23130", "confidence": 100.0,"group": 0},
+  { "id": "30197ea8-58a9-4a6b-ad25-1b108f3fd5db", "name": "eng2bat_Typed", "type": "typeE", "source_id": "a7444282-6733-4a75-809d-632fdaa1200b", "target_id": "6eece460-ad95-4830-8b90-0648a12896c2", "confidence": 100.0,"group": 2} 
+], "nodes": [
+  { "id": "aeeaebd8-bab9-4a84-b186-502cd08db2a1", "name": "eDrone.battery", "type": "Feature","size": 100,"group": 1},
+  { "id": "a7444282-6733-4a75-809d-632fdaa1200b", "name": "eDrone.battery.powerOut", "type": "Component","size": 100,"group": 2},
+  { "id": "67714c12-203c-4d06-b349-7a5f3eb9dddf", "name": "eDrone.body", "type": "Feature","size": 100,"group": 1},
+  { "id": "13506a84-7c51-409a-9c69-a4e9496e8f2c", "name": "eDrone.engine", "type": "Feature","size": 100,"group": 1},
+  { "id": "6eece460-ad95-4830-8b90-0648a12896c2", "name": "eDrone.engine.powerIn", "type": "Component","size": 100,"group": 2},
+  { "id": "4b82186b-2863-447a-ba57-31d363a7613d", "name": "eDrone.frontAxis", "type": "Feature","size": 100,"group": 1},
+  { "id": "7b4bb745-b939-44a5-985f-3ba22d005919", "name": "eDrone.frontWing", "type": "Feature","size": 100,"group": 1},
+  { "id": "aa283dbb-eeb4-4d1d-a312-a74704f23130", "name": "eDrone.rearAxis", "type": "Feature","size": 100,"group": 1},
+  { "id": "43c90600-8574-4cd4-ade9-48d57fecb05e", "name": "eDrone.rearWing", "type": "Feature","size": 100,"group": 1},
+  { "id": "917e74eb-79c9-4eb1-83a4-4f0d9e8ca2ac", "name": "eDroneMaxSpeed", "type": "RequirementUsage","size": 100,"group": 0} 
+]
+}
