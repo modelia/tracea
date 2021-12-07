@@ -12,13 +12,13 @@
   * [D4 - Evaluation and extension of SysMLv2 for quality traceability](#4-traceability-integration----sysmlv2)
   * [D5 - Visualizable and propagable SysMLv2 traces for metadata analysis](#5-traceability-visualization-and-propagation----SysMLv2)
 * [Software artefact](#software-artefact)
-  * [Tracea DSL](#folder-1-dsl-tracea)
-  * [Integration to Capra](#folder-2-capra-integration)
-  * [Integration to SysML](#folder-3-sysml-integration)
-  * [Propagation and metdata analysis](#folder-4-sysml-json-transformer)
+  * [Tracea DSL](#1-dsl-tracea)
+  * [Integration to Capra](#2-capra-integration)
+  * [Integration to SysML](#3-sysml-integration)
+  * [Propagation and metdata analysis](#4-sysml-json-transformer)
 * [Deliverables and publications](#deliverables-and-publications)
-  * [Deliverables](#folder-8-deliverables)
-  * [Publications](#folder-9-publications)
+  * [Deliverables](#8-deliverables)
+  * [Publications](#9-publications)
 
 ## General info
 
@@ -96,7 +96,7 @@ _(Note that the period has seen the publication of two papers. They can be found
 
 ## Software artefacts
 
-### Folder [`1-dsl-tracea`](https://github.com/modelia/tracea/tree/master/1-dsl-tracea)
+### [`1-dsl-tracea`](https://github.com/modelia/tracea/tree/master/1-dsl-tracea)
 
 contains the software artefacts for the second deliverable:
 
@@ -104,7 +104,7 @@ contains the software artefacts for the second deliverable:
 * Tracea Xtext plugin for Eclipse (IDE plugin projects)
 * The running examples explained in the report (Transclusion)
 
-### Folder [`2-capra-integration`](https://github.com/modelia/tracea/tree/master/2-capra-integration)
+### [`2-capra-integration`](https://github.com/modelia/tracea/tree/master/2-capra-integration)
 
 contains the software artefacts designed and implemented in the third deliverable:
 
@@ -114,7 +114,7 @@ contains the software artefacts designed and implemented in the third deliverabl
 * Commit [`ee82ba268c741e3913266d3c21601806d6c9f0c5`](https://github.com/modelia/tracea/commit/ee82ba268c741e3913266d3c21601806d6c9f0c5) reports the modification necessary to use the confidence value in the PlantUML viewer
 * Commit [`3ec97548bc766459ebaa351fc672cf64ab6f1ccc`](https://github.com/modelia/tracea/commit/3ec97548bc766459ebaa351fc672cf64ab6f1ccc) reports the modification to augment the definition of confidence with values, Evidences and Agents
 
-### Folder [`3-sysml-integration`](https://github.com/modelia/tracea/tree/master/3-sysml-integration)
+### [`3-sysml-integration`](https://github.com/modelia/tracea/tree/master/3-sysml-integration)
 
 contains the software artefacts for the forth deliverable:
 
@@ -122,7 +122,7 @@ contains the software artefacts for the forth deliverable:
 * SysML Tracea metadata feature library (SysML model and JupiterLab bloc note)
 * Example case with both Enums and String trace types
 
-### Folder [`4-sysml-json-transformer`](https://github.com/modelia/tracea/tree/master/4-sysml-json-transformer)
+### [`4-sysml-json-transformer`](https://github.com/modelia/tracea/tree/master/4-sysml-json-transformer)
 
 contains the software artefacts for the fifth deliverable:
 
@@ -133,7 +133,7 @@ contains the software artefacts for the fifth deliverable:
 
 ## Deliverables and publications
 
-### Folder [`8-deliverables`](https://github.com/modelia/tracea/tree/master/8-deliverables)
+### [`8-deliverables`](https://github.com/modelia/tracea/tree/master/8-deliverables)
 
 contains the reports for deliverables together with their respective Latex source code:
 
@@ -143,7 +143,7 @@ contains the reports for deliverables together with their respective Latex sourc
     4. Trustable traceability for SysMLv2
     5. Visualizable and propagable SysMLv2 traces for metadata analysis
 
-### Folder [`9-publications`](https://github.com/modelia/tracea/tree/master/9-publications)
+### [`9-publications`](https://github.com/modelia/tracea/tree/master/9-publications)
 
 contains publications:
 
