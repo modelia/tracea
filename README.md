@@ -90,6 +90,8 @@ The fifth deliverable contains a tool suite to analysis tracing metadata in SysM
   * a D3-JSon representation to allow a graphical visualization of the tracelinks.
   * an HTML version of the matrix-based representation.
 * A _D3 script_ for graphical (and interactive) representation.
+* A new version of the metadata feature library for String tracetypes
+* An example of usage: _eDrone scenario_
 
 Implementation decisions and details can be found in the report. 
 _(Note that the period has seen the publication of two papers. They can be found in the eponym folder.)_
