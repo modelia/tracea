@@ -10,7 +10,15 @@
   * [D2 - Traceability metamodel for quality tracing](#2-traceability-language----definition-and-editor)
   * [D3 - Evaluation and extension of traceability solutions](#3-traceability-solutions----evaluation-and-extension)
   * [D4 - Evaluation and extension of SysMLv2 for quality traceability](#4-traceability-integration----sysmlv2)
-* [Content organisation](#content-organisation)
+  * [D5 - Visualizable and propagable SysMLv2 traces for metadata analysis](#5-traceability-visualization-and-propagation----SysMLv2)
+* [Software artefact](#software-artefact)
+  * [Tracea DSL](#folder-1-dsl-tracea)
+  * [Integration to Capra](#folder-2-capra-integration)
+  * [Integration to SysML](#folder-3-sysml-integration)
+  * [Propagation and metdata analysis](#folder-4-sysml-json-transformer)
+* [Deliverables and publications](#deliverables-and-publications)
+  * [Deliverables](#folder-8-deliverables)
+  * [Publications](#folder-9-publications)
 
 ## General info
 
@@ -75,36 +83,69 @@ In particular, this deliverable contains
 
 ### 5. Traceability visualization and propagation -- SysMLv2
 
-<span style="color:red"> TO PHRASE </span>
-Here's depicted how we transform a SysMLv2 model written in JSon to extract, visualize and manipulate tracing data.
+The fifth deliverable contains a tool suite to analysis tracing metadata in SysMLv2 models. In particular, three main components have been added to Tracea:
 
-## Content organisation
+* [`TraceaingJSon`]('https://github.com/ebatot/TraceaingJson') is a Java plugin that takes as input an annotated SysMLv2 model written in JSon. This format is obtained through the _export_ magic function of JupyterLab and Eclipse Pilot Implementation environment. As ouput, TraceaingJSon yields:
+  * a Tracea-JSon representation of the SysML model's connections and associated metadata.
+  * a D3-JSon representation to allow a graphical visualization of the tracelinks.
+  * an HTML version of the matrix-based representation.
+* A _D3 script_ for graphical (and interactive) representation.
 
-* Folder [`dsl-tracea`](https://github.com/modelia/tracea/tree/master/1-dsl-tracea) contains the software artefacts for the second deliverable :
-  * Tracea metamodel (ECore, OCL, Xtext grammar)
-  * Tracea Xtext plugin for Eclipse (IDE plugin projects)
-  * The running examples explained in the report (Transclusion)
+Implementation decisions and details can be found in the report. 
+_(Note that the period has seen the publication of two papers. They can be found in the eponym folder.)_
 
-* Folder [`capra-integration`](https://github.com/modelia/tracea/tree/master/2-capra-integration) contains the software artefacts designed and implemented in the third deliverable
-  * Commit [`d6c681af722767d8c447d8389e3f8d302e23d747`](https://github.com/modelia/tracea/commit/d6c681af722767d8c447d8389e3f8d302e23d747) reports the initial addition of Capra's source code
-  * Commit [`62d395559f0bab3950b6d8b7382427fe8022f22e`](https://github.com/modelia/tracea/commit/62d395559f0bab3950b6d8b7382427fe8022f22e) reports the minimal modification of Capra to integrate a confidence value for trace links
-  * Commit [`830418d29e5acab9c547323b3d8addeddfd28e99`](https://github.com/modelia/tracea/commit/830418d29e5acab9c547323b3d8addeddfd28e99) reports the modification necessary to use the confidence value in the matrix viewer
-  * Commit [`ee82ba268c741e3913266d3c21601806d6c9f0c5`](https://github.com/modelia/tracea/commit/ee82ba268c741e3913266d3c21601806d6c9f0c5) reports the modification necessary to use the confidence value in the PlantUML viewer
-  * Commit [`3ec97548bc766459ebaa351fc672cf64ab6f1ccc`](https://github.com/modelia/tracea/commit/3ec97548bc766459ebaa351fc672cf64ab6f1ccc) reports the modification to augment the definition of confidence with values, Evidences and Agents
+## Software artefacts
 
-* Folder [`sysml-integration`](https://github.com/modelia/tracea/tree/master/3-sysml-integration) contains the software artefacts for the forth deliverable :
-  * SysML Ecosystem cheat sheet  
-  * SysML metamodel augmented with Tracea
+### Folder [`1-dsl-tracea`](https://github.com/modelia/tracea/tree/master/1-dsl-tracea)
 
-* Folder [`sysml-json-transformer`](https://github.com/modelia/tracea/tree/master/4-sysml-json-transformer) contains the software artefacts for the fifth deliverable. This folder also contains different version for Tracetypes definition: as _Enums_ or as _String_
+contains the software artefacts for the second deliverable:
 
-* Folder [`deliverables`](https://github.com/modelia/tracea/tree/master/8-deliverables) contains the reports for deliverables together with their respective Latex source code
+* Tracea metamodel (ECore, OCL, Xtext grammar)
+* Tracea Xtext plugin for Eclipse (IDE plugin projects)
+* The running examples explained in the report (Transclusion)
+
+### Folder [`2-capra-integration`](https://github.com/modelia/tracea/tree/master/2-capra-integration)
+
+contains the software artefacts designed and implemented in the third deliverable:
+
+* Commit [`d6c681af722767d8c447d8389e3f8d302e23d747`](https://github.com/modelia/tracea/commit/d6c681af722767d8c447d8389e3f8d302e23d747) reports the initial addition of Capra's source code
+* Commit [`62d395559f0bab3950b6d8b7382427fe8022f22e`](https://github.com/modelia/tracea/commit/62d395559f0bab3950b6d8b7382427fe8022f22e) reports the minimal modification of Capra to integrate a confidence value for trace links
+* Commit [`830418d29e5acab9c547323b3d8addeddfd28e99`](https://github.com/modelia/tracea/commit/830418d29e5acab9c547323b3d8addeddfd28e99) reports the modification necessary to use the confidence value in the matrix viewer
+* Commit [`ee82ba268c741e3913266d3c21601806d6c9f0c5`](https://github.com/modelia/tracea/commit/ee82ba268c741e3913266d3c21601806d6c9f0c5) reports the modification necessary to use the confidence value in the PlantUML viewer
+* Commit [`3ec97548bc766459ebaa351fc672cf64ab6f1ccc`](https://github.com/modelia/tracea/commit/3ec97548bc766459ebaa351fc672cf64ab6f1ccc) reports the modification to augment the definition of confidence with values, Evidences and Agents
+
+### Folder [`3-sysml-integration`](https://github.com/modelia/tracea/tree/master/3-sysml-integration)
+
+contains the software artefacts for the forth deliverable:
+
+* SysML Ecosystem cheat sheet  
+* SysML Tracea metadata feature library (SysML model and JupiterLab bloc note)
+* Example case with both Enums and String trace types
+
+### Folder [`4-sysml-json-transformer`](https://github.com/modelia/tracea/tree/master/4-sysml-json-transformer)
+
+contains the software artefacts for the fifth deliverable:
+
+* JSonTransformer (Jar and link to Git repository)
+* SysML Tracea metadata feature library for Enum and String type representations (SysML models and JupiterLab bloc notes)
+* D3 script for graphical visualization
+* eDrone example (sysml, iynb)
+
+## Deliverables and publications
+
+### Folder [`8-deliverables`](https://github.com/modelia/tracea/tree/master/8-deliverables)
+
+contains the reports for deliverables together with their respective Latex source code:
+
     1. Survey of traceability techniques with a focus on their applications in AI-based software techniques
     2. Traceability language -- Definition and editor
     3. Traceability solutions -- Evaluation and extension
     4. Trustable traceability for SysMLv2
-    5. <span style="color:red"> TO PHRASE </span>Visualizable and propagable SysMLv2 traces
+    5. Visualizable and propagable SysMLv2 traces for metadata analysis
 
-* Folder [`publications`](https://github.com/modelia/tracea/tree/master/9-publications) contains publications (ongoing and published)
-  * A Survey-Driven Feature Model for Traceability
-  * (Not) Yet Another Metamodel, published at [`SAM'21`](https://sdl-forum.org/Events/SAM2021/index.htm)
+### Folder [`9-publications`](https://github.com/modelia/tracea/tree/master/9-publications)
+
+contains publications:
+
+* A Survey-Driven Feature Model for Traceability, submitted at [`FASE'22`](https://etaps.org/2022/fase)
+* (Not) Yet Another Metamodel for Traceability, published at [`SAM'21`](https://sdl-forum.org/Events/SAM2021/index.htm)
