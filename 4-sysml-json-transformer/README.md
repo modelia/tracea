@@ -1,29 +1,18 @@
-# SysML JSon Transformer
 
-* [General info](#general-info)
-* [From SysMLv2 to Tracea-JSon](#from-sysmlv2-to-tracea-json)
-* [JSon transformations for visualization and analysis](#json-transformations-for-visualization-and-analysis)
-* [Tracea-JSon reinjection](#tracea-json-reinjection)
+# 5th Deliverable - SysML-JSon TraceaLibrary
 
-## General info
+## Library
 
-This project offres to take a SysMLv2 model written in JSon as input. It then extracts the metadata features from the model and show them in a prettier (less voluble) syntax representation based on Tracea's functionalities.
+The `TraceaLibrary` alone is available in [`/library`](https://github.com/modelia/tracea/tree/master/4-sysml-json-transformer/library) with two versions of the library: with tracetypes as _strings_ and as _enum literals_.
 
-## From SysMLv2 to Tracea-JSon
+## Library example
 
-* JupyterLab export
-* SysML features' trail for traceability
-  * CU - AF - MF - MFV - Literal
-* JSon pretty-ed
+A usage example of `TraceaLibrary` is given in [`/eDrone_example`](https://github.com/modelia/tracea/tree/master/4-sysml-json-transformer/eDrone_example)
 
-## JSon transformations for visualization and analysis
+## Executable
 
-* Graph visualization with D3
-* Matrix visualization
+`JSonTransformer.jar` is a runnable JAR file of [`JSonTransformer`](https://github.com/ebatot/TraceaingJson). The version of the JAR corresponds to the module [`/TraceaingJSon @ 2109c56`](https://github.com/ebatot/TraceaingJson/tree/2109c562598807b8b7797af3b9dd5f54fc5c5202).
 
-## Tracea-JSon reinjection
+## Transformation example
 
-* Pre-Conditions
-  * named links
-  * separated files
-* Transformation from Tracea-JSon to into SysML
+`JSonTransformer` transforms a SysML model annotated with `TraceaLibrary` into three distinct representations of the model: a graphical representation using D3-JSon, a matrix-based representation and a SysML textual representation. See [`/eDrone_out`](https://github.com/modelia/tracea/tree/master/4-sysml-json-transformer/eDrone_out) for an example.
