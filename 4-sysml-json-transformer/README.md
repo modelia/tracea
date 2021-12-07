@@ -7,7 +7,10 @@ The `TraceaLibrary` alone is available in [`/library`](https://github.com/modeli
 
 ## Library example
 
-A usage example of `TraceaLibrary` is given in [`/eDrone_example`](https://github.com/modelia/tracea/tree/master/4-sysml-json-transformer/eDrone_example)
+A usage example of `TraceaLibrary` is given in [`/eDrone_example`](https://github.com/modelia/tracea/tree/master/4-sysml-json-transformer/eDrone_example).
+
+* [`Graph visualization`](http://www-ens.iro.umontreal.ca/~batotedo/test/d3json.html)
+* [`Matrix-based representation`](http://www-ens.iro.umontreal.ca/~batotedo/test/eDrone_example_out.html)
 
 ## Executable
 
