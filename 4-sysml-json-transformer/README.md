@@ -12,7 +12,7 @@ A usage example of `TraceaLibrary` is given in [`/eDrone_example`](https://githu
 * [`Graph visualization`](http://www-ens.iro.umontreal.ca/~batotedo/tracea/v1/)
 ![Graphical visualization](https://github.com/modelia/tracea/blob/master/4-sysml-json-transformer/visualization1.jpg)
 * [`Matrix-based representation`](http://www-ens.iro.umontreal.ca/~batotedo/tracea/v1/eDrone_example_out.html)
-![`Matrix-based visualization`](https://github.com/modelia/tracea/blob/master/4-sysml-json-transformer/tracematrix1.jpg")
+![`Matrix-based visualization`](https://github.com/modelia/tracea/blob/master/4-sysml-json-transformer/tracematrix1.jpg)
 
 ## Executable - JSonTransformer
 
