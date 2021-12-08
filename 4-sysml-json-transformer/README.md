@@ -9,10 +9,10 @@ The `TraceaLibrary` alone is available in [`/library`](https://github.com/modeli
 
 A usage example of `TraceaLibrary` is given in [`/eDrone_example`](https://github.com/modelia/tracea/tree/master/4-sysml-json-transformer/eDrone_example).
 
-* [`Graph visualization`](http://www-ens.iro.umontreal.ca/~batotedo/tracea/v1/d3json.html)
-![Graphical visualization](http://www-ens.iro.umontreal.ca/~batotedo/tracea/imgs/visualization1.jpg)
+* [`Graph visualization`](http://www-ens.iro.umontreal.ca/~batotedo/tracea/v1/)
+![Graphical visualization](https://github.com/modelia/tracea/blob/master/4-sysml-json-transformer/visualization1.jpg)
 * [`Matrix-based representation`](http://www-ens.iro.umontreal.ca/~batotedo/tracea/v1/eDrone_example_out.html)
-![`Matrix-based visualization`](http://www-ens.iro.umontreal.ca/~batotedo/tracea/imgs/tracematrix1.jpg")
+![`Matrix-based visualization`](https://github.com/modelia/tracea/blob/master/4-sysml-json-transformer/tracematrix1.jpg")
 
 ## Executable - JSonTransformer
 
