@@ -1,115 +1,54 @@
-package eDroneRequirement_Definitions {
-    
-    import eDrone_Definitions::*;
-    
-    requirement def BatteryCapacityReqDef {
-        doc /* The actual battery capacity shall be greater than or equal
-             * to the required capacity. */
-
-            attribute capacityActual : BatteryCapacity;
-            attribute capacityRequired : BatteryCapacity;
-        
-            require constraint{ capacityActual <= capacityRequired }
-    }
-    
-    requirement def MaxSpeedReqDef {
-        doc /* The maximum speed of the vehicle shall be 
-             * not greater than the required maximum speed. */
-            
-            attribute maxSpeedVehicle : Speed;
-            attribute maxSpeedRequired : Speed;
-        
-            require constraint{ maxSpeedVehicle <= maxSpeedRequired }
-    }
-    
-}
-
-package eDrone_Requirements {
+package eDrone_example {
+	import TracingAnnotations::*;	
     
     import eDroneRequirement_Definitions::*;
+    import eDrone_Requirements::*;
     import eDrone_LogicalArchitecture::*;
-    
-    requirement eDroneSpecification {
-        doc /* Requirement Specification of the eDrone  */
-        subject eDrone :>> eDrone;
-        require eDroneBatteryCapacity;
-        require eDroneMaxSpeed;
-    }
-    
-    requirement id 'REQ.B.1' eDroneBatteryCapacity : BatteryCapacityReqDef {
-        subject eDrone :>> eDrone;
-        attribute :>> capacityRequired = 50;
-        attribute :>> capacityActual = eDrone.battery.capacity;
-    }
-    
-    requirement id 'REQ.V.1' eDroneMaxSpeed : MaxSpeedReqDef {
-        subject eDrone :>> eDrone;
-        attribute :>> maxSpeedRequired = 140;
-        attribute :>> maxSpeedVehicle = eDrone.maxSpeed;
-    }
-}
-
-package eDrone_Library {
-        
-    attribute def ElectricEnergy;
-    attribute def BatteryCapacity :> ScalarValues::Integer;
-    attribute def Speed :> ScalarValues::Integer;
-    
-    port def PowerOutPort {
-        out energy : ElectricEnergy;
-    }
-    
-    interface def PowerInterface {
-        end supplierPort : PowerOutPort;
-        end consumerPort : ~PowerOutPort;
-    }
-}
-
-package eDrone_Definitions {
-
-    import eDrone_Library::*;   
-    
-    part def Wing {
-         size : ScalarValues::Integer;
-    }
-    
-    part def Battery {
-         capacity : BatteryCapacity;
-    }
-    
-    part def Engine;
-}
-
-
-package eDrone_LogicalArchitecture {
-       
     import eDrone_Definitions::*;
     import eDrone_Library::*;
+
+    connection eng2front connect eDrone.engine to eDrone.frontAxis;
+    connection frAx2frWi connect eDrone.frontAxis to eDrone.frontWing;
+    connection reAx2reWi connect eDrone.rearAxis to eDrone.rearWing;
     
-    part eDrone {    
-        maxSpeed :Speed = 142;
-        part body;
-        part battery {
-            attribute capacity : BatteryCapacity;
-            port powerOut : PowerOutPort;
-        }
-        part engine {
-            port powerIn : ~PowerOutPort;
-        }
-        part frontAxis;
-        part rearAxis;
-        part frontWing : Wing[2];
-        part rearWing : Wing[2];
-                
-        interface : PowerInterface connect 
-            supplierPort :> battery.powerOut to 
-            consumerPort :> engine.powerIn;
-        connect engine to frontAxis;
-        connect frontAxis to frontWing;
-        connect rearAxis to rearWing;
-        connect body to battery;
-        connect body to engine;
-        connect body to frontAxis;
-        connect body to rearAxis;
-    }
+    connection bod2bat   connect eDrone.body to eDrone.battery;
+    connection bod2eng   connect eDrone.body to eDrone.engine;
+    connection bod2frAx  connect eDrone.body to eDrone.frontAxis;
+    connection bod2reAx  connect eDrone.body to eDrone.rearAxis;
+    
+    connection eng2bat_Typed: EngineToBattery connect supplierPort :> eDrone.battery.powerOut to 
+        consumerPort :> eDrone.engine.powerIn;
+    
+    /* Added trace links */
+    connection refine1 connect eDrone.battery to eDrone.battery.powerOut;
+    connection refine2 connect eDrone.battery to eDrone.engine.powerIn;
+    
+    
+    
+    /* Trace link annotations */
+       metadata m7160: ConfidenceTracing about eng2front { confidence = 0.85;}
+       metadata m1014: TraceType         about eng2front { tracetype = "TypeE";}
+       metadata m7180: ConfidenceTracing about frAx2frWi { confidence = 0.65;}
+       metadata m1089: TraceType         about frAx2frWi { tracetype = "TypeE";}
+       metadata m7150: ConfidenceTracing about reAx2reWi { confidence = 0.75;}
+       metadata m1016: TraceType         about reAx2reWi { tracetype = "TypeE";}
+    
+       metadata m7198: ConfidenceTracing about eng2bat_Typed { confidence = 0.65;}
+       metadata m6614: TraceType         about eng2bat_Typed { tracetype = "TypeA";}
+
+       metadata m1001: TraceType         about bod2bat  { tracetype = "Internal";}
+       metadata m1002: TraceType         about bod2eng  { tracetype = "Internal";}
+       metadata m1003: TraceType         about bod2frAx { tracetype = "Internal";}
+       metadata m1004: TraceType         about bod2reAx { tracetype = "Internal";}
+       // For all internal links: Confidence == 1.00 - implict !
+
+       metadata m7158: ConfidenceTracing about refine1 { confidence = 0.45;}
+       metadata m1018: TraceType         about refine1 { tracetype = "Convenience";}
+       metadata m7157: ConfidenceTracing about refine2 { confidence = 0.55;}
+       metadata m1019: TraceType         about refine2 { tracetype = "Convenience";}
+
+    connection def EngineToBattery{
+        end: PowerOutPort;
+        end: ~PowerOutPort;
+    }    
 }

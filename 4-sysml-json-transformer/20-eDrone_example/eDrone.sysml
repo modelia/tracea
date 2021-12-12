@@ -21,7 +21,6 @@ package eDroneRequirement_Definitions {
         
             require constraint{ maxSpeedVehicle <= maxSpeedRequired }
     }
-    
 }
 
 package eDrone_Requirements {
@@ -47,15 +46,6 @@ package eDrone_Requirements {
         attribute :>> maxSpeedRequired = 140;
         attribute :>> maxSpeedVehicle = eDrone.maxSpeed;
     }
-    
-}
-
-package tracing_MetasConnections {
-    import eDrone_Requirements::*;
-    import eDrone_LogicalArchitecture::*;
-    /* Here we add a simple connection from Req2Feature for the Tracing use case*/
-    
-    connection rq1ToWing connect eDroneMaxSpeed to eDrone.engine;
 }
 
 package eDrone_Library {
@@ -89,7 +79,6 @@ package eDrone_Definitions {
     part def Engine;
 }
 
-
 package eDrone_LogicalArchitecture {
        
     import eDrone_Definitions::*;
@@ -113,20 +102,5 @@ package eDrone_LogicalArchitecture {
         interface : PowerInterface connect 
             supplierPort :> battery.powerOut to 
             consumerPort :> engine.powerIn;
-        /*connection eng2front connect engine to frontAxis;
-        connection frAx2frWi connect frontAxis to frontWing;
-        connection reAx2reWi connect rearAxis to rearWing;
-        connection bod2bat   connect body to battery;
-        connection bod2eng   connect body to engine;
-        connection bod2frAx  connect body to frontAxis;
-        connection bod2reAx  connect body to rearAxis;
-        
-        connection eng2bat_Typed: EngineToBattery connect supplierPort :> battery.powerOut to 
-            consumerPort :> engine.powerIn;*/
     }
-    
-    /*connection def EngineToBattery{
-        end: PowerOutPort;
-        end: ~PowerOutPort;
-    }*/
 }
