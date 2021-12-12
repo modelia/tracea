@@ -30,7 +30,7 @@ In the exported JSon file (generated with the magic feature `export`) the same f
 
 ## Temporal solution
 
-The "connectByName" branch of JSonTransformer overpass this issue by referencing target (and source) elements of ConnectionUsage with their name instead of their identifier.
+The [`connectByName`](https://github.com/ebatot/TraceaingJson/tree/connectByName) branch of [`JSonTransformer`](https://github.com/ebatot/TraceaingJson) overpass this issue by referencing target (and source) elements of ConnectionUsage with their name instead of their identifier.
 
 __*Very risky / unexpected behavior to be expected*__
 
