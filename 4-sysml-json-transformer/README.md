@@ -53,4 +53,4 @@ metadata m6860: TraceType about eng2bat_Typed { tracetype = "typeC";}
 
 ## ID allocation unexpected behavior
 
-We report an unexpected behavior of SysMLv2 in the allocation of IDs in [`/40-sysml_id_allocation_bug`](https://github.com/modelia/tracea/tree/master/4-sysml-json-transformer/40-sysml_id_allocation_bug). File `ipynb` contains a JupyterLab notebook illustrating the problem on a simple example.
+We report an unexpected behavior of SysMLv2 in the allocation of IDs in [`/40-sysml_id_allocation_bug`](https://github.com/modelia/tracea/tree/master/4-sysml-json-transformer/40-sysml_id_allocation_bug). Jupyter file (`ipynb`) contains a JupyterLab notebook illustrating the problem on a simple example. `Feature-ID-allocation.json` contains the generated JSon export of the model.
