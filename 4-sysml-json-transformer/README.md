@@ -17,13 +17,13 @@ A usage example of `TraceaLibrary` is given in [`/20-eDrone_example`](https://gi
 
 We use D3-JSon to generate a graphical instance of the trace. The source script to provide the following UI is found in [`/30-d3-script`](https://github.com/modelia/tracea/tree/master/4-sysml-json-transformer/30-d3-script) and a usage example [`here`](http://www-ens.iro.umontreal.ca/~batotedo/tracea/v1/). The following picture illustrates the UI.
 
-<img src="https://github.com/modelia/tracea/blob/master/4-sysml-json-transformer/visualization1.jpg" alt="Graph visualization" width="350"/>
+<img src="https://github.com/modelia/tracea/blob/master/4-sysml-json-transformer/imgs/visualization1.jpg" alt="Graph visualization" width="350"/>
 
 ## Matrix-based representation
 
 The second output representation JSonTransformer yields is a matrix based representation as illustrated bellow and accessible [`here`](http://www-ens.iro.umontreal.ca/~batotedo/tracea/v1/eDrone_example_out.html).
 
-<img src="https://github.com/modelia/tracea/blob/master/4-sysml-json-transformer/tracematrix1.jpg" alt="Matrix-based representation" width="350"/>
+<img src="https://github.com/modelia/tracea/blob/master/4-sysml-json-transformer/imgs/tracematrix1.jpg" alt="Matrix-based representation" width="350"/>
 
 ## SysMLv2 re-injection
 
@@ -53,4 +53,4 @@ metadata m6860: TraceType about eng2bat_Typed { tracetype = "typeC";}
 
 ## ID allocation unexpected behavior
 
-We report an unexpected behavior of SysMLv2 in the allocation of IDs in [`/40-sysml_id_allocation_bug`](https://github.com/modelia/tracea/tree/master/4-sysml-json-transformer/40-sysml_id_allocation_bug).
+We report an unexpected behavior of SysMLv2 in the allocation of IDs in [`/40-sysml_id_allocation_bug`](https://github.com/modelia/tracea/tree/master/4-sysml-json-transformer/40-sysml_id_allocation_bug). File `ipynb` contains a JupyterLab notebook illustrating the problem on a simple example.
