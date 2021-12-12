@@ -5,7 +5,7 @@ package eDrone_example {
     import eDrone_Requirements::*;
     import eDrone_LogicalArchitecture::*;
     import eDrone_Definitions::*;
-    import eDrone_Library::*;
+    import eDrone_Library::*; 
 
     connection eng2front connect eDrone.engine to eDrone.frontAxis;
     connection frAx2frWi connect eDrone.frontAxis to eDrone.frontWing;
@@ -18,6 +18,8 @@ package eDrone_example {
     
     connection eng2bat_Typed: EngineToBattery connect supplierPort :> eDrone.battery.powerOut to 
         consumerPort :> eDrone.engine.powerIn;
+    
+    connection rq1ToWing connect eDroneMaxSpeed to eDrone.engine;
     
     /* Added trace links */
     connection refine1 connect eDrone.battery to eDrone.battery.powerOut;
@@ -35,6 +37,8 @@ package eDrone_example {
     
        metadata m7198: ConfidenceTracing about eng2bat_Typed { confidence = 0.65;}
        metadata m6614: TraceType         about eng2bat_Typed { tracetype = "TypeA";}
+       metadata m8198: ConfidenceTracing about rq1ToWing { confidence = 0.45;}
+       metadata m6615: TraceType         about rq1ToWing { tracetype = "TypeA";}
 
        metadata m1001: TraceType         about bod2bat  { tracetype = "Internal";}
        metadata m1002: TraceType         about bod2eng  { tracetype = "Internal";}
