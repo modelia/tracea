@@ -22,11 +22,11 @@ package 'FeatureID' {
 
 Everything works fine in the JupyterLab environment.
 
-## Unexpected behavior
+## Unexpected ID allocation
 
 In the exported JSon file (generated with the magic feature `export`) the same feature (`eDrone.body`) used in two different connections get a different ID. This means that the `Feature` referenced by the `ConnectionUsage` is distinct in both connection (they have distinct IDs).
 
-<img src="https://github.com/modelia/tracea/blob/master/4-sysml-json-transformer/sysml_id_allocation_bug/features-ids-bug.jpg" alt="eDrone model"/>
+<img src="https://github.com/modelia/tracea/blob/master/4-sysml-json-transformer/sysml_id_allocation_bug/feature-ids-bug.jpg" alt="Unexpected ID allocation"/>
 
 ## Temporal solution
 
