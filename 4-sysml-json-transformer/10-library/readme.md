@@ -13,7 +13,7 @@ In this version **tracetypes are raw string**. Beware of misspelling !
 
 ## SysML example
 
-The files  `TraceaLibrary-enum-example.sysml` adn `TraceaLibrary-string-example.sysml` contain usage examples of `TraceaLibrary`. They are as their name mentions the same example, written in both tracetyping alternatives (see [`above`]('##sysml-model')).
+Files  `TraceaLibrary-enum-example.sysml` and `TraceaLibrary-string-example.sysml` contain usage examples of `TraceaLibrary`. They are as their name mentions the same example, written in both tracetyping alternatives (see [`above`]('##sysml-model')).
 The example shows **named** connections between parts, features, and requirement of an eDrone simulator (or the like).
 
 ## JupyterLab Notebook

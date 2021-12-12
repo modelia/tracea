@@ -18,7 +18,7 @@ package 'FeatureID' {
 }
 ```
 
-<img src="https://github.com/modelia/tracea/blob/master/4-sysml-json-transformer/sysml_id_allocation_bug/eDrone-viz.jpg" alt="eDrone model"/>
+<img src="https://github.com/modelia/tracea/blob/master/4-sysml-json-transformer/40-sysml_id_allocation_bug/eDrone-viz.jpg" alt="eDrone model"/>
 
 Everything works fine in the JupyterLab environment.
 
@@ -26,7 +26,7 @@ Everything works fine in the JupyterLab environment.
 
 In the exported JSon file (generated with the magic feature `export`) the same feature (`eDrone.body`) used in two different connections get a different ID. This means that the `Feature` referenced by the `ConnectionUsage` is distinct in both connection (they have distinct IDs).
 
-<img src="https://github.com/modelia/tracea/blob/master/4-sysml-json-transformer/sysml_id_allocation_bug/feature-ids-bug.jpg" alt="Unexpected ID allocation"/>
+<img src="https://github.com/modelia/tracea/blob/master/4-sysml-json-transformer/40-sysml_id_allocation_bug/feature-ids-bug.jpg" alt="Unexpected ID allocation"/>
 
 ## Temporal solution
 
