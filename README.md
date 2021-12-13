@@ -86,14 +86,15 @@ In particular, this deliverable contains
 The fifth deliverable contains a tool suite to analysis tracing metadata in SysMLv2 models. In particular, three main components have been added to Tracea:
 
 * [`TraceaingJSon`]('https://github.com/ebatot/TraceaingJson') is a Java plugin that takes as input an annotated SysMLv2 model written in JSon. This format is obtained through the _export_ magic function of JupyterLab and Eclipse Pilot Implementation environment. As ouput, TraceaingJSon yields:
-  * a Tracea-JSon representation of the SysML model's connections and associated metadata.
-  * a D3-JSon representation to allow a graphical visualization of the tracelinks.
+  * a `Tracea-JSon representation` of the SysML model's connections and associated metadata.
+  * a `D3-JSon representation` to allow a graphical visualization of the tracelinks.
   * an HTML version of the matrix-based representation.
-* A _D3 script_ for graphical (and interactive) representation.
-* A new version of the metadata feature library for String tracetypes
-* An example of usage: _eDrone scenario_
+* A [`_D3 script_`](http://www-ens.iro.umontreal.ca/~batotedo/tracea/v1/) for graphical (and interactive) representation.
+* The [`deliverable`](https://github.com/modelia/tracea/blob/master/8-deliverables/Tracea_Deliverable_5_CEA.pdf) contains general guide lines to build your own scenario.
+* A new version of `TraceaLibrary`, a metadata feature library for SysMLv2
+* An example of usage: `_eDrone scenario_`.
 
-Implementation decisions and details can be found in the report. 
+Implementation decisions and details can be found in the report.
 _(Note that the period has seen the publication of two papers. They can be found in the eponym folder.)_
 
 ## Software artefacts
@@ -139,15 +140,12 @@ contains the software artefacts for the fifth deliverable:
 
 contains the reports for deliverables together with their respective Latex source code:
 
-    1. Survey of traceability techniques with a focus on their applications in AI-based software techniques
-    2. Traceability language -- Definition and editor
-    3. Traceability solutions -- Evaluation and extension
-    4. Trustable traceability for SysMLv2
-    5. Visualizable and propagable SysMLv2 traces for metadata analysis
+1. [`Survey of traceability techniques`](https://github.com/modelia/tracea/blob/master/8-deliverables/Tracea_Deliverable_1_CEA.pdf) with a focus on their applications in AI-based software techniques
+2. [`Traceability language -- Definition and editors`](https://github.com/modelia/tracea/blob/master/8-deliverables/Tracea_Deliverable_2_CEA.pdf) An Xtext project generated from ECore language artefacts.
+3. [`Traceability solutions -- Evaluation and extensions`](https://github.com/modelia/tracea/blob/master/8-deliverables/Tracea_Deliverable_3_CEA.pdf) Guidelines to evaluate a traceability solutions, extension to Explainable traces.
+4. [`Trustable traceability for SysMLv2s`](https://github.com/modelia/tracea/blob/master/8-deliverables/Tracea_Deliverable_4_CEA.pdf) A metadata feature library dedicated to tracing SysMLv2 connections.
+5. [`Visualizable and propagable SysMLv2 traces for metadata analysiss`](https://github.com/modelia/tracea/blob/master/8-deliverables/Tracea_Deliverable_5_CEA.pdf) A tool suite to extract, visualize (and some day, hopefully, edit) trace artefacts from a SysMLv2 model.
 
 ### [`9-publications`](https://github.com/modelia/tracea/tree/master/9-publications)
 
-contains publications:
-
-* A Survey-Driven Feature Model for Traceability, submitted at [`FASE'22`](https://etaps.org/2022/fase)
-* (Not) Yet Another Metamodel for Traceability, published at [`SAM'21`](https://sdl-forum.org/Events/SAM2021/index.htm)
+* [`(Not) Yet Another Metamodel for Traceability`](https://github.com/modelia/tracea/blob/master/9-publications/traceability-feature-model.pdf), published at [`SAM'21`](https://sdl-forum.org/Events/SAM2021/index.htm)
