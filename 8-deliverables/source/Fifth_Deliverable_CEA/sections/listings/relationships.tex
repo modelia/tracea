@@ -1,0 +1,47 @@
+
+\begin{center}
+\begin{lstlisting}[caption={Confidence and evidences for trustable traceability},label=lst:relationship,style=mystylextext,frame=shadowbox, rulesepcolor=\color{blue}]
+Relationship  returns SysML::Relationship :
+    'relationship' Identification?
+    RelationshipRelatedElements
+    RelationshipBody;
+
+OwnedRelationship returns SysML::Relationship :
+    'relationship' Identification?
+    'to' RelationshipTargetList
+    RelationshipBody;
+
+fragment RelationshipRelatedElements 
+            returns SysML::Relationship :
+    'from' RelationshipSourceList ( 'to' RelationshipTargetList )?
+  | 'to' RelationshipTargetList;
+
+fragment RelationshipSourceList returns SysML::Relationship :
+    RelationshipSource ( ',' RelationshipSource )*;
+
+fragment RelationshipSource returns SysML::Relationship :
+    source += [SysML::Element | QualifiedName];
+
+fragment RelationshipTargetList returns SysML::Relationship :
+    RelationshipTarget ( ',' RelationshipTarget )*
+;
+
+fragment RelationshipTarget returns SysML::Relationship :
+    target += [SysML::Element | QualifiedName];
+
+fragment RelationshipBody returns SysML::Relationship :
+    ';' | '{' RelationshipOwnedElement* '}';
+
+fragment RelationshipOwnedElement returns SysML::Relationship:
+      ownedRelatedElement += OwnedRelatedElement
+    | ownedRelationship += OwnedDocumentation
+    | ownedRelationship += OwnedTextualRepresentationAnnotation;
+
+OwnedRelatedElement returns SysML::Element :
+      'element' ( humanId = Name )? ElementBody
+    | OwnedRelatedRelationship;
+
+OwnedRelatedRelationship returns SysML::Relationship :
+    'relationship' ( humanId = Name )? RelationshipBody;
+\end{lstlisting}
+\end{center}

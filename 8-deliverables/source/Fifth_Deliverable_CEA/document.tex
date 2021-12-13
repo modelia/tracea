@@ -1,0 +1,106 @@
+\documentclass[12pt,twoside]{report}
+
+%\usepackage{todonotes}
+
+%\usepackage{ifthen}
+\usepackage{amssymb}
+\usepackage{ulem}
+\usepackage{xcolor}
+
+% Document Configuration
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{util/tables}
+\input{util/abbrev}
+\input{util/extra-packages}
+%\input{util/diagrams} 
+\input{util/preprint} 
+
+%For code listings:
+\usepackage{listings}
+\usepackage{parcolumns}
+
+
+\input{util/listings}
+
+\input{util/_macros}
+
+% Document Configuration 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{5\textsuperscript{th} Deliverable:\\Visualizable and propagable SysMLv2 traces for metadata analysis}
+
+\author{
+  Edouard R. Batot 
+} 
+
+\date{ 
+  December 15, 2021
+}
+
+% Begin document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% Title page
+\maketitle 
+
+% \title{5\textsuperscript{th} Deliverable: \textbf{Propagating trustable traceability}}
+\title{5\textsuperscript{th} Deliverable: \textbf{Visualizable and propagable SysMLv2 traces}}
+
+% Table of Contents
+\tableofcontents
+
+% Contents
+\cleardoublepage
+\renewcommand{\sectionbreak}{}
+\input{sections/00-acronyms}
+\vspace{33em}
+\listoffigures
+\lstlistoflistings
+\renewcommand{\sectionbreak}{\cleardoublepage}
+\cleardoublepage
+
+\input{sections/10-introduction.tex}
+
+\input{sections/15-sysmllimitations}
+\input{sections/20-datastructure}
+\input{sections/30-syntaxrepresentation}
+\input{sections/40-implementersguide}
+
+\input{sections/60-conclusion}
+\input{sections/60-toolsupport}
+
+
+%appendix
+
+% \cleardoublepage
+
+% \section{Appendix}
+% \includepdf[pages=-]{includepdf/SAM21\_Not\_Yet\_Another\_Metamodel.pdf}
+% \label{sec:AppendixPaper}
+
+%\input{sections/aa-appendix}
+
+% Bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cleardoublepage
+\bibliographystyle{plain}
+\bibliography{bib/strings-abbr,bib/trace-and-models,bib/uoc2020_tracea,bib/added}
+
+% Clarifications
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Print them only if the notes package is loaded (c@pagenode exists)
+% and there are notes defined within the document (pnotesavechap > 0)
+
+\makeatletter
+\ifcsname c@pagenote\endcsname
+\ifthenelse{\value{pnotesavechap}>0}{\cleardoublepage\printnotes}{}
+\fi
+\makeatother
+
+%\makeback
+
+\end{document}          

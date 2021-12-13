@@ -1,0 +1,94 @@
+\section{Trace semantic quantification}\label{sec:quantification}
+
+% \sideboxbegin{o}
+% This section presents a strategy for cost value propagation \ugh{based on }.
+% \sideboxend
+We have previously mentioned the advantages of recording a \textit{confidence} value. Now we explore other kinds of valuation or quantification \ughu{that can help in the use of traces}. 
+
+
+
+\subsection{A simple example}\label{sec:example}
+ 
+\begin{figure}[ht]     
+	\centering
+	\includegraphics[width=.99\linewidth]{images/40-example.jpg}
+	\caption{Example's big picture. }
+	\label{fig:example}
+\end{figure}
+
+
+Here is the big picture of traceability uncertainty bogus brought in by use of ML and by the versatility of software products and processes. The specification of traces, there definition and record lies is affected by the continuous changes of the product, as well as by the use of non deterministic algorithms. Trace quality decays with software evolution.
+
+Need for a confidence degree. As to be more precise, a provenance information and some evidences will be a valuable plus. In the previous deliverable, we shoz means to achieve better explainabilty. In this deliverable we target the analysis of trace artifacts (partly due to implementation limitation of SysMLv2).
+
+
+
+\begin{figure}[ht]     
+	\centering
+	\includegraphics[width=.35\linewidth]{images/modellevelfunction-type-hierarchy.JPG}
+	\caption{Types of functions available for evaluating expressions at the model level.}
+	\label{fig:modellevelfunc}
+\end{figure}
+
+Until the delivery of the second revision (RFP2) scheduled for late August 2021, the SST remains busy with other priorities. Ed Seidewitz foresees the deployment of the features related to modelv level expression in October or November 2021. At the time of writing, annotating features are "only" templates in which some points of variability are allowed (the authorized functions are derived from ModelLevelFunction, see \Fig{fig:modellevelfunc}).
+
+Consequently, the definition of complex structures within datatypes is limited as stated above. Only Ed Seidewitz is aware of the code related to the question and he himself struggles to remember the state of the module dedicated to the assignment of values to complex datatypes. As an example, the use of enumeration (\textit{enum}) in annotations does not allow their use for evaluation (see \Sect{sec:filter}). 
+Finalizing this implementation will only be possible when a subset of the modeling language SysML will be defined. In view of the SST's plans to converge the different types of annotations towards AnnotatingFeatures using metadatatypes, these points will be addressed with high priority -- but only after the submission of the new revision.
+
+\subsection{Impact analysis -- quantifying costs}\label{sec:impact}
+\begin{figure}[ht]      
+	\centering 
+	\includegraphics[width=.5\linewidth]{images/scenario-impacto.jpg}
+	\caption{Impact analysis scenario, augmented with traceability.}
+	\label{fig:impact}
+\end{figure}
+
+To favor the use of specialized libraries (such as the SST encourages), we have designed SysML and KerML datatypes dedicated to tracing. 
+\Fig{fig:datatypes} shows the design of these structures. At the top, we distinguish between a design allowing the assessment of confidence and a design allowing to go further by entering the supporting information for this assessment.
+We distinguish between the two for the sake of iterativity of the development and implementation processes (as we have just seen, the mechanisms allowing the manipulation and evaluation of datatypes are not fully completed in KerML / SysMLv2).
+
+The \texttt{ConfidenceTracing} datatype has been implemented to overcome this disappointment and initially allows the attribution of a real value of confidence to the annotated links. We add a description field (free String) and a field to reference to potentially impacted elements -- \textit{e.g.,} used in the calculation of the confidence value.
+The \texttt{ExplainableTracing} datatype has the same attributes as ConfidenceTracing (description, confidence and impact) with in addition \textit{i)} the notion of Evidence to store information about the identification process used for tracing, and \textit{ii)} the possibility to inform which (type of) agent is responsible for identification.
+
+\subsection{Energy consumption -- quantifying energy}\label{sec:energy}
+SysML is based on KerML. However, if the language dedicated to systems reuses the concepts of the kernel language, these are not accessible from the former. Thus, the definition of a Datatype (and its associated Features) does not work in SysML but only in KerML. To allow the use of Trace\textit{a} in both languages, we have transformed the Datatypes and their features into \textit{attribute definitions and uses} (resp. "Attribute def" and "Attribute"). Indeed, an attribute definition is a particular type of structure dedicated to the construction of Datatypes for the design of systems (see \Fig{fig:dtnattributes}).
+
+
+\begin{figure}[ht]      
+	\centering 
+	\includegraphics[width=.5\linewidth]{images/scenario-energy-ML.jpg}
+	\caption{Energy consumption scenario, augmented with traceability.}
+	\label{fig:energy}
+\end{figure}
+
+\subsection{Usage example: filtering}\label{sec:filter}
+This section presents an example: the filtering of links satisfying a confidence greater than a given threshold.
+The first 30 lines of listing~\ref{lst:filter} (with graphical representation in \Fig{fig:vizfilter}), show the structure of the system and links being traced. Lines 33 to 39 show the code needed for filtering. This is a reuse of the existing machinery to support SysMLv2 metadata annotations. \Fig{fig:vizfilterres} shows the result of the query: the five links with a confidence greater than 0.5 are filtered.
+
+% \pagebreak
+\input{sections/listings/filter_example}
+
+\begin{figure}[ht]     
+	\centering
+	\includegraphics[width=.9\linewidth]{images/viz_filterexample.JPG}
+	\caption{Example using the SysMLv2 filtering tool for trace annotations.}
+	\label{fig:vizfilter}
+\end{figure} 
+
+\begin{figure}[ht]     
+	\centering
+	\includegraphics[width=.75\linewidth]{images/viz_filterexample_res.JPG}
+	\caption{Filtering result: filtered annotations (\textit{i.e.,} satisfying a specific confidence).}
+	\label{fig:vizfilterres}
+\end{figure} 
+
+
+
+The same process can (could) be used to "tag" links with specific types -- or any other pre-defined attribute. The implementation of the evaluation of expressions is unfortunately limited. As to this day, the use of strings of characters (\textit{String}) or of enumerations (\textit{enum}) in the definition of datatypes generates a compilation error. \Fig{fig:vizfiltererr} shows this limitation (the figure has been generated with JupyterLab, see \Sect{sec:artefacts}).
+
+\begin{figure}[ht]     
+	\centering
+	\includegraphics[width=.9\linewidth]{images/viz_filterexample_err.JPG}
+	\caption{Filtering is not (yet) implemented for enumerations.}
+	\label{fig:vizfiltererr}
+\end{figure} 

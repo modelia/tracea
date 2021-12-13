@@ -1,0 +1,52 @@
+\section{Confidence and costs propagation}\label{sec:reminder}
+% \sideboxbegin{o}
+% This section introduces existing techniques we build upon (SysML and Trace\textit{a}) then presents high level requirements for trustable traceability.
+% \sideboxend
+
+
+        \begin{enumerate}
+            \item What is propagation
+            \item SysML + Tracea Architecture -- Metadata feature library
+            \item Confidence and other real value extraction from JSON (snapshots)
+            \item Re-integration of modified values (consequences of propagation)
+        \end{enumerate}
+
+\begin{figure}[ht]     
+	\centering
+	\includegraphics[width=.8\linewidth]{images/propagation-sysmltracea.jpg}
+	\caption{Propagation in SysML-Tracea, the big picture}
+	\label{fig:mm-core}
+\end{figure}
+
+\subsection{SysML + Tracea Architecture -- Metadata feature library}
+\ughb{Explain the interrelation between SysML and Tracea}, and the peculiar need for untangled annotations in separate files.
+
+
+
+
+\subsection{Confidence and other real value extraction from JSON (snapshots)}
+Extract JSon, reduce it into readable/processable format, and regenerate links.
+
+SysML@ 
+
+to JSONLarge 
+
+to JSon Concise 
+
+to SysML@
+
+
+\begin{figure}[ht]     
+	\centering
+	\includegraphics[width=.8\linewidth]{images/propagation-JSondetails.jpg}
+	\caption{Details of the annotation (JSon) programmatic manipulation and transformation}
+	\label{fig:ucmis}
+\end{figure}
+
+
+
+\ugh{blah blah} As shown in \Fig{fig:sysml}, the SysML language is constructed as an extension of the KerML Kernel metamodel ~\cite{kerML}. The SysML abstract syntax reuses the abstract kernel syntax, providing specialized constructs for modeling systems. Additionally, the SysML System Model Library extends the Kernel Model Library to provide the semantic specification for SysML. Finally, SysML provides an additional set of domain libraries to provide a rich set of reference models in various areas important for systems modeling (such as quantities and units, and basic geometry). (SysML p.69~\cite{sysml}) \ugh{blah blah}
+
+
+\subsection{Re-integration of modified values (consequences of propagation)}
+No other choice than transforming JSon into @SysML to regenerate the cost/confidence \ughb{metalayer}.

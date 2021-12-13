@@ -1,0 +1,43 @@
+\begin{center}
+\begin{lstlisting}[caption={SysML code generated from a Tracea model.},
+label=lst:sysmlout,
+style=mystylesysml,
+frame=shadowbox,
+rulesepcolor=\color{blue},
+linewidth=16.6cm,
+xleftmargin=0.2cm,
+morekeywords={connection,connect,to,metadata,about}]
+/* Trace links */
+connection eng2front connect eDrone.engine to eDrone.frontAxis;
+connection frAx2frWi connect eDrone.frontAxis to eDrone.frontWing;
+connection reAx2reWi connect eDrone.rearAxis to eDrone.rearWing;
+connection bod2bat connect eDrone.body to eDrone.battery;
+connection bod2eng connect eDrone.body to eDrone.engine;
+connection bod2frAx connect eDrone.body to eDrone.frontAxis;
+connection bod2reAx connect eDrone.body to eDrone.rearAxis;
+connection eng2bat_Typed connect eDrone.battery.powerOut to eDrone.engine.powerIn;
+connection rq1ToWing connect eDroneMaxSpeed to eDrone.engine;
+connection refine1 connect eDrone.battery to eDrone.battery.powerOut;
+connection refine2 connect eDrone.battery to eDrone.engine.powerIn;
+
+/* Tracing metadata */
+metadata m6093: ConfidenceTracing about eng2front { confidence = 0.85;}
+metadata m4103: TraceType about eng2front { tracetype = "TypeE";}
+metadata m5096: ConfidenceTracing about frAx2frWi { confidence = 0.65;}
+metadata m9040: TraceType about frAx2frWi { tracetype = "TypeE";}
+metadata m7556: ConfidenceTracing about reAx2reWi { confidence = 0.75;}
+metadata m9270: TraceType about reAx2reWi { tracetype = "TypeE";}
+metadata m8202: TraceType about bod2bat { tracetype = "Internal";}
+metadata m9711: TraceType about bod2eng { tracetype = "Internal";}
+metadata m8159: TraceType about bod2frAx { tracetype = "Internal";}
+metadata m7086: TraceType about bod2reAx { tracetype = "Internal";}
+metadata m7259: ConfidenceTracing about eng2bat_Typed { confidence = 0.65;}
+metadata m3388: TraceType about eng2bat_Typed { tracetype = "TypeA";}
+metadata m9094: ConfidenceTracing about rq1ToWing { confidence = 0.45;}
+metadata m5621: TraceType about rq1ToWing { tracetype = "TypeA";}
+metadata m340: ConfidenceTracing about refine1 { confidence = 0.45;}
+metadata m8719: TraceType about refine1 { tracetype = "Convenience";}
+metadata m5065: ConfidenceTracing about refine2 { confidence = 0.55;}
+metadata m8879: TraceType about refine2 { tracetype = "Convenience";}
+\end{lstlisting}
+\end{center}
