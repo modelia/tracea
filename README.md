@@ -103,9 +103,10 @@ _(Note that the period has seen the publication of two papers. They can be found
 
 contains the software artefacts for the second deliverable:
 
-* Tracea metamodel (ECore, OCL, Xtext grammar)
-* Tracea Xtext plugin for Eclipse (IDE plugin projects)
-* The running examples explained in the report (Transclusion)
+* [`Tracea metamodel`](https://github.com/modelia/tracea/tree/master/1-dsl-tracea/model) (ECore, OCL, Xtext grammar)
+* [`Java implementation`](https://github.com/modelia/tracea/tree/master/1-dsl-tracea/Tracea) of the metamodel
+* [`Tracea Xtext plugin`](https://github.com/modelia/tracea/tree/master/1-dsl-tracea/XtextPlugin) for Eclipse (IDE plugin projects)
+* [`The running examples`](https://github.com/modelia/tracea/tree/master/1-dsl-tracea/RunningExample) explained in the report (Transclusion)
 
 ### [`2-capra-integration`](https://github.com/modelia/tracea/tree/master/2-capra-integration)
 
@@ -122,17 +123,21 @@ contains the software artefacts designed and implemented in the third deliverabl
 contains the software artefacts for the forth deliverable:
 
 * SysML Ecosystem cheat sheet  
-* SysML Tracea metadata feature library (SysML model and JupiterLab bloc note)
+* [`TraceaLibrary`](https://github.com/modelia/tracea/tree/master/4-sysml-json-transformer/10-library), a SysML metadata feature library (SysML model and JupiterLab bloc note)
 * Example case with both Enums and String trace types
 
 ### [`4-sysml-json-transformer`](https://github.com/modelia/tracea/tree/master/4-sysml-json-transformer)
 
 contains the software artefacts for the fifth deliverable:
 
-* JSonTransformer (Jar and [`Git repository`](https://github.com/ebatot/TraceaingJson/tree/2109c562598807b8b7797af3b9dd5f54fc5c5202))
-* SysML Tracea metadata feature library for Enum and String type representations (SysML models and JupiterLab bloc notes)
-* D3 script for graphical visualization
-* eDrone example (sysml, iynb)
+* [`JSonTransformer`](https://github.com/modelia/tracea/blob/master/4-sysml-json-transformer/JSonTransformer.jar) (Jar and [`Git repository`](https://github.com/ebatot/TraceaingJson/tree/2109c562598807b8b7797af3b9dd5f54fc5c5202)), a Java plugin that takes as input an annotated SysMLv2 model written in JSon. This format is obtained through the _export_ magic function of JupyterLab and Eclipse Pilot Implementation environment. As ouput, TraceaingJSon yields:
+  * a `Tracea-JSon representation` of SysML model's connections and associated metadata features.
+  * a `D3-JSon representation` allows a graphical visualization of the tracelinks.
+  * a `Model-to-Text` generates an HTML version of the matrix-based representation.
+* A [`_D3 script_`](http://www-ens.iro.umontreal.ca/~batotedo/tracea/v1/) for graphical (and interactive) representation.
+* The [`report`](https://github.com/modelia/tracea/blob/master/8-reports/Tracea_Deliverable_5_CEA.pdf) contains general guide lines to build your own scenario.
+* A new version of [`TraceaLibrary`](https://github.com/modelia/tracea/tree/master/4-sysml-json-transformer/10-library), a metadata feature library for SysMLv2
+* An example of usage: [`_eDrone scenario_`](https://github.com/modelia/tracea/tree/master/4-sysml-json-transformer/20-eDrone_example).
 
 ## Reports and publications
 

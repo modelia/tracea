@@ -26,8 +26,8 @@ JSonformer extracts a configurable JSon model featured as depicted in Tracea met
     "qualifiedName": "eDrone_example::eng2front", 
     "types": ["TypeE"], 
     "sources": [{ "id": "b9bb"}],
-     "targets": [{ "id": "b9bb"}], 
-     "confidence": 0.85
+    "targets": [{ "id": "b9bb"}], 
+    "confidence": 0.85
   }
    /* ... */
  ], "nodes": [
@@ -98,3 +98,18 @@ package eDrone_example {
 ## ID allocation unexpected behavior
 
 We report an unexpected behavior of SysMLv2 in the allocation of IDs in [`/40-sysml_id_allocation_bug`](https://github.com/modelia/tracea/tree/master/4-sysml-json-transformer/40-sysml_id_allocation_bug). Jupyter file (`ipynb`) contains a JupyterLab notebook illustrating the problem on a simple example. `Feature-ID-allocation.json` contains the generated JSon export of the model.
+
+## Software artefacts summary
+
+A tool suite to analysis tracing metadata in SysMLv2 models:
+
+* [`TraceaingJSon`]('https://github.com/ebatot/TraceaingJson') is a Java plugin that takes as input an annotated SysMLv2 model written in JSon. This format is obtained through the _export_ magic function of JupyterLab and Eclipse Pilot Implementation environment. As ouput, TraceaingJSon yields:
+  * a `Tracea-JSon representation` of SysML model's connections and associated metadata features.
+  * a `D3-JSon representation` allows a graphical visualization of the tracelinks.
+  * a `Model-to-Text` generates an HTML version of the matrix-based representation.
+* A [`_D3 script_`](http://www-ens.iro.umontreal.ca/~batotedo/tracea/v1/) for graphical (and interactive) representation.
+* The [`report`](https://github.com/modelia/tracea/blob/master/8-reports/Tracea_Deliverable_5_CEA.pdf) contains general guide lines to build your own scenario.
+* A new version of [`TraceaLibrary`](https://github.com/modelia/tracea/tree/master/4-sysml-json-transformer/10-library), a metadata feature library for SysMLv2
+* An example of usage: [`_eDrone scenario_`](https://github.com/modelia/tracea/tree/master/4-sysml-json-transformer/20-eDrone_example).
+
+Implementation decisions and details can be found in the [`report`](https://github.com/modelia/tracea/blob/master/8-reports/Tracea_Deliverable_5_CEA.pdf).
