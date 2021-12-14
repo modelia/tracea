@@ -31,7 +31,7 @@ software developement process.
 
 ## Deliverables
 
-### 1. [`Survey of traceability techniques`](https://github.com/modelia/tracea/blob/master/8-reports/Tracea_Deliverable_1_CEA.pdf) with a focus on their applications in AI-based software techniques
+### 1. `Survey of traceability techniques` with a focus on their applications in AI-based software techniques
 
 The content of this document is a scientific report on the conjunct use of traceability, modelling, and
 AI, with a scrutiny on the potential such techniques could bring to AI-enabled system architecture.
@@ -39,7 +39,7 @@ AI, with a scrutiny on the potential such techniques could bring to AI-enabled s
 It contains the description of the state-of-the-art, a linguistic metamodel, and a feature model of
 traceability research and industrial applications.
 
-### 2. [`Traceability language`](https://github.com/modelia/tracea/blob/master/8-reports/Tracea_Deliverable_1_CEA.pdf) -- Definition and editor
+### 2. `Traceability language` -- Definition and editor
 
 The core
 contribution of this deliverable is a domain-specific language (DSL) for traceability, expressive enough
@@ -50,7 +50,7 @@ of both the abstract (i.e., metamodel) and concrete syntax (a JSON-based represe
 and an Ecore implementation of the DSL in an Eclipse plugin. We illustrate the usability of the DSL
 with a running example: the transclusion of model elements in certification documents.
 
-### 3. [`Traceability solutions`](https://github.com/modelia/tracea/blob/master/8-deliverables/Tracea_Deliverable_1_CEA.pdf) -- Evaluation and extension
+### 3. `Traceability solutions`] -- Evaluation and extension
 
 The core contribution of this third deliverable is an evaluation protocol for solutions to traceability
 (or tracers) and its specific application to an existing solution: [Capra](https://www.eclipse.org/capra).
@@ -66,7 +66,7 @@ More specifically, this deliverable is made of
 * the integration of Tracea into Capra and the impact of the consecutive changes.
 * we show the main conceptual and technical limitations of Capra.
 
-### 4. [`Traceability integration`](https://github.com/modelia/tracea/blob/master/8-reports/Tracea_Deliverable_1_CEA.pdf) -- SysMLv2
+### 4. `Traceability integration`] -- SysMLv2
 
 This deliverable presents the integration of the concepts related to traceability developed
 during these first three deliverables within SysMLv2. And more precisely, modifications target the [Eclipse pilot implementation of SysMLv2](https://github.com/Systems-Modeling/SysML-v2-Pilot-Implementation).
@@ -81,7 +81,7 @@ In particular, this deliverable contains
   * a feature library for trustable traceability
 * the definition of [`TraceaLibrary`](https://github.com/modelia/tracea/tree/master/4-sysml-json-transformer/10-library), a metadata feature library for trustable traceability.
 
-### 5. [`Traceability visualization and propagation`](https://github.com/modelia/tracea/blob/master/8-reports/Tracea_Deliverable_1_CEA.pdf) -- SysMLv2
+### 5. `Traceability visualization and propagation`] -- SysMLv2
 
 The fifth deliverable contains a tool suite to analysis tracing metadata in SysMLv2 models. In particular, three main components have been added to Tracea:
 
@@ -90,11 +90,10 @@ The fifth deliverable contains a tool suite to analysis tracing metadata in SysM
   * a `D3-JSon representation` allows a graphical visualization of the tracelinks.
   * a `Model-to-Text` generates an HTML version of the matrix-based representation.
 * A [`_D3 script_`](http://www-ens.iro.umontreal.ca/~batotedo/tracea/v1/) for graphical (and interactive) representation.
-* The [`report`](https://github.com/modelia/tracea/blob/master/8-reports/Tracea_Deliverable_5_CEA.pdf) contains general guide lines to build your own scenario.
 * A new version of [`TraceaLibrary`](https://github.com/modelia/tracea/tree/master/4-sysml-json-transformer/10-library), a metadata feature library for SysMLv2
 * An example of usage: [`_eDrone scenario_`](https://github.com/modelia/tracea/tree/master/4-sysml-json-transformer/20-eDrone_example).
 
-Implementation decisions and details can be found in the [`report`](https://github.com/modelia/tracea/blob/master/8-reports/Tracea_Deliverable_5_CEA.pdf).
+Implementation decisions and details can be found in the [`report`](https://github.com/modelia/tracea-reports/blob/main/Tracea_Deliverable_5_CEA.pdf) (CEA private).
 _(Note that the period has seen the publication of two papers. They can be found in the eponym folder.)_
 
 ## Software artefacts
@@ -135,7 +134,7 @@ contains the software artefacts for the fifth deliverable:
   * a `D3-JSon representation` allows a graphical visualization of the tracelinks.
   * a `Model-to-Text` generates an HTML version of the matrix-based representation.
 * A [`_D3 script_`](http://www-ens.iro.umontreal.ca/~batotedo/tracea/v1/) for graphical (and interactive) representation.
-* The [`report`](https://github.com/modelia/tracea/blob/master/8-reports/Tracea_Deliverable_5_CEA.pdf) contains general guide lines to build your own scenario.
+* The [`report`](https://github.com/modelia/tracea-reports/blob/main/Tracea_Deliverable_5_CEA.pdf) (CEA private) contains general guide lines to build your own scenario.
 * A new version of [`TraceaLibrary`](https://github.com/modelia/tracea/tree/master/4-sysml-json-transformer/10-library), a metadata feature library for SysMLv2
 * An example of usage: [`_eDrone scenario_`](https://github.com/modelia/tracea/tree/master/4-sysml-json-transformer/20-eDrone_example).
 
@@ -143,13 +142,7 @@ contains the software artefacts for the fifth deliverable:
 
 ### [`8-reports`](https://github.com/modelia/tracea/tree/master/8-reports)
 
-contains reports for each deliverable together with their respective Latex source code:
-
-1. [`Survey of traceability techniques`](https://github.com/modelia/tracea/blob/master/8-reports/Tracea_Deliverable_1_CEA.pdf) with a focus on their applications in AI-based software techniques
-2. [`Traceability language -- Definition and editors`](https://github.com/modelia/tracea/blob/master/8-reports/Tracea_Deliverable_2_CEA.pdf) An Xtext project generated from ECore language artefacts.
-3. [`Traceability solutions -- Evaluation and extensions`](https://github.com/modelia/tracea/blob/master/8-reports/Tracea_Deliverable_3_CEA.pdf) Guidelines to evaluate a traceability solutions, extension to Explainable traces.
-4. [`Trustable traceability for SysMLv2s`](https://github.com/modelia/tracea/blob/master/8-reports/Tracea_Deliverable_4_CEA.pdf) A metadata feature library dedicated to tracing SysMLv2 connections.
-5. [`Visualizable and propagable SysMLv2 traces for metadata analysiss`](https://github.com/modelia/tracea/blob/master/8-reports/Tracea_Deliverable_5_CEA.pdf) A tool suite to extract, visualize (and some day, hopefully, edit) trace artefacts from a SysMLv2 model.
+Reports for each deliverable together with their respective Latex source code can be found [`here`](https://github.com/modelia/tracea-reports/).
 
 ### [`9-publications`](https://github.com/modelia/tracea/tree/master/9-publications)
 
