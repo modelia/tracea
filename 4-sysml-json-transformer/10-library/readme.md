@@ -19,3 +19,7 @@ The example shows **named** connections between parts, features, and requirement
 ## JupyterLab Notebook
 
 The files  `TraceaLibrary-enum.ipynb` adn `TraceaLibrary-string.ipynb` contain [`JupiterLab`](https://www.sysmlv2lab.com/lab) notebooks of `TraceaLibrary`. They contain a library definition, a system definition (eDrone) and a metadata usage example. As their name mentions the two tracetyping alternatives are used separately (see [`above`]('##sysml-model')).
+
+## License
+
+****
