@@ -15,7 +15,7 @@
   * [Tracea DSL](#1-dsl-tracea)
   * [Integration to Capra](#2-capra-integration)
   * [Integration to SysML](#3-sysml-integration)
-  * [Propagation and metdata analysis](#4-sysml-json-transformer)
+  * [Propagation and metadata analysis](#4-sysml-json-transformer)
 * [Reports and publications](#reports-and-publications)
   * [Reports](#8-reports)
   * [Publications](#9-publications)
