@@ -142,7 +142,7 @@ contains the software artefacts for the fifth deliverable:
 
 ### [`8-reports`](https://github.com/modelia/tracea/tree/master/8-reports)
 
-Reports for each deliverable together with their respective Latex source code can be found [`here`](https://github.com/modelia/tracea-reports/).
+Reports for each deliverable together with their respective Latex source code can be found [`here`](https://github.com/modelia/tracea-reports/) (CEA private).
 
 ### [`9-publications`](https://github.com/modelia/tracea/tree/master/9-publications)
 
