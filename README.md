@@ -106,7 +106,6 @@ The sixth deliverable contains a tool suite to analysis the complexity of Papyru
 * [`TraceaD3`](https://github.com/modelia/tracea/tree/master/6-traceaml-for-papyrus/tracead3) A visualizer for TraceaML instances
 * [`Data`](https://github.com/modelia/tracea/tree/master/6-traceaml-for-papyrus/data) A sample data set extracted automatically from the GlossaryML project
 
-<img src="https://github.com/modelia/tracea/blob/master/6-traceaml-for-papyrus/imgs/pipeline.jpg" width=600 alt="Pipeline"/>
 <img src="https://github.com/modelia/tracea/blob/master/6-traceaml-for-papyrus/imgs/tracead3.jpg" width=600 alt="TraceaD3"/>
 
 ## Software artefacts
@@ -157,7 +156,9 @@ contains the software artefacts for the sixth deliverable:
 
 * [`Orchestrus`](https://github.com/modelia/tracea/tree/master/6-traceaml-for-papyrus/orchestrus) A tool for the extraction of trace for complexity analysis
 * [`TraceaD3`](https://github.com/modelia/tracea/tree/master/6-traceaml-for-papyrus/tracead3) A visualizer for TraceaML instances
-* [`Data`](https://github.com/modelia/tracea/tree/master/6-traceaml-for-papyrus/data) A sample data set extracted automatically from the GlossaryML project
+* [`Data`](https://github.com/modelia/tracea/tree/master/6-traceaml-for-papyrus/data) A sample data set (JSon) extracted automatically from the GlossaryML project
+
+<img src="https://github.com/modelia/tracea/blob/master/6-traceaml-for-papyrus/imgs/pipeline.jpg" width=600 alt="Pipeline"/>
 
 ## Reports and publications
 
