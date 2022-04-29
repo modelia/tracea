@@ -1,0 +1,134 @@
+#clustertree {
+    font-family: Courier, Arial;
+    padding-left: 3px;
+    /*border: solid 1px rgb(91, 26, 220);  */
+    font-size: 70%;
+}
+
+a.control:hover {
+    color: blue;
+}
+
+#clustertree {
+   /* margin-top:10px;*/
+    padding: 0px 3px 0px 3px;
+}
+
+#clustertree ul {
+    margin:0px;
+    padding-top: 7px;
+    padding-left: 3px;
+    padding-right: 3px;
+    font-weight: bold;
+    font-style: oblique;
+   /* margin-left: 10px;;*/
+}
+
+#clustertree li {
+    list-style-type: none;
+    position: relative;
+    margin-left: 15px;
+    font-weight: normal;
+    font-style: normal;
+}
+
+#clustertree li ul {
+    display: none;
+    padding-left: 15px;
+}
+
+#clustertree li.open>ul {
+    display: block;
+    padding-left: 15px;
+}
+
+#clustertree li a {
+    text-decoration: none;
+    padding-top: 3px;
+    padding-right: 0px;
+}
+
+#clustertree li a:before {
+    /* the expand/collapse symbols before each item */
+    height: 1em;
+    font-size: .8em;
+    display: block;
+    position: absolute;
+    left: 0.2em;
+    top: .05em;
+}
+
+#clustertree li>a:not(:last-child):before {
+    content: '';
+    font-weight: bold;
+}
+
+#clustertree li.open>a:not(:last-child):before {
+    content: '';
+
+}
+
+#clustertree li.open>a:last-child:before {
+    content: '';
+    font-weight: bold;
+}
+
+#clustertree li:before,
+#clustertree li:after {
+    position: absolute;
+    left: -0.7em;
+    border-style: dotted;
+    border-color: #909090;
+    border-width: 0px;
+}
+
+a #traceLinksName, 
+a #traceFragName, 
+.clusterName {
+    margin-top: -4px;
+    padding-top: 3px;
+}
+
+.boxContent.closed {
+    height:0px;
+    overflow-y: hidden;
+    visibility: hidden;
+}
+
+#clustertree li:before {
+    content: "";
+    border-bottom-width: 1px;
+    height: 0;
+    width: 8px;
+    top: 9px;
+}
+
+#clustertree li:after {
+    content: "";
+    border-right-width: 1px;
+    height: 100%;
+    width: 0px;
+    top: 2px;
+}
+
+#clustertree>li::before {
+    width: 0px;
+}
+
+#clustertree>li::after {
+    height: 0px;
+}
+
+#clustertree>li li:last-child:after {
+    height: 8px;
+}
+
+
+#fatOn { /* forceAncestryTrace*/
+    cursor: pointer;
+}
+
+#fatOn.selected { /* forceAncestryTrace*/
+    font-weight: bold;
+    color: darkblue;
+}
