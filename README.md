@@ -10,7 +10,8 @@
   * [D2 - Traceability metamodel for quality tracing](#2-traceability-language----definition-and-editor)
   * [D3 - Evaluation and extension of traceability solutions](#3-traceability-solutions----evaluation-and-extension)
   * [D4 - Evaluation and extension of SysMLv2 for quality traceability](#4-traceability-integration----sysmlv2)
-  * [D5 - Visualizable and propagable SysMLv2 traces for metadata analysis](#5-traceability-visualization-and-propagation----SysMLv2)
+  * [D5 - Visualizable and propagable SysMLv2 traces for metadata analysis](#5-traceability-visualization-and-propagation----SysMLv2)  
+  * [D6 - Topology and complexity of Papyrus DSL creation projects - A semi-automated analysis based on traceability](#6-topology-and-complexity-of-papyrus-project----a-semi-automated-analysis)
 * [Software artefact](#software-artefact)
   * [Tracea DSL](#1-dsl-tracea)
   * [Integration to Capra](#2-capra-integration)
@@ -95,6 +96,14 @@ The fifth deliverable contains a tool suite to analysis tracing metadata in SysM
 
 Implementation decisions and details can be found in the [`report`](https://github.com/modelia/tracea-reports/blob/main/Tracea_Deliverable_5_CEA.pdf) (CEA private).
 _(Note that the period has seen the publication of two papers. They can be found in the eponym folder.)_
+
+### 6. `Topology and complexity of Papyrus DSL creation projects -- A semi-automated analysis based on traceability`
+
+The sixth deliverable contains a tool suite to analysis the complexity of Papyrus DSL creation projects. In particular, three main components have been added to Tracea:
+
+* [`Orchestrus`](https://github.com/modelia/tracea/tree/master/6-traceaml-for-papyrus/orchestrus) A tool for the extraction of trace for complexity analysis
+* [`TraceaD3`](https://github.com/modelia/tracea/tree/master/6-traceaml-for-papyrus/tracead3) A visualizer for TraceaML instances
+* [`Data`](https://github.com/modelia/tracea/tree/master/6-traceaml-for-papyrus/data) A sample data set extracted automatically from the GlossaryML project
 
 ## Software artefacts
 
