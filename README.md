@@ -98,7 +98,7 @@ The fifth deliverable contains a tool suite to analysis tracing metadata in SysM
 Implementation decisions and details can be found in the [`report`](https://github.com/modelia/tracea-reports/blob/main/Tracea_Deliverable_5_CEA.pdf) (CEA private).
 _(Note that the period has seen the publication of two papers. They can be found in the eponym folder.)_
 
-### 6. `Topology and complexity of Papyrus projects -- A semi-automated analysis based on traceability`
+### 6. `Topology and complexity of Papyrus projects` -- A semi-automated analysis based on traceability
 
 The sixth deliverable contains a tool suite to analysis the complexity of Papyrus DSL creation projects. In particular, three main components have been added to Tracea:
 
