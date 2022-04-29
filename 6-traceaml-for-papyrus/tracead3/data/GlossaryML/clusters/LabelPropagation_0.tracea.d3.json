@@ -1,0 +1,12 @@
+{
+"setup": {"project": "GlossaryML","trace": "LabelPropagation_0"},
+"links": [{"id": "-1249228325979028503","name": "3.0","label": "","source_id": "-934136432924416325","target_id": "9038335254401083926","type": "Design-ExternalFile","group": 48,"intensity": 3,"confidence": 3,"energy": 100},
+{"id": "5550625371534933534","name": "22.0","label": "","source_id": "1681061247776986531","target_id": "-4498190047871887498","type": "Model-ExternalFile","group": 45,"intensity": 22,"confidence": 22,"energy": 100},
+{"id": "1394612278238908584","name": "6.0","label": "","source_id": "1681061247776986531","target_id": "-4787022384348844445","type": "Model-ExternalFile","group": 45,"intensity": 6,"confidence": 6,"energy": 100},
+{"id": "-3814159343230042555","name": "2.0","label": "","source_id": "1681061247776986531","target_id": "9038335254401083926","type": "Model-ExternalFile","group": 45,"intensity": 2,"confidence": 2,"energy": 100}],
+"nodes": [{"id": "1681061247776986531","fanin": "0","name": "GlossaryML_ToolReqModel.notation","type": "Model","size": 0,"group": "13"},
+{"id": "-934136432924416325","fanin": "0","name": "glossary_tree_table.nattableconfiguration","type": "Design","size": 0,"group": "16"},
+{"id": "-4498190047871887498","fanin": "2","name": "requirementTree.nattableconfiguration","type": "ExternalFile","size": 20,"group": "0"},
+{"id": "-4787022384348844445","fanin": "5","name": "genericTreeTable.nattableconfiguration","type": "ExternalFile","size": 50,"group": "0"},
+{"id": "9038335254401083926","fanin": "8","name": "UML","type": "ExternalFile","size": 80,"group": "0"}]
+}

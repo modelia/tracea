@@ -1,0 +1,20 @@
+{
+"setup": {"project": "ReferenceML","trace": "LabelPropagation_9"},
+"links": [{"id": "-8751085503867937651","name": "1.0","label": "","source_id": "-6798914858217573060","target_id": "-1095565672715370423","type": "Paletization","group": 26,"intensity": 1,"confidence": 1,"energy": 100},
+{"id": "-7306263279772935589","name": "1.0","label": "","source_id": "-6798914858217573060","target_id": "-8593497911429493276","type": "Paletization","group": 26,"intensity": 1,"confidence": 1,"energy": 100},
+{"id": "-7156834939687546583","name": "4.0","label": "","source_id": "-6798914858217573060","target_id": "-7823401723989747505","type": "Paletization-ExternalFile","group": 31,"intensity": 4,"confidence": 4,"energy": 100},
+{"id": "-6449030298805734803","name": "1.0","label": "","source_id": "-6798914858217573060","target_id": "-5830253423258833266","type": "Paletization","group": 26,"intensity": 1,"confidence": 1,"energy": 100},
+{"id": "5404242951196403807","name": "7.0","label": "","source_id": "-6798914858217573060","target_id": "-8645019593156400089","type": "Paletization-ExternalFile","group": 31,"intensity": 7,"confidence": 7,"energy": 100},
+{"id": "3279426614661187996","name": "1.0","label": "","source_id": "-6798914858217573060","target_id": "4880037797499618312","type": "Paletization","group": 26,"intensity": 1,"confidence": 1,"energy": 100},
+{"id": "-546227288755006883","name": "1.0","label": "","source_id": "-6798914858217573060","target_id": "-4878419149880202610","type": "Paletization","group": 26,"intensity": 1,"confidence": 1,"energy": 100},
+{"id": "-5020500491649895153","name": "1.0","label": "","source_id": "-6798914858217573060","target_id": "3951194809170085004","type": "Paletization","group": 26,"intensity": 1,"confidence": 1,"energy": 100}],
+"nodes": [{"id": "-1095565672715370423","fanin": "1","name": "","type": "Paletization","size": 10,"group": "12"},
+{"id": "-4878419149880202610","fanin": "1","name": "","type": "Paletization","size": 10,"group": "12"},
+{"id": "3951194809170085004","fanin": "1","name": "","type": "Paletization","size": 10,"group": "12"},
+{"id": "-6798914858217573060","fanin": "1","name": "","type": "Paletization","size": 10,"group": "12"},
+{"id": "-5830253423258833266","fanin": "1","name": "","type": "Paletization","size": 10,"group": "12"},
+{"id": "-8593497911429493276","fanin": "1","name": "","type": "Paletization","size": 10,"group": "12"},
+{"id": "4880037797499618312","fanin": "1","name": "","type": "Paletization","size": 10,"group": "12"},
+{"id": "-7823401723989747505","fanin": "4","name": "","type": "ExternalFile","size": 40,"group": "0"},
+{"id": "-8645019593156400089","fanin": "2","name": "","type": "ExternalFile","size": 20,"group": "0"}]
+}

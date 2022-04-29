@@ -1,0 +1,8 @@
+{
+"setup": {"project": "ReferenceML","trace": "LabelPropagation_8"},
+"links": [{"id": "-8377336650094661069","name": "1.0","label": "","source_id": "-8678588235927406455","target_id": "3260813280637601224","type": "SourceFile-ExternalFile","group": 32,"intensity": 1,"confidence": 1,"energy": 100},
+{"id": "2939498319079095637","name": "1.0","label": "","source_id": "-8678588235927406455","target_id": "3301560350794899176","type": "SourceFile-LocalFolder","group": 34,"intensity": 1,"confidence": 1,"energy": 100}],
+"nodes": [{"id": "-8678588235927406455","fanin": "0","name": "","type": "SourceFile","size": 0,"group": "4"},
+{"id": "3260813280637601224","fanin": "1","name": "","type": "ExternalFile","size": 10,"group": "0"},
+{"id": "3301560350794899176","fanin": "4","name": "","type": "LocalFolder","size": 40,"group": "5"}]
+}

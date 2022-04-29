@@ -1,0 +1,15 @@
+{
+"setup": {"project": "ReferenceML","trace": "LabelPropagation_1"},
+"links": [{"id": "2746255371496665207","name": "6.0","label": "","source_id": "-6819959017335327829","target_id": "-8584399766682819655","type": "Profile-ExternalFile","group": 29,"intensity": 6,"confidence": 6,"energy": 100},
+{"id": "-7665196775622473857","name": "9.0","label": "","source_id": "3508934780188318642","target_id": "-8584399766682819655","type": "Profile-ExternalFile","group": 29,"intensity": 9,"confidence": 9,"energy": 100},
+{"id": "-1065719142118609324","name": "18.0","label": "","source_id": "-6819959017335327829","target_id": "-4455425718838312134","type": "Profile-ExternalFile","group": 29,"intensity": 18,"confidence": 18,"energy": 100},
+{"id": "1705806873338569740","name": "4.0","label": "","source_id": "-6819959017335327829","target_id": "1587684632128182815","type": "Profile-ExternalFile","group": 29,"intensity": 4,"confidence": 4,"energy": 100},
+{"id": "8843852096945526213","name": "18.0","label": "","source_id": "-6819959017335327829","target_id": "-7300345967075961560","type": "Profile-ExternalFile","group": 29,"intensity": 18,"confidence": 18,"energy": 100},
+{"id": "7608878906930592940","name": "14.0","label": "","source_id": "3508934780188318642","target_id": "-6819959017335327829","type": "Profile","group": 22,"intensity": 14,"confidence": 14,"energy": 100}],
+"nodes": [{"id": "-7300345967075961560","fanin": "1","name": "","type": "ExternalFile","size": 10,"group": "0"},
+{"id": "3508934780188318642","fanin": "0","name": "","type": "Profile","size": 0,"group": "11"},
+{"id": "-8584399766682819655","fanin": "4","name": "","type": "ExternalFile","size": 40,"group": "0"},
+{"id": "1587684632128182815","fanin": "2","name": "","type": "ExternalFile","size": 20,"group": "0"},
+{"id": "-6819959017335327829","fanin": "14","name": "","type": "Profile","size": 140,"group": "11"},
+{"id": "-4455425718838312134","fanin": "3","name": "","type": "ExternalFile","size": 30,"group": "0"}]
+}
