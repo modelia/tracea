@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<elementtypesconfigurations:ElementTypeSetConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:elementtypesconfigurations="http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.2" xmlns:stereotypematcher="http://www.eclipse.org/papyrus/uml/types/stereotypematcher/1.1" xmi:id="com.cea.papyrus.referenceML.elementTypes" identifier="com.cea.papyrus.referenceML.elementTypes" name="ReferenceML" metamodelNsURI="http://www.eclipse.org/uml2/5.0.0/UML">
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="com.cea.papyrus.referenceML.Collection" identifier="com.cea.papyrus.referenceML.Collection" name="Collection" hint="UML::Package" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType" matcherConfiguration="_SnptNF3UEeyo7IKkYihL2w">
+    <annotations xmi:type="elementtypesconfigurations:Annotation" xmi:id="_SnptMl3UEeyo7IKkYihL2w" source="org.eclipse.papyrus.uml.profile.types.generator.source" value="platform:/resource/com.cea.papyrus.referencemanagement/uml-profiles/ReferencesML.profile.uml#_AdeYwFkTEey5UYhA6TU8wA"/>
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_SnptM13UEeyo7IKkYihL2w" iconPath="/icons/full/obj16/Package.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <ownedConfigurations xmi:type="stereotypematcher:StereotypeMatcherAdviceConfiguration" xmi:id="_SnptNF3UEeyo7IKkYihL2w" description="Apply Stereotype Collection" identifier="com.cea.papyrus.referenceML.collection" target="com.cea.papyrus.referenceML.Collection" matchedType="com.cea.papyrus.referenceML.Collection">
+      <stereotypesQualifiedNames>ReferenceML::Collection</stereotypesQualifiedNames>
+    </ownedConfigurations>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.Package"/>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="com.cea.papyrus.referenceML.Reference" identifier="com.cea.papyrus.referenceML.Reference" name="Reference" hint="UML::Class" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType" matcherConfiguration="_SnptOF3UEeyo7IKkYihL2w">
+    <annotations xmi:type="elementtypesconfigurations:Annotation" xmi:id="_SnptNl3UEeyo7IKkYihL2w" source="org.eclipse.papyrus.uml.profile.types.generator.source" value="platform:/resource/com.cea.papyrus.referencemanagement/uml-profiles/ReferencesML.profile.uml#_V0hCoEaeEeeubeo5VXVdIw"/>
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_SnptN13UEeyo7IKkYihL2w" iconPath="/icons/full/obj16/Class.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <ownedConfigurations xmi:type="stereotypematcher:StereotypeMatcherAdviceConfiguration" xmi:id="_SnptOF3UEeyo7IKkYihL2w" description="Apply Stereotype Reference" identifier="com.cea.papyrus.referenceML.reference" target="com.cea.papyrus.referenceML.Reference" matchedType="com.cea.papyrus.referenceML.Reference">
+      <stereotypesQualifiedNames>ReferenceML::Reference</stereotypesQualifiedNames>
+    </ownedConfigurations>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.Class"/>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="com.cea.papyrus.referenceML.ReferenceLibrary" identifier="com.cea.papyrus.referenceML.ReferenceLibrary" name="ReferenceLibrary" hint="UML::Model" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType" matcherConfiguration="_SnptPF3UEeyo7IKkYihL2w">
+    <annotations xmi:type="elementtypesconfigurations:Annotation" xmi:id="_SnptOl3UEeyo7IKkYihL2w" source="org.eclipse.papyrus.uml.profile.types.generator.source" value="platform:/resource/com.cea.papyrus.referencemanagement/uml-profiles/ReferencesML.profile.uml#_JQbagEafEeeubeo5VXVdIw"/>
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_SnptO13UEeyo7IKkYihL2w" iconPath="/icons/full/obj16/Model.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <ownedConfigurations xmi:type="stereotypematcher:StereotypeMatcherAdviceConfiguration" xmi:id="_SnptPF3UEeyo7IKkYihL2w" description="Apply Stereotype ReferenceLibrary" identifier="com.cea.papyrus.referenceML.referenceLibrary" target="com.cea.papyrus.referenceML.ReferenceLibrary" matchedType="com.cea.papyrus.referenceML.ReferenceLibrary">
+      <stereotypesQualifiedNames>ReferenceML::ReferenceLibrary</stereotypesQualifiedNames>
+    </ownedConfigurations>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.Model"/>
+  </elementTypeConfigurations>
+</elementtypesconfigurations:ElementTypeSetConfiguration>

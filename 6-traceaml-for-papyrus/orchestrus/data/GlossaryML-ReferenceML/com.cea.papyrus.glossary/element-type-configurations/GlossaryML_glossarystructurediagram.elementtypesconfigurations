@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<elementtypesconfigurations:ElementTypeSetConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:elementtypesconfigurations="http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.2" xmi:id="_8gaucW14Eey1C9EStxUthQ" identifier="com.example.glossaryML.glossarystructurediagram.elementTypes.id" name="com.example.glossaryML.glossarystructurediagram.elementTypes" metamodelNsURI="http://www.eclipse.org/uml2/5.0.0/UML">
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="_wz8DwW15Eey1C9EStxUthQ" identifier="com.cea.papyrus.glossaryml.glossarystructurediagram.GlossayModelShape.id" name="Glossary (Model)" hint="Model_Shape" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+    <specializedTypes xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.cea.papyrus.glossary/element-type-configurations/GlossaryML_Semantic.elementtypesconfigurations#com.example.glossaryML.Glossary"/>
+    <specializedTypes xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/umldi.elementtypesconfigurations#org.eclipse.papyrus.umldi.Model_Shape"/>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="_wz8Dwm15Eey1C9EStxUthQ" identifier="com.cea.papyrus.glossaryml.glossarystructurediagram.GlossayModelShapeCN.id" name="Glossary (Model)" hint="Model_Shape_CN" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+    <specializedTypes xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.cea.papyrus.glossary/element-type-configurations/GlossaryML_Semantic.elementtypesconfigurations#com.example.glossaryML.Glossary"/>
+    <specializedTypes xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/umldi.elementtypesconfigurations#org.eclipse.papyrus.umldi.Model_Shape_CN"/>
+  </elementTypeConfigurations>
+</elementtypesconfigurations:ElementTypeSetConfiguration>

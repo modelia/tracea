@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nattableconfiguration:TableConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:booleanexpressions="http://www.eclipse.org/papyrus/expressions/booleanexpressions" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:nattableaxis="http://www.eclipse.org/papyrus/nattable/model/table/nattableaxis" xmlns:nattableaxisconfiguration="http://www.eclipse.org/papyrus/nattable/model/table/nattableaxisconfiguration" xmlns:nattableaxisprovider="http://www.eclipse.org/papyrus/nattable/model/table/nattableaxisprovider" xmlns:nattableconfiguration="http://www.eclipse.org/papyrus/nattable/model/nattableconfiguration" xmlns:nattablelabelprovider="http://www.eclipse.org/papyrus/nattable/model/table/nattablecontentprovider" xmlns:nattablestyle="http://www.eclipse.org/papyrus/nattable/model/table/nattablestyle" xmlns:nattabletester="http://www.eclipse.org/papyrus/nattable/model/table/nattabletester" xmlns:umlexpressions="http://www.eclipse.org/papyrus/umlexpressions" xmi:id="PapyrusUMLGenericTreeTable_XMI_ID" description="This tree table shows the content of a glossary and all its sub glossaries." name="Glossary Tree Table" type="PapyrusUMLGenericTreeTable" iconPath="platform:/plugin/com.cea.papyrus.glossary/icons/glossary_tree_table_icon.png" cellEditorDeclaration="COLUMN" defaultRowAxisProvider="_Wa4BCTzQEei_1txcmoHe_A" defaultColumnAxisProvider="_Wa4BBzzQEei_1txcmoHe_A">
+  <styles xmi:type="nattablestyle:TableDisplayStyle" xmi:id="_Wa3Z8TzQEei_1txcmoHe_A" displayStyle="HIERARCHIC_SINGLE_TREE_COLUMN"/>
+  <styles xmi:type="nattablestyle:StringListValueStyle" xmi:id="_Wa3Z8jzQEei_1txcmoHe_A" name="dragRegions">
+    <stringListValue>ROW_HEADER</stringListValue>
+  </styles>
+  <styles xmi:type="nattablestyle:IntListValueStyle" xmi:id="_VAhT4FwlEeyeUK8D0itE0w" name="hiddenCategoriesByDepth">
+    <intListValue>0</intListValue>
+    <intListValue>1</intListValue>
+    <intListValue>2</intListValue>
+  </styles>
+  <creationTester xmi:type="nattabletester:JavaTableTester" xmi:id="_Wa3Z8zzQEei_1txcmoHe_A" tester="org.eclipse.papyrus.uml.nattable.tester.isumlelement"/>
+  <rowHeaderAxisConfiguration xmi:type="nattableaxisconfiguration:TableHeaderAxisConfiguration" xmi:id="_Wa3Z9DzQEei_1txcmoHe_A" indexStyle="NUMERIC" displayLabel="true" displayFilter="false" displayIndex="true">
+    <styles xmi:type="nattablestyle:IntValueStyle" xmi:id="_BaZhQFzHEeyo7IKkYihL2w" name="rowLabelWidth" intValue="173"/>
+    <styles xmi:type="nattablestyle:IntValueStyle" xmi:id="_BaZhQVzHEeyo7IKkYihL2w" name="rowIndexWidth" intValue="50"/>
+    <ownedLabelConfigurations xmi:type="nattablelabelprovider:ObjectLabelProviderConfiguration" xmi:id="_Wa3Z9TzQEei_1txcmoHe_A" displayIcon="true" displayLabel="true"/>
+    <ownedLabelConfigurations xmi:type="nattablelabelprovider:FeatureLabelProviderConfiguration" xmi:id="_Wa3Z9jzQEei_1txcmoHe_A" displayIcon="true" displayLabel="true" displayIsDerived="true" displayType="false" displayMultiplicity="false" displayName="true"/>
+    <ownedLabelConfigurations xmi:type="nattablelabelprovider:OperationLabelProviderConfiguration" xmi:id="_Wa3Z9zzQEei_1txcmoHe_A" displayIcon="true" displayLabel="true" displayType="false" displayMultiplicity="false" displayName="true"/>
+    <ownedAxisConfigurations xmi:type="nattableaxisconfiguration:TreeFillingConfiguration" xmi:id="_Wa3Z-DzQEei_1txcmoHe_A" labelProvider="_Wa3Z9jzQEei_1txcmoHe_A" labelProviderContext="org.eclipse.papyrus.infra.nattable.header.treefilling.feature.labelprovider">
+      <axisUsedAsAxisProvider xmi:type="nattableaxis:EStructuralFeatureAxis" xmi:id="_Wa3Z-TzQEei_1txcmoHe_A" alias="">
+        <element xmi:type="ecore:EReference" href="http://www.eclipse.org/uml2/5.0.0/UML#//Package/packagedElement"/>
+      </axisUsedAsAxisProvider>
+      <filterRule xmi:type="booleanexpressions:OrExpression" xmi:id="_8Z3OUFzAEeyo7IKkYihL2w">
+        <ownedExpressions xmi:type="umlexpressions:IsStereotypedWithExpression" xmi:id="_9muqEFzAEeyo7IKkYihL2w" name="TermExpressionFilter" description="This expression is used to filter the elements stereotyped as &lt;&lt;Term>>." stereotypeQualifiedName="GlossaryML::Term" profileURI="http://com.cea.papyrus.glossaryml"/>
+        <ownedExpressions xmi:type="umlexpressions:IsStereotypedWithExpression" xmi:id="_-aV4UFzAEeyo7IKkYihL2w" name="GlossaryExpressionFilter" description="This expression is used to filter the elements stereotyped as &lt;&lt;Glossary>>." stereotypeQualifiedName="GlossaryML::Glossary" profileURI="http://com.cea.papyrus.glossaryml"/>
+      </filterRule>
+    </ownedAxisConfigurations>
+    <ownedAxisConfigurations xmi:type="nattableaxisconfiguration:TreeFillingConfiguration" xmi:id="_Wa3Z-jzQEei_1txcmoHe_A" depth="1" labelProvider="_Wa3Z9jzQEei_1txcmoHe_A" labelProviderContext="org.eclipse.papyrus.infra.nattable.header.treefilling.feature.labelprovider">
+      <axisUsedAsAxisProvider xmi:type="nattableaxis:EStructuralFeatureAxis" xmi:id="_Wa3Z-zzQEei_1txcmoHe_A" alias="">
+        <element xmi:type="ecore:EReference" href="http://www.eclipse.org/uml2/5.0.0/UML#//Element/ownedElement"/>
+      </axisUsedAsAxisProvider>
+      <filterRule xmi:type="booleanexpressions:OrExpression" xmi:id="_aFmecFzBEeyo7IKkYihL2w">
+        <ownedExpressions xmi:type="umlexpressions:IsStereotypedWithExpression" xmi:id="_aFmecVzBEeyo7IKkYihL2w" name="TermExpressionFilter" description="This expression is used to filter the elements stereotyped as &lt;&lt;Term>>." stereotypeQualifiedName="GlossaryML::Term" profileURI="http://com.cea.papyrus.glossaryml"/>
+        <ownedExpressions xmi:type="umlexpressions:IsStereotypedWithExpression" xmi:id="_aFmeclzBEeyo7IKkYihL2w" name="GlossaryExpressionFilter" description="This expression is used to filter the elements stereotyped as &lt;&lt;Glossary>>." stereotypeQualifiedName="GlossaryML::Glossary" profileURI="http://com.cea.papyrus.glossaryml"/>
+      </filterRule>
+    </ownedAxisConfigurations>
+    <ownedAxisConfigurations xmi:type="nattableaxisconfiguration:TreeFillingConfiguration" xmi:id="_Wa3Z_DzQEei_1txcmoHe_A" depth="2" labelProvider="_Wa3Z9jzQEei_1txcmoHe_A" labelProviderContext="org.eclipse.papyrus.infra.nattable.header.treefilling.feature.labelprovider">
+      <axisUsedAsAxisProvider xmi:type="nattableaxis:EStructuralFeatureAxis" xmi:id="_Wa3Z_TzQEei_1txcmoHe_A" alias="">
+        <element xmi:type="ecore:EReference" href="http://www.eclipse.org/uml2/5.0.0/UML#//Element/ownedElement"/>
+      </axisUsedAsAxisProvider>
+      <filterRule xmi:type="booleanexpressions:OrExpression" xmi:id="_aisDEFzBEeyo7IKkYihL2w">
+        <ownedExpressions xmi:type="umlexpressions:IsStereotypedWithExpression" xmi:id="_aisDEVzBEeyo7IKkYihL2w" name="TermExpressionFilter" description="This expression is used to filter the elements stereotyped as &lt;&lt;Term>>." stereotypeQualifiedName="GlossaryML::Term" profileURI="http://com.cea.papyrus.glossaryml"/>
+        <ownedExpressions xmi:type="umlexpressions:IsStereotypedWithExpression" xmi:id="_aisDElzBEeyo7IKkYihL2w" name="GlossaryExpressionFilter" description="This expression is used to filter the elements stereotyped as &lt;&lt;Glossary>>." stereotypeQualifiedName="GlossaryML::Glossary" profileURI="http://com.cea.papyrus.glossaryml"/>
+      </filterRule>
+    </ownedAxisConfigurations>
+    <axisManagers xmi:type="nattableaxisconfiguration:AxisManagerRepresentation" xmi:id="_Wa4BADzQEei_1txcmoHe_A" axisManagerId="org.eclipse.papyrus.infra.uml.nattable.tree.axis.manager" labelProviderContext="org.eclipse.papyrus.infra.nattable.header.labelprovider" headerLabelConfiguration="_Wa3Z9TzQEei_1txcmoHe_A" specificAxisConfigurations="_Wa3Z-DzQEei_1txcmoHe_A _Wa3Z-jzQEei_1txcmoHe_A _Wa3Z_DzQEei_1txcmoHe_A"/>
+  </rowHeaderAxisConfiguration>
+  <columnHeaderAxisConfiguration xmi:type="nattableaxisconfiguration:TableHeaderAxisConfiguration" xmi:id="_Wa4BATzQEei_1txcmoHe_A" displayLabel="true" displayFilter="false" displayIndex="false">
+    <ownedLabelConfigurations xmi:type="nattablelabelprovider:FeatureLabelProviderConfiguration" xmi:id="_Wa4BAjzQEei_1txcmoHe_A" displayIcon="false" displayLabel="true" displayIsDerived="false" displayType="false" displayMultiplicity="false" displayName="true"/>
+    <axisManagers xmi:type="nattableaxisconfiguration:AxisManagerRepresentation" xmi:id="_Wa4BBDzQEei_1txcmoHe_A" axisManagerId="org.eclipse.papyrus.uml.nattable.feature.axis.manager" labelProviderContext="org.eclipse.papyrus.infra.nattable.header.feature.labelprovider" headerLabelConfiguration="_Wa4BAjzQEei_1txcmoHe_A"/>
+    <axisManagers xmi:type="nattableaxisconfiguration:AxisManagerRepresentation" xmi:id="_Wa4BBTzQEei_1txcmoHe_A" axisManagerId="org.eclipse.papyrus.uml.nattable.stereotype.property.axis.manager" labelProviderContext="org.eclipse.papyrus.infra.nattable.header.feature.labelprovider" headerLabelConfiguration="_Wa4BAjzQEei_1txcmoHe_A"/>
+  </columnHeaderAxisConfiguration>
+  <columnAxisProviders xmi:type="nattableaxisprovider:SlaveObjectAxisProvider" xmi:id="_Wa4BBzzQEei_1txcmoHe_A" description="This axis provider provides available columns according to the rows of the table (features of the object displayed on the other axis)" name="UML Feature axis provider">
+    <axis xmi:type="nattableaxis:FeatureIdAxis" xmi:id="_6beAQFzGEeyo7IKkYihL2w" manager="_Wa4BBTzQEei_1txcmoHe_A" alias="Acronym" element="property_of_stereotype:/GlossaryML::Term::acronym">
+      <styles xmi:type="nattablestyle:IntValueStyle" xmi:id="_6beAQVzGEeyo7IKkYihL2w" name="axisWidth" intValue="112"/>
+      <styles xmi:type="nattablestyle:BooleanValueStyle" xmi:id="_EYXcUFzJEeyo7IKkYihL2w" name="wrapText" booleanValue="true"/>
+      <styles xmi:type="nattablestyle:BooleanValueStyle" xmi:id="_FK00AFzJEeyo7IKkYihL2w" name="autoResizeCellHeight" booleanValue="true"/>
+    </axis>
+    <axis xmi:type="nattableaxis:FeatureIdAxis" xmi:id="_6beAQlzGEeyo7IKkYihL2w" manager="_Wa4BBTzQEei_1txcmoHe_A" alias="Common Definition" element="property_of_stereotype:/GlossaryML::Term::commonMeaning">
+      <styles xmi:type="nattablestyle:IntValueStyle" xmi:id="_6beAQ1zGEeyo7IKkYihL2w" name="axisWidth" intValue="264"/>
+      <styles xmi:type="nattablestyle:BooleanValueStyle" xmi:id="_yUTZ8FzIEeyo7IKkYihL2w" name="wrapText" booleanValue="true"/>
+      <styles xmi:type="nattablestyle:BooleanValueStyle" xmi:id="_HHIIoFzJEeyo7IKkYihL2w" name="autoResizeCellHeight" booleanValue="true"/>
+    </axis>
+    <axis xmi:type="nattableaxis:FeatureIdAxis" xmi:id="_6benUFzGEeyo7IKkYihL2w" manager="_Wa4BBTzQEei_1txcmoHe_A" alias="All Definitions" element="property_of_stereotype:/GlossaryML::Term::meanings">
+      <styles xmi:type="nattablestyle:IntValueStyle" xmi:id="_6benUVzGEeyo7IKkYihL2w" name="axisWidth" intValue="286"/>
+      <styles xmi:type="nattablestyle:StringValueStyle" xmi:id="_6benUlzGEeyo7IKkYihL2w" name="filterId" stringValue="org.eclipse.papyrus.infra.emf.nattable.ereference.text"/>
+      <styles xmi:type="nattablestyle:StringValueStyle" xmi:id="_6benU1zGEeyo7IKkYihL2w" name="filterValueToMatch" stringValue=""/>
+      <styles xmi:type="nattablestyle:BooleanValueStyle" xmi:id="_NVBDsFzIEeyo7IKkYihL2w" name="displayListOnSeparatedRows" booleanValue="true"/>
+      <styles xmi:type="nattablestyle:BooleanValueStyle" xmi:id="_0wxcYFzIEeyo7IKkYihL2w" name="wrapText" booleanValue="true"/>
+      <styles xmi:type="nattablestyle:BooleanValueStyle" xmi:id="_HTaRIFzJEeyo7IKkYihL2w" name="autoResizeCellHeight" booleanValue="true"/>
+    </axis>
+    <axis xmi:type="nattableaxis:FeatureIdAxis" xmi:id="_6benVFzGEeyo7IKkYihL2w" manager="_Wa4BBTzQEei_1txcmoHe_A" alias="Hypernyms" element="property_of_stereotype:/GlossaryML::Term::hypernyms">
+      <styles xmi:type="nattablestyle:IntValueStyle" xmi:id="_6benVVzGEeyo7IKkYihL2w" name="axisWidth" intValue="91"/>
+      <styles xmi:type="nattablestyle:BooleanValueStyle" xmi:id="_Lu3lQFzIEeyo7IKkYihL2w" name="displayListOnSeparatedRows" booleanValue="true"/>
+      <styles xmi:type="nattablestyle:BooleanValueStyle" xmi:id="_1K828FzIEeyo7IKkYihL2w" name="wrapText" booleanValue="true"/>
+      <styles xmi:type="nattablestyle:BooleanValueStyle" xmi:id="_Hds1kFzJEeyo7IKkYihL2w" name="autoResizeCellHeight" booleanValue="true"/>
+    </axis>
+    <axis xmi:type="nattableaxis:FeatureIdAxis" xmi:id="_6benVlzGEeyo7IKkYihL2w" manager="_Wa4BBTzQEei_1txcmoHe_A" alias="Hyponyms" element="property_of_stereotype:/GlossaryML::Term::hyponyms">
+      <styles xmi:type="nattablestyle:BooleanValueStyle" xmi:id="_6benV1zGEeyo7IKkYihL2w" name="displayListOnSeparatedRows" booleanValue="true"/>
+      <styles xmi:type="nattablestyle:IntValueStyle" xmi:id="_6benWFzGEeyo7IKkYihL2w" name="axisWidth" intValue="83"/>
+      <styles xmi:type="nattablestyle:BooleanValueStyle" xmi:id="_1VsHUFzIEeyo7IKkYihL2w" name="wrapText" booleanValue="true"/>
+      <styles xmi:type="nattablestyle:BooleanValueStyle" xmi:id="_HnfqwFzJEeyo7IKkYihL2w" name="autoResizeCellHeight" booleanValue="true"/>
+    </axis>
+    <axis xmi:type="nattableaxis:FeatureIdAxis" xmi:id="_6benWVzGEeyo7IKkYihL2w" manager="_Wa4BBTzQEei_1txcmoHe_A" alias="Synonyms" element="property_of_stereotype:/GlossaryML::Term::synonyms">
+      <styles xmi:type="nattablestyle:BooleanValueStyle" xmi:id="_6benWlzGEeyo7IKkYihL2w" name="displayListOnSeparatedRows" booleanValue="true"/>
+      <styles xmi:type="nattablestyle:IntValueStyle" xmi:id="_6benW1zGEeyo7IKkYihL2w" name="axisWidth" intValue="82"/>
+      <styles xmi:type="nattablestyle:BooleanValueStyle" xmi:id="_1rjCkFzIEeyo7IKkYihL2w" name="wrapText" booleanValue="true"/>
+      <styles xmi:type="nattablestyle:BooleanValueStyle" xmi:id="_HzEooFzJEeyo7IKkYihL2w" name="autoResizeCellHeight" booleanValue="true"/>
+    </axis>
+    <axis xmi:type="nattableaxis:FeatureIdAxis" xmi:id="_6benXFzGEeyo7IKkYihL2w" manager="_Wa4BBTzQEei_1txcmoHe_A" alias="References" element="property_of_stereotype:/GlossaryML::Term::reference">
+      <styles xmi:type="nattablestyle:IntValueStyle" xmi:id="_6benXVzGEeyo7IKkYihL2w" name="axisWidth" intValue="80"/>
+      <styles xmi:type="nattablestyle:BooleanValueStyle" xmi:id="_MzE0QFzIEeyo7IKkYihL2w" name="displayListOnSeparatedRows" booleanValue="true"/>
+      <styles xmi:type="nattablestyle:BooleanValueStyle" xmi:id="_17p7IFzIEeyo7IKkYihL2w" name="wrapText" booleanValue="true"/>
+      <styles xmi:type="nattablestyle:BooleanValueStyle" xmi:id="_IK3dkFzJEeyo7IKkYihL2w" name="autoResizeCellHeight" booleanValue="true"/>
+    </axis>
+  </columnAxisProviders>
+  <rowAxisProviders xmi:type="nattableaxisprovider:MasterObjectAxisProvider" xmi:id="_Wa4BCTzQEei_1txcmoHe_A" description="This axis provider manages the rows, according to the wanted hierarchy" name="HierarchicalRowAxisManager" disconnectSlave="true"/>
+</nattableconfiguration:TableConfiguration>

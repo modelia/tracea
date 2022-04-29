@@ -1,0 +1,5 @@
+{ "values" : {
+	"confidence": ["confidence", "MIN",   0]
+	},
+  "mergeOperator": "AND"
+}

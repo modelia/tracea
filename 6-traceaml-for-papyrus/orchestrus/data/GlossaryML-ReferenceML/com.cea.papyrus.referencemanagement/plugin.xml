@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?eclipse version="3.0"?><!--
+--><plugin>
+         
+   
+   <extension point="org.eclipse.uml2.uml.generated_package">
+                  
+      
+      <profile location="platform:/plugin/com.cea.papyrus.referencemanagement/uml-profiles/ReferencesML.profile.uml#_K_P-sEadEeeubeo5VXVdIw" uri="http://org.eclipse.papyrus.referenceml">
+      </profile>
+               
+   
+   </extension>
+         
+   
+         
+   
+   <extension point="org.eclipse.emf.ecore.generated_package">
+                  
+      
+      <!-- @generated ReferenceML -->
+                  
+      
+      <package class="ReferenceML.ReferenceMLPackage" genModel="uml-profiles/ReferenceML.genmodel" uri="http://com.cea.papyrus.referenceml"/>
+               
+   
+   </extension>
+         
+   
+   <extension point="org.eclipse.papyrus.infra.properties.contexts">
+                  
+      
+      <context contextModel="properties-editor-configurations/ReferencesML.ctx" isCustomizable="true">
+      </context>
+               
+   
+   </extension>
+      
+
+</plugin>

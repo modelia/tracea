@@ -1,0 +1,155 @@
+<!-- Standalone HTML with CSS and JS - movable to anywhere! -->
+<html>
+
+<head>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <title id="title">Project setup</title>
+    <style>
+        body {
+            font-family: Courier, Arial;
+            font-size: 65%;
+        }
+
+        .stripebox {
+            border-bottom: solid black 0px;
+            background-color: WhiteSmoke;
+        }
+
+        .stripebox h1 {
+            font-family: Courier, Arial;
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
+
+        .stripecontent {
+            font-family: Arial;
+            padding-left: 23px;
+            padding-bottom: 12px;
+        }
+
+        #credit {
+            float: right;
+            color: #909090;
+            padding-right: 10px;
+        }
+
+        #filehead,
+        #tree {
+            padding-left: 23px;
+        }
+
+        a.control:link,
+        a.control:active,
+        a.control:hover,
+        a.control:visited {
+            color: blue;
+        }
+
+        ul.tree li {
+            list-style-type: none;
+            position: relative;
+        }
+
+        ul.tree li ul {
+            display: none;
+            padding-left: 15px
+        }
+
+        ul.tree li.open>ul {
+            display: block;
+        }
+
+        ul.tree li a {
+            color: black;
+            text-decoration: none;
+        }
+
+        ul.tree li a:before {
+            /* the expand/collapse symbols before each item */
+            height: 1em;
+            font-size: .8em;
+            display: block;
+            position: absolute;
+            left: -1.2em;
+            top: .05em;
+        }
+
+        ul.tree li>a:not(:last-child):before {
+            content: '⊞';
+            font-weight: bold;
+        }
+
+        ul.tree li.open>a:not(:last-child):before {
+            content: '⊟';
+            font-weight: normal;
+        }
+
+        ul.tree li.open>a:last-child:before {
+            content: '';
+            font-weight: bold;
+        }
+
+        ul.tree li:before,
+        ul.tree li:after {
+            position: absolute;
+            left: -0.7em;
+            border-style: dotted;
+            border-color: #909090;
+            border-width: 0px;
+        }
+
+        ul.tree li:before {
+            content: "";
+            border-top-width: 1px;
+            height: 0;
+            width: 8px;
+            top: 9px;
+        }
+
+        ul.tree li:after {
+            content: "";
+            border-left-width: 1px;
+            height: 100%;
+            width: 0px;
+            top: 2px;
+        }
+
+        ul.tree>li::before {
+            width: 0px;
+        }
+
+        ul.tree>li::after {
+            height: 0px;
+        }
+
+        ul.tree>li li:last-child:after {
+            height: 8px;
+        }
+    </style>
+    <!-- Load D3-Tracea -->
+    <script src="scripts/clusterGen.js"></script>
+</head>
+
+<body onload="onLoad()">
+
+    <h1>Clusters</h1>
+
+    <p id="filehead">
+        Project name: <span id="filename">GlossaryML</span>
+    </p>
+    <div id="tree">
+        <ul id="section1" class="tree"></ul>
+        <ul id="section2" class="tree"></ul>
+    </div>
+
+    <div class="stripebox">
+        <div class="stripecontent">
+            <span>Click individual nodes or use arrow keys to navigate.</span>
+            <!-- do not use <button>s; ugly -->
+            <a class="control" id="expand" href="#" onClick="actExpandCollapse()" title="Enter or Space key">Expand
+                All</a>
+        </div>
+    </div>
+</body>
+
+</html>

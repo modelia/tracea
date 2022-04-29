@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" 
+  xmlns:xmi="http://www.omg.org/XMI" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" 
+  name="GlossaryML" 
+  nsURI="http://com.cea.papyrus.glossaryml" 
+  nsPrefix="GlossaryML">
+  <eClassifiers xsi:type="ecore:EClass" name="Glossary">
+    <eStructuralFeatures 
+        xsi:type="ecore:EReference" name="base_Model" 
+        ordered="false"
+        lowerBound="1" 
+        eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//Model"/>
+    <eStructuralFeatures 
+        xsi:type="ecore:EAttribute" name="knowledgeDomainName" 
+        ordered="false"
+        unique="false" 
+        eType="ecore:EDataType ../../org.eclipse.uml2.types/model/Types.ecore#//String"
+        defaultValueLiteral="'Specify the name of the glossary knowledge domain.'"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="knowledgeDomainDescription"
+        ordered="false" unique="false" eType="ecore:EDataType ../../org.eclipse.uml2.types/model/Types.ecore#//String"
+        defaultValueLiteral="'Insert here a text of the description of the glossary knowledge domain.'"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subGlossaries" ordered="false"
+        upperBound="-1" eType="#//Glossary" changeable="false" volatile="true" transient="true"
+        derived="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Term">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Class" ordered="false"
+        lowerBound="1" eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//Class"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="acronym" ordered="false"
+        lowerBound="1" eType="ecore:EDataType ../../org.eclipse.uml2.types/model/Types.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="meanings" ordered="false"
+        upperBound="-1" eType="#//Definition" changeable="false" volatile="true" transient="true"
+        derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The meanings atribute is a derived attribute. Its value is calculated as being the set of owned comments stereotyped as &lt;&lt;Definition>>."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="commonMeaning" ordered="false"
+        eType="#//Definition" changeable="false" volatile="true" transient="true"
+        derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&lt;p>The commonMeaning attribute is a derived property subetting the meanings attribute. The derivation rule shall be the following: the value of the commonMeaning attribute is calculated as being the Definition model element (i.e., owned comments stereotyped with &amp;lt;&amp;lt;Definition&amp;gt;&amp;gt; and annotating the owner element, in that case the Term itself).&amp;nbsp;&lt;/p>&#xA;"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hyponyms" ordered="false"
+        upperBound="-1" eType="#//Term" eOpposite="#//Term/hypernyms"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hypernyms" ordered="false"
+        upperBound="-1" eType="#//Term" eOpposite="#//Term/hyponyms"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="synonyms" ordered="false"
+        upperBound="-1" eType="#//Term"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" ordered="false"
+        upperBound="-1" eType="ecore:EClass ../../com.cea.papyrus.referencemanagement/uml-profiles/ReferenceML.ecore#//Reference"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Definition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Comment" ordered="false"
+        lowerBound="1" eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//Comment"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" 
+    name="isCommon" ordered="false"
+        lowerBound="1" 
+        eType="ecore:EDataType ../../org.eclipse.uml2.types/model/Types.ecore#//Boolean"
+        defaultValueLiteral="false"/>
+  </eClassifiers>
+</ecore:EPackage>

@@ -1,0 +1,127 @@
+html {
+    width: 100%;
+  }
+  #canvas {
+    width: 800px;
+    height: 500px;
+    border:1px black solid;
+    background-color: #fdffda;/*#fdffda*/
+  }
+  
+  html, body {
+    font-family: 'Arial';
+    background-color: #535353;
+  }
+  
+  .headerTitle{
+    font-size: 30px;
+    text-shadow: -1px -1px rgb(6, 101, 98), 1px 1px #060, -3px 0 4px #000;
+    font-family:Arial, Helvetica, sans-serif;
+    color: rgb(175, 177, 132);
+    padding:5px 0px 0px 10px;
+    text-align:left;
+    display:inline;
+    margin:5px 0px 0px 16px;
+  }
+  
+  .headerSubTitle {
+    font-size: 20px;
+    text-shadow: -1px -1px rgb(6, 101, 98), 1px 1px #060, -3px 0 4px #000;
+    font-family:Arial, Helvetica, sans-serif;
+    color: rgb(175, 177, 132);
+    padding:0px 0px 0px 10px;
+    font-weight:lighter;
+    text-decoration: none;
+    text-align:left;
+    display:inline;
+    margin:10px 0px 0px 10px;
+  }
+  
+  .link line {  stroke: #999;  stroke-opacity: 0.6;}
+  .node circle {  stroke: black;}
+  
+  .controls {
+    max-height: 240px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  .controls .force {
+    /*background-color:#eee;*/
+    border-radius: 3px;
+    border: 1px rgb(54, 2, 2) solid;
+    padding: 2px;
+    margin: 2px 2px 2px 0px ;
+    font-size: 60%;
+  }
+  .controls .force p label { margin-right: .5em; margin-left: .5em; font-weight: bold;}
+  .controls .force p { margin: 0px; width: 95%;}
+  .controls .force label { display: inline-block; }
+  .controls .force label output { font-weight: bold; }
+  .controls input[type="checkbox"] { transform: scale(1.2, 1.2); }
+  .controls input[type="range"] { margin: 0.1em 5% 0.1em 5%;  }
+  
+  /*.sliderInput { height: .2em; border: 1px #777 solid; border-radius: 2px; padding: 1px;}*/
+  .sliderInput  {height: .3em; background-color: #555; border-radius: 1px; display: flex;  flex-basis: 100% }
+  
+  .sliderInput:active { background-color: #222 }
+  
+  .box {
+    border: 1px rgb(54, 2, 2) solid;
+    position: absolute;
+    background-color: rgb(225 210 225);
+    max-height: 240px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-width: 200px;
+  }
+  
+  #clusterBox { right: 0px;  top: 162px;  left: 10px;}
+  #controlBox { right: 0px;  top: 407px; left: 10px;}
+  
+  #searchBox  { right: 0px;  top: 50px;  left: 10px;}
+  #sliderBox  { right: 0px;  top: 102px;  left: 10px;}
+
+  #linksLegendBox  {  right: 10px; top: 295px;}
+  #nodesLegendBox  {  right: 10px; top: 50px;}
+  
+
+ 
+
+ #clusterBoxHeader, #sliderBoxHeader, #legendBoxHeader, #controlBoxHeader, #searchBoxHeader, #colorBoxHeader, #linksLegendBoxHeader, #nodesLegendBoxHeader {
+    background-color: rgb(205 190 205);
+    cursor: move;
+    font-weight: bold;
+    font-size: 70%;
+    padding-left: 2px;
+  }
+  
+  #searchBox button {
+    font-size: 60%;
+    width: 45px;
+    display: inline;
+    margin-right: 5px;
+  }
+  
+  #searchBox input {
+    font-size: 60%;
+    height: 20px;
+    margin: 5px;
+    margin-right: 0px;
+    width:130px;
+    display: inline;
+  }
+  
+  .legend {
+    border-radius: 3px;
+    padding: 2px;
+  }
+  
+  input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    background-color: #060;
+    overflow: visible;
+    cursor: pointer;
+   }

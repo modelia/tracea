@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ASCII"?>
+<custom:CustomizationConfiguration
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:custom="http://www.eclipse.org/papyrus/customization"
+    plugin="com.cea.papyrus.glossary">
+  <elements
+      xsi:type="custom:Profile"
+      file="/com.cea.papyrus.glossary/uml-profiles/GlossaryML.profile.uml"
+      qualifiednames=""
+      iconpath="/com.cea.papyrus.glossary/uml-profiles/res/Glossary32x32.png"
+      description="This DSML suppots users managing her/his specific glossaries."
+      provider="CEA List"
+      name="Glossary DSML"/>
+  <elements
+      xsi:type="custom:PropertyView"
+      file="/com.cea.papyrus.glossary/properties-editor-configurations/GlossaryML.ctx"/>
+</custom:CustomizationConfiguration>

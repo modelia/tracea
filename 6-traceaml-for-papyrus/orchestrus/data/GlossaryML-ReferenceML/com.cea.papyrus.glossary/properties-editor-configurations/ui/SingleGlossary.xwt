@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><Composite xmlns="http://www.eclipse.org/xwt/presentation" xmlns:j="clr-namespace:java.lang" xmlns:ppe="clr-namespace:org.eclipse.papyrus.infra.properties.ui.widgets" xmlns:ppel="clr-namespace:org.eclipse.papyrus.infra.properties.ui.widgets.layout" xmlns:x="http://www.eclipse.org/xwt">
+            <Composite.layout>
+                        <ppel:PropertiesLayout/>
+            </Composite.layout>
+            <ppe:StringEditor property="UML:NamedElement:name" input="{Binding}" customLabel="Glossary name"/>
+            <ppe:StringEditor input="{Binding}" property="GlossaryML:Glossary:knowledgeDomainName" customLabel="Domain name"/>
+            <ppe:StringEditor input="{Binding}" property="GlossaryML:Glossary:knowledgeDomainDescription" customLabel="Domain description"/>
+            <ppe:MultiReference property="GlossaryML:Glossary:subGlossaries" input="{Binding}" readOnly="true" customLabel="Owned sub-glossaries"/>
+</Composite>

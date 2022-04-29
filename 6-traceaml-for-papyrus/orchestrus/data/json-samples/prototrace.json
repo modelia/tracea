@@ -1,0 +1,46 @@
+{ 
+    "trace" : {
+        "init": ["l1", "l2", "l3"]
+    },
+
+    "links": [
+        {"id": "l1", "sources": ["a0"], "targets": ["a3"], "type": "d2c"},
+        {"id": "l2", "sources": ["a1"], "targets": ["a5"], "type": "d2p"},
+        {"id": "l3", "sources": ["a2"], "targets": ["a5"], "type": "d2p"},
+        {"id": "l4", "sources": ["a5"], "targets": ["a6"], "type": "p2p"},
+        {"id": "l5", "sources": ["a3"], "targets": ["a4"], "type": "c2c"},
+        {"id": "l6", "sources": ["a6"], "targets": ["a4"], "type": "p2c"},
+        {"id": "l7", "sources": ["a4"], "targets": ["a7"], "type": "c2et"},
+        {"id": "l8", "sources": ["a7"], "targets": ["a8"], "type": "et2et"}
+    ],
+
+    "artefacts": [
+        {"id": "a1", "type": "", "fragments": ["af1", "af11"]},
+        {"id": "a2", "type": "", "fragments": ["af2"]}
+    ],
+
+    "fragments":[
+        {"id": "af1", "artefact": "", "definition":""},
+        {"id": "af11", "artefact": "", "definition":""},
+        {"id": "af2", "artefact": "", "definition":""}
+    ],
+
+    "artefactTypes": [
+        {"id": "code",      "name": "CodeType"},
+        {"id": "design",    "name": "DesignType"},
+        {"id": "palette",   "name": "PaletteType"},
+        {"id": "eltType",   "name": "ETCType"}
+      ],
+  
+    "linktypes": [
+        {"id": "d2c", "name":"Design2Code"},
+        {"id": "d2p", "name":"Design2Palette"},
+        {"id": "c2c", "name":"Code2"},
+        {"id": "p2c", "name":"Palette2Code"},
+        {"id": "p2p", "name":"Palette2"},
+        {"id": "c2et", "name":"Code2EltType"},
+        {"id": "et2et", "name":"EltType2"}
+
+    ]
+}
+

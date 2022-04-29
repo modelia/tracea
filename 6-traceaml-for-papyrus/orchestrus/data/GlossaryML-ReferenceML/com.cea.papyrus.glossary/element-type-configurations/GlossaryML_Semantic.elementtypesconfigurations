@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<elementtypesconfigurations:ElementTypeSetConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:elementtypesconfigurations="http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.2" xmlns:stereotypematcher="http://www.eclipse.org/papyrus/uml/types/stereotypematcher/1.1" xmi:id="com.example.glossaryML.elementTypes" identifier="com.example.glossaryML.metamodel.elementTypes.id" name="com.example.glossaryML.metamodel.elementTypes" metamodelNsURI="http://www.eclipse.org/uml2/5.0.0/UML">
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="com.example.glossaryML.Definition" identifier="com.example.glossaryML.Definition" name="Definition" hint="UML::Comment" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType" matcherConfiguration="_A1VPMOZAEeuwNNT1W9EFnQ">
+    <annotations xmi:type="elementtypesconfigurations:Annotation" xmi:id="_A1Rk0uZAEeuwNNT1W9EFnQ" source="org.eclipse.papyrus.uml.profile.types.generator.source" value="platform:/resource/com.cea.papyrus.glossary/uml-profiles/GlossaryML.profile.uml#_kxro8ET4EeS25e5tbYLtxg"/>
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_A1Rk0-ZAEeuwNNT1W9EFnQ" iconPath="/icons/full/obj16/Comment.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <ownedConfigurations xmi:type="stereotypematcher:StereotypeMatcherAdviceConfiguration" xmi:id="_A1VPMOZAEeuwNNT1W9EFnQ" description="Apply Stereotype Definition" identifier="com.example.glossaryML.definition" target="com.example.glossaryML.Definition" matchedType="com.example.glossaryML.Definition">
+      <stereotypesQualifiedNames>GlossaryML::Definition</stereotypesQualifiedNames>
+    </ownedConfigurations>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.Comment"/>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="com.example.glossaryML.Glossary" identifier="com.example.glossaryML.Glossary" name="Glossary" hint="UML::Model" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType" matcherConfiguration="_A1VPNOZAEeuwNNT1W9EFnQ">
+    <annotations xmi:type="elementtypesconfigurations:Annotation" xmi:id="_A1VPMuZAEeuwNNT1W9EFnQ" source="org.eclipse.papyrus.uml.profile.types.generator.source" value="platform:/resource/com.cea.papyrus.glossary/uml-profiles/GlossaryML.profile.uml#_H-K2wET3EeS25e5tbYLtxg"/>
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_A1VPM-ZAEeuwNNT1W9EFnQ" iconPath="/icons/full/obj16/Model.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <ownedConfigurations xmi:type="stereotypematcher:StereotypeMatcherAdviceConfiguration" xmi:id="_A1VPNOZAEeuwNNT1W9EFnQ" description="Apply Stereotype Glossary" identifier="com.example.glossaryML.glossary" target="com.example.glossaryML.Glossary" matchedType="com.example.glossaryML.Glossary">
+      <stereotypesQualifiedNames>GlossaryML::Glossary</stereotypesQualifiedNames>
+    </ownedConfigurations>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.Model"/>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="com.example.glossaryML.Term" identifier="com.example.glossaryML.Term" name="Term" hint="UML::Class" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType" matcherConfiguration="_A1VPOOZAEeuwNNT1W9EFnQ">
+    <annotations xmi:type="elementtypesconfigurations:Annotation" xmi:id="_A1VPNuZAEeuwNNT1W9EFnQ" source="org.eclipse.papyrus.uml.profile.types.generator.source" value="platform:/resource/com.cea.papyrus.glossary/uml-profiles/GlossaryML.profile.uml#_w_thgET3EeS25e5tbYLtxg"/>
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_A1VPN-ZAEeuwNNT1W9EFnQ" iconPath="/icons/full/obj16/Class.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <ownedConfigurations xmi:type="stereotypematcher:StereotypeMatcherAdviceConfiguration" xmi:id="_A1VPOOZAEeuwNNT1W9EFnQ" description="Apply Stereotype Term" identifier="com.example.glossaryML.term" target="com.example.glossaryML.Term" matchedType="com.example.glossaryML.Term">
+      <stereotypesQualifiedNames>GlossaryML::Term</stereotypesQualifiedNames>
+    </ownedConfigurations>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.Class"/>
+  </elementTypeConfigurations>
+</elementtypesconfigurations:ElementTypeSetConfiguration>

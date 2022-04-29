@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+  <uml:Profile xmi:id="_saqecET2EeS25e5tbYLtxg" name="GlossaryML" URI="http://com.cea.papyrus.glossaryml" metaclassReference="_ZvgKYET3EeS25e5tbYLtxg _0Q8BsET3EeS25e5tbYLtxg _XL36kET4EeS25e5tbYLtxg _rOc4EET4EeS25e5tbYLtxg _9qZHYBnvEee85eN49tGVcA" metamodelReference="_saqecUT2EeS25e5tbYLtxg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FkLcUFmhEeygx62aQuYAgw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Iumw8FmhEeygx62aQuYAgw" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Iumw8VmhEeygx62aQuYAgw" key="Version" value="0.0.0"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Iumw8lmhEeygx62aQuYAgw" key="Comment" value="&lt;undefined>"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Iumw81mhEeygx62aQuYAgw" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Iumw9FmhEeygx62aQuYAgw" key="Date" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Iumw9VmhEeygx62aQuYAgw" key="Author" value="&lt;undefined>"/>
+      </eAnnotations>
+      <contents xmi:type="ecore:EPackage" xmi:id="_FBwngFzdEeyo7IKkYihL2w" name="GlossaryML" nsURI="http://com.cea.papyrus.glossaryml" nsPrefix="GlossaryML">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FBwngVzdEeyo7IKkYihL2w" source="http://www.eclipse.org/uml2/4.1.0/UML">
+          <references xmi:type="ecore:EPackage" href="../../com.cea.papyrus.referencemanagement/uml-profiles/ReferencesML.profile.uml#_M5i-MFnfEeyFfo7P2D8rIQ"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FBx1pFzdEeyo7IKkYihL2w" source="PapyrusVersion">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FBx1pVzdEeyo7IKkYihL2w" key="Version" value="0.1.2"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FBx1plzdEeyo7IKkYihL2w" key="Comment" value=""/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FBx1p1zdEeyo7IKkYihL2w" key="Copyright" value="CEA List"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FBx1qFzdEeyo7IKkYihL2w" key="Date" value="2021-12-14"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FBx1qVzdEeyo7IKkYihL2w" key="Author" value="Sébastien Gérard"/>
+        </eAnnotations>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_FBwnglzdEeyo7IKkYihL2w" name="Glossary">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FBwng1zdEeyo7IKkYihL2w" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_H-K2wET3EeS25e5tbYLtxg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_FBwnhFzdEeyo7IKkYihL2w" name="base_Model" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Model"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_FBwnhlzdEeyo7IKkYihL2w" name="knowledgeDomainName" ordered="false" unique="false" defaultValueLiteral="'Specify the name of the glossary knowledge domain.'">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_FBwniFzdEeyo7IKkYihL2w" name="knowledgeDomainDescription" ordered="false" unique="false" defaultValueLiteral="'Insert here a text of the description of the glossary knowledge domain.'">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_FBwnilzdEeyo7IKkYihL2w" name="subGlossaries" ordered="false" upperBound="-1" eType="_FBwnglzdEeyo7IKkYihL2w" changeable="false" derived="true"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_FBwnjFzdEeyo7IKkYihL2w" name="Term">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FBwnjVzdEeyo7IKkYihL2w" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_w_thgET3EeS25e5tbYLtxg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_FBwnjlzdEeyo7IKkYihL2w" name="base_Class" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_FBwnkFzdEeyo7IKkYihL2w" name="acronym" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_FBwnklzdEeyo7IKkYihL2w" name="meanings" ordered="false" upperBound="-1" eType="_FBwnnlzdEeyo7IKkYihL2w" changeable="false" derived="true"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_FBwnlFzdEeyo7IKkYihL2w" name="commonMeaning" ordered="false" eType="_FBwnnlzdEeyo7IKkYihL2w" changeable="false" derived="true"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_FBwnllzdEeyo7IKkYihL2w" name="hyponyms" ordered="false" upperBound="-1" eType="_FBwnjFzdEeyo7IKkYihL2w" eOpposite="_FBwnmFzdEeyo7IKkYihL2w"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_FBwnmFzdEeyo7IKkYihL2w" name="hypernyms" ordered="false" upperBound="-1" eType="_FBwnjFzdEeyo7IKkYihL2w" eOpposite="_FBwnllzdEeyo7IKkYihL2w"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_FBwnmlzdEeyo7IKkYihL2w" name="synonyms" ordered="false" upperBound="-1" eType="_FBwnjFzdEeyo7IKkYihL2w"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_FBwnnFzdEeyo7IKkYihL2w" name="reference" ordered="false" upperBound="-1">
+            <eType xmi:type="ecore:EClass" href="../../com.cea.papyrus.referencemanagement/uml-profiles/ReferencesML.profile.uml#_M5i-QVnfEeyFfo7P2D8rIQ"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_FBwnnlzdEeyo7IKkYihL2w" name="Definition">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FBwnn1zdEeyo7IKkYihL2w" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_kxro8ET4EeS25e5tbYLtxg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_FBwnoFzdEeyo7IKkYihL2w" name="base_Comment" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Comment"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_FBwnolzdEeyo7IKkYihL2w" name="isCommon" ordered="false" lowerBound="1" defaultValueLiteral="false">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+      </contents>
+      <contents xmi:type="ecore:EPackage" xmi:id="_UBWBsFzcEeyo7IKkYihL2w" name="GlossaryML" nsURI="http://com.cea.papyrus.glossaryml" nsPrefix="GlossaryML">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_UBWBsVzcEeyo7IKkYihL2w" source="http://www.eclipse.org/uml2/4.1.0/UML">
+          <references xmi:type="ecore:EPackage" href="../../com.cea.papyrus.referencemanagement/uml-profiles/ReferencesML.profile.uml#_M5i-MFnfEeyFfo7P2D8rIQ"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_UBX25FzcEeyo7IKkYihL2w" source="PapyrusVersion">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_UBX25VzcEeyo7IKkYihL2w" key="Version" value="0.1.1"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_UBX25lzcEeyo7IKkYihL2w" key="Comment" value=""/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_UBX251zcEeyo7IKkYihL2w" key="Copyright" value="CEA List"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_UBX26FzcEeyo7IKkYihL2w" key="Date" value="2021-12-14"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_UBX26VzcEeyo7IKkYihL2w" key="Author" value="Sébastien Gérard"/>
+        </eAnnotations>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBWBslzcEeyo7IKkYihL2w" name="Glossary">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_UBWBs1zcEeyo7IKkYihL2w" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_H-K2wET3EeS25e5tbYLtxg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBWBtFzcEeyo7IKkYihL2w" name="base_Model" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Model"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBWBtlzcEeyo7IKkYihL2w" name="knowledgeDomainName" ordered="false" unique="false" defaultValueLiteral="'Specify the name of the glossary knowledge domain.'">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBWBuFzcEeyo7IKkYihL2w" name="knowledgeDomainDescription" ordered="false" unique="false" defaultValueLiteral="'Insert here a text of the description of the glossary knowledge domain.'">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBWBulzcEeyo7IKkYihL2w" name="subGlossaries" ordered="false" upperBound="-1" eType="_UBWBslzcEeyo7IKkYihL2w" derived="true"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBWBvFzcEeyo7IKkYihL2w" name="Term">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_UBWBvVzcEeyo7IKkYihL2w" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_w_thgET3EeS25e5tbYLtxg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBWBvlzcEeyo7IKkYihL2w" name="base_Class" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBWBwFzcEeyo7IKkYihL2w" name="acronym" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBWBwlzcEeyo7IKkYihL2w" name="meanings" ordered="false" upperBound="-1" eType="_UBWBzlzcEeyo7IKkYihL2w" derived="true"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBWBxFzcEeyo7IKkYihL2w" name="commonMeaning" ordered="false" eType="_UBWBzlzcEeyo7IKkYihL2w" derived="true"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBWBxlzcEeyo7IKkYihL2w" name="hyponyms" ordered="false" upperBound="-1" eType="_UBWBvFzcEeyo7IKkYihL2w" eOpposite="_UBWByFzcEeyo7IKkYihL2w"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBWByFzcEeyo7IKkYihL2w" name="hypernyms" ordered="false" upperBound="-1" eType="_UBWBvFzcEeyo7IKkYihL2w" eOpposite="_UBWBxlzcEeyo7IKkYihL2w"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBWBylzcEeyo7IKkYihL2w" name="synonyms" ordered="false" upperBound="-1" eType="_UBWBvFzcEeyo7IKkYihL2w"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBWBzFzcEeyo7IKkYihL2w" name="reference" ordered="false" upperBound="-1">
+            <eType xmi:type="ecore:EClass" href="../../com.cea.papyrus.referencemanagement/uml-profiles/ReferencesML.profile.uml#_M5i-QVnfEeyFfo7P2D8rIQ"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_UBWBzlzcEeyo7IKkYihL2w" name="Definition">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_UBWBz1zcEeyo7IKkYihL2w" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_kxro8ET4EeS25e5tbYLtxg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_UBWB0FzcEeyo7IKkYihL2w" name="base_Comment" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Comment"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_UBWB0lzcEeyo7IKkYihL2w" name="isCommon" ordered="false" lowerBound="1" defaultValueLiteral="false">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+      </contents>
+      <contents xmi:type="ecore:EPackage" xmi:id="_1n81EFngEeyFfo7P2D8rIQ" name="GlossaryML" nsURI="http://com.cea.papyrus.glossaryml" nsPrefix="GlossaryML">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_1n81EVngEeyFfo7P2D8rIQ" source="http://www.eclipse.org/uml2/4.1.0/UML">
+          <references xmi:type="ecore:EPackage" href="../../com.cea.papyrus.referencemanagement/uml-profiles/ReferencesML.profile.uml#_M5i-MFnfEeyFfo7P2D8rIQ"/>
+        </eAnnotations>
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_1n-DM1ngEeyFfo7P2D8rIQ" source="PapyrusVersion">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_1n-DNFngEeyFfo7P2D8rIQ" key="Version" value="0.1.0"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_1n-DNVngEeyFfo7P2D8rIQ" key="Comment" value=""/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_1n-DNlngEeyFfo7P2D8rIQ" key="Copyright" value="CEA List"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_1n-DN1ngEeyFfo7P2D8rIQ" key="Date" value="2021-12-10"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_1n-DOFngEeyFfo7P2D8rIQ" key="Author" value="Sébastien Gérard"/>
+        </eAnnotations>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_1n81ElngEeyFfo7P2D8rIQ" name="Glossary">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_1n81E1ngEeyFfo7P2D8rIQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_H-K2wET3EeS25e5tbYLtxg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_1n81FFngEeyFfo7P2D8rIQ" name="base_Model" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Model"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_1n81FlngEeyFfo7P2D8rIQ" name="knowledgedomainname" ordered="false" unique="false" defaultValueLiteral="'Specify the name of the glossary knowledge domain.'">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_1n81F1ngEeyFfo7P2D8rIQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_1n81GFngEeyFfo7P2D8rIQ" key="originalName" value="knowledge-domain-name"/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_1n81GlngEeyFfo7P2D8rIQ" name="knowledgedomaindescription" ordered="false" unique="false" defaultValueLiteral="'Insert here a text of the description of the glossary knowledge domain.'">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_1n81G1ngEeyFfo7P2D8rIQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_1n81HFngEeyFfo7P2D8rIQ" key="originalName" value="knowledge-domain-description"/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_1n81HlngEeyFfo7P2D8rIQ" name="subglossaries" ordered="false" upperBound="-1" eType="_1n81ElngEeyFfo7P2D8rIQ" derived="true">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_1n81H1ngEeyFfo7P2D8rIQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_1n81IFngEeyFfo7P2D8rIQ" key="originalName" value="sub-glossaries"/>
+            </eAnnotations>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_1n81IlngEeyFfo7P2D8rIQ" name="Term">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_1n81I1ngEeyFfo7P2D8rIQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_w_thgET3EeS25e5tbYLtxg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_1n81JFngEeyFfo7P2D8rIQ" name="base_Class" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_1n81JlngEeyFfo7P2D8rIQ" name="acronym" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_1n81KFngEeyFfo7P2D8rIQ" name="meanings" ordered="false" upperBound="-1" eType="_1n81NlngEeyFfo7P2D8rIQ" derived="true"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_1n81KlngEeyFfo7P2D8rIQ" name="commonmeaning" ordered="false" eType="_1n81NlngEeyFfo7P2D8rIQ" derived="true">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_1n81K1ngEeyFfo7P2D8rIQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_1n81LFngEeyFfo7P2D8rIQ" key="originalName" value="common-meaning"/>
+            </eAnnotations>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_1n81LlngEeyFfo7P2D8rIQ" name="hyponyms" ordered="false" upperBound="-1" eType="_1n81IlngEeyFfo7P2D8rIQ" eOpposite="_1n81MFngEeyFfo7P2D8rIQ"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_1n81MFngEeyFfo7P2D8rIQ" name="hypernyms" ordered="false" upperBound="-1" eType="_1n81IlngEeyFfo7P2D8rIQ" eOpposite="_1n81LlngEeyFfo7P2D8rIQ"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_1n81MlngEeyFfo7P2D8rIQ" name="synonyms" ordered="false" upperBound="-1" eType="_1n81IlngEeyFfo7P2D8rIQ"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_1n81NFngEeyFfo7P2D8rIQ" name="reference" ordered="false" upperBound="-1">
+            <eType xmi:type="ecore:EClass" href="../../com.cea.papyrus.referencemanagement/uml-profiles/ReferencesML.profile.uml#_M5i-QVnfEeyFfo7P2D8rIQ"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_1n81NlngEeyFfo7P2D8rIQ" name="Definition">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_1n81N1ngEeyFfo7P2D8rIQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_kxro8ET4EeS25e5tbYLtxg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_1n81OFngEeyFfo7P2D8rIQ" name="base_Comment" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Comment"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_1n81OlngEeyFfo7P2D8rIQ" name="iscommon" ordered="false" lowerBound="1" defaultValueLiteral="false">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_1n81O1ngEeyFfo7P2D8rIQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_1n81PFngEeyFfo7P2D8rIQ" key="originalName" value="is-common"/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+      </contents>
+      <contents xmi:type="ecore:EPackage" xmi:id="_KHa-AFmhEeygx62aQuYAgw" name="GlossaryML" nsURI="http://com.cea.papyrus.glossaryml" nsPrefix="GlossaryML">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_KHcMKVmhEeygx62aQuYAgw" source="PapyrusVersion">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_KHcMKlmhEeygx62aQuYAgw" key="Version" value="0.0.2"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_KHcMK1mhEeygx62aQuYAgw" key="Comment" value=""/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_KHcMLFmhEeygx62aQuYAgw" key="Copyright" value="CEA List"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_KHcMLVmhEeygx62aQuYAgw" key="Date" value="2021-12-10"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_KHcMLlmhEeygx62aQuYAgw" key="Author" value="Sébastien Gérard"/>
+        </eAnnotations>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_KHa-AVmhEeygx62aQuYAgw" name="Glossary">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_KHa-AlmhEeygx62aQuYAgw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_H-K2wET3EeS25e5tbYLtxg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_KHa-A1mhEeygx62aQuYAgw" name="base_Model" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Model"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_KHa-BVmhEeygx62aQuYAgw" name="knowledgedomainname" ordered="false" unique="false" defaultValueLiteral="'Specify the name of the glossary knowledge domain.'">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_KHa-BlmhEeygx62aQuYAgw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_KHa-B1mhEeygx62aQuYAgw" key="originalName" value="knowledge-domain-name"/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_KHa-CVmhEeygx62aQuYAgw" name="knowledgedomaindescription" ordered="false" unique="false" defaultValueLiteral="'Insert here a text of the description of the glossary knowledge domain.'">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_KHa-ClmhEeygx62aQuYAgw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_KHa-C1mhEeygx62aQuYAgw" key="originalName" value="knowledge-domain-description"/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_KHa-DVmhEeygx62aQuYAgw" name="subglossaries" ordered="false" upperBound="-1" eType="_KHa-AVmhEeygx62aQuYAgw" derived="true">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_KHa-DlmhEeygx62aQuYAgw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_KHa-D1mhEeygx62aQuYAgw" key="originalName" value="sub-glossaries"/>
+            </eAnnotations>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_KHa-EVmhEeygx62aQuYAgw" name="Term">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_KHa-ElmhEeygx62aQuYAgw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_w_thgET3EeS25e5tbYLtxg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_KHa-E1mhEeygx62aQuYAgw" name="base_Class" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_KHa-FVmhEeygx62aQuYAgw" name="acronym" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_KHa-F1mhEeygx62aQuYAgw" name="meanings" ordered="false" upperBound="-1" eType="_KHa-I1mhEeygx62aQuYAgw" derived="true"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_KHa-GVmhEeygx62aQuYAgw" name="commonmeaning" ordered="false" eType="_KHa-I1mhEeygx62aQuYAgw" derived="true">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_KHa-GlmhEeygx62aQuYAgw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_KHa-G1mhEeygx62aQuYAgw" key="originalName" value="common-meaning"/>
+            </eAnnotations>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_KHa-HVmhEeygx62aQuYAgw" name="hyponyms" ordered="false" upperBound="-1" eType="_KHa-EVmhEeygx62aQuYAgw" eOpposite="_KHa-H1mhEeygx62aQuYAgw"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_KHa-H1mhEeygx62aQuYAgw" name="hypernyms" ordered="false" upperBound="-1" eType="_KHa-EVmhEeygx62aQuYAgw" eOpposite="_KHa-HVmhEeygx62aQuYAgw"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_KHa-IVmhEeygx62aQuYAgw" name="synonyms" ordered="false" upperBound="-1" eType="_KHa-EVmhEeygx62aQuYAgw"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_KHa-I1mhEeygx62aQuYAgw" name="Definition">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_KHa-JFmhEeygx62aQuYAgw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_kxro8ET4EeS25e5tbYLtxg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_KHa-JVmhEeygx62aQuYAgw" name="base_Comment" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Comment"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_KHa-J1mhEeygx62aQuYAgw" name="iscommon" ordered="false" lowerBound="1" defaultValueLiteral="false">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_KHa-KFmhEeygx62aQuYAgw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_KHa-KVmhEeygx62aQuYAgw" key="originalName" value="is-common"/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+      </contents>
+      <contents xmi:type="ecore:EPackage" xmi:id="_FkMqcFmhEeygx62aQuYAgw" name="GlossaryML" nsURI="http://com.cea.papyrus.glossaryml" nsPrefix="GlossaryML">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FkNRgVmhEeygx62aQuYAgw" source="PapyrusVersion">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FkNRglmhEeygx62aQuYAgw" key="Version" value="0.0.1"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FkNRg1mhEeygx62aQuYAgw" key="Comment" value=""/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FkNRhFmhEeygx62aQuYAgw" key="Copyright" value="CEA List"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FkNRhVmhEeygx62aQuYAgw" key="Date" value="2021-12-10"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FkNRhlmhEeygx62aQuYAgw" key="Author" value="Sébastien Gérard"/>
+        </eAnnotations>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_FkMqcVmhEeygx62aQuYAgw" name="Glossary">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FkMqclmhEeygx62aQuYAgw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_H-K2wET3EeS25e5tbYLtxg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_FkMqc1mhEeygx62aQuYAgw" name="base_Model" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Model"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_FkMqdVmhEeygx62aQuYAgw" name="knowledgedomainname" ordered="false" unique="false" defaultValueLiteral="'Specify the name of the glossary knowledge domain.'">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FkMqdlmhEeygx62aQuYAgw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FkMqd1mhEeygx62aQuYAgw" key="originalName" value="knowledge-domain-name"/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_FkMqeVmhEeygx62aQuYAgw" name="knowledgedomaindescription" ordered="false" unique="false" defaultValueLiteral="'Insert here a text of the description of the glossary knowledge domain.'">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FkMqelmhEeygx62aQuYAgw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FkMqe1mhEeygx62aQuYAgw" key="originalName" value="knowledge-domain-description"/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_FkMqfVmhEeygx62aQuYAgw" name="subglossaries" ordered="false" upperBound="-1" eType="_FkMqcVmhEeygx62aQuYAgw" derived="true">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FkMqflmhEeygx62aQuYAgw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FkMqf1mhEeygx62aQuYAgw" key="originalName" value="sub-glossaries"/>
+            </eAnnotations>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_FkMqgVmhEeygx62aQuYAgw" name="Term">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FkMqglmhEeygx62aQuYAgw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_w_thgET3EeS25e5tbYLtxg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_FkMqg1mhEeygx62aQuYAgw" name="base_Class" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_FkMqhVmhEeygx62aQuYAgw" name="acronym" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_FkMqh1mhEeygx62aQuYAgw" name="meanings" ordered="false" upperBound="-1" eType="_FkMqk1mhEeygx62aQuYAgw" derived="true"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_FkMqiVmhEeygx62aQuYAgw" name="commonmeaning" ordered="false" eType="_FkMqk1mhEeygx62aQuYAgw" derived="true">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FkMqilmhEeygx62aQuYAgw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FkMqi1mhEeygx62aQuYAgw" key="originalName" value="common-meaning"/>
+            </eAnnotations>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_FkMqjVmhEeygx62aQuYAgw" name="hyponyms" ordered="false" upperBound="-1" eType="_FkMqgVmhEeygx62aQuYAgw" eOpposite="_FkMqj1mhEeygx62aQuYAgw"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_FkMqj1mhEeygx62aQuYAgw" name="hypernyms" ordered="false" upperBound="-1" eType="_FkMqgVmhEeygx62aQuYAgw" eOpposite="_FkMqjVmhEeygx62aQuYAgw"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_FkMqkVmhEeygx62aQuYAgw" name="synonyms" ordered="false" upperBound="-1" eType="_FkMqgVmhEeygx62aQuYAgw"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_FkMqk1mhEeygx62aQuYAgw" name="Definition">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FkMqlFmhEeygx62aQuYAgw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_kxro8ET4EeS25e5tbYLtxg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_FkMqlVmhEeygx62aQuYAgw" name="base_Comment" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Comment"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_FkMql1mhEeygx62aQuYAgw" name="iscommon" ordered="false" lowerBound="1" defaultValueLiteral="false">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FkMqmFmhEeygx62aQuYAgw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FkMqmVmhEeygx62aQuYAgw" key="originalName" value="is-common"/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+      </contents>
+    </eAnnotations>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="_ZvgKYET3EeS25e5tbYLtxg" alias="Model">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Model"/>
+    </elementImport>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="_0Q8BsET3EeS25e5tbYLtxg" alias="Class">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </elementImport>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="_XL36kET4EeS25e5tbYLtxg" alias="Package">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Package"/>
+    </elementImport>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="_rOc4EET4EeS25e5tbYLtxg" alias="Comment">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Comment"/>
+    </elementImport>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="_9qZHYBnvEee85eN49tGVcA" alias="OpaqueExpression">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#OpaqueExpression"/>
+    </elementImport>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_saqecUT2EeS25e5tbYLtxg">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_METAMODELS/UML.metamodel.uml#_0"/>
+    </packageImport>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_saqeckT2EeS25e5tbYLtxg">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_lgTcEFngEeyFfo7P2D8rIQ">
+      <importedPackage xmi:type="uml:Profile" href="../../com.cea.papyrus.referencemanagement/uml-profiles/ReferencesML.profile.uml#_K_P-sEadEeeubeo5VXVdIw"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_H-K2wET3EeS25e5tbYLtxg" name="Glossary">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_itBfAET3EeS25e5tbYLtxg" name="base_Model" association="_itBfAUT3EeS25e5tbYLtxg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Model"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_JPaMcBohEee85eN49tGVcA" name="knowledgeDomainName" visibility="public" isUnique="false">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_BR-80LnYEeeT-ax69tMoYQ">
+          <body>Define the knowledge domain of the glossary.</body>
+        </ownedComment>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JPaMchohEee85eN49tGVcA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JPaMcxohEee85eN49tGVcA" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_JPaMdBohEee85eN49tGVcA" name="knowledgeDomain_DefaultValue" value="'Specify the name of the glossary knowledge domain.'"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_DaiooET5EeS25e5tbYLtxg" name="knowledgeDomainDescription" visibility="public" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DaiookT5EeS25e5tbYLtxg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Daioo0T5EeS25e5tbYLtxg" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_9uVLkBpEEee85eN49tGVcA" name="description_DefaultValue" value="'Insert here a text of the description of the glossary knowledge domain.'"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_K7z20sPpEeeSJfWHTbkb_A" name="subGlossaries" type="_H-K2wET3EeS25e5tbYLtxg" isReadOnly="true" isDerived="true" association="_K7qF0MPpEeeSJfWHTbkb_A">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_c4h7EMPpEeeSJfWHTbkb_A"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_c4_OEMPpEeeSJfWHTbkb_A" value="*"/>
+      </ownedAttribute>
+      <icon xmi:type="uml:Image" xmi:id="_RqYBILqUEeeT-ax69tMoYQ" content="-119%80%78%71%13%10%26%10%0%0%0%13%73%72%68%82%0%0%0%16%0%0%0%16%8%6%0%0%0%31%-13%-1%97%0%0%0%1%115%82%71%66%0%-82%-50%28%-23%0%0%0%4%103%65%77%65%0%0%-79%-113%11%-4%97%5%0%0%0%9%112%72%89%115%0%0%29%-122%0%0%29%-122%1%93%-94%19%-127%0%0%2%31%73%68%65%84%56%79%-115%83%59%107%-94%65%20%61%-118%98%124%16%77%80%68%20%4%-47%102%13%-127%4%66%-16%71%-60%94%11%65%107%81%59%-79%73%45%88%104%33%22%54%66%-110%34%-115%4%-13%7%4%65%69%80%-76%16%27%-79%-80%-76%16%4%95%-119%-81%-55%119%111%-116%43%75%118%-77%7%-122%-17%-50%-99%59%103%-50%125%124%50%33%-95%86%-85%-31%-2%-2%30%-85%-43%10%50%-103%12%63%65%-70%2%-91%82%-119%124%62%15%89%-73%-37%21%23%23%23%120%124%124%-60%-39%-39%25%54%-101%-51%62%-20%-17%48%24%12%-120%68%34%-16%120%60%-112%73%47%-117%114%-71%-116%74%-91%-78%63%-2%63%4%-125%65%126%76%113%122%122%-118%106%-75%-118%120%60%14%-77%-39%-116%-19%118%-69%15%-7%55%110%111%111%17%10%-123%-96%-96%124%44%22%11%-98%-98%-98%-8%50%-79%-110%-113%64%121%126%-39%127%98%-79%88%96%48%24%64%78%27%10%-46%106%-75%92%64%-101%-51%6%-73%-37%13%-89%-45%-55%100%122%-67%-2%-37%69%117%-112%-53%-27%-97%4%4%10%38%103%-89%-45%-31%122%52%26%13%-72%127%-71%15%-99%-31%-32%-93%69%-32%-114%-91%82%41%97%-75%90%-59%-7%-7%-71%120%121%121%17%-19%118%-101%52%-117%82%-87%36%-22%-11%-70%-112%72%-123%66%-95%96%-33%-15%-46%104%52%66%-86%-101%96%2%73%54%59%9%119%119%119%108%95%95%95%-13%-98%-20%-47%104%-60%-10%49%18%-119%-124%8%-121%-61%-126%-75%28%15%-49%-21%-21%43%-41%-92%-43%106%-15%-98%-50%-82%-82%-82%96%52%26%-39%126%120%120%96%-1%-13%-13%51%84%42%-43%-17%26%124%-63%-17%-9%-29%-14%-14%18%94%-81%-105%-9%-108%47%21%120%60%30%99%56%28%34%16%8%64%74%23%-77%-39%12%82%106%-97%4%-69%-35%14%38%-109%9%-79%88%12%-51%102%19%-109%-55%4%-67%94%15%-47%104%-108%103%-125%-38%53%-99%78%65%51%67%42%-114%21%51%1%73%-90%14%20%-117%69%38%59%57%57%-31%67%-87%-88%-4%18%117%68%-89%-45%33%-103%76%-94%80%40%32%-105%-53%-31%-26%-26%-122%59%36%95%46%-105%44%-109%72%-44%106%-11%-95%69%-12%37%34%-110%79%67%-106%-55%100%-32%112%56%-16%-2%-2%-114%-73%-73%55%30%58%86%-45%-17%-9%-123%-53%-27%-126%-35%110%-25%-117%-33%-127%-90%110%-67%94%31%-92%-45%99%4%-97%-49%7%-2%-99%-91%-34%35%-99%78%127%74%-38%43%-8%9%-13%-7%28%-39%108%22%31%-127%-62%24%-62%71%50%-54%14%0%0%0%0%73%69%78%68%-82%66%96%-126%" format="Papyrus">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_RqYBIbqUEeeT-ax69tMoYQ" source="image_papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_RqYBIrqUEeeT-ax69tMoYQ" key="image_name_key" value="GlossaryIcon"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_RqYBI7qUEeeT-ax69tMoYQ" key="image_kind_key" value="icon"/>
+        </eAnnotations>
+      </icon>
+      <icon xmi:type="uml:Image" xmi:id="_Q2m1YMYaEeeTLeuKvvVHAw" content="-119%80%78%71%13%10%26%10%0%0%0%13%73%72%68%82%0%0%2%0%0%0%2%0%8%3%0%0%0%-61%-90%36%-56%0%0%0%32%99%72%82%77%0%0%122%38%0%0%-128%-124%0%0%-6%0%0%0%-128%-24%0%0%117%48%0%0%-22%96%0%0%58%-104%0%0%23%112%-100%-70%81%60%0%0%2%85%80%76%84%69%37%37%37%-1%-1%-1%-2%-2%-2%40%40%40%45%45%45%83%83%83%-1%-1%-1%-4%-4%-4%-3%-3%-3%-2%-2%-2%-31%-31%-31%-66%-66%-66%-96%-96%-96%-124%-124%-124%107%107%107%88%88%88%71%71%71%58%58%58%47%47%47%41%41%41%38%38%38%37%37%37%51%51%51%68%68%68%93%93%93%125%125%125%-93%-93%-93%-47%-47%-47%-5%-5%-6%-24%-24%-24%-78%-78%-78%-125%-125%-125%87%87%87%45%45%45%105%105%105%-81%-81%-81%-13%-13%-13%-7%-7%-7%-63%-63%-63%-126%-126%-126%69%69%69%118%118%118%-43%-43%-43%116%117%116%49%49%49%100%100%100%-44%-44%-44%-33%-33%-33%-121%-121%-121%56%56%56%-19%-19%-19%-59%-59%-59%53%53%53%-73%-73%-73%-69%-69%-70%81%83%81%124%124%124%-61%-61%-61%-37%-37%-37%97%97%97%-27%-27%-27%-10%-10%-11%-119%-119%-119%40%40%40%64%64%64%-26%-26%-26%-58%-58%-59%70%70%70%-16%-16%-17%-9%-9%-9%89%89%89%75%75%75%-122%-121%-122%-79%-79%-79%-122%-122%-122%59%59%59%-11%-11%-12%-21%-21%-21%-32%-32%-32%117%118%117%-28%-28%-28%63%63%63%39%39%39%-120%-120%-120%-6%-6%-7%-64%-64%-64%122%123%122%-80%-80%-80%-38%-38%-38%74%74%74%105%106%105%77%77%77%111%111%110%-105%-104%-105%-72%-72%-72%-23%-23%-24%-10%-10%-10%-4%-4%-5%-45%-45%-46%-86%-86%-87%112%112%112%-62%-62%-62%-97%-97%-97%-33%-33%-34%-85%-85%-85%79%79%79%50%50%50%-101%-101%-101%44%44%44%-104%-104%-104%-12%-12%-13%-39%-39%-39%67%67%67%-128%-127%-128%-17%-17%-18%-60%-60%-60%-51%-51%-51%99%99%99%-99%-98%-99%-70%-70%-70%55%55%55%-63%-63%-64%114%114%114%-127%-127%-127%-50%-50%-50%-18%-18%-19%-25%-25%-25%52%53%52%85%85%85%57%57%57%-128%-128%-128%-49%-49%-49%-98%-98%-99%-88%-87%-88%111%111%111%52%52%52%-55%-55%-55%117%117%117%101%101%101%43%43%43%123%123%123%95%95%95%-76%-76%-76%65%65%65%-8%-8%-8%106%106%106%-115%-115%-115%-74%-74%-74%-102%-102%-102%-16%-16%-16%-91%-91%-91%46%46%46%-92%-92%-92%-116%-116%-116%-15%-15%-15%-114%-114%-114%58%59%58%-52%-52%-53%-53%-53%-53%-98%-98%-98%-109%-109%-109%99%100%99%-87%-87%-87%-117%-116%-117%-22%-22%-22%-68%-68%-68%-41%-41%-41%-67%-67%-67%-110%-110%-110%-110%-109%-110%-75%-75%-76%-40%-40%-40%-84%-84%-84%103%103%103%-14%-14%-14%64%65%64%62%62%62%-20%-20%-20%-57%-56%-57%-35%-35%-36%111%112%111%83%83%83%-103%-103%-103%120%120%120%81%81%81%-90%-90%-90%-95%-95%-95%61%61%61%76%76%76%-57%-57%-57%-34%-34%-35%-75%-75%-75%-29%-29%-29%126%126%126%-111%-110%-111%-86%-86%-86%73%73%73%-116%-115%-116%113%113%113%-79%42%-57%-12%0%0%0%6%116%82%78%83%-2%-2%-2%-2%-2%-2%-65%-29%-67%-94%0%0%0%1%98%75%71%68%1%-1%2%45%-34%0%0%0%7%116%73%77%69%7%-31%10%25%20%32%44%-54%30%33%-34%0%0%25%-40%73%68%65%84%120%-38%-19%-99%-117%-97%21%-59%-107%-57%97%31%-43%119%-106%-105%12%-116%24%29%8%-93%-14%-48%5%-127%-119%10%34%-126%17%-57%-107%8%-120%-125%17%20%37%-96%4%1%-119%-88%-32%-6%-124%8%62%102%87%-105%8%-111%-84%-69%-94%75%-94%-39%-60%60%-42%24%19%119%55%-101%100%99%-10%-11%119%-19%60%-17%-19%-18%-37%-35%-89%-85%-22%84%-99%83%93%-25%-101%124%-100%123%-17%-52%61%-35%-44%-17%123%-5%86%87%87%119%79%83%66%-44%76%-93%94%1%-127%22%17%32%114%68%-128%-56%9%95%-128%36%113%83%-43%73%89%126%-120%0%101%85%69%0%33%6%68%-128%-56%97%38%-64%-60%-106%-73%-3%-33%-22%-89%83%111%81%83%-65%109%-41%-104%122%45%-11%114%-63%-69%-109%-92%-32%93%-109%-81%37%-71%-78%73%-46%106%-1%109%-85%-69%106%106%-3%-45%-65%-23%-44%104%47%-113%-70%-123%-13%48%19%64%-27%66%-86%126%-102%121%71%38%-64%-4%-61%-52%31%-28%-34%84%-112%82%-110%-111%-82%-68%108%70%33%-24%-17%-13%127%-52%3%-42%2%64%79%-37%-17%-56%126%-84%-31%-121%-23%18%-71%-33%39%-123%-81%-90%-33%-47%-34%-68%-28%85%-52%-2%125%81%21%87%93%86%11%56%10%-48%-2%44%66%79%83%-17%-104%122%-40%-39%2%-25%66%104%-65%-102%-7%-118%-24%-2%125%82%-4%-82%-50%-85%73%-6%97%-89%106%-22%65%97%21%17%-96%30%-109%-19%58%-43%-122%-43%79%39%-33%-111%110%-42%82%1%-78%-101%-5%-10%-33%-88%-108%85%73%-63%22%32%-55%-8%-106%100%-106%-100%-83%-86%106%-84%-122%8%0%-109%-118%24%126%58%-7%18%71%1%84%-47%106%-120%0%48%-29%-35%-19%92%-17%-69%-12%-23%-60%75%-75%4%-24%44%-95%-89%80%-128%92%-127%-4%-69%74%4%-56%-81%59%-80%26%34%0%76%-86%-21%12%63%-99%120%-87%86%31%-96%-107%89%66%73%31%64%-43%23%96%-30%97%43%-73%-18%-71%-43%-112%62%-128%62%61%-39%-120%-85%-97%42%85%-80%23%-96%10%31%102%-70%-18%37%123%1%106%52%-48%-92%-16%-43%-94%-78%-35%-95%-126%-85%33%2%-44%32%-73%111%85%-15%52%-77%107%86%-72%3%-98%121%71%-6%-37%60%-1%-89%-99%-57%73%-59%-69%-78%61%-125%-30%-33%87%-81%-122%8%0%-109%-37%-73%-86%120%-102%107%-33%-108%35%93%-101%-8%-50%-85%-103%79%105%-63%-69%-110%-62%119%101%106%21%-115%4%-26%-97%-85%-92%108%53%-88%-37%55%7%63%1%-4%-63%46%12%10%68%-128%-56%17%1%34%71%4%-120%-100%-104%5%16%-108%8%16%61%34%64%-28%-120%0%-111%35%2%68%-114%8%16%57%34%64%-28%-120%0%-111%35%2%68%14%-119%0%-83%-65%-104%49%115%-42%-20%57%-105%-51%-19%-99%55%-65%79%-88%100%-2%-68%-53%23%92%-15%-91%43%-81%-22%111%-118%0%11%23%125%121%-15%0%117%-85%6%72%-17%-43%-41%92%27%-68%0%75%-106%46%91%78%-35%-112%1%51%112%-35%-11%33%11%-48%63%-29%47%87%80%55%97%-16%-84%-68%33%84%1%86%-83%94%67%-35%120%-115%96%-2%117%-125%1%10%-48%-13%-107%-107%-44%13%-41%28%110%-68%41%52%1%122%110%94%75%-35%104%-51%98%-35%-110%-96%4%-72%69%-30%-57%102%49%-30%-41%-128%107%1%-42%-33%74%-35%90%77%100%-7%-122%64%4%-72%109%-29%38%-22%-74%106%38%-73%127%53%8%1%-18%-72%-99%-70%-95%26%-53%-26%59%-7%11%48%-76%-116%-70%-107%-102%-52%93%72%99%-61%-18%4%88%-1%87%-44%109%-44%108%-18%102%46%-64%22%25%-16%119%-52%82%-50%2%36%95%-93%110%-98%-26%115%15%-54%-63%33%55%2%108%-107%-111%63%15%-96%124%9%56%17%96%-101%-116%-3%-8%96%-45%118%-90%2%108%-112%99%-66%126%-72%-105%-89%0%59%-18%-93%110%-104%88%24%-34%-63%81%-128%13%-110%-65%55%118%50%20%96%-101%108%-1%-3%113%-29%-3%-20%4%-40%42%-3%63%-97%124%-99%-101%0%-119%-20%-1%121%-27%1%110%2%-36%77%-35%34%-111%113%15%51%1%118%81%55%72%116%88%15%5%-96%10%-80%91%-58%-1%125%-77%-123%-109%0%67%15%82%55%71%124%108%-28%36%-128%28%-1%-9%-49%67%-116%4%-72%-125%-70%49%98%100%15%31%1%110%-109%-7%95%4%-52%-27%35%-64%78%-22%-74%-120%-110%1%54%2%-84%-105%-7%-65%20%12%-77%17%64%119%-2%-1%61%15%63%-78%-9%-122%111%-20%-37%-113%-75%-4%-90%-80%127%-16%-47%-57%14%104%-100%69%107%-69%60%44%1%-66%-87%-107%-2%-30%-125%-113%19%-73%51%111%-122%14%45%8%76%-128%-98%-61%-11%-45%63%-78%115%21%117%3%-13%-89%-1%-119%-93%65%9%112%115%-19%-8%47%-1%-42%-109%-44%-115%27%6%-57%-98%10%73%-128%-70%7%-127%-25%63%-3%12%117%-61%6%-61%-32%-98%112%4%56%94%51%-1%5%39%-88%91%53%36%6%-21%108%3%108%23%-126%35%-64%-77%-11%-14%-65%119%43%117%-101%-122%-59%-79%26%-3%0%-37%101%-96%8%-80%-86%86%-4%-61%51%-87%27%52%56%-2%58%16%1%106%13%2%-50%123%-114%-70%57%-61%-93%31%-34%27%-76%93%4%-122%0%-3%-49%-41%-55%-1%5%-22%-42%12%-111%67%65%8%48%-93%-50%-10%95%62%-1%38%12%-11%-122%32%-64%-117%53%4%56%72%-35%-108%-127%114%32%0%1%-106%-128%-106%-30%-100%-60%20%37%-113%5%32%-64%82%56%-1%-27%-73%81%55%100%-88%60%26%-128%0%47%-127%-7%-49%127%-103%-70%29%-125%-27%100%0%2%-64%-25%-126%61%77%-35%-116%-31%-78%-97%-65%0%-89%-64%-4%-65%45%-29%-1%-58%-12%-16%23%96%17%40%-64%-73%-88%91%49%96%2%16%0%-100%12%126%68%-114%-1%-102%19%-128%0%-81%64%-85%-120%112%18%123%-68%-16%23%32%1%79%7%-61%-72%-110%77%-76%-16%23%96%59%-76%-122%-117%-87%-37%48%104%-8%11%0%30%8%56%72%-35%-122%65%-61%95%-128%-125%-48%26%-54%-4%95%27%-8%11%48%11%88%65%-5%75%24%68%13%127%1%102%3%43%-8%48%117%19%-122%13%127%1%-26%0%43%-8%8%117%19%-122%13%127%1%54%3%43%-72%-105%-70%9%-61%-122%-65%0%-89%-127%21%68%-65%-45%97%92%-16%23%0%-102%13%-78%-112%-70%9%-61%-122%-65%0%-48%89%-31%-5%-88%-101%48%108%-8%11%0%-83%96%66%-35%-124%97%-61%94%0%112%5%69%0%43%-62%23%64%-66%2%-84%8%95%0%-23%4%90%17%-66%0%-78%27%104%69%-8%2%-56%64%-112%21%-31%11%32%67%-63%86%-124%47%-128%28%12%-78%34%124%1%-28%112%-80%21%-31%11%32%19%66%-84%104%-128%0%7%-87%-37%48%104%26%32%-128%76%10%-75%-95%1%2%-56%-76%112%27%-102%32%-128%-100%24%98%65%19%4%-112%83%-61%44%104%-126%0%114%114%-88%5%-115%16%-32%114%57%61%-36%-104%70%8%-48%119%-122%-70%25%3%102%-1%-66%103%-74%-65%122%-45%107%-21%-26%-12%6%44%-128%92%34%6%-127%-42%-6%-41%-33%24%9%84%0%-71%72%20%18%-5%-1%102%-39%-102%32%5%-24%-5%91%-22%-90%107%12%-5%103%-68%57%63%64%1%-6%-28%66%-47%120%-84%90%-9%86%120%2%-56%-91%98%49%-7%-22%-33%13%-121%38%-128%92%44%26%-105%-11%103%67%19%64%46%23%-113%-52%119%-98%15%76%0%-71%97%4%50%-49%-52%14%76%-128%-66%-66%123%101%111%16%-107%67%71%3%19%-96%111%-7%-85%-44%109%-42%44%-82%127%59%48%1%-28%-74%113%-56%12%90%79%-73%-15%44%-128%-36%56%18%-103%115%-74%5%-68%11%48%118%-21%88%-103%35%-60%7%2%1%-6%-28%-26%-47%-116%-96%17%-96%79%110%31%-49%5%50%1%-124%122%12%15%-52%61%124%-2%-69%-17%-100%18%1%34%103%-7%-84%19%61%34%64%-36%44%-72%-16%61%17%32%110%122%-65%-117%-82%-128%8%16%22%35%127%-33%18%1%-30%102%-15%42%17%32%110%-34%-67%70%4%-120%-100%47%35%94%123%79%4%8%-111%-13%75%68%-128%-72%121%22%-51%0%17%32%76%-50%99%125%11%-120%0%-127%114%-73%8%16%57%72%-5%2%34%64%-88%12%-32%28%81%23%1%-126%-27%21%-101%49%-63%118%23%-94%35%64%-46%70%4%8%-125%127%48%13%63%29%-14%-76%-52%-85%34%64%72%-116%24%28%25%-22%-55%-121%-100%18%-64%-56%38%17%-128%-112%127%52%-6%-20%103%-109%22%1%2%-90%-9%61%3%1%114%61%7%17%32%100%46%-40%111%2%68%-128%-112%121%-54%96%-106%88%89%31%64%-10%2%66%-28%-124%-47%-89%86%4%104%12%-77%-16%-74%0%-78%27%24%34%-53%-19%-46%87%-46%7%8%29%-67%-101%-78%21%124%-66%69%-128%-80%121%-57%114%3%32%2%4%-50%69%-51%-68%-70%-66%-25%-45%125%0%17%32%60%-50%27%100%38%-99%-64%6%113%-40%-28%83%-101%-34%-34%-117%0%97%99%122%83%-74%-126%113%0%51%68%0%90%6%-116%62%-2%-123%3%65%34%64%-120%12%-21%-26%85%-38%9%44%-36%71%16%1%-40%-93%-1%-39%47%-39%13%84%70%93%0%17%-128%26%109%1%-54%15%7%-113%71%47%-99%-64%-64%-48%-37%96%-41%25%10%22%1%-126%66%79%0%85%117%48%72%4%8%17%109%1%84%-55%-31%96%17%32%76%100%11%16%57%86%-23%-85%-4%72%-96%-110%-111%-64%-48%-48%-49%63%-5%-110%-20%6%6%-114%-27%6%32%51%18%104%48%14%36%2%80%-93%-103%87%-7%-31%96%67%68%0%98%12%50%43%31%10%86%-6%-13%66%68%0%98%-52%62%-73%37%-77%-126%-107%-2%-68%16%17%-128%24%51%1%84%-7%-116%32%-39%11%8%11%-93%-113%-65%-116%3%52%7%-51%-16%107%-100%29%44%2%4%-123%-2%103%31%-102%21%44%2%4%-123%-74%0%21%-121%-125%51%63%69%-128%48%-48%18%-96%106%40%88%70%2%-61%68%79%0%85%126%48%72%-90%-124%-123%-119%-74%0%-86%-20%-20%96%51%68%0%98%16%-73%0%34%64%-120%88%-91%47%2%-124%-113%126%-2%-39%-105%-90%21%-4%-111%8%16%16%-106%27%0%17%32%116%-76%4%-112%-61%-63%-51%-61%32%51%17%-96%73%-104%-59%86%58%14%-96%61%33%64%4%32%-58%48%-9%54%-71%-111%64%17%32%52%-48%4%-104%-104%19%-84%-92%19%24%24%-120%2%24%77%10%19%1%-120%-47%18%-96%0%17%32%112%34%16%96%-34%-39%11%-73%60%62%-8%-98%38%-125%-113%-33%114%-31%-20%60%-22%120%-36%-125%40%-64%120%31%-96%-59%109%62%-64%-102%11%-125%-26%-1%-70%-63%11%107%-88%3%114%-115%86%123%100%46%4%53%17%52%-13%-7%0%-61%27%-97%-76%-80%123%-108%39%55%14%83%71%-28%22%60%1%56%-50%7%120%-1%3%-69%-8%-57%-8%-32%125%-22%-116%-100%98%-37%60%-84%71%2%-33%-34%97%-97%-65%82%59%-34%-90%14%-55%37%-104%2%36%42%117%-62%0%3%1%-34%71%-55%127%-44%-128%38%111%3%52%-37%-94%107%51%-49%-8%-52%-96%-31%127%-62%-55%127%-12%91%-96%-63%-3%0%-93%-4%83%33%51%-66%72%-44%70%-84%-4%-107%-38%72%29%-109%59%116%-13%-49%-4%84%-100%-49%11%88%-77%21%79%-128%-83%-51%-35%27%-44%20%-96%43%100%-66%2%92%-62%-53%95%-87%75%-44%57%57%-93%-79%2%-84%-39%-121%41%-64%-66%-58%110%2%26%43%-128%-10%45%-15%-86%-71%64%29%-108%43%52%5%40%-17%3%-76%-38%29%68%-83%-101%82%-69%18%96%4%-79%7%48%-58%-42%17%-22%-92%28%-95%-41%12%-35%-69%122%92%-121%-126%-65%-113%-101%-65%82%-33%-89%78%-54%17%-102%-51%-48%117%-68%-113%-23%69%-94%122%13%110%-116%93%-51%-9%122%-87%-93%114%-125%109%-69%48%29%10%94%-115%-99%-65%82%59%-87%-93%114%-125%110%51%84%-99%25%-60%-25%-106%49%-13%78%-31%11%112%-86%-103%-109%3%12%-30%79%-128%62%0%3%1%-82%-61%-49%95%-87%-21%-88%-77%114%2%-102%0%9%39%1%-114%-71%16%-32%24%117%86%78%-48%-52%-65%29%118%-127%0%70%-83%-22%68%-128%91%93%-28%-81%-44%15%-88%-61%114%-127%-111%0%-118%-71%0%-57%-35%8%112%-100%58%44%23%52%81%-128%7%123%-36%8%-48%-13%32%117%90%14%64%19%-96%-59%-25%-42%-79%31%-70%-55%95%-87%15%-87%-45%114%-128%-90%0%85%-121%-125%-71%116%2%71%80%15%3%-91%25%106%-32%120%-80%94%11%4%-79%23%-16%-111%-85%-4%-107%-6%-120%58%46%124%52%91%-96%98%74%-104%25%-8%2%12%35%-51%4%44%98%71%-13%-26%-122%-39%54%9%63%1%-34%116%-105%-65%82%111%82%-25%-123%14%-94%0%19%-101%-122%22%-11%-47%-64%23%92%10%-80%-108%58%47%116%-76%-2%-7%5%-33%-13%-20%-82%15%112%-97%-42%116%4%93%90%-9%81%7%-122%13%-102%0%92%-82%15%-16%-120%-53%-4%-107%122%-124%58%48%108%-116%90%-95%120%47%-128%-59%-39%-63%-61%63%116%43%-64%15%-101%-42%13%52%107%-122%-110%-111%64%6%2%60%-28%54%127%-91%30%-94%78%12%-103%-90%9%-16%-49%-32%18%127%84%-11%-10%-21%-63%-73%-1%-104%58%49%100%16%5%72%38%37%-96%20%-32%-12%126%112%-119%-107%-121%-11%-31%-119%4%-5%79%83%71%-122%-117%102%-18%-48%94%0%-11%-92%-48%-99%-32%2%-73%85%78%-20%-103%-73%13%44%-48%-80%-87%97%120%2%-80%-72%62%-64%110%112%-127%31%87%23%-8%9%88%96%55%117%100%-72%-104%9%-48%121%-119%-41%72%-32%90%112%121%-9%3%91%-16%-9%-17%7%75%-84%-91%-50%12%21%-53%-4%-104%9%112%16%92%-34%79%-95%18%-33%1%75%-52%-92%-50%12%21%20%1%38%59%127%-28%71%3%107%12%2%-52%-127%106%-52%1%75%52%107%40%64%51%-17%-30%-81%0%46%2%-100%5%23%87%99%98%-25%-49%-64%34%-73%82%-121%-122%-119%81%-2%-7%-111%64%46%2%-4%28%92%-36%75%112%-111%-105%-64%34%63%-89%14%13%19%-35%-4%91%106%124%127%-97%-27%-27%-30%-25%-67%7%45%109%-24%8%92%-27%8%56%-95%-24%-67%38%-99%34%-94%41%-128%74%13%-7%101%5%96%48%41%-12%95%-64%-91%93%83%-89%-52%53%96%-103%38%13%7%55%73%-128%45%-32%-46%-64%46%-32%24%112%55%112%11%117%106%-120%52%72%-128%121%-97%64%11%91%85%-81%-48%42%-88%-50%39%13%-6%14%48%18%-128%-25%-84%-32%-107%-32%-62%46%-42%43%116%17%44%-76%-110%58%54%60%-76%4%-24%116%-9%-37%-81%48%18%-32%16%-76%-84%-42%47%-22%21%-6%20%-100%84%116%-120%58%54%60%-52%4%-24%-68%-62%71%-128%-31%95%66%-53%-6%-84%110%-87%-49%-96%74%-65%108%-50%88%-112%-98%0%-35%-16%-39%13%-124%-5%110%15%-44%45%-11%0%88%-86%86%111%50%8%-76%-46%74%-70%31%-15%-103%21%-4%4%-76%-88%37%53%6%1%38%56%-78%4%-86%-11%4%117%110%104%-24%9%80%113%106%24%-7%-84%-32%-11%-48%-94%-98%-85%95%-21%57%-88%-42%-81%-88%115%67%67%87%-128%-92%-89%-28%-10%-15%-44%-77%-126%-33%6%23%-11%-21%-6%-59%30%6%-117%53%-26%18%-14%90%2%84%-99%26%70%61%39%112%25%-76%-92%125%3%-11%-117%13%-128%-61%-63%-53%-88%-125%-61%66%83%-128%-14%-117%68%81%11%0%-98%16%-76%87%-89%-38%77%80%-75%23%-88%-125%-61%-62%36%127%-114%91%-128%-73%-64%-49%-20%27%58%-27%-34%-128%-86%-19%123%107%-20%-49%-90%-115%65%29%-95%29%-38%-15%43%-96%15%64%52%14%0%78%5%56%-9%-82%78%-71%119%-49%65%-11%-50%-114%-2%-43%68%-10%97%27%-96%43%64%-26%-89%-30%51%43%24%-68%54%-12%-41%-11%-22%-51%-128%-22%-115%93%61%122%-38%-40%38%32%42%1%-70%31%113%-103%21%124%3%-76%-96%117%122%-11%-42%65%-11%110%-24%27%23%-96%47%-86%45%64%1%76%70%2%71%-96%-31%-5%-106%-26%-7%28%-89%-63%-126%55%70%-72%5%-32%43%-64%108%104%57%87%-23%86%-68%10%-86%56%59%-78%62%64%-110%-91%64%0%-54%-81%-128%43%-95%-27%124%-84%91%-15%99%-88%-30%-107%125%113%-19%5%-128%2%-112%118%2%-63%107%-61%126%-82%91%-15%115%-88%98%67%-82%28%-85%-107%86%-11%-123%34%9%111%27%55%2%93%26%-14%-28%124%-35%-110%-13%79%-106%87%-101%62%-6%63%-11%39%35%-29%29%-128%-55%-1%-12%-123%-70%45%64%20%-96%-21%119%-2%4%0%47%12%-75%72%-65%-26%-94%74%1%70%-1%-1%-26%-28%46%-64%-76%-55%-1%-123%73%51%4%-8%87%104%49%-75%-89%2%116%-8%-73%106%1%-90%79%-65%-48%17%96%90%95%-23%22%64%-85%-127%29%16%-121%0%-32%77%-62%107%78%6%75%-13%-117%-14%106%-45%-57%21%-8%32%-77%5%-24%43%-39%29%112%-98%48%0%-78%0%85%67%-63%-7%7%56%43%88%-121%77%67%-64%66%-74%-101%84%-35%94%90%110%-68%15%48%125%-24%79%-37%125%-128%-66%105%113%108%1%106%94%42%86%-85%35%-120%33%0%120%86%-8%-21%38%85%95%-121%-86%-2%123%-99%42%126%98%54%111%95%-51%114%85%71%3%-23%4%120%26%90%-56%-117%38%85%95%-84%-86%56%-42%9%56%51%-15%119%-43%-61%-63%-66%-126%54%109%95%-37%-6%-74%35%-127%40%2%-128%39%-123%126%106%82%-11%-45%-86%-118%-93%-33%1%83%39%-119%-118%0%78%87%-80%14%-48%48%-48%14%-77%-78%85%87%-99%30%-21%5%30%-101%-106%30%5%-120%67%-128%-118%-81%0%-43%-3%8%99%5%107%48%0%93%26%108%-105%89%-35%93%21%37%-57%122%-127%-55%-97%-75%-57%0%-54%-57%1%28%-25%107%-35%-66%122%-43%-86%59%-127%-103%-97%88%43%88%3%112%-44%-10%-116%89%-35%51%21%37%-57%-6%0%-22%-49%-89%-6%-1%-79%8%48%53%-17%59%-63%27%10%-58%16%0%60%118%111%120%89%39%112%-25%-30%75%53%-118%120%-56%-40%-86%125%-75%-118%85%-99%29%108%120%52%16%67%-128%-33%0%-117%24%-38%100%86%119%19%52%-49%-16%55%34%-128%-11%-51%-93%49%4%56%1%44%-30%4%101%97%-57%-7%90%-73%-81%86%49%-90%91%0%-24%-70%0%-1%97%90%120%38%80%-8%-109%88%5%40%-17%3%-12%16%-12%1%126%11%45%-62%-8%-90%-65%-32%-107%-125%127%27%-103%0%-64%-11%1%50%63%-79%86%16%-26%7%-48%34%126%103%90%-7%119%80%-27%26%55%-109%117%-100%47%4%120%-80%77%-81%92%-46%42%-65%62%-128%-22%126%84%7%123%1%102%1%75%56%103%124%50%-1%48%116%118%-64%-84%-40%4%-24%-122%-63%72%32%-76%19%112%-67%121%105%-24%-10%1%53%118%3%48%-45%52%0%87%0%120%82%-88%-2%-59%-94%-20%5%-8%61%-80%4%-61%113%-64%49%118%1%-91%127%47%2%-40%94%31%0%65%-128%83%-64%18%44%110%-9%9%-35%-124%-12%-108%8%96%123%125%0%123%1%-114%66%-89%112%88%-36%-20%17%-102%107%-40%58%26%-105%0%109%-16%-18%25%100%47%-64%101%-48%18%22%-104%-41%126%10%-86%125%-103%8%-112%126%-119%68%0%-24%83%-38%111%113%69%-81%97%-24%-10%17%-16%-42%-59%101%-70%53%-120%64%-128%51%-64%2%-2%-45%-90%-8%-81%-128%-30%-16%113%70%-105%-23%-42%-64%-33%110%-32%100%31%-96%-27%125%32%8%58%49%-36%-22%62%111%63%6%-118%95%-120%75%-128%76%39%112%34%104%-37%83%-61%-20%5%-8%41%-80%0%-85%59%-68%64%71%3%-2%32%2%116%-3%86%115%13%-83%5%-128%14%-39%-43%24%-83%43%7%26%101%-124%-113%7%-6%-55%-71%20%-97%2%-104%97%45%-64%14%96%1%87%-37%20%-65%26%40%14%-49%54%116%26%47%76%4%67%-63%-48%85%61%-9%-40%20%-33%3%20%-65%95%4%-24%60%52%-21%4%-40%-26%63%2%45%-32%70%-89%-43%71%34%19%-96%-42%-119%33%90%21%109%5%-128%-58%-127%-106%-40%-107%-121%-74%47%-32%72%-112%-5%-116%43%-63%62%28%92%-21%-44%48%-83%-110%-74%2%92%1%-44%55%60%39%96%-118%47%-128%-14%87%68%37%64%-11%-84%96%-77%53%-76%21%-32%-41%64%125%-29%9%-127%19%64%-5%24%-32%5%-120%-99%-58%11%-125%45%-128%-62%-66%103%-112%-75%0%127%-92%109%-32%63%-38%-82%-65%41%-121%-17%-84%-75%126%-5%27%47%0%124%-125%31%-89%-44%-68%13%17%85%-2%-22%-92%55%1%76%13%-80%109%-119%75%-2%67%79%115%-119%119%-2%-22%81%39%2%-108%-51%10%-90%-24%4%-126%-73%-118%114%11%-51%-19%-93%106%-25%-81%30%67%21%-64%-63%93%-61%-84%5%-40%75%21%-3%4%90%23%-95%-9%-97%-65%58%-128%44%64%-7%-84%96%83%108%27%-29%-72%-73%-84%11%57%-50%59%-1%-95%21%-72%2%116%67%46%-64%-53%-114%19%6%120%-103%117%-2%53%-66%-95%108%27%-128%-4%104%-32%-113%-4%4%93%-58%-49%88%-25%-33%15%79%-121%-45%-6%-41%58%-72%84%-84%-75%0%-37%-11%22%-121%-115%-47%-11%-57%124%-27%-81%94%-125%-21%105%-3%107%-95%89%-63%-23%-97%117%-79%109%-112%-123%20%-79%119%88%-56%57%-1%-35%-16%-92%101%-77%-81%-128%36%105%79%-59%38%-65%78%-32%-96%-65%-80%-117%0%7%90%8%-13%31%-84%51%31%-38%-20%-97%-51%-24%66%-111%-41%122%-53%-70%-112%107%-7%-26%127%103%-83%-103%16%102%-1%108%70%2%-128%119%119%114%-53%57%-66%-7%31%-82%85%-45%-20%-97%93%-47%7%-16%45%0%52%115%-33%49%-3%-127%-25%31%-2%94%-128%-31%49%40%44%-110%-64%-13%55%21%-96%-3%18%-71%0%-48%-83%34%28%-125%119%-13%107%-102%-4%-51%4%72%-67%68%126%-111%40%-65%121%-29%-81%63%113%-2%-31%15%5%59%77%-41%-61%-6%19%-25%-113%119%-13%104%-77%51%3%69%0%-30%-4%-15%38%-123%-86%-10%-107%66%-3%54%-96%-1%-56%113%-41%-97%56%127%-67%-10%107%-75%5%40%26%9%-92%25%10%-90%8%29%115%-3%-119%-13%39%-65%103%-112%8%64%-101%-65%8%96%75%-32%-7%-117%0%-74%4%-98%63%-22%-99%67%51%63%125%53%-96%-25%-68%-47%-41%-97%56%127%-68%-37%-58%81%-115%4%82%-124%-114%-71%-2%-60%-7%-21%-17%6%-86%-20%-121%-100%124%74%-104%-17%-64%-79%-41%-97%56%127%-3%-127%32%-107%-67%24%-80%-116%4%-122%-99%-65%12%5%83%-81%63%113%-2%56%-41%7%104%-97%47%66%112%98%8%81%-18%104%-21%79%-100%63%-50%80%-80%8%16%108%-2%-38%123%1%-83%-78%115%3%-87%26%-48%95%-44%110%-42%-97%56%127%-44%-101%70%-111%52%96%-24%-11%-53%-16%-108%-65%8%64%93%-65%4%95%-7%59%16%-128%89%31%-128%123%-3%98%-68%-27%-113%119%125%0%17%0%17%127%-7%-29%93%31%64%4%-64%-61%99%-2%-122%2%116%94%33%-65%70%80%-24%-11%11%-16%-103%63%-22%-27%-30%-115%28%-32%30%-112%127%1%-68%-26%-113%44%0%-61%-125%65%-36%-21%119%-31%55%127%-61%-7%0%5%2%-92%36%16%1%44%-16%-100%63%-82%0%38%95%4%-36%3%-14%44%-128%-17%-4%81%-113%6%-78%-100%16%-62%-67%126%22%-17%-7%-93%-9%1%-76%11%112%15%-56%-85%0%-2%-13%-57%21%-64%-92%0%-9%-128%124%10%64%-112%63%-6%-3%2%68%0%115%40%-14%71%60%53%76%-6%0%-106%-112%-28%111%112%-65%0%-91%42%-114%5%-76%100%47%-64%20%-102%-4%-15%-50%11%-104%20%67%4%48%-124%40%127%-44%19%67%-58%-47%-67%98%7%-9%-128%60%9%64%-107%63%-78%0%-102%-31%-121%16%-112%31%1%-56%-14%-57%-21%3%-104%94%-84%-119%123%64%94%4%-96%-53%31%-17%-52%32%57%28%108%14%97%-2%-6%-29%0%-71%-84%-27%43%-64%30%-54%-4%-27%112%48%117%125%-30%-4%49%47%18%37%-69%-127%70%-48%-26%-113%58%18%-88%-28%112%-80%62%-60%-7%27%92%40%50%27%-78%12%5%-37%65%-99%63%-6%64%-112%94%-6%-4%3%114%92%-97%60%127%92%1%-76%-45%103%31%-112%-29%-6%-12%-7%-53%22%-128%-78%62%-125%-4%81%15%6%73%31%64%15%14%-7%35%94%36%106%28%57%28%92%31%22%-7%-29%-18%6%-54%56%-128%6%60%-14%71%-97%18%-26%-3%112%112%-88%48%-55%63%-4%83%-61%2%-123%75%-2%-120%2%24%22%-96%78%-126%6%54%-7%99%-34%57%84%4%-88%13%-97%-4%81%111%29%43%95%1%53%97%-108%-65%-23%-83%99%-53%-25%4%-6%62%28%28%32%-100%-14%-57%-69%113%100%74%2%17%-96%18%86%-7%-29%10%64%113%56%56%56%120%-27%-113%42%0%-55%80%112%104%48%-53%31%-71%19%72%112%48%40%48%-72%-27%-113%119%-21%88%-86%-61%-63%97%-63%46%127%92%1%100%11%0%-64%47%127%-23%3%-8%-124%97%-2%-40%123%1%-2%15%7%7%4%-57%-4%101%28%-64%31%44%-13%-57%19%64%14%7%3%-16%-52%95%-114%5%-8%-126%105%-2%-120%123%1%6%-31%71%36%0%-41%-4%-61%-65%107%88%24%-80%-51%95%4%-16%2%-33%-4%69%0%31%-20%-31%-101%-65%8%-32%-127%-89%6%-7%-26%47%2%-72%-25%-24%49%-58%-7%-117%0%-18%121%-115%115%-2%34%-128%115%22%-12%115%-50%95%4%112%-50%33%-42%-7%-117%0%-82%-23%29%98%-99%-65%8%-32%-102%3%-68%-13%23%1%92%-13%24%-17%-4%69%0%-41%60%-54%59%127%17%-64%53%39%121%-25%47%2%-72%102%63%-17%-4%69%0%-41%-24%78%-112%-63%70%4%16%1%68%0%17%64%4%16%1%68%0%17%64%4%16%1%68%0%17%64%4%16%1%68%0%17%64%4%16%1%68%0%31%16%-25%47%2%80%35%2%-120%0%34%-128%8%32%2%-120%0%34%-128%8%32%2%-120%0%34%-128%8%32%2%-120%0%34%-128%8%32%2%-120%0%34%-128%8%32%2%-120%0%34%64%-77%17%1%68%0%17%64%4%16%1%68%0%17%64%4%16%1%68%0%17%64%4%16%1%68%0%17%64%4%16%1%34%17%-128%59%-28%2%108%-94%110%-127%-56%33%23%-96%-105%-70%5%34%-121%92%-128%-45%-44%45%16%57%-28%2%108%-90%110%-127%-56%33%23%96%14%117%11%68%14%-71%0%-77%-87%91%32%114%-56%5%-104%69%-35%2%-111%67%46%-64%65%-22%22%-120%28%114%1%102%80%-73%64%-28%-112%11%-80%-99%-70%5%34%-121%92%-128%-42%0%117%19%-60%13%-71%0%-22%21%-22%38%-120%27%122%1%-106%81%55%65%-36%-48%11%-80%-120%-70%9%-30%-122%94%-128%-123%-44%77%16%55%-12%2%-88%-27%-44%109%16%53%12%4%120%-119%-70%13%-94%-122%-127%0%75%-87%-37%32%106%24%8%-80%68%-26%-124%16%-62%64%0%-11%34%117%35%-60%12%7%1%-28%112%0%33%28%4%-24%95%67%-35%10%17%-61%65%0%-75%-109%-70%21%34%-122%-123%0%-85%-88%91%33%98%88%8%-96%-98%-91%110%-122%120%-31%33%-64%113%-22%102%-120%23%30%2%-12%-112%-35%58%55%122%120%8%-96%110%-90%110%-121%104%97%34%-128%108%2%-88%96%34%-128%-6%38%117%67%-60%10%23%1%-44%-83%-44%45%17%41%108%4%88%47%-25%-119%83%48%-52%70%0%-75%-111%-70%45%-94%100%-128%-113%0%-5%110%-89%110%-116%24%-71%-121%-113%0%-22%51%-22%-58%-120%-111%-75%-116%4%-112%9%-30%4%-52%-26%36%-64%-48%-125%-44%-51%17%31%23%57%9%-96%118%-53%105%98%-66%-71%-119%-107%0%106%23%117%123%68%-57%55%120%9%-96%-18%-90%110%-112%-56%-40%108%-99%24%-78%0%-55%74%-22%38%-119%-117%-43%-36%4%80%91%-41%82%-73%73%84%-68%-54%78%0%-75%77%-50%20%-13%-57%-14%30%126%2%-88%13%-9%81%55%75%60%92%-78%-113%11%95%0%-11%-123%24%-32%-119%21%-41%-78%20%64%109%-112%111%1%63%-4%23%66%88%46%4%80%-37%-92%39%-24%-125%-25%63%-31%42%-128%-38%42%123%-125%30%-8%111%-116%-88%-36%8%-96%-110%-81%81%-73%78%-13%-71%-53%126%23%-64%-99%0%74%109%-111%-29%2%110%-23%-3%2%37%39%103%2%-88%99%-1%67%-35%68%-51%-26%15%56%49%-71%19%64%13%-55%-75%99%28%-14%-65%72%41%57%20%64%-87%59%100%-106%-104%43%14%-76%66%16%64%-19%-37%40%115%-123%-99%-16%80%63%86%68%110%5%80%106%-67%-100%47%-32%-128%3%104%-7%59%23%64%-87%91%100%84%8%-101%-113%-80%-74%-1%94%4%80%61%55%-117%2%-104%-84%120%7%51%29%15%2%-116%42%-16%21%25%25%68%-29%46%-100%-3%127%-81%2%-116%-78%106%-75%92%73%10%-125%-25%63%68%-36%-4%-5%20%64%-87%-2%25%-1%39%87%-108%-76%100%-59%79%16%14%0%83%9%48%-54%-110%-91%-53%-28%72%-79%57%-53%15%-94%-57%-17%89%-128%49%22%46%90%-10%-71%28%38%-48%103%-13%-22%87%81%14%-2%-112%11%48%70%107%-5%-116%-103%-77%102%-49%-71%108%110%-17%-68%-7%-44%13%-53%-99%-31%-127%-71%-121%-49%95%-36%107%61%-1%-97%-107%0%2%31%68%-128%-56%17%1%34%71%4%-120%28%17%32%114%68%-128%-56%17%1%34%71%4%-120%28%17%32%114%68%-128%-56%9%95%-128%36%113%83%-43%73%89%126%-120%0%101%85%69%0%33%6%68%-128%-56%97%38%-64%-60%-106%-73%-3%-33%-22%-89%83%111%81%83%-65%109%-41%-104%122%45%-11%114%-63%-69%-109%-92%-32%93%-109%-81%37%-71%-78%73%-46%106%-1%109%-85%-69%106%106%-3%-45%-65%-23%-44%104%47%-113%-70%-123%-13%48%19%64%-27%66%-86%126%-102%121%71%38%-64%-4%-61%-52%31%-28%-34%84%-112%82%-110%-111%-82%-68%108%70%33%-24%-17%-13%127%-52%3%-42%2%64%79%-37%-17%-56%126%-84%-31%-121%-23%18%-71%-33%39%-123%-81%-90%-33%-47%-34%-68%-28%85%-52%-2%125%81%21%87%93%86%11%56%10%-48%-2%44%66%79%83%-17%-104%122%-40%-39%2%-25%66%104%-65%-102%-7%-118%-24%-2%125%82%-4%-82%-50%-85%73%-6%97%-89%106%-22%65%97%21%17%-96%30%-109%-19%58%-43%-122%-43%79%39%-33%-111%110%-42%82%1%-78%-101%-5%-10%-33%-88%-108%85%73%-63%22%32%-55%-8%-106%100%-106%-100%-83%-86%106%-84%-122%8%0%-109%-118%24%126%58%-7%18%71%1%84%-47%106%-120%0%48%-29%-35%-19%92%-17%-69%-12%-23%-60%75%-75%4%-24%44%-95%-89%80%-128%92%-127%-4%-69%74%4%-56%-81%59%-80%26%34%0%76%-86%-21%12%63%-99%120%-87%86%31%-96%-107%89%66%73%31%64%-43%23%96%-30%97%43%-73%-18%-71%-43%-112%62%-128%62%61%-39%-120%-85%-97%42%85%-80%23%-96%10%31%102%-70%-18%37%123%1%106%52%-48%-92%-16%-43%-94%-78%-35%-95%-126%-85%33%2%-44%32%-73%111%85%-15%52%-77%107%86%-72%3%-98%121%71%-6%-37%60%-1%-89%-99%-57%73%-59%-69%-78%61%-125%-30%-33%87%-81%-122%8%0%-109%-37%-73%-86%120%-102%107%-33%-108%35%93%-101%-8%-50%-85%-103%79%105%-63%-69%-110%-62%119%101%106%21%-115%4%-26%-97%-85%-92%108%53%-88%-37%55%7%63%1%-4%-63%46%12%10%68%-128%-56%17%1%34%71%4%-120%-100%-104%5%16%-108%8%16%61%34%64%-28%-4%63%-104%-38%-1%-37%-50%14%104%-128%0%0%0%0%73%69%78%68%-82%66%96%-126%" format="Papyrus">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Q2m1YcYaEeeTLeuKvvVHAw" source="image_papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Q2m1YsYaEeeTLeuKvvVHAw" key="image_name_key" value="GlossaryShape"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Q2m1Y8YaEeeTLeuKvvVHAw" key="image_kind_key" value="shape"/>
+        </eAnnotations>
+      </icon>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_w_thgET3EeS25e5tbYLtxg" name="Term">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_7d0fIET3EeS25e5tbYLtxg" name="base_Class" association="_7d1GMET3EeS25e5tbYLtxg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_XQ4TUC3KEeykYdacufooTg" name="acronym">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_-3Bb8BnWEee85eN49tGVcA" name="meanings" type="_kxro8ET4EeS25e5tbYLtxg" isReadOnly="true" isDerived="true" association="_-22c0BnWEee85eN49tGVcA">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_y3j3oMYtEeesNIEaKYOnjA" annotatedElement="_-3Bb8BnWEee85eN49tGVcA">
+          <body>The meanings atribute is a derived attribute. Its value is calculated as being the set of owned comments stereotyped as &lt;&lt;Definition>>.</body>
+        </ownedComment>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Y9T7cBnvEee85eN49tGVcA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Y9ZbABnvEee85eN49tGVcA" value="*"/>
+        <subsettedProperty xmi:type="uml:Property" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Element-ownedElement"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_SsYJZLnTEeehsM9KGeEXUQ" name="commonMeaning" type="_kxro8ET4EeS25e5tbYLtxg" isReadOnly="true" isDerived="true" subsettedProperty="_-3Bb8BnWEee85eN49tGVcA" association="_SsYJYLnTEeehsM9KGeEXUQ">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_LOvd4MYuEeesNIEaKYOnjA" annotatedElement="_SsYJZLnTEeehsM9KGeEXUQ">
+          <body>&lt;p>The commonMeaning attribute is a derived property subetting the meanings attribute. The derivation rule shall be the following: the value of the commonMeaning attribute is calculated as being the Definition model element (i.e., owned comments stereotyped with &amp;lt;&amp;lt;Definition&amp;gt;&amp;gt; and annotating the owner element, in that case the Term itself).&amp;nbsp;&lt;/p>
+</body>
+        </ownedComment>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SsYJZbnTEeehsM9KGeEXUQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SsYJZrnTEeehsM9KGeEXUQ" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Wwe6EhpIEee85eN49tGVcA" name="hyponyms" type="_w_thgET3EeS25e5tbYLtxg" association="_WwZagBpIEee85eN49tGVcA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_kaSXoBpIEee85eN49tGVcA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_kaXQIBpIEee85eN49tGVcA" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_WwfhIBpIEee85eN49tGVcA" name="hypernyms" type="_w_thgET3EeS25e5tbYLtxg" association="_WwZagBpIEee85eN49tGVcA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_o7G3cBpIEee85eN49tGVcA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_o7JTsBpIEee85eN49tGVcA" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_XIxwMRpGEee85eN49tGVcA" name="synonyms" type="_w_thgET3EeS25e5tbYLtxg" association="_XIwiEBpGEee85eN49tGVcA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5bM3kBpGEee85eN49tGVcA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5bRwEBpGEee85eN49tGVcA" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_tU4LoFngEeyFfo7P2D8rIQ" name="reference" association="_tU0hQFngEeyFfo7P2D8rIQ">
+        <type xmi:type="uml:Stereotype" href="../../com.cea.papyrus.referencemanagement/uml-profiles/ReferencesML.profile.uml#_V0hCoEaeEeeubeo5VXVdIw"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xMf9cFngEeyFfo7P2D8rIQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xM6NIFngEeyFfo7P2D8rIQ" value="*"/>
+      </ownedAttribute>
+      <icon xmi:type="uml:Image" xmi:id="_0DcqsMYnEeeSRq_vNy3oyA" content="-119%80%78%71%13%10%26%10%0%0%0%13%73%72%68%82%0%0%0%15%0%0%0%16%8%6%0%0%0%-55%86%37%4%0%0%0%4%115%66%73%84%8%8%8%8%124%8%100%-120%0%0%0%9%112%72%89%115%0%0%14%-60%0%0%14%-60%1%-107%43%14%27%0%0%0%25%116%69%88%116%83%111%102%116%119%97%114%101%0%119%119%119%46%105%110%107%115%99%97%112%101%46%111%114%103%-101%-18%60%26%0%0%0%-32%73%68%65%84%40%-111%-99%-46%77%74%-61%80%20%-59%-15%95%62%-112%58%104%-43%-71%32%-35%-117%75%112%-88%43%112%37%-18%-64%-127%27%112%-92%67%71%-70%-121%78%-59%-127%-114%-83%8%106%40%-38%36%14%-6%34%73%104%-110%-42%11%23%14%-121%-5%127%-25%-62%125%17%74%-1%-85%-73%52%-120%35%124%108%1%-114%-15%92%-63%11%-87%115%-28%-83%-95%-62%-46%-59%26%-8%111%-82%52%50%21%-55%-16%-35%-24%-40%75%71%-14%4%101%26%114%51%-119%43%-111%92%-18%68%-28%83%-20%78%36%87%-12%-17%95%-122%-105%86%21%-101%73%60%-12%35%-11%-28%-18%74%112%-38%-14%102%120%-126%33%56%-58%113%-53%-53%54%-123%127%112%-74%-58%-97%108%2%-17%-32%-90%-27%93%-29%118%19%120%-119%-53%-106%-9%88%-119%33%-72%-64%125%-48%95%53%-65%115%-19%-92%-26%-113%-16%26%-12%-98%-43%-25%105%84%-13%-50%35%83%-69%14%7%54%106%-36%121%63%36%-78%-16%30%-68%-125%30%120%92%-119%121%72%-33%-74%-25%-65%-29%48%64%73%-20%-18%-35%16%0%0%0%0%73%69%78%68%-82%66%96%-126%" format="Papyrus">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_0DcqscYnEeeSRq_vNy3oyA" source="image_papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_0DcqssYnEeeSRq_vNy3oyA" key="image_name_key" value="TermIcon"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_0Dcqs8YnEeeSRq_vNy3oyA" key="image_kind_key" value="icon"/>
+        </eAnnotations>
+      </icon>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_kxro8ET4EeS25e5tbYLtxg" name="Definition">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_tU9VQMYuEeesNIEaKYOnjA">
+        <body></body>
+      </ownedComment>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_wlz-UET4EeS25e5tbYLtxg" name="base_Comment" association="_wl0lYET4EeS25e5tbYLtxg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Comment"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Wv5CUMYtEeesNIEaKYOnjA" name="isCommon">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_ijEVcMYtEeesNIEaKYOnjA" name="IsCommon_DV"/>
+      </ownedAttribute>
+      <icon xmi:type="uml:Image" xmi:id="_2I2i4MYlEeetz_Gwqtrocw" content="-119%80%78%71%13%10%26%10%0%0%0%13%73%72%68%82%0%0%0%15%0%0%0%16%8%6%0%0%0%-55%86%37%4%0%0%0%4%115%66%73%84%8%8%8%8%124%8%100%-120%0%0%0%9%112%72%89%115%0%0%14%-60%0%0%14%-60%1%-107%43%14%27%0%0%0%25%116%69%88%116%83%111%102%116%119%97%114%101%0%119%119%119%46%105%110%107%115%99%97%112%101%46%111%114%103%-101%-18%60%26%0%0%1%65%73%68%65%84%40%-111%-99%-45%-65%74%92%65%24%5%-16%-33%-36%-71%107%80%-119%65%12%40%104%-40%7%8%88%7%-33%-62%-42%-62%-46%-105%-80%-80%-14%13%82%7%-83%44%36%15%16%20%53%-40%-92%52%101%2%66%22%21%5%-47%102%73%-4%-77%-9%-18%88%-20%-35%-32%-70%-82%49%30%24%24%-66%111%-50%119%-50%25%102%2%-110%-105%-31%50%-81%54%117%20%106%38%-111%-76%28%-93%-20%59%62%100%90%-26%-73%107%37%26%42%-27%49%67%22%4%45%65%75%-76%-125%-48%67%-116%-26%5%87%114%-85%24%67%-54%-2%54%75%37%-50%100%54%-108%-26%-28%62%-12%-112%-109%73%52%100%14%-70%-91%76%47%-50%-107%22%5%-89%-110%-15%71%114%-2%114%107%115%16%-71%-117%-94%-78%61%-30%-115%113%-28%-94%90%85%123%-43%61%-108%15%32%-109%-103%-112%-4%-48%52%34%-38%-42%86%-57%-84%-102%37%45%-21%79%41%19%-68%-109%68%-63%103%109%51%56%-60%-119%-28%-25%-65%108%119%113%37%-6%10%-110%125%28%42%124%121%30%57%-103%86%-8%-88%115%7%125%24%-100%-71%99%-3%92%-76%34%-72%84%-104%122%-40%126%-88%28%12%-101%-61%68%-91%118%-85%-83%-87%-76%-4%-40%-20%94%114%-14%-34%-75%61%-108%-126%-17%120%43%89%-47%-10%-25%105%-37%-103%6%-42%64%-76%-21%-58%-106%-36%39%-55%-88%-24%-101%-28%8%-5%-9%-45%7%-99%-73%93%71%115%112%-8%62%-68%86%125%-116%-117%106%-64%-1%-82%-117%59%116%55%102%76%11%6%-40%4%0%0%0%0%73%69%78%68%-82%66%96%-126%" format="Papyrus">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_2I2i4cYlEeetz_Gwqtrocw" source="image_papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2I2i4sYlEeetz_Gwqtrocw" key="image_name_key" value="DefinitionIcon"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2I2i48YlEeetz_Gwqtrocw" key="image_kind_key" value="icon"/>
+        </eAnnotations>
+      </icon>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_itBfAUT3EeS25e5tbYLtxg" name="E_Glossary_Model1" memberEnd="_itBfAkT3EeS25e5tbYLtxg _itBfAET3EeS25e5tbYLtxg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_itBfAkT3EeS25e5tbYLtxg" name="extension_Glossary" type="_H-K2wET3EeS25e5tbYLtxg" aggregation="composite" association="_itBfAUT3EeS25e5tbYLtxg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_7d1GMET3EeS25e5tbYLtxg" name="E_Term_Class1" memberEnd="_7d1GMUT3EeS25e5tbYLtxg _7d0fIET3EeS25e5tbYLtxg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_7d1GMUT3EeS25e5tbYLtxg" name="extension_Term" type="_w_thgET3EeS25e5tbYLtxg" aggregation="composite" association="_7d1GMET3EeS25e5tbYLtxg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_wl0lYET4EeS25e5tbYLtxg" name="E_Definition_Comment1" memberEnd="_wl0lYUT4EeS25e5tbYLtxg _wlz-UET4EeS25e5tbYLtxg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_wl0lYUT4EeS25e5tbYLtxg" name="extension_Definition" type="_kxro8ET4EeS25e5tbYLtxg" aggregation="composite" association="_wl0lYET4EeS25e5tbYLtxg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_-22c0BnWEee85eN49tGVcA" name="TermDef" memberEnd="_-3Bb8BnWEee85eN49tGVcA _-3CDABnWEee85eN49tGVcA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_-29xkBnWEee85eN49tGVcA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_-2-YoBnWEee85eN49tGVcA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_-3CDABnWEee85eN49tGVcA" name="term" type="_w_thgET3EeS25e5tbYLtxg" association="_-22c0BnWEee85eN49tGVcA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_XIwiEBpGEee85eN49tGVcA" name="Term-Synonym-Term" memberEnd="_XIxwMBpGEee85eN49tGVcA _XIxwMRpGEee85eN49tGVcA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_XIxJIBpGEee85eN49tGVcA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_XIxJIRpGEee85eN49tGVcA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_XIxwMBpGEee85eN49tGVcA" name="originTerm" type="_w_thgET3EeS25e5tbYLtxg" association="_XIwiEBpGEee85eN49tGVcA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zlJDIBpGEee85eN49tGVcA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zlMtgBpGEee85eN49tGVcA" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_WwZagBpIEee85eN49tGVcA" name="Hyponyms-Hypernyms" memberEnd="_Wwe6EhpIEee85eN49tGVcA _WwfhIBpIEee85eN49tGVcA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Wwe6EBpIEee85eN49tGVcA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Wwe6ERpIEee85eN49tGVcA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_SsYJYLnTEeehsM9KGeEXUQ" name="CommonDefinition" memberEnd="_SsYJZLnTEeehsM9KGeEXUQ _SsYJY7nTEeehsM9KGeEXUQ">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_SsYJYbnTEeehsM9KGeEXUQ" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_SsYJYrnTEeehsM9KGeEXUQ" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_SsYJY7nTEeehsM9KGeEXUQ" name="term" type="_w_thgET3EeS25e5tbYLtxg" association="_SsYJYLnTEeehsM9KGeEXUQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_K7qF0MPpEeeSJfWHTbkb_A" name="SubGlossary" memberEnd="_K7z20sPpEeeSJfWHTbkb_A _K7z208PpEeeSJfWHTbkb_A">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_K7z20MPpEeeSJfWHTbkb_A" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_K7z20cPpEeeSJfWHTbkb_A" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_K7z208PpEeeSJfWHTbkb_A" name="onwer" type="_H-K2wET3EeS25e5tbYLtxg" association="_K7qF0MPpEeeSJfWHTbkb_A">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_daQvIMPpEeeSJfWHTbkb_A"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_das0AMPpEeeSJfWHTbkb_A" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_tU0hQFngEeyFfo7P2D8rIQ" name="TermReferences" memberEnd="_tU4LoFngEeyFfo7P2D8rIQ _tU4ysFngEeyFfo7P2D8rIQ">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_tU29gFngEeyFfo7P2D8rIQ" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_tU3kkFngEeyFfo7P2D8rIQ" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_tU4ysFngEeyFfo7P2D8rIQ" name="term" type="_w_thgET3EeS25e5tbYLtxg" association="_tU0hQFngEeyFfo7P2D8rIQ"/>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_X8eb0OY-EeuwNNT1W9EFnQ">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_X8g4EOY-EeuwNNT1W9EFnQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Profile>
+  <Ecore:EPackage xmi:id="_ZKAl8OY-EeuwNNT1W9EFnQ" base_Package="_saqecET2EeS25e5tbYLtxg" nsURI="http://com.cea.papyrus.glossaryml"/>
+</xmi:XMI>

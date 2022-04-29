@@ -1,0 +1,33 @@
+{"forceProperties": {
+    "center": {
+        "x": "0.5",
+        "y": "0.5"
+    },
+    "charge": {
+        "enabled": "true",
+        "strength": "-100",
+        "distanceMin": "20",
+        "distanceMax": "100"
+    },
+    "collide": {
+        "enabled": "true",
+        "strength": ".11",
+        "iterations": "1",
+        "radius": "50"
+    },
+    "forceX": {
+        "enabled": "false",
+        "strength": ".1",
+        "x": ".5"
+    },
+    "forceY": {
+        "enabled": "false",
+        "strength": ".1",
+        "y": ".5"
+    },
+    "link": {
+        "enabled": "true",
+        "distance": "100",
+        "iterations": "1"
+    }
+}}

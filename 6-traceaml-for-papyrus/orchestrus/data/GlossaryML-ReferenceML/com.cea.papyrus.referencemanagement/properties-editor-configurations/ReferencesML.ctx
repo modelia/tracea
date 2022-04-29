@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="ASCII"?>
+<contexts:Context xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:constraints="http://www.eclipse.org/papyrus/constraints/0.9" xmlns:contexts="http://www.eclipse.org/papyrus/properties/contexts/0.9" xmi:id="_07py8FnkEeyFfo7P2D8rIQ" name="ReferenceML">
+  <dependencies href="ppe:/context/org.eclipse.papyrus.uml.properties/Model/UML/UML.ctx#_69QJkKDJEeSZxfCXzZz3-w"/>
+  <tabs xmi:id="_1Hz_oFnkEeyFfo7P2D8rIQ" label="ReferenceML" id="referenceml" priority="100">
+    <allSections xsi:type="contexts:Section" xmi:id="_1H2b4FnkEeyFfo7P2D8rIQ" name="Single Reference" sectionFile="ui/SingleReference.xwt">
+      <annotations xmi:id="_1H2b4VnkEeyFfo7P2D8rIQ" source="http://www.eclipse.org/papyrus/properties/contexts">
+        <details xmi:id="_1H2b4lnkEeyFfo7P2D8rIQ" key="model" value="../uml-profiles/ReferencesML.profile.uml#_V0hCoEaeEeeubeo5VXVdIw"/>
+      </annotations>
+      <widget href="ui/SingleReference.xwt#/"/>
+    </allSections>
+    <allSections xsi:type="contexts:Section" xmi:id="_1H2b41nkEeyFfo7P2D8rIQ" name="Multiple Reference" sectionFile="ui/MultipleReference.xwt">
+      <annotations xmi:id="_1H2b5FnkEeyFfo7P2D8rIQ" source="http://www.eclipse.org/papyrus/properties/contexts">
+        <details xmi:id="_1H2b5VnkEeyFfo7P2D8rIQ" key="model" value="../uml-profiles/ReferencesML.profile.uml#_V0hCoEaeEeeubeo5VXVdIw"/>
+      </annotations>
+      <widget href="ui/MultipleReference.xwt#/"/>
+    </allSections>
+    <allSections xsi:type="contexts:Section" xmi:id="_1H2b5lnkEeyFfo7P2D8rIQ" name="Single ReferenceLibrary" sectionFile="ui/SingleReferenceLibrary.xwt">
+      <annotations xmi:id="_1H2b51nkEeyFfo7P2D8rIQ" source="http://www.eclipse.org/papyrus/properties/contexts">
+        <details xmi:id="_1H2b6FnkEeyFfo7P2D8rIQ" key="model" value="../uml-profiles/ReferencesML.profile.uml#_JQbagEafEeeubeo5VXVdIw"/>
+      </annotations>
+      <widget href="ui/SingleReferenceLibrary.xwt#/"/>
+    </allSections>
+    <allSections xsi:type="contexts:Section" xmi:id="_1H2b6VnkEeyFfo7P2D8rIQ" name="Multiple ReferenceLibrary" sectionFile="ui/MultipleReferenceLibrary.xwt">
+      <annotations xmi:id="_1H2b6lnkEeyFfo7P2D8rIQ" source="http://www.eclipse.org/papyrus/properties/contexts">
+        <details xmi:id="_1H2b61nkEeyFfo7P2D8rIQ" key="model" value="../uml-profiles/ReferencesML.profile.uml#_JQbagEafEeeubeo5VXVdIw"/>
+      </annotations>
+      <widget href="ui/MultipleReferenceLibrary.xwt#/"/>
+    </allSections>
+    <allSections xsi:type="contexts:Section" xmi:id="_1H2b7FnkEeyFfo7P2D8rIQ" name="Single Collection" sectionFile="ui/SingleCollection.xwt">
+      <annotations xmi:id="_1H2b7VnkEeyFfo7P2D8rIQ" source="http://www.eclipse.org/papyrus/properties/contexts">
+        <details xmi:id="_1H2b7lnkEeyFfo7P2D8rIQ" key="model" value="../uml-profiles/ReferencesML.profile.uml#_AdeYwFkTEey5UYhA6TU8wA"/>
+      </annotations>
+      <widget href="ui/SingleCollection.xwt#/"/>
+    </allSections>
+    <allSections xsi:type="contexts:Section" xmi:id="_1H2b71nkEeyFfo7P2D8rIQ" name="Multiple Collection" sectionFile="ui/MultipleCollection.xwt">
+      <annotations xmi:id="_1H2b8FnkEeyFfo7P2D8rIQ" source="http://www.eclipse.org/papyrus/properties/contexts">
+        <details xmi:id="_1H2b8VnkEeyFfo7P2D8rIQ" key="model" value="../uml-profiles/ReferencesML.profile.uml#_AdeYwFkTEey5UYhA6TU8wA"/>
+      </annotations>
+      <widget href="ui/MultipleCollection.xwt#/"/>
+    </allSections>
+  </tabs>
+  <views xmi:id="_07py8VnkEeyFfo7P2D8rIQ" name="Single Reference" sections="_1H2b4FnkEeyFfo7P2D8rIQ" automaticContext="true" datacontexts="_07pzElnkEeyFfo7P2D8rIQ">
+    <constraints xsi:type="constraints:SimpleConstraint" xmi:id="_07py8lnkEeyFfo7P2D8rIQ" name="isSingleReference">
+      <constraintType href="ppe:/environment/org.eclipse.papyrus.uml.properties/Model/Environment.xmi#//@constraintTypes.1"/>
+      <properties xsi:type="constraints:ValueProperty" xmi:id="_07py81nkEeyFfo7P2D8rIQ" name="stereotypeName" value="ReferenceML::Reference"/>
+    </constraints>
+    <annotations xmi:id="_07py9FnkEeyFfo7P2D8rIQ" source="http://www.eclipse.org/papyrus/properties/contexts">
+      <details xmi:id="_07py9VnkEeyFfo7P2D8rIQ" key="model" value="../uml-profiles/ReferencesML.profile.uml#_V0hCoEaeEeeubeo5VXVdIw"/>
+    </annotations>
+  </views>
+  <views xmi:id="_07py9lnkEeyFfo7P2D8rIQ" elementMultiplicity="-1" name="Multiple Reference" sections="_1H2b41nkEeyFfo7P2D8rIQ" automaticContext="true" datacontexts="_07pzElnkEeyFfo7P2D8rIQ">
+    <constraints xsi:type="constraints:SimpleConstraint" xmi:id="_07py91nkEeyFfo7P2D8rIQ" name="isMultipleReference">
+      <constraintType href="ppe:/environment/org.eclipse.papyrus.uml.properties/Model/Environment.xmi#//@constraintTypes.1"/>
+      <properties xsi:type="constraints:ValueProperty" xmi:id="_07py-FnkEeyFfo7P2D8rIQ" name="stereotypeName" value="ReferenceML::Reference"/>
+    </constraints>
+    <annotations xmi:id="_07py-VnkEeyFfo7P2D8rIQ" source="http://www.eclipse.org/papyrus/properties/contexts">
+      <details xmi:id="_07py-lnkEeyFfo7P2D8rIQ" key="model" value="../uml-profiles/ReferencesML.profile.uml#_V0hCoEaeEeeubeo5VXVdIw"/>
+    </annotations>
+  </views>
+  <views xmi:id="_07py-1nkEeyFfo7P2D8rIQ" name="Single ReferenceLibrary" sections="_1H2b5lnkEeyFfo7P2D8rIQ" automaticContext="true" datacontexts="_07pzHlnkEeyFfo7P2D8rIQ">
+    <constraints xsi:type="constraints:SimpleConstraint" xmi:id="_07py_FnkEeyFfo7P2D8rIQ" name="isSingleReferenceLibrary">
+      <constraintType href="ppe:/environment/org.eclipse.papyrus.uml.properties/Model/Environment.xmi#//@constraintTypes.1"/>
+      <properties xsi:type="constraints:ValueProperty" xmi:id="_07py_VnkEeyFfo7P2D8rIQ" name="stereotypeName" value="ReferenceML::ReferenceLibrary"/>
+    </constraints>
+    <annotations xmi:id="_07py_lnkEeyFfo7P2D8rIQ" source="http://www.eclipse.org/papyrus/properties/contexts">
+      <details xmi:id="_07py_1nkEeyFfo7P2D8rIQ" key="model" value="../uml-profiles/ReferencesML.profile.uml#_JQbagEafEeeubeo5VXVdIw"/>
+    </annotations>
+  </views>
+  <views xmi:id="_07pzAFnkEeyFfo7P2D8rIQ" elementMultiplicity="-1" name="Multiple ReferenceLibrary" sections="_1H2b6VnkEeyFfo7P2D8rIQ" automaticContext="true" datacontexts="_07pzHlnkEeyFfo7P2D8rIQ">
+    <constraints xsi:type="constraints:SimpleConstraint" xmi:id="_07pzAVnkEeyFfo7P2D8rIQ" name="isMultipleReferenceLibrary">
+      <constraintType href="ppe:/environment/org.eclipse.papyrus.uml.properties/Model/Environment.xmi#//@constraintTypes.1"/>
+      <properties xsi:type="constraints:ValueProperty" xmi:id="_07pzAlnkEeyFfo7P2D8rIQ" name="stereotypeName" value="ReferenceML::ReferenceLibrary"/>
+    </constraints>
+    <annotations xmi:id="_07pzA1nkEeyFfo7P2D8rIQ" source="http://www.eclipse.org/papyrus/properties/contexts">
+      <details xmi:id="_07pzBFnkEeyFfo7P2D8rIQ" key="model" value="../uml-profiles/ReferencesML.profile.uml#_JQbagEafEeeubeo5VXVdIw"/>
+    </annotations>
+  </views>
+  <views xmi:id="_07pzBVnkEeyFfo7P2D8rIQ" name="Single Collection" sections="_1H2b7FnkEeyFfo7P2D8rIQ" automaticContext="true" datacontexts="_07pzJFnkEeyFfo7P2D8rIQ">
+    <constraints xsi:type="constraints:SimpleConstraint" xmi:id="_07pzBlnkEeyFfo7P2D8rIQ" name="isSingleCollection">
+      <constraintType href="ppe:/environment/org.eclipse.papyrus.uml.properties/Model/Environment.xmi#//@constraintTypes.1"/>
+      <properties xsi:type="constraints:ValueProperty" xmi:id="_07pzB1nkEeyFfo7P2D8rIQ" name="stereotypeName" value="ReferenceML::Collection"/>
+    </constraints>
+    <annotations xmi:id="_07pzCFnkEeyFfo7P2D8rIQ" source="http://www.eclipse.org/papyrus/properties/contexts">
+      <details xmi:id="_07pzCVnkEeyFfo7P2D8rIQ" key="model" value="../uml-profiles/ReferencesML.profile.uml#_AdeYwFkTEey5UYhA6TU8wA"/>
+    </annotations>
+  </views>
+  <views xmi:id="_07pzClnkEeyFfo7P2D8rIQ" elementMultiplicity="-1" name="Multiple Collection" sections="_1H2b71nkEeyFfo7P2D8rIQ" automaticContext="true" datacontexts="_07pzJFnkEeyFfo7P2D8rIQ">
+    <constraints xsi:type="constraints:SimpleConstraint" xmi:id="_07pzC1nkEeyFfo7P2D8rIQ" name="isMultipleCollection">
+      <constraintType href="ppe:/environment/org.eclipse.papyrus.uml.properties/Model/Environment.xmi#//@constraintTypes.1"/>
+      <properties xsi:type="constraints:ValueProperty" xmi:id="_07pzDFnkEeyFfo7P2D8rIQ" name="stereotypeName" value="ReferenceML::Collection"/>
+    </constraints>
+    <annotations xmi:id="_07pzDVnkEeyFfo7P2D8rIQ" source="http://www.eclipse.org/papyrus/properties/contexts">
+      <details xmi:id="_07pzDlnkEeyFfo7P2D8rIQ" key="model" value="../uml-profiles/ReferencesML.profile.uml#_AdeYwFkTEey5UYhA6TU8wA"/>
+    </annotations>
+  </views>
+  <dataContexts xmi:id="_07pzD1nkEeyFfo7P2D8rIQ" name="ReferenceML">
+    <annotations xmi:id="_07pzEFnkEeyFfo7P2D8rIQ" source="http://www.eclipse.org/papyrus/properties/contexts">
+      <details xmi:id="_07pzEVnkEeyFfo7P2D8rIQ" key="model" value="../uml-profiles/ReferencesML.profile.uml#_K_P-sEadEeeubeo5VXVdIw"/>
+      <details xmi:id="_1Hz_o1nkEeyFfo7P2D8rIQ" key="layoutGenerator" value="bundleclass://org.eclipse.papyrus.uml.properties.generation/org.eclipse.papyrus.customization.properties.generation.layout.StandardLayoutGenerator"/>
+    </annotations>
+    <elements xmi:id="_07pzElnkEeyFfo7P2D8rIQ" name="Reference">
+      <annotations xmi:id="_07pzE1nkEeyFfo7P2D8rIQ" source="http://www.eclipse.org/papyrus/properties/contexts">
+        <details xmi:id="_07pzFFnkEeyFfo7P2D8rIQ" key="model" value="../uml-profiles/ReferencesML.profile.uml#_V0hCoEaeEeeubeo5VXVdIw"/>
+      </annotations>
+      <supertypes href="ppe:/context/org.eclipse.papyrus.uml.properties/Model/UML/UML.ctx#_690yXqDJEeSZxfCXzZz3-w"/>
+      <properties xmi:id="_07pzFVnkEeyFfo7P2D8rIQ" name="abstract">
+        <annotations xmi:id="_07pzFlnkEeyFfo7P2D8rIQ" source="http://www.eclipse.org/papyrus/properties/contexts">
+          <details xmi:id="_07pzF1nkEeyFfo7P2D8rIQ" key="model" value="../uml-profiles/ReferencesML.profile.uml#_0nGuQB1DEeiVs8WXySOZ4Q"/>
+        </annotations>
+      </properties>
+      <properties xmi:id="_07pzGFnkEeyFfo7P2D8rIQ" name="location">
+        <annotations xmi:id="_07pzGVnkEeyFfo7P2D8rIQ" source="http://www.eclipse.org/papyrus/properties/contexts">
+          <details xmi:id="_07pzGlnkEeyFfo7P2D8rIQ" key="model" value="../uml-profiles/ReferencesML.profile.uml#_epe4MEaeEeeubeo5VXVdIw"/>
+        </annotations>
+      </properties>
+      <properties xmi:id="_07pzG1nkEeyFfo7P2D8rIQ" name="rDOI" description="&lt;p>Is the formal reference description of the&amp;nbsp;document.&lt;/p>&#xA;">
+        <annotations xmi:id="_07pzHFnkEeyFfo7P2D8rIQ" source="http://www.eclipse.org/papyrus/properties/contexts">
+          <details xmi:id="_07pzHVnkEeyFfo7P2D8rIQ" key="model" value="../uml-profiles/ReferencesML.profile.uml#_7Npy0GiiEei658bIAVUBJQ"/>
+        </annotations>
+      </properties>
+    </elements>
+    <elements xmi:id="_07pzHlnkEeyFfo7P2D8rIQ" name="ReferenceLibrary">
+      <annotations xmi:id="_07pzH1nkEeyFfo7P2D8rIQ" source="http://www.eclipse.org/papyrus/properties/contexts">
+        <details xmi:id="_07pzIFnkEeyFfo7P2D8rIQ" key="model" value="../uml-profiles/ReferencesML.profile.uml#_JQbagEafEeeubeo5VXVdIw"/>
+      </annotations>
+      <supertypes href="ppe:/context/org.eclipse.papyrus.uml.properties/Model/UML/UML.ctx#_690y0aDJEeSZxfCXzZz3-w"/>
+      <properties xmi:id="_07pzIVnkEeyFfo7P2D8rIQ" name="collections" type="Reference" multiplicity="-1">
+        <annotations xmi:id="_07pzIlnkEeyFfo7P2D8rIQ" source="http://www.eclipse.org/papyrus/properties/contexts">
+          <details xmi:id="_07pzI1nkEeyFfo7P2D8rIQ" key="model" value="../uml-profiles/ReferencesML.profile.uml#_g3wJMlkHEey5UYhA6TU8wA"/>
+        </annotations>
+      </properties>
+    </elements>
+    <elements xmi:id="_07pzJFnkEeyFfo7P2D8rIQ" name="Collection">
+      <annotations xmi:id="_07pzJVnkEeyFfo7P2D8rIQ" source="http://www.eclipse.org/papyrus/properties/contexts">
+        <details xmi:id="_07pzJlnkEeyFfo7P2D8rIQ" key="model" value="../uml-profiles/ReferencesML.profile.uml#_AdeYwFkTEey5UYhA6TU8wA"/>
+      </annotations>
+      <supertypes href="ppe:/context/org.eclipse.papyrus.uml.properties/Model/UML/UML.ctx#_690xiaDJEeSZxfCXzZz3-w"/>
+      <properties xmi:id="_07pzJ1nkEeyFfo7P2D8rIQ" name="references" type="Reference" multiplicity="-1">
+        <annotations xmi:id="_07pzKFnkEeyFfo7P2D8rIQ" source="http://www.eclipse.org/papyrus/properties/contexts">
+          <details xmi:id="_07pzKVnkEeyFfo7P2D8rIQ" key="model" value="../uml-profiles/ReferencesML.profile.uml#_abJbslkTEey5UYhA6TU8wA"/>
+        </annotations>
+      </properties>
+      <properties xmi:id="_07pzKlnkEeyFfo7P2D8rIQ" name="sub-collection" type="Reference" multiplicity="-1">
+        <annotations xmi:id="_07pzK1nkEeyFfo7P2D8rIQ" source="http://www.eclipse.org/papyrus/properties/contexts">
+          <details xmi:id="_07pzLFnkEeyFfo7P2D8rIQ" key="model" value="../uml-profiles/ReferencesML.profile.uml#_tdRCgFmnEeygx62aQuYAgw"/>
+        </annotations>
+      </properties>
+    </elements>
+    <modelElementFactory href="ppe:/environment/org.eclipse.papyrus.uml.properties/Model/Environment.xmi#//@modelElementFactories.2"/>
+  </dataContexts>
+</contexts:Context>

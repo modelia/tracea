@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<paletteconfiguration:PaletteConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:elementtypesconfigurations="http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.2" xmlns:paletteconfiguration="http://www.eclipse.org/papyrus/diagram/paletteconfiguration/0.8" id="GlossaryArchitectureDiagramPalette_Id" label="Glossary Structure Diagram Palette">
+  <drawerConfigurations xmi:type="paletteconfiguration:DrawerConfiguration" id="GlossaryStructureDiagram_GSDDrawer_Id" label="GSD" description="This palette is about model element to structure a glossary. ">
+    <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="com.cea.papyrus.glossary.gsd.glossarycreationtool.id" label="Glossary" description="Create a new glossary. " kind="CreationTool">
+      <icon xmi:type="paletteconfiguration:IconDescriptor" pluginID="org.eclipse.uml2.uml.edit" iconPath="/icons/full/obj16/Model.gif"/>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.cea.papyrus.glossary/element-type-configurations/GlossaryML_glossarystructurediagram.elementtypesconfigurations#_wz8DwW15Eey1C9EStxUthQ"/>
+      </elementDescriptors>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.cea.papyrus.glossary/element-type-configurations/GlossaryML_glossarystructurediagram.elementtypesconfigurations#_wz8Dwm15Eey1C9EStxUthQ"/>
+      </elementDescriptors>
+    </ownedConfigurations>
+    <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="com.cea.papyrus.glossary.gsd.glossarygroupcreationtool.id" label="Glossary Group" description="Create a group of glossaries." kind="CreationTool">
+      <icon xmi:type="paletteconfiguration:IconDescriptor" pluginID="org.eclipse.papyrus.sysml16.edit" iconPath="/icons/full/obj16/ElementGroup.gif"/>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.sysml16.diagram.common/resources/SysML16DiUML.elementtypesconfigurations#org.eclipse.papyrus.sysml16di.ElementGroup_Comment_Shape"/>
+      </elementDescriptors>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.sysml16.diagram.common/resources/SysML16DiUML.elementtypesconfigurations#org.eclipse.papyrus.sysml16di.ElementGroup_Comment_Shape_CN"/>
+      </elementDescriptors>
+    </ownedConfigurations>
+    <ownedConfigurations xmi:type="paletteconfiguration:StackConfiguration" id="Stack_1641312812582" label="Stack">
+      <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="com.cea.papyrus.glossary.gsd.commentcreationtool.id" label="Comment" description="Create a comment." kind="CreationTool">
+        <icon xmi:type="paletteconfiguration:IconDescriptor" pluginID="org.eclipse.uml2.uml.edit" iconPath="/icons/full/obj16/Comment.gif"/>
+        <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+          <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/umldi.elementtypesconfigurations#org.eclipse.papyrus.umldi.Comment_Shape_CN"/>
+        </elementDescriptors>
+        <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+          <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/umldi.elementtypesconfigurations#org.eclipse.papyrus.umldi.Comment_Shape"/>
+        </elementDescriptors>
+      </ownedConfigurations>
+      <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="com.cea.papyrus.glossary.gsd.comment_linkcreationtool.id" label="Link" description="Link a comment to a glossary." kind="ConnectionTool">
+        <icon xmi:type="paletteconfiguration:IconDescriptor" pluginID="org.eclipse.papyrus.uml.diagram.clazz" iconPath="/icons/obj16/Link.gif"/>
+        <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+          <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/umldi.elementtypesconfigurations#org.eclipse.papyrus.umldi.Comment_AnnotatedElementEdge"/>
+        </elementDescriptors>
+      </ownedConfigurations>
+    </ownedConfigurations>
+    <ownedConfigurations xmi:type="paletteconfiguration:StackConfiguration" id="Stack_1641312785267" label="Stack">
+      <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="com.cea.papyrus.glossary.gsd.dependencycreationtool.id" label="Dependency" description="Create a dependency." kind="ConnectionTool">
+        <icon xmi:type="paletteconfiguration:IconDescriptor" pluginID="org.eclipse.uml2.uml.edit" iconPath="/icons/full/obj16/Dependency.gif"/>
+        <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+          <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/umldi.elementtypesconfigurations#org.eclipse.papyrus.umldi.Dependency_Edge"/>
+        </elementDescriptors>
+      </ownedConfigurations>
+      <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="com.cea.papyrus.glossary.gsd.dependencybranchcreationtool.id" label="Dependency Branch" description="Create a dependency branch." kind="ConnectionTool">
+        <icon xmi:type="paletteconfiguration:IconDescriptor" pluginID="org.eclipse.uml2.uml.edit" iconPath="/icons/full/obj16/Dependency.gif"/>
+        <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+          <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/umldi.elementtypesconfigurations#org.eclipse.papyrus.umldi.Dependency_BranchEdge"/>
+        </elementDescriptors>
+      </ownedConfigurations>
+    </ownedConfigurations>
+  </drawerConfigurations>
+  <requiredProfiles>GlossaryML</requiredProfiles>
+  <requiredProfiles>SysML</requiredProfiles>
+</paletteconfiguration:PaletteConfiguration>

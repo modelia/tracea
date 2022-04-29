@@ -1,0 +1,26 @@
+{
+ "links": [
+  { "id": "3b0246c6-a527-4667-a5af-95ff7e284025", "name": "eng2front", "type": "TypeA", "source_id": "77e4a69d-d9e7-46a5-90b2-e7c2498d40ad", "target_id": "da448c4b-1f0c-4fa3-ad6f-f4dcff6b78ff", "confidence": 85.0,"group": 0},
+  { "id": "c9d85c02-ed0c-48e2-97b1-1a2d0b49fb22", "name": "frAx2frWi", "type": "TypeA", "source_id": "da448c4b-1f0c-4fa3-ad6f-f4dcff6b78ff", "target_id": "64829f04-d8eb-476b-b52f-a27357097e42", "confidence": 75.0,"group": 0},
+  { "id": "9baa7e70-15a2-45ff-ae26-4f30db671455", "name": "reAx2reWi", "type": "TypeA", "source_id": "018b0ceb-bd28-4716-964f-1e5803fbf9dc", "target_id": "20b0a605-ce0e-4e79-b2d6-ccacba3daa83", "confidence": 75.0,"group": 0},
+  { "id": "a9edb9b7-d9a3-473a-8da2-a5b2bc613ffe", "name": "bod2bat", "type": "TypeE", "source_id": "bbf83f18-3a34-405c-ab8e-479ed9813a57", "target_id": "3f03c60a-f50a-4777-bb93-0d1afceb93e8", "confidence": 100.0,"group": 1},
+  { "id": "918081bc-5c62-4acc-a00f-7573e3756515", "name": "bod2eng", "type": "TypeE", "source_id": "bbf83f18-3a34-405c-ab8e-479ed9813a57", "target_id": "77e4a69d-d9e7-46a5-90b2-e7c2498d40ad", "confidence": 100.0,"group": 1},
+  { "id": "bc5fc3ad-91da-48c9-8f6a-76c304e4b9d7", "name": "bod2frAx", "type": "TypeE", "source_id": "bbf83f18-3a34-405c-ab8e-479ed9813a57", "target_id": "da448c4b-1f0c-4fa3-ad6f-f4dcff6b78ff", "confidence": 100.0,"group": 1},
+  { "id": "e6227866-31cb-43a6-8fcc-f2d2658c0579", "name": "bod2reAx", "type": "TypeE", "source_id": "bbf83f18-3a34-405c-ab8e-479ed9813a57", "target_id": "018b0ceb-bd28-4716-964f-1e5803fbf9dc", "confidence": 100.0,"group": 1},
+  { "id": "6dd32822-8119-4f30-9271-d6109f6082e2", "name": "rq1ToWing", "type": "TypeR", "source_id": "15092156-4756-495e-9dfd-59f361b64918", "target_id": "77e4a69d-d9e7-46a5-90b2-e7c2498d40ad", "confidence": 55.0,"group": 2},
+  { "id": "a0158ca2-d008-4b10-ad19-1eab781e4ca1", "name": "eng2bat_Typed", "type": "TypeR", "source_id": "412f1fde-d55c-4cac-a74b-2eaccd3a2a34", "target_id": "ea32e1f2-428f-4710-ab4c-d57298aaa240", "confidence": 70.0,"group": 2},
+  { "id": "6f2ce5eb-b394-4d4d-815d-939c75db8cd4", "name": "refine1", "type": "Convenience", "source_id": "3f03c60a-f50a-4777-bb93-0d1afceb93e8", "target_id": "412f1fde-d55c-4cac-a74b-2eaccd3a2a34", "confidence": 100.0,"group": 3},
+  { "id": "36ba6486-95b3-43ff-8e05-3630d368c929", "name": "refine2", "type": "Convenience", "source_id": "3f03c60a-f50a-4777-bb93-0d1afceb93e8", "target_id": "ea32e1f2-428f-4710-ab4c-d57298aaa240", "confidence": 100.0,"group": 3} 
+], "nodes": [
+  { "id": "3f03c60a-f50a-4777-bb93-0d1afceb93e8", "name": "eDrone.battery", "type": "Component","size": 100,"group": 2},
+  { "id": "412f1fde-d55c-4cac-a74b-2eaccd3a2a34", "name": "eDrone.battery.powerOut", "type": "Feature","size": 100,"group": 1},
+  { "id": "bbf83f18-3a34-405c-ab8e-479ed9813a57", "name": "eDrone.body", "type": "Component","size": 70,"group": 2},
+  { "id": "77e4a69d-d9e7-46a5-90b2-e7c2498d40ad", "name": "eDrone.engine", "type": "Component","size": 80,"group": 2},
+  { "id": "ea32e1f2-428f-4710-ab4c-d57298aaa240", "name": "eDrone.engine.powerIn", "type": "Feature","size": 100,"group": 1},
+  { "id": "da448c4b-1f0c-4fa3-ad6f-f4dcff6b78ff", "name": "eDrone.frontAxis", "type": "Component","size": 100,"group": 2},
+  { "id": "64829f04-d8eb-476b-b52f-a27357097e42", "name": "eDrone.frontWing", "type": "Component","size": 30,"group": 2},
+  { "id": "018b0ceb-bd28-4716-964f-1e5803fbf9dc", "name": "eDrone.rearAxis", "type": "Component","size": 20,"group": 2},
+  { "id": "20b0a605-ce0e-4e79-b2d6-ccacba3daa83", "name": "eDrone.rearWing", "type": "Component","size": 10,"group": 2},
+  { "id": "15092156-4756-495e-9dfd-59f361b64918", "name": "eDroneMaxSpeed", "type": "RequirementUsage","size": 0,"group": 0} 
+]
+}

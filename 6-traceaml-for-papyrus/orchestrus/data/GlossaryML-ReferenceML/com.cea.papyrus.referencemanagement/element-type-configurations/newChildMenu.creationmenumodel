@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ElementCreationMenuModel:Folder xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ElementCreationMenuModel="http://www.eclipse.org/papyrus/infra/newchild/elementcreationmenumodel" xmlns:elementtypesconfigurations="http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.2" label="ReferenceML">
+  <menu xsi:type="ElementCreationMenuModel:CreationMenu" label="Collection">
+    <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="ReferencesML.elementtypesconfigurations#com.cea.papyrus.referenceML.Collection"/>
+  </menu>
+  <menu xsi:type="ElementCreationMenuModel:CreationMenu" label="Reference">
+    <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="ReferencesML.elementtypesconfigurations#com.cea.papyrus.referenceML.Reference"/>
+  </menu>
+  <menu xsi:type="ElementCreationMenuModel:CreationMenu" label="ReferenceLibrary">
+    <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="ReferencesML.elementtypesconfigurations#com.cea.papyrus.referenceML.ReferenceLibrary"/>
+  </menu>
+</ElementCreationMenuModel:Folder>

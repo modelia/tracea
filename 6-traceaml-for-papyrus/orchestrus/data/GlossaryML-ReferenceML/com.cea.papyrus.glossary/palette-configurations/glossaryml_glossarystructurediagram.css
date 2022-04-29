@@ -1,0 +1,8 @@
+* {
+    fillColor: white;
+    fontColor: black;
+}
+
+[appliedStereotypes~="GlossaryML::Glossary"]> Label {
+    visible: false;
+}

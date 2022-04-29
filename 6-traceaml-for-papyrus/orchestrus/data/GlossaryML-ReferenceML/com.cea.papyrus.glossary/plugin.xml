@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?eclipse version="3.4"?><plugin>
+      
+   
+   <extension point="org.eclipse.papyrus.uml.extensionpoints.UMLProfile">
+            
+      <profile description="This DSML supports users managing her/his specific glossaries." 
+            iconpath="uml-profiles/res/GlossaryShape.png" 
+            name="GlossaryML" 
+            path="platform:/plugin/com.cea.papyrus.glossary/uml-profiles/GlossaryML.profile.uml" 
+            provider="CEA List"/>
+         
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated glossaryml -->
+      <package
+            uri="http://com.cea.papyrus.glossaryml"
+            class="GlossaryML.GlossaryMLPackage"
+            genModel="uml-profiles/glossaryml.genmodel"/>
+   </extension>
+   <extension
+         point="org.eclipse.papyrus.infra.architecture.models">
+      <model
+            path="architecture-framework/glossary-ml.architecture">
+      </model>
+   </extension>
+   <extension
+         point="org.eclipse.papyrus.infra.newchild">
+      <menuCreationModel
+            model="element-type-configurations/GlossaryML.creationmenumodel">
+      </menuCreationModel>
+   </extension>
+   <extension
+         point="org.eclipse.papyrus.infra.properties.contexts">
+      <context
+            contextModel="properties-editor-configurations/GlossaryML.ctx"
+            isCustomizable="true">
+      </context>
+   </extension>
+   <extension
+         point="org.eclipse.emf.ecore.factory_override">
+      <factory
+            class="com.cea.papyrus.glossary.profile.custom.impl.GlossaryMLFactoryCustomImpl"
+            uri="http://com.cea.papyrus.glossaryml">
+      </factory>
+   </extension>
+
+</plugin>

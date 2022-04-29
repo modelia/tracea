@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="ASCII"?>
+<contexts:Context xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:constraints="http://www.eclipse.org/papyrus/constraints/0.9" xmlns:contexts="http://www.eclipse.org/papyrus/properties/contexts/0.9" xmi:id="_52biEFzdEeyo7IKkYihL2w" name="GlossaryML">
+  <dependencies href="ppe:/context/org.eclipse.papyrus.uml.properties/Model/UML/UML.ctx#_69QJkKDJEeSZxfCXzZz3-w"/>
+  <tabs xmi:id="_6FyMsFzdEeyo7IKkYihL2w" label="GlossaryML" id="glossaryml" image="" priority="-1">
+    <allSections xsi:type="contexts:Section" xmi:id="_6F6vkFzdEeyo7IKkYihL2w" name="Single Definition" sectionFile="ui/SingleDefinition.xwt">
+      <annotations xmi:id="_6F6vkVzdEeyo7IKkYihL2w" source="http://www.eclipse.org/papyrus/properties/contexts">
+        <details xmi:id="_6F6vklzdEeyo7IKkYihL2w" key="model" value="../uml-profiles/GlossaryML.profile.uml#_kxro8ET4EeS25e5tbYLtxg"/>
+      </annotations>
+      <widget href="ui/SingleDefinition.xwt#/"/>
+    </allSections>
+    <allSections xsi:type="contexts:Section" xmi:id="_6F6vk1zdEeyo7IKkYihL2w" name="Multiple Definition" sectionFile="ui/MultipleDefinition.xwt">
+      <annotations xmi:id="_6F6vlFzdEeyo7IKkYihL2w" source="http://www.eclipse.org/papyrus/properties/contexts">
+        <details xmi:id="_6F6vlVzdEeyo7IKkYihL2w" key="model" value="../uml-profiles/GlossaryML.profile.uml#_kxro8ET4EeS25e5tbYLtxg"/>
+      </annotations>
+      <widget href="ui/MultipleDefinition.xwt#/"/>
+    </allSections>
+    <allSections xsi:type="contexts:Section" xmi:id="_6F7WoFzdEeyo7IKkYihL2w" name="Single Glossary" sectionFile="ui/SingleGlossary.xwt">
+      <annotations xmi:id="_6F7WoVzdEeyo7IKkYihL2w" source="http://www.eclipse.org/papyrus/properties/contexts">
+        <details xmi:id="_6F7WolzdEeyo7IKkYihL2w" key="model" value="../uml-profiles/GlossaryML.profile.uml#_H-K2wET3EeS25e5tbYLtxg"/>
+      </annotations>
+      <widget href="ui/SingleGlossary.xwt#/"/>
+    </allSections>
+    <allSections xsi:type="contexts:Section" xmi:id="_6F7Wo1zdEeyo7IKkYihL2w" name="Multiple Glossary" sectionFile="ui/MultipleGlossary.xwt">
+      <annotations xmi:id="_6F7WpFzdEeyo7IKkYihL2w" source="http://www.eclipse.org/papyrus/properties/contexts">
+        <details xmi:id="_6F7WpVzdEeyo7IKkYihL2w" key="model" value="../uml-profiles/GlossaryML.profile.uml#_H-K2wET3EeS25e5tbYLtxg"/>
+      </annotations>
+      <widget href="ui/MultipleGlossary.xwt#/"/>
+    </allSections>
+    <allSections xsi:type="contexts:Section" xmi:id="_6F79sFzdEeyo7IKkYihL2w" name="Single Term" sectionFile="ui/SingleTerm.xwt">
+      <annotations xmi:id="_6F79sVzdEeyo7IKkYihL2w" source="http://www.eclipse.org/papyrus/properties/contexts">
+        <details xmi:id="_6F79slzdEeyo7IKkYihL2w" key="model" value="../uml-profiles/GlossaryML.profile.uml#_w_thgET3EeS25e5tbYLtxg"/>
+      </annotations>
+      <widget href="ui/SingleTerm.xwt#/"/>
+    </allSections>
+    <allSections xsi:type="contexts:Section" xmi:id="_6F79s1zdEeyo7IKkYihL2w" name="Multiple Term" sectionFile="ui/MultipleTerm.xwt">
+      <annotations xmi:id="_6F79tFzdEeyo7IKkYihL2w" source="http://www.eclipse.org/papyrus/properties/contexts">
+        <details xmi:id="_6F79tVzdEeyo7IKkYihL2w" key="model" value="../uml-profiles/GlossaryML.profile.uml#_w_thgET3EeS25e5tbYLtxg"/>
+      </annotations>
+      <widget href="ui/MultipleTerm.xwt#/"/>
+    </allSections>
+  </tabs>
+  <views xmi:id="_52biEVzdEeyo7IKkYihL2w" name="Single Definition" sections="_6F6vkFzdEeyo7IKkYihL2w" automaticContext="true" datacontexts="_52biMlzdEeyo7IKkYihL2w">
+    <constraints xsi:type="constraints:SimpleConstraint" xmi:id="_52biElzdEeyo7IKkYihL2w" name="isSingleDefinition">
+      <constraintType href="ppe:/environment/org.eclipse.papyrus.uml.properties/Model/Environment.xmi#//@constraintTypes.1"/>
+      <properties xsi:type="constraints:ValueProperty" xmi:id="_52biE1zdEeyo7IKkYihL2w" name="stereotypeName" value="GlossaryML::Definition"/>
+    </constraints>
+    <annotations xmi:id="_52biFFzdEeyo7IKkYihL2w" source="http://www.eclipse.org/papyrus/properties/contexts">
+      <details xmi:id="_52biFVzdEeyo7IKkYihL2w" key="model" value="../uml-profiles/GlossaryML.profile.uml#_kxro8ET4EeS25e5tbYLtxg"/>
+    </annotations>
+  </views>
+  <views xmi:id="_52biFlzdEeyo7IKkYihL2w" elementMultiplicity="-1" name="Multiple Definition" sections="_6F6vk1zdEeyo7IKkYihL2w" automaticContext="true" datacontexts="_52biMlzdEeyo7IKkYihL2w">
+    <constraints xsi:type="constraints:SimpleConstraint" xmi:id="_52biF1zdEeyo7IKkYihL2w" name="isMultipleDefinition">
+      <constraintType href="ppe:/environment/org.eclipse.papyrus.uml.properties/Model/Environment.xmi#//@constraintTypes.1"/>
+      <properties xsi:type="constraints:ValueProperty" xmi:id="_52biGFzdEeyo7IKkYihL2w" name="stereotypeName" value="GlossaryML::Definition"/>
+    </constraints>
+    <annotations xmi:id="_52biGVzdEeyo7IKkYihL2w" source="http://www.eclipse.org/papyrus/properties/contexts">
+      <details xmi:id="_52biGlzdEeyo7IKkYihL2w" key="model" value="../uml-profiles/GlossaryML.profile.uml#_kxro8ET4EeS25e5tbYLtxg"/>
+    </annotations>
+  </views>
+  <views xmi:id="_52biG1zdEeyo7IKkYihL2w" name="Single Glossary" sections="_6F7WoFzdEeyo7IKkYihL2w" automaticContext="true" datacontexts="_52biUFzdEeyo7IKkYihL2w">
+    <constraints xsi:type="constraints:SimpleConstraint" xmi:id="_52biHFzdEeyo7IKkYihL2w" name="isSingleGlossary">
+      <constraintType href="ppe:/environment/org.eclipse.papyrus.uml.properties/Model/Environment.xmi#//@constraintTypes.1"/>
+      <properties xsi:type="constraints:ValueProperty" xmi:id="_52biHVzdEeyo7IKkYihL2w" name="stereotypeName" value="GlossaryML::Glossary"/>
+    </constraints>
+    <annotations xmi:id="_52biHlzdEeyo7IKkYihL2w" source="http://www.eclipse.org/papyrus/properties/contexts">
+      <details xmi:id="_52biH1zdEeyo7IKkYihL2w" key="model" value="../uml-profiles/GlossaryML.profile.uml#_H-K2wET3EeS25e5tbYLtxg"/>
+    </annotations>
+  </views>
+  <views xmi:id="_52biIFzdEeyo7IKkYihL2w" elementMultiplicity="-1" name="Multiple Glossary" sections="_6F7Wo1zdEeyo7IKkYihL2w" automaticContext="true" datacontexts="_52biUFzdEeyo7IKkYihL2w">
+    <constraints xsi:type="constraints:SimpleConstraint" xmi:id="_52biIVzdEeyo7IKkYihL2w" name="isMultipleGlossary">
+      <constraintType href="ppe:/environment/org.eclipse.papyrus.uml.properties/Model/Environment.xmi#//@constraintTypes.1"/>
+      <properties xsi:type="constraints:ValueProperty" xmi:id="_52biIlzdEeyo7IKkYihL2w" name="stereotypeName" value="GlossaryML::Glossary"/>
+    </constraints>
+    <annotations xmi:id="_52biI1zdEeyo7IKkYihL2w" source="http://www.eclipse.org/papyrus/properties/contexts">
+      <details xmi:id="_52biJFzdEeyo7IKkYihL2w" key="model" value="../uml-profiles/GlossaryML.profile.uml#_H-K2wET3EeS25e5tbYLtxg"/>
+    </annotations>
+  </views>
+  <views xmi:id="_52biJVzdEeyo7IKkYihL2w" name="Single Term" sections="_6F79sFzdEeyo7IKkYihL2w" automaticContext="true" datacontexts="_52biOFzdEeyo7IKkYihL2w">
+    <constraints xsi:type="constraints:SimpleConstraint" xmi:id="_52biJlzdEeyo7IKkYihL2w" name="isSingleTerm">
+      <constraintType href="ppe:/environment/org.eclipse.papyrus.uml.properties/Model/Environment.xmi#//@constraintTypes.1"/>
+      <properties xsi:type="constraints:ValueProperty" xmi:id="_52biJ1zdEeyo7IKkYihL2w" name="stereotypeName" value="GlossaryML::Term"/>
+    </constraints>
+    <annotations xmi:id="_52biKFzdEeyo7IKkYihL2w" source="http://www.eclipse.org/papyrus/properties/contexts">
+      <details xmi:id="_52biKVzdEeyo7IKkYihL2w" key="model" value="../uml-profiles/GlossaryML.profile.uml#_w_thgET3EeS25e5tbYLtxg"/>
+    </annotations>
+  </views>
+  <views xmi:id="_52biKlzdEeyo7IKkYihL2w" elementMultiplicity="-1" name="Multiple Term" sections="_6F79s1zdEeyo7IKkYihL2w" automaticContext="true" datacontexts="_52biOFzdEeyo7IKkYihL2w">
+    <constraints xsi:type="constraints:SimpleConstraint" xmi:id="_52biK1zdEeyo7IKkYihL2w" name="isMultipleTerm">
+      <constraintType href="ppe:/environment/org.eclipse.papyrus.uml.properties/Model/Environment.xmi#//@constraintTypes.1"/>
+      <properties xsi:type="constraints:ValueProperty" xmi:id="_52biLFzdEeyo7IKkYihL2w" name="stereotypeName" value="GlossaryML::Term"/>
+    </constraints>
+    <annotations xmi:id="_52biLVzdEeyo7IKkYihL2w" source="http://www.eclipse.org/papyrus/properties/contexts">
+      <details xmi:id="_52biLlzdEeyo7IKkYihL2w" key="model" value="../uml-profiles/GlossaryML.profile.uml#_w_thgET3EeS25e5tbYLtxg"/>
+    </annotations>
+  </views>
+  <dataContexts xmi:id="_52biL1zdEeyo7IKkYihL2w" name="GlossaryML" label="GlossaryML">
+    <annotations xmi:id="_52biMFzdEeyo7IKkYihL2w" source="http://www.eclipse.org/papyrus/properties/contexts">
+      <details xmi:id="_52biMVzdEeyo7IKkYihL2w" key="model" value="../uml-profiles/GlossaryML.profile.uml#_saqecET2EeS25e5tbYLtxg"/>
+      <details xmi:id="_6Fza0FzdEeyo7IKkYihL2w" key="layoutGenerator" value="bundleclass://org.eclipse.papyrus.uml.properties.generation/org.eclipse.papyrus.customization.properties.generation.layout.StandardLayoutGenerator"/>
+    </annotations>
+    <elements xmi:id="_52biMlzdEeyo7IKkYihL2w" name="Definition">
+      <annotations xmi:id="_52biM1zdEeyo7IKkYihL2w" source="http://www.eclipse.org/papyrus/properties/contexts">
+        <details xmi:id="_52biNFzdEeyo7IKkYihL2w" key="model" value="../uml-profiles/GlossaryML.profile.uml#_kxro8ET4EeS25e5tbYLtxg"/>
+      </annotations>
+      <supertypes href="ppe:/context/org.eclipse.papyrus.uml.properties/Model/UML/UML.ctx#_690xgqDJEeSZxfCXzZz3-w"/>
+      <properties xmi:id="_52biNVzdEeyo7IKkYihL2w" name="isCommon" type="Boolean">
+        <annotations xmi:id="_52biNlzdEeyo7IKkYihL2w" source="http://www.eclipse.org/papyrus/properties/contexts">
+          <details xmi:id="_52biN1zdEeyo7IKkYihL2w" key="model" value="../uml-profiles/GlossaryML.profile.uml#_Wv5CUMYtEeesNIEaKYOnjA"/>
+        </annotations>
+      </properties>
+    </elements>
+    <elements xmi:id="_52biOFzdEeyo7IKkYihL2w" name="Term">
+      <annotations xmi:id="_52biOVzdEeyo7IKkYihL2w" source="http://www.eclipse.org/papyrus/properties/contexts">
+        <details xmi:id="_52biOlzdEeyo7IKkYihL2w" key="model" value="../uml-profiles/GlossaryML.profile.uml#_w_thgET3EeS25e5tbYLtxg"/>
+      </annotations>
+      <supertypes href="ppe:/context/org.eclipse.papyrus.uml.properties/Model/UML/UML.ctx#_690yXqDJEeSZxfCXzZz3-w"/>
+      <properties xmi:id="_52biO1zdEeyo7IKkYihL2w" name="acronym">
+        <annotations xmi:id="_52biPFzdEeyo7IKkYihL2w" source="http://www.eclipse.org/papyrus/properties/contexts">
+          <details xmi:id="_52biPVzdEeyo7IKkYihL2w" key="model" value="../uml-profiles/GlossaryML.profile.uml#_XQ4TUC3KEeykYdacufooTg"/>
+        </annotations>
+      </properties>
+      <properties xmi:id="_52biPlzdEeyo7IKkYihL2w" name="meanings" type="Reference" multiplicity="-1" description="The meanings atribute is a derived attribute. Its value is calculated as being the set of owned comments stereotyped as &lt;&lt;Definition>>.">
+        <annotations xmi:id="_52biP1zdEeyo7IKkYihL2w" source="http://www.eclipse.org/papyrus/properties/contexts">
+          <details xmi:id="_52biQFzdEeyo7IKkYihL2w" key="model" value="../uml-profiles/GlossaryML.profile.uml#_-3Bb8BnWEee85eN49tGVcA"/>
+        </annotations>
+      </properties>
+      <properties xmi:id="_52biQVzdEeyo7IKkYihL2w" name="commonMeaning" type="Reference" description="&lt;p>The commonMeaning attribute is a derived property subetting the meanings attribute. The derivation rule shall be the following: the value of the commonMeaning attribute is calculated as being the Definition model element (i.e., owned comments stereotyped with &amp;lt;&amp;lt;Definition&amp;gt;&amp;gt; and annotating the owner element, in that case the Term itself).&amp;nbsp;&lt;/p>&#xA;">
+        <annotations xmi:id="_52biQlzdEeyo7IKkYihL2w" source="http://www.eclipse.org/papyrus/properties/contexts">
+          <details xmi:id="_52biQ1zdEeyo7IKkYihL2w" key="model" value="../uml-profiles/GlossaryML.profile.uml#_SsYJZLnTEeehsM9KGeEXUQ"/>
+        </annotations>
+      </properties>
+      <properties xmi:id="_52biRFzdEeyo7IKkYihL2w" name="hyponyms" type="Reference" multiplicity="-1">
+        <annotations xmi:id="_52biRVzdEeyo7IKkYihL2w" source="http://www.eclipse.org/papyrus/properties/contexts">
+          <details xmi:id="_52biRlzdEeyo7IKkYihL2w" key="model" value="../uml-profiles/GlossaryML.profile.uml#_Wwe6EhpIEee85eN49tGVcA"/>
+        </annotations>
+      </properties>
+      <properties xmi:id="_52biR1zdEeyo7IKkYihL2w" name="hypernyms" type="Reference" multiplicity="-1">
+        <annotations xmi:id="_52biSFzdEeyo7IKkYihL2w" source="http://www.eclipse.org/papyrus/properties/contexts">
+          <details xmi:id="_52biSVzdEeyo7IKkYihL2w" key="model" value="../uml-profiles/GlossaryML.profile.uml#_WwfhIBpIEee85eN49tGVcA"/>
+        </annotations>
+      </properties>
+      <properties xmi:id="_52biSlzdEeyo7IKkYihL2w" name="synonyms" type="Reference" multiplicity="-1">
+        <annotations xmi:id="_52biS1zdEeyo7IKkYihL2w" source="http://www.eclipse.org/papyrus/properties/contexts">
+          <details xmi:id="_52biTFzdEeyo7IKkYihL2w" key="model" value="../uml-profiles/GlossaryML.profile.uml#_XIxwMRpGEee85eN49tGVcA"/>
+        </annotations>
+      </properties>
+      <properties xmi:id="_52biTVzdEeyo7IKkYihL2w" name="reference" type="Reference" multiplicity="-1">
+        <annotations xmi:id="_52biTlzdEeyo7IKkYihL2w" source="http://www.eclipse.org/papyrus/properties/contexts">
+          <details xmi:id="_52biT1zdEeyo7IKkYihL2w" key="model" value="../uml-profiles/GlossaryML.profile.uml#_tU4LoFngEeyFfo7P2D8rIQ"/>
+        </annotations>
+      </properties>
+    </elements>
+    <elements xmi:id="_52biUFzdEeyo7IKkYihL2w" name="Glossary">
+      <annotations xmi:id="_52biUVzdEeyo7IKkYihL2w" source="http://www.eclipse.org/papyrus/properties/contexts">
+        <details xmi:id="_52biUlzdEeyo7IKkYihL2w" key="model" value="../uml-profiles/GlossaryML.profile.uml#_H-K2wET3EeS25e5tbYLtxg"/>
+      </annotations>
+      <supertypes href="ppe:/context/org.eclipse.papyrus.uml.properties/Model/UML/UML.ctx#_690y0aDJEeSZxfCXzZz3-w"/>
+      <properties xmi:id="_52biU1zdEeyo7IKkYihL2w" name="knowledgeDomainName">
+        <annotations xmi:id="_52biVFzdEeyo7IKkYihL2w" source="http://www.eclipse.org/papyrus/properties/contexts">
+          <details xmi:id="_52biVVzdEeyo7IKkYihL2w" key="model" value="../uml-profiles/GlossaryML.profile.uml#_JPaMcBohEee85eN49tGVcA"/>
+        </annotations>
+      </properties>
+      <properties xmi:id="_52biVlzdEeyo7IKkYihL2w" name="knowledgeDomainDescription">
+        <annotations xmi:id="_52biV1zdEeyo7IKkYihL2w" source="http://www.eclipse.org/papyrus/properties/contexts">
+          <details xmi:id="_52biWFzdEeyo7IKkYihL2w" key="model" value="../uml-profiles/GlossaryML.profile.uml#_DaiooET5EeS25e5tbYLtxg"/>
+        </annotations>
+      </properties>
+      <properties xmi:id="_52biWVzdEeyo7IKkYihL2w" name="subGlossaries" type="Reference" multiplicity="-1">
+        <annotations xmi:id="_52biWlzdEeyo7IKkYihL2w" source="http://www.eclipse.org/papyrus/properties/contexts">
+          <details xmi:id="_52biW1zdEeyo7IKkYihL2w" key="model" value="../uml-profiles/GlossaryML.profile.uml#_K7z20sPpEeeSJfWHTbkb_A"/>
+        </annotations>
+      </properties>
+    </elements>
+    <modelElementFactory href="ppe:/environment/org.eclipse.papyrus.uml.properties/Model/Environment.xmi#//@modelElementFactories.2"/>
+  </dataContexts>
+</contexts:Context>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ElementCreationMenuModel:Folder xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ElementCreationMenuModel="http://www.eclipse.org/papyrus/infra/newchild/elementcreationmenumodel" xmlns:elementtypesconfigurations="http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.2" label="GlossaryML">
+  <menu xsi:type="ElementCreationMenuModel:CreationMenu" label="Collection">
+    <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="../../com.cea.papyrus.referencemanagement/element-type-configurations/ReferencesML.elementtypesconfigurations#com.cea.papyrus.referenceML.Collection"/>
+  </menu>
+  <menu xsi:type="ElementCreationMenuModel:CreationMenu" label="Definition">
+    <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="GlossaryML_Semantic.elementtypesconfigurations#com.example.glossaryML.Definition"/>
+  </menu>
+  <menu xsi:type="ElementCreationMenuModel:CreationMenu" label="ElementGroup" icon="platform:/plugin/org.eclipse.papyrus.sysml16.edit/icons/full/obj16/ElementGroup.gif">
+    <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="../../../plugin/org.eclipse.papyrus.sysml16.service.types/model/SysML16.elementtypesconfigurations#org.eclipse.papyrus.SysML16.ElementGroup"/>
+  </menu>
+  <menu xsi:type="ElementCreationMenuModel:CreationMenu" label="Glossary">
+    <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="GlossaryML_Semantic.elementtypesconfigurations#com.example.glossaryML.Glossary"/>
+  </menu>
+  <menu xsi:type="ElementCreationMenuModel:CreationMenu" label="Reference">
+    <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="../../com.cea.papyrus.referencemanagement/element-type-configurations/ReferencesML.elementtypesconfigurations#com.cea.papyrus.referenceML.Reference"/>
+  </menu>
+  <menu xsi:type="ElementCreationMenuModel:CreationMenu" label="ReferenceLibrary">
+    <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="../../com.cea.papyrus.referencemanagement/element-type-configurations/ReferencesML.elementtypesconfigurations#com.cea.papyrus.referenceML.ReferenceLibrary"/>
+  </menu>
+  <menu xsi:type="ElementCreationMenuModel:CreationMenu" label="Term">
+    <elementType xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="GlossaryML_Semantic.elementtypesconfigurations#com.example.glossaryML.Term"/>
+  </menu>
+</ElementCreationMenuModel:Folder>

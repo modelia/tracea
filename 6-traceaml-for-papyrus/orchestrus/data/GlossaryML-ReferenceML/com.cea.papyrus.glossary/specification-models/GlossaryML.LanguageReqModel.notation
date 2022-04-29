@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nattable:Table xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:nattable="http://www.eclipse.org/papyrus/nattable/model" xmlns:nattableaxisprovider="http://www.eclipse.org/papyrus/nattable/model/table/nattableaxisprovider" xsi:schemaLocation="http://www.eclipse.org/papyrus/nattable/model/table/nattableaxisprovider http://www.eclipse.org/papyrus/nattable/model#//nattableaxisprovider" xmi:id="_9k0d4H3jEey8udI4TXOE0w" name="GenericTable0" currentRowAxisProvider="_9k0d4n3jEey8udI4TXOE0w" currentColumnAxisProvider="_9k0d4X3jEey8udI4TXOE0w" tableKindId="org.eclipse.papyrus.sysml16.table.generic">
+  <eAnnotations xmi:id="_9k1sAH3jEey8udI4TXOE0w" source="http://www.eclipse.org/papyrus/infra/nattable/version">
+    <details xmi:id="_9k1sAX3jEey8udI4TXOE0w" key="version" value="1.3.0"/>
+  </eAnnotations>
+  <context href="GlossaryML.LanguageReqModel.uml#_3ne68LlqEee0EqF61rGppw"/>
+  <owner href="GlossaryML.LanguageReqModel.uml#_3ne68LlqEee0EqF61rGppw"/>
+  <tableConfiguration href="platform:/plugin/org.eclipse.papyrus.uml.nattable.generic.config/configs/generic.nattableconfiguration#PapyrusGenericTable_XMI_ID"/>
+  <columnAxisProvidersHistory xsi:type="nattableaxisprovider:SlaveObjectAxisProvider" xmi:id="_9k0d4X3jEey8udI4TXOE0w" description="This axis provider provides available columns according to the rows of the table (features of the object displayed on the other axis)" name="UML Feature axis provider"/>
+  <rowAxisProvidersHistory xsi:type="nattableaxisprovider:MasterObjectAxisProvider" xmi:id="_9k0d4n3jEey8udI4TXOE0w" description="This axis provider contains the object dropped by the user into the table" name="DroppedElementAxisProvider"/>
+</nattable:Table>

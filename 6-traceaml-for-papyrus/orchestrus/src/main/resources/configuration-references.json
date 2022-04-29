@@ -1,0 +1,32 @@
+{
+    "config": {
+        "project.name": "ReferenceML",
+        "project.folder": "R:\\Coding\\Git\\orchestrus\\data\\GlossaryML-ReferenceML",
+        "project.uri": "com.cea.papyrus.referencemanagement",
+        "depencencies": [],
+        "sourceFolders": [
+            "src-custom"
+        ]
+    },
+    "clustering": {
+        "file": "src/main/resources/clustering-references.json"
+    },
+    "deploy": {
+        "location": "meta/d3viewer/data/"
+    },
+    "display": {
+        "size.artefacts.max": "50",
+        "size.artefacts.min": "10",
+        "size.links.max": "30",
+        "size.links.min": "10",
+        "animation.duration": "4000",
+        "color.links": "2",
+        "color.artefacts": "7"
+    },
+    "generation": {
+        "matrix.adjacency.threshold": "0.0",
+        "show.elements": "false",
+        "label.artefacts": "name",
+        "label.links": "none"
+    }
+}

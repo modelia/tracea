@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<architecture:ArchitectureDomain xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:architecture="http://www.eclipse.org/papyrus/infra/core/architecture" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:elementtypesconfigurations="http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.2" xmlns:gmfdiagrepresentation="http://www.eclipse.org/papyrus/infra/gmfdiag/representation" xmlns:nattableconfiguration="http://www.eclipse.org/papyrus/nattable/model/nattableconfiguration" xmlns:nattablerepresentation="http://www.eclipse.org/papyrus/infra/nattable/representation" xmlns:paletteconfiguration="http://www.eclipse.org/papyrus/diagram/paletteconfiguration/0.8" xmlns:representation="http://www.eclipse.org/papyrus/infra/core/architecture/representation" xmi:id="_rCAUYFgPEey5UYhA6TU8wA" id="glossary-ml-af-id" name="Glossary-Domain" description="This domain relates glossary management." icon="platform:/plugin/com.cea.papyrus.glossary/uml-profiles/res/Glossary16x16.png">
+  <stakeholders xmi:type="architecture:Stakeholder" xmi:id="_IkLY0FgQEey5UYhA6TU8wA" id="glossary-manager-stakeholder-id" name="Glossary-Manager" description="This stakeholder represents the one in charge of managing the glossary all along its lifecycle and of validating its content." concerns="_br6esFgQEey5UYhA6TU8wA _hVnnQFgSEey5UYhA6TU8wA _0je1MFgQEey5UYhA6TU8wA _LBghcFgREey5UYhA6TU8wA"/>
+  <stakeholders xmi:type="architecture:Stakeholder" xmi:id="_20pxIFgREey5UYhA6TU8wA" id="glossary-contributor-stakeholder-id" name="Glossary-Contributor" description="This stakeholder represents the one in charge of contributing to a glossary by modifying its content or its structure." concerns="_0je1MFgQEey5UYhA6TU8wA _LBghcFgREey5UYhA6TU8wA"/>
+  <stakeholders xmi:type="architecture:Stakeholder" xmi:id="_5dCIoFgREey5UYhA6TU8wA" id="glossary-reviewer-stakeholder-id" name="Glossary-Reviewer" description="This stakeholder represents the one in charge of reviewing the glossary in order to improve its content. " concerns="_LBghcFgREey5UYhA6TU8wA"/>
+  <concerns xmi:type="architecture:Concern" xmi:id="_br6esFgQEey5UYhA6TU8wA" id="glossary-lifecycle-management-concern-id" name="Manage the life cycle of the glossary." description="This concern is related to the management of the lifecycle of a glossary including, its dependencies, evolutions, configurations and various versions. "/>
+  <concerns xmi:type="architecture:Concern" xmi:id="_0je1MFgQEey5UYhA6TU8wA" id="glossary-contribution-concern-id" name="Contribute to a glossary." description="This concern is about everything which relates to direct contribution to modify a glossary, including for example adding new elements, modifying existing one, or even restructuring a glossary."/>
+  <concerns xmi:type="architecture:Concern" xmi:id="_LBghcFgREey5UYhA6TU8wA" id="glossary-review-concern-id" name="Review a glossary." description="This concern is about everything relating to indirect contribution to a glossary via reviews."/>
+  <concerns xmi:type="architecture:Concern" xmi:id="_hVnnQFgSEey5UYhA6TU8wA" id="glossary-validate-concern-id" name="Validate a glossary." description="This concern is about everything relating to validation of a glossary."/>
+  <contexts xmi:type="architecture:ArchitectureDescriptionLanguage" xmi:id="_9kcNcFgSEey5UYhA6TU8wA" id="glossary-ml-id" name="GlossaryML" description="GlossaryML is a specific modeling language to be used to model a glossary." icon="platform:/plugin/com.cea.papyrus.glossary/uml-profiles/res/Glossary16x16.png" defaultViewpoints="_OSJEYFgUEey5UYhA6TU8wA" creationCommandClass="com.cea.papyrus.glossary.profile.commands.impl.CreateGlossaryMLCommand">
+    <viewpoints xmi:type="architecture:ArchitectureViewpoint" xmi:id="_OSJEYFgUEey5UYhA6TU8wA" id="glossary-authoring-viewpoint-id" name="Glossary Authoring" description="This viewpoint defines the views needed to author a glossary." concerns="_0je1MFgQEey5UYhA6TU8wA" representationKinds="_zRMxIFgUEey5UYhA6TU8wA _90Uh4F0HEeyo7IKkYihL2w"/>
+    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#_ScP1oFYCEeS0WsAAtVmToA"/>
+    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/umldi.elementtypesconfigurations#_ScP1oFYCEeS0WsAAtVmToA"/>
+    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.infra.emf/model/infra-emf.elementtypesconfigurations#_rWI4YHPzEeSnGJwaJWHCSg"/>
+    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.infra.gmfdiag.common/model/notation.elementtypesconfigurations#_ScP1oFYCEeS0WsAAtVmToA"/>
+    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml-containments.elementtypesconfigurations#_ScP1oFYCEeS0WsAAtVmToA"/>
+    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types.ui/model/uml-advice.elementtypesconfigurations#_ScP1oFYCEeS0WsAAtVmToA"/>
+    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.infra.types.rulebased/model/rulebased.elementtypesconfigurations#_ScP1oFYCEeS0WsAAtVmToA"/>
+    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.diagram.stereotype.edition/model/stereotype-edit.elementtypesconfigurations#_ScP1oFYCEeS0WsAAtVmToA"/>
+    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.infra.gmfdiag.common/model/gmfdiag-common.elementtypesconfigurations#_rWI4YHPzEeSnGJwaJWHCSg"/>
+    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.diagram.interactionoverview/model/interactionOverviewDiagram.elementtypesconfigurations#_x8G0YGaNEeSyJIsxLao1Pw"/>
+    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="pathmap://PAPYRUS_VIEWPOINTS_POLICY/representations/advice#_A5utQL5PEeuDXfdzV8a7zA"/>
+    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/com.cea.papyrus.referencemanagement/element-type-configurations/ReferencesML.elementtypesconfigurations#com.cea.papyrus.referenceML.elementTypes"/>
+    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.sysml16.service.types/model/SysML16.elementtypesconfigurations#org.eclipse.papyrus.sysml16.service.types.elementTypeSet"/>
+    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.sysml16.diagram.common/resources/SysML16DiUML.elementtypesconfigurations#org.eclipse.papyrus.sysml16di.elementTypes"/>
+    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/com.cea.papyrus.glossary/element-type-configurations/GlossaryML_glossarystructurediagram.elementtypesconfigurations#_8gaucW14Eey1C9EStxUthQ"/>
+    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/com.cea.papyrus.glossary/element-type-configurations/GlossaryML_Semantic.elementtypesconfigurations#com.example.glossaryML.elementTypes"/>
+    <representationKinds xmi:type="nattablerepresentation:PapyrusTable" xmi:id="_zRMxIFgUEey5UYhA6TU8wA" id="com.cea.papyrus.glossaryml.table.genericTree.id" name="Glossary Tree Table" description="This tree table show the content of a glossary including its sub glossaries. " icon="platform:/plugin/com.cea.papyrus.glossary/icons/glossary_table_new_icon.png" concerns="_0je1MFgQEey5UYhA6TU8wA" grayedIcon="platform:/plugin/com.cea.papyrus.glossary/icons/glossary_table_grayed_icon.png" implementationID="PapyrusUMLGenericTreeTable">
+      <modelRules xmi:type="representation:ModelRule" xmi:id="_zRMxIVgUEey5UYhA6TU8wA" permit="true" elementMultiplicity="1" multiplicity="-1">
+        <element xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Package"/>
+      </modelRules>
+      <modelRules xmi:type="representation:ModelRule" xmi:id="_cQq_UFgVEey5UYhA6TU8wA" permit="true" elementMultiplicity="1" multiplicity="-1">
+        <element xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Model"/>
+      </modelRules>
+      <owningRules xmi:type="representation:OwningRule" xmi:id="_zRNYMFgUEey5UYhA6TU8wA" permit="true" multiplicity="-1">
+        <element xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Package"/>
+      </owningRules>
+      <owningRules xmi:type="representation:OwningRule" xmi:id="_cQq_UVgVEey5UYhA6TU8wA" permit="true" multiplicity="-1">
+        <element xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Model"/>
+      </owningRules>
+      <configuration xmi:type="nattableconfiguration:TableConfiguration" href="platform:/plugin/com.cea.papyrus.glossary/tabular-editors-configurations/glossary_tree_table.nattableconfiguration#PapyrusUMLGenericTreeTable_XMI_ID"/>
+    </representationKinds>
+    <representationKinds xmi:type="gmfdiagrepresentation:PapyrusDiagram" xmi:id="_90Uh4F0HEeyo7IKkYihL2w" id="com.cea.papyrus.glossaryml.glossary_architecture_diagram_id" name="Glossary Structure Diagram" description="This diagram is used to show the structure of glossary. " icon="platform:/plugin/com.cea.papyrus.glossary/icons/Glossary_architecture_diagram_icon.gif" concerns="_0je1MFgQEey5UYhA6TU8wA _LBghcFgREey5UYhA6TU8wA _hVnnQFgSEey5UYhA6TU8wA _br6esFgQEey5UYhA6TU8wA" grayedIcon="platform:/plugin/com.cea.papyrus.glossary/icons/Glossary_architecture_diagram_grayed_icon.png" implementationID="PapyrusUMLClassDiagram" customStyle="platform:/plugin/com.cea.papyrus.glossary/palette-configurations/glossaryml_glossarystructurediagram.css" creationCommandClass="org.eclipse.papyrus.uml.diagram.clazz.CreateClassDiagramCommand">
+      <modelRules xmi:type="representation:ModelRule" xmi:id="_90Uh4V0HEeyo7IKkYihL2w" permit="true" elementMultiplicity="1" multiplicity="-1">
+        <element xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Package"/>
+      </modelRules>
+      <modelRules xmi:type="representation:ModelRule" xmi:id="_-1ZG0F3XEeyo7IKkYihL2w" permit="true" elementMultiplicity="1" multiplicity="-1">
+        <element xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Model"/>
+      </modelRules>
+      <owningRules xmi:type="representation:OwningRule" xmi:id="_90Uh4l0HEeyo7IKkYihL2w" permit="true" multiplicity="-1">
+        <element xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Package"/>
+      </owningRules>
+      <owningRules xmi:type="representation:OwningRule" xmi:id="_DUhkkF3YEeyo7IKkYihL2w" permit="true" multiplicity="-1">
+        <element xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Model"/>
+      </owningRules>
+      <childRules xmi:type="gmfdiagrepresentation:ChildRule" xmi:id="_90Uh410HEeyo7IKkYihL2w" permit="true"/>
+      <palettes xmi:type="paletteconfiguration:PaletteConfiguration" href="platform:/plugin/com.cea.papyrus.glossary/palette-configurations/GlossaryML.paletteconfiguration#/"/>
+    </representationKinds>
+    <metamodel xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
+    <profiles xmi:type="ecore:EPackage" href="http://com.cea.papyrus.glossaryml#/"/>
+    <profiles xmi:type="ecore:EPackage" href="http://com.cea.papyrus.referenceml#/"/>
+  </contexts>
+</architecture:ArchitectureDomain>

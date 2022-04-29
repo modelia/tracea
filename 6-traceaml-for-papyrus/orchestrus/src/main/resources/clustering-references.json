@@ -1,0 +1,12 @@
+[
+    {
+        "algorithm.name": "KSpan",
+        "k": "5",
+        "cluster.size.min": "3"
+    },
+    {
+        "algorithm.name": "LabelPropagation",
+        "maxIterations": "4",
+        "cluster.size.min": "3"
+    }
+]

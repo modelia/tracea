@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_QcSj8MlnEee8B9kRSNhRUg" name="GlossaryML_ToolsmithReq">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_Qi134slnEee8B9kRSNhRUg">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_QjIy0MlnEee8B9kRSNhRUg">
+    <importedPackage xmi:type="uml:Package" href="pathmap://SysML14_LIBRARIES/SysML-Standard-Library.uml#SysML.package_packagedElement_Libraries"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_u2Wt0MrUEeewiLdROuv7ZQ">
+    <importedPackage xmi:type="uml:Model" href="PapyrusGlossary.uml#_4nAlAMrTEeewiLdROuv7ZQ"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Package" xmi:id="_TpVHsMlnEee8B9kRSNhRUg" name="GlossaryML Authoring Tool Requirements">
+    <packagedElement xmi:type="uml:Package" xmi:id="_bFbGAMmMEee8B9kRSNhRUg" name="GlossaryCommonDefinitionTableEditor Requirements">
+      <packagedElement xmi:type="uml:Package" xmi:id="_MuNFUMrrEeeuBaORAfsSYA" name="GlossaryCommonDefinitionTableEditor CRUD Requirements">
+        <packagedElement xmi:type="uml:Class" xmi:id="_Qo_fAMluEee8B9kRSNhRUg" name="GlossaryTableCreation"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_McB_QMmCEee8B9kRSNhRUg" name="GlossaryTableDeletion"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_4RbxYMmFEee8B9kRSNhRUg" name="GlossaryTableUpdate"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_ZdROsMmHEee8B9kRSNhRUg" name="GlossaryTableConfiguration">
+          <nestedClassifier xmi:type="uml:Class" xmi:id="_keeK8MmKEee8B9kRSNhRUg" name="GlossaryTableConfigurationLine"/>
+          <nestedClassifier xmi:type="uml:Class" xmi:id="_WpSuYMmLEee8B9kRSNhRUg" name="GlossaryTableConfigurationColumn#01"/>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_gZvp4MmNEee8B9kRSNhRUg" name="Glossary CRUD">
+        <packagedElement xmi:type="uml:Class" xmi:id="_gZvp48mNEee8B9kRSNhRUg" name="GlossaryCreation"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_gZvp5MmNEee8B9kRSNhRUg" name="GlossaryDeletion"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_gZvp5cmNEee8B9kRSNhRUg" name="GlossaryUpdate"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_gZ5a4MmNEee8B9kRSNhRUg" name="Term CRUD">
+        <packagedElement xmi:type="uml:Class" xmi:id="_gZ5a4smNEee8B9kRSNhRUg" name="TermCreation"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_gZ5a48mNEee8B9kRSNhRUg" name="TermDeletion"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_gZ5a5MmNEee8B9kRSNhRUg" name="TermUpdate"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_gZ5a5cmNEee8B9kRSNhRUg" name="Definition CRUD">
+        <packagedElement xmi:type="uml:Class" xmi:id="_gZ5a58mNEee8B9kRSNhRUg" name="DefinitionCreation"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_gZ5a6MmNEee8B9kRSNhRUg" name="DefinitionDeletion"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_gZ5a6cmNEee8B9kRSNhRUg" name="DefinitionUpdate"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_a384YAdeEei416VAQCBulg" name="GlossaryDetailedDefinitionsTableEditor Requirements">
+      <packagedElement xmi:type="uml:Package" xmi:id="_a384YQdeEei416VAQCBulg" name="GlossaryDetailedDefinitionsTableEditor CRUD Requirements">
+        <packagedElement xmi:type="uml:Class" xmi:id="_a384YgdeEei416VAQCBulg" name="GlossaryTableCreation"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_a384YwdeEei416VAQCBulg" name="GlossaryTableDeletion"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_a384ZAdeEei416VAQCBulg" name="GlossaryTableUpdate"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_a384ZQdeEei416VAQCBulg" name="GlossaryTableConfiguration">
+          <nestedClassifier xmi:type="uml:Class" xmi:id="_a384ZgdeEei416VAQCBulg" name="GlossaryTableConfigurationLine"/>
+          <nestedClassifier xmi:type="uml:Class" xmi:id="_a384ZwdeEei416VAQCBulg" name="GlossaryTableConfigurationColumn#01"/>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_a384aAdeEei416VAQCBulg" name="Glossary CRUD">
+        <packagedElement xmi:type="uml:Class" xmi:id="_a384aQdeEei416VAQCBulg" name="GlossaryCreation"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_a384agdeEei416VAQCBulg" name="GlossaryDeletion"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_a384awdeEei416VAQCBulg" name="GlossaryUpdate"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_a384bAdeEei416VAQCBulg" name="Term CRUD">
+        <packagedElement xmi:type="uml:Class" xmi:id="_a384bQdeEei416VAQCBulg" name="TermCreation"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_a384bgdeEei416VAQCBulg" name="TermDeletion"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_a384bwdeEei416VAQCBulg" name="TermUpdate"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_a384cAdeEei416VAQCBulg" name="DefinitionCRUD">
+        <packagedElement xmi:type="uml:Class" xmi:id="_a384cQdeEei416VAQCBulg" name="DefinitionCreation"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_a384cgdeEei416VAQCBulg" name="DefinitionDeletion"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_a384cwdeEei416VAQCBulg" name="DefinitionUpdate"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_7c15QMmMEee8B9kRSNhRUg" name="GlossaryML Model Explorer Requirements">
+      <packagedElement xmi:type="uml:Package" xmi:id="_HBbMMMmMEee8B9kRSNhRUg" name="Glossary CRUD">
+        <packagedElement xmi:type="uml:Class" xmi:id="_1KB3MMlnEee8B9kRSNhRUg" name="GlossaryCreation"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_uG5LoMlnEee8B9kRSNhRUg" name="GlossaryDeletion"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_Wkg_EMlqEee8B9kRSNhRUg" name="GlossaryUpdate"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_QjCsYMmMEee8B9kRSNhRUg" name="Term CRUD">
+        <packagedElement xmi:type="uml:Class" xmi:id="_l5AVcMltEee8B9kRSNhRUg" name="TermCreation"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_l5AVcsltEee8B9kRSNhRUg" name="TermDeletion"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_l5AVc8ltEee8B9kRSNhRUg" name="TermUpdate"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_VNlI4MmMEee8B9kRSNhRUg" name="DefinitionCRUD">
+        <packagedElement xmi:type="uml:Class" xmi:id="_mQ_XocltEee8B9kRSNhRUg" name="DefinitionCreation"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_mQ_Xo8ltEee8B9kRSNhRUg" name="DefinitionDeletion"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_mQ_XpMltEee8B9kRSNhRUg" name="DefinitionUpdate"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_xA1_AMmNEee8B9kRSNhRUg" name="GlossayML Project &amp; Model Creation Wizzard Requirements">
+      <packagedElement xmi:type="uml:Class" xmi:id="_7pYq0MloEee8B9kRSNhRUg" name="GlossaryModelCreationFromModelCreationWizzard"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_9eqs8MrSEeewiLdROuv7ZQ" name="GlossaryML Validation Tool Requirements"/>
+  <packagedElement xmi:type="uml:Model" xmi:id="_AtF7oMlxEee8B9kRSNhRUg" name="GlossaryML Glossary">
+    <packagedElement xmi:type="uml:Class" xmi:id="_mEaPAMl_Eee8B9kRSNhRUg" name="GlossaryTable">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_t_bk0Ml_Eee8B9kRSNhRUg" annotatedElement="_mEaPAMl_Eee8B9kRSNhRUg">
+        <body>&lt;p>A specific&amp;nbsp;table-based view of a glossary. Its content is defined by GlossaryTableEditorConfiguration.&lt;/p>
+</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_o1sD0Ml_Eee8B9kRSNhRUg" name="GlossaryCommonDefinitionTableEditor">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_w1hBIMl_Eee8B9kRSNhRUg" annotatedElement="_o1sD0Ml_Eee8B9kRSNhRUg">
+        <body>&lt;p>PapyrusTableEditor enabling to&amp;nbsp;manipulate glossary model elements via a table-based editor.&amp;nbsp;The content of the related table view&amp;nbsp;is defined in its specific PapyrusTableConfiguration, GlossaryCommonDefinitionTableEditorConfiguration.&lt;/p>
+</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_5gLOsMmAEee8B9kRSNhRUg" name="CRUD">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_5gLOscmAEee8B9kRSNhRUg" annotatedElement="_5gLOsMmAEee8B9kRSNhRUg">
+        <body>&lt;p>Acronym for Create Read Update Delete.&lt;/p>
+</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_YxACQMq-Eee8B9kRSNhRUg" name="GlossaryStereotype">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_shNdYMq-Eee8B9kRSNhRUg">
+        <body>&lt;p>A&amp;nbsp;UML Class applying the &amp;lt;&amp;lt;Glossary&amp;gt;&amp;gt; stereotype defined in GlossaryML enabling to model the concept of Glossary as defind in GlossaryMM.&lt;/p>
+</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_RDmKUMrBEee8B9kRSNhRUg" name="TermStereotype">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_RDmKUcrBEee8B9kRSNhRUg">
+        <body>&lt;p>A UML Class&amp;nbsp;applying the &amp;lt;&amp;lt;Term&amp;gt;&amp;gt; stereotype defined in GlossaryML.&lt;/p>
+</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_RR5sEMrBEee8B9kRSNhRUg" name="DefinitionStereotype">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_RR5sEcrBEee8B9kRSNhRUg">
+        <body>&lt;p>A UML Class applying the &amp;lt;&amp;lt;Definition&amp;gt;&amp;gt; stereotype defined in GlossaryML.&lt;/p>
+</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_DZr54MrTEeewiLdROuv7ZQ" name="GlossaryML">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_DZr54crTEeewiLdROuv7ZQ">
+        <body>&lt;p>UML profile model for modeling glossaries in accordance with GlossaryMLDomainModel.&lt;/p>
+</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_rkJHEM9yEeexA5Asmqj4TQ" name="GlossaryCommonDefinitionTableEditorConfiguration">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_rkJHEc9yEeexA5Asmqj4TQ" annotatedElement="_rkJHEM9yEeexA5Asmqj4TQ">
+        <body>&lt;p>A specific PapyrusTableEditorConfiguration defining the content of a GossaryCommonDefinitionTable.&lt;/p>
+</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_DSncoM91EeexA5Asmqj4TQ" name="GlossaryML_ModelAuthoringTool">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_DSncoc91EeexA5Asmqj4TQ" annotatedElement="_DSncoM91EeexA5Asmqj4TQ">
+        <body>&lt;p>Point to concerns related to the authoring tool for modeling with GlossaryML.&lt;/p>
+</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_hI_aAM92EeexA5Asmqj4TQ" name="GlossaryML_DomainModel">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_hI_aAc92EeexA5Asmqj4TQ">
+        <body>&lt;p>PapyrusUML_Model formalizing the glossary concept and its related vocabulary&amp;nbsp;in accordance with GlossaryML_RequirementModel. This model is defined in the PapyrusUML_Model labeled GlossaryML.reqmodel.&lt;/p>
+</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_D0yDoM93EeexA5Asmqj4TQ" name="GlossaryML_RequirementModel">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_D0yDoc93EeexA5Asmqj4TQ">
+        <body>&lt;p>PapyrusSysML_Model formalizing the requirements for a specific language for modeling glossaries in accordance with the definition of glossary provided by wikipedia, &lt;a href=&quot;https://en.m.wikipedia.org/wiki/Glossary&quot;>https://en.m.wikipedia.org/wiki/Glossary&lt;/a>. This model is defined in the PapyrusSysML_Model, GlossaryML.reqmodel.&lt;/p>
+</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_zpyvcAdgEei416VAQCBulg" name="GlossaryDetailedDefinitionsTableEditor">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_zpyvcQdgEei416VAQCBulg" annotatedElement="_zpyvcAdgEei416VAQCBulg">
+        <body>&lt;p>PapyrusTableEditor enabling to&amp;nbsp;manipulate detailed information of glossary model element and its content&amp;nbsp;via a specific table-based editor.&amp;nbsp;The content of the related table view&amp;nbsp;is defined in its specific PapyrusTableConfiguration, GlossaryDeatiledDefinitionsTableEditorConfiguration.&lt;/p>
+</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_E-XOkAdhEei416VAQCBulg" name="GlossaryDeatiledDefinitionsTableEditorConfiguration">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_E-XOkQdhEei416VAQCBulg" annotatedElement="_E-XOkAdhEei416VAQCBulg">
+        <body>&lt;p>A specific PapyrusTableEditorConfiguration defining the content of a GossaryDetailedDefinitionsTable.&lt;/p>
+</body>
+      </ownedComment>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_jD1Z8Ml_Eee8B9kRSNhRUg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ooGI78rhEeewiLdROuv7ZQ" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ooGI8MrhEeewiLdROuv7ZQ" key="Version" value="0.1.9"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ooGI8crhEeewiLdROuv7ZQ" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ooGI8srhEeewiLdROuv7ZQ" key="Copyright" value="CEA list"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ooGI88rhEeewiLdROuv7ZQ" key="Date" value="2017-11-16"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ooGI9MrhEeewiLdROuv7ZQ" key="Author" value="Sebastien GERARD"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_jD1Z8cl_Eee8B9kRSNhRUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="GlossaryML.profile.uml#_3Bd1cMrREee8B9kRSNhRUg"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="GlossaryML.profile.uml#_saqecET2EeS25e5tbYLtxg"/>
+    </profileApplication>
+  </packagedElement>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_QisG4MlnEee8B9kRSNhRUg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_QisG4clnEee8B9kRSNhRUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#/"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML"/>
+  </profileApplication>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_QisG4slnEee8B9kRSNhRUg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_QisG48lnEee8B9kRSNhRUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//activities"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_Activities"/>
+  </profileApplication>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_QisG5MlnEee8B9kRSNhRUg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_QisG5clnEee8B9kRSNhRUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//allocations"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_Allocations"/>
+  </profileApplication>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_QisG5slnEee8B9kRSNhRUg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_QisG58lnEee8B9kRSNhRUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//blocks"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_Blocks"/>
+  </profileApplication>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_QisG6MlnEee8B9kRSNhRUg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_QisG6clnEee8B9kRSNhRUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//constraintblocks"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_ConstraintBlocks"/>
+  </profileApplication>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_QisG6slnEee8B9kRSNhRUg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_QisG68lnEee8B9kRSNhRUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//deprecatedelements"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_DeprecatedElements"/>
+  </profileApplication>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_QisG7MlnEee8B9kRSNhRUg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_QisG7clnEee8B9kRSNhRUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//modelelements"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_ModelElements"/>
+  </profileApplication>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_QisG7slnEee8B9kRSNhRUg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_QisG78lnEee8B9kRSNhRUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//portsandflows"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_Ports_u0026Flows"/>
+  </profileApplication>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_QisG8MlnEee8B9kRSNhRUg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_QisG8clnEee8B9kRSNhRUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//requirements"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_Requirements"/>
+  </profileApplication>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_Qi134MlnEee8B9kRSNhRUg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Qi134clnEee8B9kRSNhRUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+  </profileApplication>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_0mcBoINJEeyV7Pchhhmm4g">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_0miIQINJEeyV7Pchhhmm4g" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="../../com.cea.papyrus.referencemanagement/uml-profiles/ReferencesML.profile.uml#_M5i-MFnfEeyFfo7P2D8rIQ"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="../../com.cea.papyrus.referencemanagement/uml-profiles/ReferencesML.profile.uml#_K_P-sEadEeeubeo5VXVdIw"/>
+  </profileApplication>
+</uml:Model>

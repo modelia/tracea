@@ -1,0 +1,6 @@
+{ "values" : {
+	"confidence": ["confidence", "MIN",   0],
+	"energy":	   ["energy",     "MAX", 100]
+	},
+  "mergeOperator": "AND"
+}
