@@ -11,7 +11,7 @@
   * [D3 - Evaluation and extension of traceability solutions](#3-traceability-solutions----evaluation-and-extension)
   * [D4 - Evaluation and extension of SysMLv2 for quality traceability](#4-traceability-integration----sysmlv2)
   * [D5 - Visualizable and propagable SysMLv2 traces for metadata analysis](#5-traceability-visualization-and-propagation----SysMLv2)  
-  * [D6 - Topology and complexity of Papyrus DSL creation projects - A semi-automated analysis based on traceability](#6-topology-and-complexity-of-papyrus-project----a-semi---automated-analysis-based-on-traceability)
+  * [D6 - Topology and complexity of Papyrus DSL creation projects](#6-topology-and-complexity-of-papyrus-project---a-semi-automated-analysis-based-on-traceability)
 * [Software artefact](#software-artefact)
   * [Tracea DSL](#1-dsl-tracea)
   * [Integration to Capra](#2-capra-integration)
