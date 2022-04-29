@@ -11,12 +11,13 @@
   * [D3 - Evaluation and extension of traceability solutions](#3-traceability-solutions----evaluation-and-extension)
   * [D4 - Evaluation and extension of SysMLv2 for quality traceability](#4-traceability-integration----sysmlv2)
   * [D5 - Visualizable and propagable SysMLv2 traces for metadata analysis](#5-traceability-visualization-and-propagation----SysMLv2)  
-  * [D6 - Topology and complexity of Papyrus DSL creation projects](#6-topology-and-complexity-of-papyrus-project----a-semi-automated-analysis-based-on-traceability)
+  * [D6 - Topology and complexity of Papyrus DSL creation projects](#6-topology-and-complexity-of-papyrus-projects----a-semi-automated-analysis-based-on-traceability)
 * [Software artefact](#software-artefact)
   * [Tracea DSL](#1-dsl-tracea)
   * [Integration to Capra](#2-capra-integration)
   * [Integration to SysML](#3-sysml-integration)
   * [Propagation and metadata analysis](#4-sysml-json-transformer)
+  * [Papyru project visualizer and analyser](#6-papyrus-project-analyser)
 * [Reports and publications](#reports-and-publications)
   * [Reports](#8-reports)
   * [Publications](#9-publications)
@@ -51,7 +52,7 @@ of both the abstract (i.e., metamodel) and concrete syntax (a JSON-based represe
 and an Ecore implementation of the DSL in an Eclipse plugin. We illustrate the usability of the DSL
 with a running example: the transclusion of model elements in certification documents.
 
-### 3. `Traceability solutions`] -- Evaluation and extension
+### 3. `Traceability solutions` -- Evaluation and extension
 
 The core contribution of this third deliverable is an evaluation protocol for solutions to traceability
 (or tracers) and its specific application to an existing solution: [Capra](https://www.eclipse.org/capra).
@@ -67,7 +68,7 @@ More specifically, this deliverable is made of
 * the integration of Tracea into Capra and the impact of the consecutive changes.
 * we show the main conceptual and technical limitations of Capra.
 
-### 4. `Traceability integration`] -- SysMLv2
+### 4. `Traceability integration` -- SysMLv2
 
 This deliverable presents the integration of the concepts related to traceability developed
 during these first three deliverables within SysMLv2. And more precisely, modifications target the [Eclipse pilot implementation of SysMLv2](https://github.com/Systems-Modeling/SysML-v2-Pilot-Implementation).
@@ -82,7 +83,7 @@ In particular, this deliverable contains
   * a feature library for trustable traceability
 * the definition of [`TraceaLibrary`](https://github.com/modelia/tracea/tree/master/4-sysml-json-transformer/10-library), a metadata feature library for trustable traceability.
 
-### 5. `Traceability visualization and propagation`] -- SysMLv2
+### 5. `Traceability visualization and propagation` -- SysMLv2
 
 The fifth deliverable contains a tool suite to analysis tracing metadata in SysMLv2 models. In particular, three main components have been added to Tracea:
 
@@ -97,13 +98,16 @@ The fifth deliverable contains a tool suite to analysis tracing metadata in SysM
 Implementation decisions and details can be found in the [`report`](https://github.com/modelia/tracea-reports/blob/main/Tracea_Deliverable_5_CEA.pdf) (CEA private).
 _(Note that the period has seen the publication of two papers. They can be found in the eponym folder.)_
 
-### 6. `Topology and complexity of Papyrus DSL creation projects -- A semi-automated analysis based on traceability`
+### 6. `Topology and complexity of Papyrus projects -- A semi-automated analysis based on traceability`
 
 The sixth deliverable contains a tool suite to analysis the complexity of Papyrus DSL creation projects. In particular, three main components have been added to Tracea:
 
 * [`Orchestrus`](https://github.com/modelia/tracea/tree/master/6-traceaml-for-papyrus/orchestrus) A tool for the extraction of trace for complexity analysis
 * [`TraceaD3`](https://github.com/modelia/tracea/tree/master/6-traceaml-for-papyrus/tracead3) A visualizer for TraceaML instances
 * [`Data`](https://github.com/modelia/tracea/tree/master/6-traceaml-for-papyrus/data) A sample data set extracted automatically from the GlossaryML project
+
+<img src="https://github.com/modelia/tracea/blob/master/6-traceaml-for-papyrus/imgs/pipeline.jpg" width=600 alt="Pipeline"/>
+<img src="https://github.com/modelia/tracea/blob/master/6-traceaml-for-papyrus/imgs/tracead3.jpg" width=600 alt="TraceaD3"/>
 
 ## Software artefacts
 
@@ -146,6 +150,14 @@ contains the software artefacts for the fifth deliverable:
 * The [`report`](https://github.com/modelia/tracea-reports/blob/main/Tracea_Deliverable_5_CEA.pdf) (CEA private) contains general guide lines to build your own scenario.
 * A new version of [`TraceaLibrary`](https://github.com/modelia/tracea/tree/master/4-sysml-json-transformer/10-library), a metadata feature library for SysMLv2
 * An example of usage: [`_eDrone scenario_`](https://github.com/modelia/tracea/tree/master/4-sysml-json-transformer/20-eDrone_example).
+
+### [`6-papyrus-project-analyser`](https://github.com/modelia/tracea/tree/master/6-traceaml-for-papyrus)
+
+contains the software artefacts for the sixth deliverable:
+
+* [`Orchestrus`](https://github.com/modelia/tracea/tree/master/6-traceaml-for-papyrus/orchestrus) A tool for the extraction of trace for complexity analysis
+* [`TraceaD3`](https://github.com/modelia/tracea/tree/master/6-traceaml-for-papyrus/tracead3) A visualizer for TraceaML instances
+* [`Data`](https://github.com/modelia/tracea/tree/master/6-traceaml-for-papyrus/data) A sample data set extracted automatically from the GlossaryML project
 
 ## Reports and publications
 
