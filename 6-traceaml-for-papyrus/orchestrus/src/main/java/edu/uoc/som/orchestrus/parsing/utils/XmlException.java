@@ -1,3 +1,19 @@
+/*****************************************************************************
+* Copyright (c) 2015, 2022 CEA-LIST & SOM-UOC, Edouard Batot
+*
+* All rights reserved. This program and the accompanying materials
+* are made available under the terms of the Eclipse Public License 2.0
+* which accompanies this distribution, and is available at
+* https://www.eclipse.org/legal/epl-2.0/
+*
+* SPDX-License-Identifier: EPL-2.0
+*
+* Contributors:
+* UOC-SOM - Initial API and implementation
+*  -> Edouard Batot (UOC SOM) ebatot@uoc.edu 
+*****************************************************************************/
+
+
 // Copyright 2008-2012 severally by the contributors
 //
 // Licensed under the Apache License, Version 2.0 (the "License");

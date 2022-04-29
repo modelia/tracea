@@ -1,8 +1,25 @@
+/*****************************************************************************
+* Copyright (c) 2015, 2022 CEA-LIST & SOM-UOC, Edouard Batot
+*
+* All rights reserved. This program and the accompanying materials
+* are made available under the terms of the Eclipse Public License 2.0
+* which accompanies this distribution, and is available at
+* https://www.eclipse.org/legal/epl-2.0/
+*
+* SPDX-License-Identifier: EPL-2.0
+*
+* Contributors:
+* UOC-SOM - Initial API and implementation
+*  -> Edouard Batot (UOC SOM) ebatot@uoc.edu 
+*****************************************************************************/
+
 package edu.uoc.som.orchestrus.utils;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,6 +31,8 @@ import java.util.Scanner;
 import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.io.LineIterator;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -397,5 +416,71 @@ public class Utils {
 		String setup = Config.renderSetupJSon();
 		Utils.writeJSon(Config.getInstance().getDeploymentLocation() + File.separator + "setup.tracea.json", "{" + setup + "}" );
 	}
+	
+	public static void main(String[] args) throws IOException {
+		addLicensesToAllFiles();
+	}
+	private static void addLicensesToAllFiles() throws IOException {
+		addLicensesFileAndSubfiles(new File("./src"));
+	}
+
+	private static void addLicensesFileAndSubfiles(File f) throws IOException {
+		if(f.getName().endsWith(".java")) {
+			System.out.println("Lic. added: "+f.getAbsolutePath());
+			BufferedReader br = new BufferedReader(new FileReader(f));
+			String line = "";
+			boolean fileHasLicense = false;
+			int i = 0;
+			
+			while((line = br.readLine()) != null && i++ < 10){
+				if(!line.isEmpty()) {
+					if(line.trim().startsWith("/*****************************************************************************\r\n"
+							+ "* Copyright (c) 2015, 2022 CEA-LIST & SOM-UOC, Edouard Batot\r\n"))
+						fileHasLicense = true;
+				}
+			}
+			br.close();
+			if(!fileHasLicense)
+				prependPrefix(f, "/*****************************************************************************\r\n"
+					+ "* Copyright (c) 2015, 2022 CEA-LIST & SOM-UOC, Edouard Batot\r\n"
+					+ "*\r\n"
+					+ "* All rights reserved. This program and the accompanying materials\r\n"
+					+ "* are made available under the terms of the Eclipse Public License 2.0\r\n"
+					+ "* which accompanies this distribution, and is available at\r\n"
+					+ "* https://www.eclipse.org/legal/epl-2.0/\r\n"
+					+ "*\r\n"
+					+ "* SPDX-License-Identifier: EPL-2.0\r\n"
+					+ "*\r\n"
+					+ "* Contributors:\r\n"
+					+ "* UOC-SOM - Initial API and implementation\r\n"
+					+ "*  -> Edouard Batot (UOC SOM) ebatot@uoc.edu \r\n"
+					+ "*****************************************************************************/\n\n\n");
+		}
+		if(f.isDirectory()){
+			for (File f2 : f.listFiles()) {
+				addLicensesFileAndSubfiles(f2);
+			}
+		} 
+	}
+	
+	@SuppressWarnings("deprecation")
+	public static void prependPrefix(File input, String prefix) throws IOException {
+	    LineIterator li = FileUtils.lineIterator(input);
+	    File tempFile = File.createTempFile("prependPrefix", ".tmp");
+	    BufferedWriter w = new BufferedWriter(new FileWriter(tempFile));
+	    try {
+	        w.write(prefix);
+	        while (li.hasNext()) {
+	            w.write(li.next());
+	            w.write("\n");
+	        }
+	    } finally {
+	        IOUtils.closeQuietly(w);
+	        LineIterator.closeQuietly(li);
+	    }
+	    FileUtils.deleteQuietly(input);
+	    FileUtils.moveFile(tempFile, input);
+	}
+
 
 }
