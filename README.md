@@ -158,7 +158,7 @@ contains the software artefacts for the sixth deliverable:
 * [`TraceaD3`](https://github.com/modelia/tracea/tree/master/6-traceaml-for-papyrus/tracead3) A visualizer for TraceaML instances
 * [`Data`](https://github.com/modelia/tracea/tree/master/6-traceaml-for-papyrus/data) A sample data set (JSon) extracted automatically from the GlossaryML project
 
-<img src="https://github.com/modelia/tracea/blob/master/6-traceaml-for-papyrus/imgs/pipeline.jpg" width=600 alt="Pipeline"/>
+<img src="https://github.com/modelia/tracea/blob/master/6-traceaml-for-papyrus/imgs/analysis-pipeline.png" width=700 alt="Analysis pipeline"/>
 
 ## Reports and publications
 
