@@ -1,0 +1,14 @@
+{
+"setup": {"project": "GlossaryML","trace": "LabelPropagation_9"},
+"links": [{"id": "-6729924992966033291","name": "1.0","label": "","source_id": "5371260547779316133","target_id": "-1457205381421357414","type": "Profile-UnresolvedArtefact","group": 55,"intensity": 1,"confidence": 1,"energy": 100},
+{"id": "-917510832255457703","name": "14.0","label": "","source_id": "5371260547779316133","target_id": "8070639246719579111","type": "Profile","group": 35,"intensity": 14,"confidence": 14,"energy": 100},
+{"id": "8640198957499146226","name": "3.0","label": "","source_id": "5371260547779316133","target_id": "-4249802838372158016","type": "Profile","group": 35,"intensity": 3,"confidence": 3,"energy": 100},
+{"id": "5418703480648099984","name": "1.0","label": "","source_id": "5371260547779316133","target_id": "1563548882513538425","type": "Profile-UnresolvedArtefact","group": 55,"intensity": 1,"confidence": 1,"energy": 100},
+{"id": "7089668629435620758","name": "1.0","label": "","source_id": "5371260547779316133","target_id": "7430493277149599813","type": "Profile-UnresolvedArtefact","group": 55,"intensity": 1,"confidence": 1,"energy": 100}],
+"nodes": [{"id": "7430493277149599813","fanin": "1","name": "src-gen","type": "UnresolvedArtefact","size": 10,"group": "17"},
+{"id": "-1457205381421357414","fanin": "1","name": "com.cea.papyrus.glossary","type": "UnresolvedArtefact","size": 10,"group": "17"},
+{"id": "5371260547779316133","fanin": "0","name": "glossaryml.genmodel","type": "Profile","size": 0,"group": "12"},
+{"id": "1563548882513538425","fanin": "1","name": "org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container","type": "UnresolvedArtefact","size": 10,"group": "17"},
+{"id": "8070639246719579111","fanin": "6","name": "uml-profiles","type": "Profile","size": 60,"group": "12"},
+{"id": "-4249802838372158016","fanin": "3","name": "GlossaryML.ecore","type": "Profile","size": 30,"group": "12"}]
+}

@@ -1,0 +1,8 @@
+{
+"setup": {"project": "ReferenceML","trace": "KSpan_18"},
+"links": [{"id": "4840668386679044570","name": "3.0","label": "","source_id": "-5288884321442703868","target_id": "6464344685522019821","type": "ElementTypeConfiguration-ExternalFile","group": 33,"intensity": 3,"confidence": 3,"energy": 100},
+{"id": "3264908416820472267","name": "3.0","label": "","source_id": "2100752566876840588","target_id": "-5288884321442703868","type": "ElementTypeConfiguration","group": 27,"intensity": 3,"confidence": 3,"energy": 100}],
+"nodes": [{"id": "-5288884321442703868","fanin": "3","name": "","type": "ElementTypeConfiguration","size": 30,"group": "13"},
+{"id": "6464344685522019821","fanin": "3","name": "","type": "ExternalFile","size": 30,"group": "0"},
+{"id": "2100752566876840588","fanin": "0","name": "","type": "ElementTypeConfiguration","size": 0,"group": "13"}]
+}

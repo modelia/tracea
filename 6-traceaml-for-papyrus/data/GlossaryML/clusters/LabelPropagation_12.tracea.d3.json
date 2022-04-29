@@ -1,0 +1,10 @@
+{
+"setup": {"project": "GlossaryML","trace": "LabelPropagation_12"},
+"links": [{"id": "-9086936861404645171","name": "1.0","label": "","source_id": "3467329551260634708","target_id": "-817604662548149131","type": "SourceFile-LocalFolder","group": 59,"intensity": 1,"confidence": 1,"energy": 100},
+{"id": "6446461156843514302","name": "1.0","label": "","source_id": "3467329551260634708","target_id": "-435587906648708359","type": "SourceFile-Profile","group": 49,"intensity": 1,"confidence": 1,"energy": 100},
+{"id": "-6364563528460573689","name": "1.0","label": "","source_id": "3467329551260634708","target_id": "6666015931596736387","type": "SourceFile-Profile","group": 49,"intensity": 1,"confidence": 1,"energy": 100}],
+"nodes": [{"id": "-817604662548149131","fanin": "4","name": "com.cea.papyrus.glossary","type": "LocalFolder","size": 40,"group": "5"},
+{"id": "3467329551260634708","fanin": "0","name": "plugin.xml","type": "SourceFile","size": 0,"group": "4"},
+{"id": "6666015931596736387","fanin": "1","name": "GlossaryShape.png","type": "Profile","size": 10,"group": "12"},
+{"id": "-435587906648708359","fanin": "1","name": "GlossaryML.profile.uml","type": "Profile","size": 10,"group": "12"}]
+}

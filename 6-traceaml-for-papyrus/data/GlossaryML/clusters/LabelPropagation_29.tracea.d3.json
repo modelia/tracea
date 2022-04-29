@@ -1,0 +1,12 @@
+{
+"setup": {"project": "GlossaryML","trace": "LabelPropagation_29"},
+"links": [{"id": "-8075495338298583989","name": "3.0","label": "","source_id": "2831199605592898983","target_id": "8371004470249050606","type": "ElementTypeConfiguration-ExternalFile","group": 46,"intensity": 3,"confidence": 3,"energy": 100},
+{"id": "-3280253059346469961","name": "3.0","label": "","source_id": "1072306077061511071","target_id": "2831199605592898983","type": "ElementTypeConfiguration","group": 39,"intensity": 3,"confidence": 3,"energy": 100},
+{"id": "-3292163547349318530","name": "1.0","label": "","source_id": "1072306077061511071","target_id": "-3121891052548791562","type": "ElementTypeConfiguration-UnresolvedArtefact","group": 57,"intensity": 1,"confidence": 1,"energy": 100},
+{"id": "313433498834020999","name": "3.0","label": "","source_id": "1072306077061511071","target_id": "-6784398378578189479","type": "ElementTypeConfiguration","group": 39,"intensity": 3,"confidence": 3,"energy": 100}],
+"nodes": [{"id": "-6784398378578189479","fanin": "3","name": "ReferencesML.elementtypesconfigurations","type": "ElementTypeConfiguration","size": 30,"group": "14"},
+{"id": "1072306077061511071","fanin": "1","name": "GlossaryML.creationmenumodel","type": "ElementTypeConfiguration","size": 10,"group": "14"},
+{"id": "2831199605592898983","fanin": "3","name": "GlossaryML_Semantic.elementtypesconfigurations","type": "ElementTypeConfiguration","size": 30,"group": "14"},
+{"id": "8371004470249050606","fanin": "4","name": "uml.elementtypesconfigurations","type": "ExternalFile","size": 40,"group": "0"},
+{"id": "-3121891052548791562","fanin": "1","name": "SysML16.elementtypesconfigurations","type": "UnresolvedArtefact","size": 10,"group": "17"}]
+}

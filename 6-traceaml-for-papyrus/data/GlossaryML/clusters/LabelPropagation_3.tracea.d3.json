@@ -1,0 +1,18 @@
+{
+"setup": {"project": "GlossaryML","trace": "LabelPropagation_3"},
+"links": [{"id": "-3879854110521290298","name": "1.0","label": "","source_id": "-1065719142118609324","target_id": "-7497975980136432009","type": "Model-UnresolvedArtefact","group": 51,"intensity": 1,"confidence": 1,"energy": 100},
+{"id": "-1696269721833090402","name": "1.0","label": "","source_id": "-1065719142118609324","target_id": "5756199850788068330","type": "Model-ExternalFile","group": 45,"intensity": 1,"confidence": 1,"energy": 100},
+{"id": "3193453561560591537","name": "1.0","label": "","source_id": "-1065719142118609324","target_id": "9147260119188226075","type": "Model-ExternalFile","group": 45,"intensity": 1,"confidence": 1,"energy": 100},
+{"id": "4962782894064117476","name": "9.0","label": "","source_id": "-1065719142118609324","target_id": "-5740671271593056691","type": "Model-ExternalFile","group": 45,"intensity": 9,"confidence": 9,"energy": 100},
+{"id": "7902438235537571222","name": "1.0","label": "","source_id": "-1065719142118609324","target_id": "7318053033168220206","type": "Model-ExternalFile","group": 45,"intensity": 1,"confidence": 1,"energy": 100},
+{"id": "-4456960421345806055","name": "9.0","label": "","source_id": "-1065719142118609324","target_id": "-3045182938295608968","type": "Model-ExternalFile","group": 45,"intensity": 9,"confidence": 9,"energy": 100},
+{"id": "8944136989158422899","name": "2.0","label": "","source_id": "-1065719142118609324","target_id": "-7665196775622473857","type": "Model-UnresolvedArtefact","group": 51,"intensity": 2,"confidence": 2,"energy": 100}],
+"nodes": [{"id": "5756199850788068330","fanin": "1","name": "SysML-Standard-Library.uml","type": "ExternalFile","size": 10,"group": "0"},
+{"id": "9147260119188226075","fanin": "1","name": "Standard","type": "ExternalFile","size": 10,"group": "0"},
+{"id": "-7665196775622473857","fanin": "2","name": "GlossaryML.profile.uml","type": "UnresolvedArtefact","size": 20,"group": "17"},
+{"id": "-1065719142118609324","fanin": "9","name": "GlossaryML_ToolReqModel.uml","type": "Model","size": 90,"group": "13"},
+{"id": "7318053033168220206","fanin": "1","name": "Standard.profile.uml","type": "ExternalFile","size": 10,"group": "0"},
+{"id": "-3045182938295608968","fanin": "9","name": "SysML","type": "ExternalFile","size": 90,"group": "0"},
+{"id": "-7497975980136432009","fanin": "1","name": "PapyrusGlossary.uml","type": "UnresolvedArtefact","size": 10,"group": "17"},
+{"id": "-5740671271593056691","fanin": "9","name": "SysML.profile.uml","type": "ExternalFile","size": 90,"group": "0"}]
+}
