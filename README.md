@@ -169,3 +169,4 @@ Reports for each deliverable together with their respective Latex source code ca
 ### [`9-publications`](https://github.com/modelia/tracea/tree/master/9-publications)
 
 * [`(Not) Yet Another Metamodel for Traceability`](https://github.com/modelia/tracea/blob/master/9-publications/traceability-feature-model.pdf), published at [`SAM'21`](https://sdl-forum.org/Events/SAM2021/index.htm)
+* [`A Survey-driven Feature Model for Software Traceability Approaches`](https://github.com/modelia/tracea/blob/master/9-publications/batot2022_FASE22_A_Survey_driven_Feature_Model_for_Software_Traceability.pdf), published at [FASE'22`](https://etaps.org/2022/fase)
